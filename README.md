@@ -2,6 +2,8 @@
 
 Små, afgrænsede og let forståelige eksempler på hvordan man programmerer til Google Android
 
+De er udarbejdet i forbindelse med Android-kurser jeg holder på DTU og http://lundogbendsen.dk/
+
 Overordnet indhold:
 
   * Asynkrone kald
@@ -21,22 +23,25 @@ Overordnet indhold:
 
 De er skrevet så de alle (så vidt muligt) kan overskues på én side og i én fil.
 
-Du kan se kildekoden til eksemplerne INDE FRA SELVE app'en, lige efter at du har kørt dem. Tryk lang tid på en aktivitet for at se kildekoden.
+Du kan se kildekoden til eksemplerne INDE FRA SELVE app'en, lige efter at du har kørt dem. 
+Lang tryk et eksempel for at se kildekoden.
 
+Kontakt mig hvis du ønsker at bygge videre på eksemplerne under en anden licens eller hvis du ønsker skriveadgang så du kan arbejde videre på en af projekterne.
 
-Eksemplerne kan gennemses på
-https://github.com/nordfalk/AndroidElementer/tree/master/app/src/main/java
+Eksempelsamlingen kan hentes fra Google Play på:
+https://play.google.com/store/apps/details?id=dk.nordfalk.android.elementer
+
 
 De kan hentes fra Google Play på https://play.google.com/store/apps/details?id=dk.nordfalk.android.elementer
 
 ![http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=https%3A%2F%2Fmarket.android.com%2Fdetails%3Fid%3Ddk.nordfalk.android.elementer&x=x.png](http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=https%3A%2F%2Fmarket.android.com%2Fdetails%3Fid%3Ddk.nordfalk.android.elementer&x=x.png)
 
-Hvis du er glad for samlingen så skriv en kommentar nedenfor.
+Båt-hornet (dyt.ogg) er taget fra http://opengameart.org/content/bicycle-horn
 
 Jacob
 
 
 ## Undervisning i Android ##
 
-Jeg holder kurser i Android på http://cv.ihk.dk og på [Lund&Bendsen](https://www.lundogbendsen.dk/undervisning/beskrivelse/LB1809/)
+Jeg holder kurser i Android på DTU og på [Lund&Bendsen](https://www.lundogbendsen.dk/undervisning/beskrivelse/LB1809/)
 
