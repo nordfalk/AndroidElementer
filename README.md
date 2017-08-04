@@ -39,9 +39,3 @@ De kan hentes fra Google Play på https://play.google.com/store/apps/details?id=
 Båt-hornet (dyt.ogg) er taget fra http://opengameart.org/content/bicycle-horn
 
 Jacob
-
-
-## Undervisning i Android ##
-
-Jeg holder kurser i Android på DTU og på [Lund&Bendsen](https://www.lundogbendsen.dk/undervisning/beskrivelse/LB1809/)
-
