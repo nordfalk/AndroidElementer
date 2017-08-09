@@ -6,15 +6,15 @@ android {
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
-//      denne app fungerer på telefoner med Android 4.0 (API 14) og frem
+//      denne app kan installeres på telefoner med Android 4.0 (API 14) og frem
         minSdkVersion 14
 //      men den er beregnet til Android 6.0 (API 22)
         targetSdkVersion 22
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
-        versionCode 58
-        versionName '2.5.1  11.okt 2016'
+        versionCode 59
+        versionName '2.6  9.aug 2017'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
         /*
@@ -30,8 +30,9 @@ android {
     }
     productFlavors {
     }
-    // i assets/ skal, udover src/main/assets, også være al kildekoden og alle resurserne (src/main)
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main'] } }
+    // For at kildekoden og alle resurserne (src/main) kan ses inde fra AndroidElementer
+    // så kopierer vi dem fra src/main ind i assets-mappen (der normalt kun har src/main/assets)
+    sourceSets { main { assets.srcDirs = ['src/main', 'src/main/assets'] } }
 }
 dependencies {
     // Støttebiblioteker - se http://developer.android.com/tools/support-library/

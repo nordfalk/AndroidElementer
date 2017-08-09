@@ -38,4 +38,13 @@ De kan hentes fra Google Play på https://play.google.com/store/apps/details?id=
 
 Båt-hornet (dyt.ogg) er taget fra http://opengameart.org/content/bicycle-horn
 
+# Privatlivserklæring
+
+Jeg indsamler og registrerer ingen private oplysninger.
+
+De mange tilladelser som app'en gør brug af, er udelukkende for
+at kunne demonstrere de forskellige muligheder i Android.
+
+
+
 Jacob
