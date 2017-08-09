@@ -189,7 +189,7 @@ public class Aktivitetsliste3 extends AppCompatActivity {
             listeelem_overskrift.setTextColor(Color.LTGRAY);
             listeelem_beskrivelse.setTextColor(Color.GRAY);
             listeelem_billede.setVisibility(View.VISIBLE);
-            listeelem_billede.setImageResource(android.R.drawable.ic_menu_help);
+            listeelem_billede.setImageResource(android.R.drawable.ic_menu_info_details);
           } else if (pakke.aktiviteter.contains(navn)) {
             String pakkenavn = navn.substring(0, navn.lastIndexOf('.'));
             String klassenavn = navn.substring(pakkenavn.length() + 1);

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:id="@+id/rod"
-    tools:context="lekt40_design.ScrollingActivity">
+    tools:context="ufaerdigt.lekt40_design.ScrollingActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"

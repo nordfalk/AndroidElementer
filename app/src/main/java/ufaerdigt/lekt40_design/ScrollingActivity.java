@@ -1,6 +1,6 @@
 // Se http://android-developers.blogspot.de/2015/05/android-design-support-library.html
 // for Design Support Library
-package lekt40_design;
+package ufaerdigt.lekt40_design;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,7 +9,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
 

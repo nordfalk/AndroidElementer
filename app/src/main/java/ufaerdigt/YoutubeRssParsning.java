@@ -1,4 +1,4 @@
-package lekt06_youtube;
+package ufaerdigt;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import dk.nordfalk.android.elementer.R;
+import ufaerdigt.lekt06_youtube.BenytVideoView;
+import ufaerdigt.lekt06_youtube.FilCache;
 
 /**
  * Hjælpeklasse til at holde info om et klip

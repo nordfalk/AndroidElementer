@@ -31,7 +31,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import lekt06_youtube.FilCache;
+import ufaerdigt.lekt06_youtube.FilCache;
 
 /**
  * Her kan foretages fælles initialisering.

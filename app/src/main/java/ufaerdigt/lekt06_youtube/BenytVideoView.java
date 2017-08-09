@@ -1,4 +1,4 @@
-package lekt06_youtube;
+package ufaerdigt.lekt06_youtube;
 
 import android.app.Activity;
 import android.content.Intent;

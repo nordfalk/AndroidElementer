@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package lekt06_youtube;
+package ufaerdigt.lekt06_youtube;
 
 import android.os.SystemClock;
 import android.util.Log;

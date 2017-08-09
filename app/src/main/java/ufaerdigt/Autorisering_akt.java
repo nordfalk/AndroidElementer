@@ -1,4 +1,4 @@
-package lekt50_auth;
+package ufaerdigt;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;

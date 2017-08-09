@@ -57,7 +57,7 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
             .addToBackStack("Overgange")
             .addSharedElement(ikon, "ikon")
             .addSharedElement(trykketPåKnap, "knappen")
-            .addSharedElement(knap3, "knap3")
+//            .addSharedElement(knap3, "knap3")
             .commit();
   }
 }
