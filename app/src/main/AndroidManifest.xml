@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           android:installLocation="auto"
     package="dk.nordfalk.android.elementer" >
 
@@ -55,7 +56,8 @@
     <application
         android:name="lekt04_arkitektur.MinApp"
         android:theme="@style/Theme.AppCompat"
-        android:icon="@drawable/logo">
+        android:icon="@drawable/logo"
+        android:allowBackup="true">
 
         <!--
           aktiviteter som ikke kan ses fra startskærmen men som kan kaldes
@@ -68,7 +70,7 @@
         <activity android:name="lekt01_views.BenytWebView" />
         <activity android:name="lekt01_views.ByvejrProgrammatisk" />
         <activity android:name="lekt01_views.ByvejrDeklarativ" />
-        <activity android:name="lekt01_views.BenytHtmlTags" />
+        <activity android:name="lekt01_views.BenytHtmlKoder" />
         <activity android:name="lekt01_views.BenytMenuer" />
         <activity android:name="lekt02_intents.BenytIntents" />
         <activity android:name="lekt02_intents.BenytIntentsFraGoogle" />
@@ -111,7 +113,7 @@
         <activity android:name="lekt03_diverse.AfspilVideo" />
         <activity android:name="lekt03_diverse.BenytWebView2" />
         <activity android:name="lekt03_diverse.BenytLayoutInflater" />
-        <activity android:name="lekt03_diverse.BenytMenuer2" />
+        <activity android:name="lekt03_diverse.BenytMenuerFraXml" />
         <activity android:name="lekt03_diverse.BenytDialogerOgToasts" />
         <activity android:name="lekt03_diverse.TekstTilTale" />
         <activity android:name="lekt03_diverse.Talegenkendelse" />
@@ -195,7 +197,8 @@
         <provider
             android:name="lekt08_providers.MinEgenProvider"
             android:exported="true"
-            android:authorities="dk.nordfalk.android.elementer.MinProvider" />
+            android:authorities="dk.nordfalk.android.elementer.MinProvider"
+            tools:ignore="ExportedContentProvider"/>
         <activity
             android:name="lekt08_providers.BenytIntentsMedEgenProvider"
             android:screenOrientation="portrait" />
@@ -243,7 +246,6 @@
 
         <!-- Levende ikon på hjemmeskærmen der viser hvad klokken er -->
         <receiver android:name="lekt09_levendeikon.VisKlokkenIkon" >
-   
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
