@@ -33,6 +33,10 @@ import java.util.Arrays;
 import lekt50_googlested.Log;
 
 /**
+ * XXXX forældet
+ * Se https://developers.google.com/identity/sign-in/android/migration-guide
+
+
  * Aktivitet til at hente kontoinformation
  * Se https://developers.google.com/android/guides/http-auth
  */

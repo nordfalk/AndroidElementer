@@ -269,7 +269,6 @@
 
         <activity android:name="lekt20_touchinput.BenytGestureDetector" />
         <activity android:name="lekt20_touchinput.BenytScaleGestureDetector" />
-        <activity android:name="lekt20_touchinput.BenytMultiTouchController" />
         <activity android:name="lekt31_venstremenu.BenytVenstremenu" />
         <activity android:name="lekt32_overgange.AktivitetsovergangBegynd" />
         <activity android:name="lekt32_overgange.AktivitetsovergangSlut" />
