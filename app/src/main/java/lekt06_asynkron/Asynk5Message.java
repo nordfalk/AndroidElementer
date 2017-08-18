@@ -20,8 +20,8 @@ import dk.nordfalk.android.elementer.R;
 
 
 /**
- * Dette eksempel viser hvorledes det er muligt at udføre message passing
- * tilbage til UI.
+ * Dette eksempel viser hvorledes det er muligt at sende beskedder fra en
+ * baggrundstråd tilbage til hovedtråden.
  * Vær opmærksom på at handler postede runnable objekter bliver kørt i den
  * tråd der starter den.
  *
@@ -50,7 +50,7 @@ public class Asynk5Message extends Activity implements OnClickListener {
   private static final int BESKED_SLUT = 2;   // arbejdet er udført.
   private static final int BESKED_AFBRUDT = 3; // arbejdet er afbrudt.
 
-  // message data er bundle m. K/V par, følgende keys er brugt
+  // message data er bundle m. nøgle/værdi-par, følgende nøgler er brugt
   private static final String DATA_REST_TID = "rest_tid";
   private static final String DATA_PROCENT = "procent";
 
@@ -88,7 +88,7 @@ public class Asynk5Message extends Activity implements OnClickListener {
 
     // tjek om runnable objektet er null, og lav et nyt hvis det er.
     if (beskedRunnable == null) {
-      beskedRunnable = new RunnableClass(synligAktivitet, 50, 500);
+      beskedRunnable = new Baggrundsopgave(synligAktivitet, 50, 500);
     }
   }
 
@@ -114,7 +114,7 @@ public class Asynk5Message extends Activity implements OnClickListener {
   /**
    * Klasse der køres i seperat tråd.
    */
-  static class RunnableClass implements Runnable {
+  static class Baggrundsopgave implements Runnable {
 
     private Message message;
     private final int antalSkridt;
@@ -122,11 +122,11 @@ public class Asynk5Message extends Activity implements OnClickListener {
     private final Bundle data;
     private final Handler beskedHandler;
 
-    RunnableClass(Asynk5Message aktivitet, int antalSkridt, int ventetidMS) {
+    Baggrundsopgave(Asynk5Message aktivitet, int antalSkridt, int ventetidMS) {
       this.antalSkridt = antalSkridt;
       ventetidPrSkridtIMilisekunder = ventetidMS;
       data = new Bundle();
-      beskedHandler = new MessagePassingHandler(aktivitet);
+      beskedHandler = new BeskedHandler(aktivitet);
     }
 
     @Override
@@ -171,12 +171,12 @@ public class Asynk5Message extends Activity implements OnClickListener {
   /**
    * Handler klasse der modtager beskeder fra tråd og agere herefter.
    */
-  static class MessagePassingHandler extends Handler {
+  static class BeskedHandler extends Handler {
 
     private Bundle data;
     private final Asynk5Message aktivitet;
 
-    MessagePassingHandler(final Asynk5Message aktivitet) {
+    BeskedHandler(final Asynk5Message aktivitet) {
       this.aktivitet = aktivitet;
     }
 

@@ -311,7 +311,7 @@
             <!-- bruges af metoden VisKildekode.findWebUrl() -->
             <meta-data
                 android:name="HS_PRÆFIX"
-                android:value="https://github.com/nordfalk/android-eksempler/tree/master/AndroidElementer/app/src/main/" />
+                android:value="https://github.com/nordfalk/AndroidElementer/tree/master/app/src/main/" />
         </activity>
     </application>
 

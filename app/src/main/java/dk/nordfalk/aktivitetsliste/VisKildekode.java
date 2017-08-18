@@ -44,11 +44,8 @@ public class VisKildekode extends AppCompatActivity {
   public final static String KILDEKODE_FILNAVN = "filen der skal vises";
   final static String LOKAL_PRÆFIX = "file:///android_asset/";
 
-  // Subversion - gammel
-  //static String HS_PRÆFIX = "http://code.google.com/p/android-eksempler/source/browse/trunk/AndroidElementer/";
-
   // GIT
-  static String HS_PRÆFIX = "https://github.com/nordfalk/android-eksempler/tree/master/AndroidElementer/app/src/main/";
+  static String HS_PRÆFIX = "https://github.com/nordfalk/AndroidElementer/tree/master/app/src/main/";
 
   static void find_HS_PRÆFIX(Context ctx) {
     try {

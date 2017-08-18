@@ -29,11 +29,11 @@ public class Asynk2Thread extends Activity implements OnClickListener {
     tl.addView(knap1);
 
     knap2 = new Button(this);
-    knap2.setText("Asynkront men brugerfladen opdateres fra baggrundstråd");
+    knap2.setText("Asynkront hvor baggrundstråden forsøger at opdatere brugergrænsefladen (crasher)");
     tl.addView(knap2);
 
     knap3 = new Button(this);
-    knap3.setText("Asynkront men brugerfladen opdateres fra UI-tråd");
+    knap3.setText("Asynkront hvor baggrundstråden sender en Runnable tilbage til udførelse på hovedtråden");
     tl.addView(knap3);
 
     setContentView(tl);
