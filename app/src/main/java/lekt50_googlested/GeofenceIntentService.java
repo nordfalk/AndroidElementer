@@ -27,15 +27,21 @@ public class GeofenceIntentService extends IntentService {
     }
 
     int transition = geofencingEvent.getGeofenceTransition();
-    String tekst = "Ukendt";
+    final String tekst;
     if (transition == Geofence.GEOFENCE_TRANSITION_ENTER) tekst = "Du er i området";
-    if (transition == Geofence.GEOFENCE_TRANSITION_EXIT) tekst = "Du er udenfor området";
+    else if (transition == Geofence.GEOFENCE_TRANSITION_EXIT) tekst = "Du er udenfor området";
+    else tekst = "Ukendt";
 
     TekstTilTale.instans(this).tal(tekst);
 
     if (Stedplacering_akt.instans != null) {
-      List<Geofence> geofences = geofencingEvent.getTriggeringGeofences();
-      Stedplacering_akt.instans.log(tekst+" "+geofences);
+      final List<Geofence> geofences = geofencingEvent.getTriggeringGeofences();
+      Stedplacering_akt.instans.runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          Stedplacering_akt.instans.log(tekst+" "+geofences);
+        }
+      });
     }
 
   }
