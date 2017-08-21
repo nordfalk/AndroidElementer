@@ -74,8 +74,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
       if (v == ringOpDirekte) {
         // Bemærk: Kræver <uses-permission android:name="android.permission.CALL_PHONE" /> i manifestet.
         // Bemærk: Fra Android 6 (targetSdkVersion 23) og frem skal brugeren spørges om lov først
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
           if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
             Snackbar.make(v, "Giv tilladelse", Snackbar.LENGTH_LONG).setAction("OK", new OnClickListener() {
               @Override
@@ -106,6 +105,9 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
       String nummer = nummerfelt.getText().toString();
+      if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+        return;
+      }
       startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + nummer)));
     } else {
       Snackbar.make(ringOpDirekte, "Du har afvist at give tilladelser", Snackbar.LENGTH_SHORT).show();

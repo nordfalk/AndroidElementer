@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -92,7 +91,7 @@ public class BenytNetOgAsyncTask extends Activity implements OnClickListener {
     setProgressBarIndeterminateVisibility(true);
     try {
       if (hvadBlevDerKlikketPå == knap1) {
-
+        //StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
         String rssdata = hentUrl("https://www.version2.dk/it-nyheder/rss");
         String titler = findTitler(rssdata);
         textView.setText(titler);

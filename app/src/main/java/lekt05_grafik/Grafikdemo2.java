@@ -107,6 +107,8 @@ class GrafikView2 extends View {
     Rect tekstomrids = new Rect();
     paint.getTextBounds(roteretTekst, 0, roteretTekst.length(), tekstomrids);
 
+    // Husk 'lærredets' rotation (og translation etc)
+    c.save();
     int x = getWidth() / 2;
     int y = getHeight() / 2;
     // rotér lærredet omkring tekstens center

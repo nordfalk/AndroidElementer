@@ -173,7 +173,6 @@
         <activity
             android:name="lekt05_sensorer.Balancespil"
             android:screenOrientation="portrait" />
-        <activity android:name="lekt05_sensorer.Stedbestemmelse" />
         <activity android:name="lekt06_data.CSVParsning" />
         <activity android:name="lekt06_data.JsonParsning" />
         <activity android:name="lekt06_data.JsonGenerering" />
@@ -283,6 +282,7 @@
         <!-- Ikke færdigt eller forældet  -->
         <activity android:name="ufaerdigt.BenytIntentsMedResTilladelser" />
         <activity android:name="ufaerdigt.ByvejrAktivitet2" />
+        <activity android:name="ufaerdigt.Stedbestemmelse" />
 
         <activity android:name="ufaerdigt.lekt40_design.ScrollingActivity"
                   android:theme="@style/AppTheme.NoActionBar"

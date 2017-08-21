@@ -2,10 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package lekt05_sensorer;
+package ufaerdigt;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -15,6 +17,9 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -41,16 +46,19 @@ public class Stedbestemmelse extends Activity implements LocationListener {
 
     textView.append("locationManager.getAllProviders() : " + locationManager.getAllProviders() + "\n\n");
     // Løb igennem alle udbyderne (typisk "gps", "network" og "passive")
-    for (String udbyder : locationManager.getAllProviders()) {
-      LocationProvider lp = locationManager.getProvider(udbyder);
-      Location sted = locationManager.getLastKnownLocation(udbyder);
+    for (String udbyder : locationManager.getAllProviders())
+      try {
+        LocationProvider lp = locationManager.getProvider(udbyder);
+        textView.append(udbyder + " - tændt: " + locationManager.isProviderEnabled(udbyder)
+                + "\n præcision=" + lp.getAccuracy() + " strømforbrug=" + lp.getPowerRequirement()
+                + "\n kræver satellit=" + lp.requiresSatellite() + " kræver net=" + lp.requiresNetwork());
 
-      textView.append(udbyder + " - tændt: " + locationManager.isProviderEnabled(udbyder)
-              + "\n præcision=" + lp.getAccuracy() + " strømforbrug=" + lp.getPowerRequirement()
-              + "\n kræver satellit=" + lp.requiresSatellite() + " kræver net=" + lp.requiresNetwork()
-              + "\n sted=" + sted + "\n\n");
-
-    }
+        Location sted = locationManager.getLastKnownLocation(udbyder);
+        textView.append("\n sted=" + sted + "\n\n");
+      } catch (Exception e) {
+        e.printStackTrace();
+        textView.append("\n FEJL " + e + "\n\n");
+      }
     /*
     // Geofencing: Start denne aktivitet igen hvis vi nærmer os eller forlader Valby!
 		Intent intent = new Intent(this, Stedbestemmelse.class);
@@ -70,12 +78,22 @@ public class Stedbestemmelse extends Activity implements LocationListener {
     textView.append("\n\n========= Lytter til udbyder: " + udbyder + "\n\n");
 
     if (udbyder == null) {
-      textView.append("\n\nUps, der var ikke tændt for nogen udbyder. Tænd for GPS eller netværksbaseret stedplacering og prøv igen.");
-      startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+      Snackbar.make(textView, "Der var ikke tændt for nogen udbyder. Tænd for GPS eller netværksbaseret stedplacering og prøv igen.", Snackbar.LENGTH_INDEFINITE)
+              .setAction("OK", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                  startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+              })
+              .show();
       return;
     }
 
     //  Bed om opdateringer, der går mindst 60. sekunder og mindst 20. meter mellem hver
+    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+      ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION}, 1234 );
+      return;
+    }
     locationManager.requestLocationUpdates(udbyder, 60000, 20, this);
 
     Location sted = locationManager.getLastKnownLocation(udbyder);

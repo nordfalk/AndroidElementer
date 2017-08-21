@@ -1,11 +1,13 @@
 package lekt02_intents;
 
+import android.Manifest;
 import android.accounts.AccountManager;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -16,6 +18,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -76,11 +81,11 @@ public class BenytIntentsMedResultat extends AppCompatActivity implements OnClic
     dokumentation.setOnClickListener(this);
     tl.addView(dokumentation);
 
-    resultatTextView = new TextView(this);
-    tl.addView(resultatTextView);
-
     resultatHolder = new LinearLayout(this);
     tl.addView(resultatHolder);
+
+    resultatTextView = new TextView(this);
+    tl.addView(resultatTextView);
 
     ScrollView sv = new ScrollView(this);
     sv.addView(tl);
@@ -142,17 +147,30 @@ public class BenytIntentsMedResultat extends AppCompatActivity implements OnClic
               resultatTextView.append("\n" + c.getColumnName(i) + ": " + c.getString(i));
 //								+ c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)));
             }
-            Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI,
-                    c.getInt(c.getColumnIndex(ContactsContract.Contacts._ID)));
-            ImageView iv = new ImageView(this);
-            InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(cr, uri);
-            if (input != null) {
-              iv.setImageBitmap(BitmapFactory.decodeStream(input));
-              input.close();
+
+            // Har vi adgang til at vise billedet?
+            // Fra Android 6 (targetSdkVersion 23) og frem skal brugeren spørges om lov først
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                    != PackageManager.PERMISSION_GRANTED) {
+              if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+                Snackbar.make(resultatHolder, "Giv tilladelse og prøv igen", Snackbar.LENGTH_INDEFINITE).show();
+              } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS},1234);
+              }
             } else {
-              iv.setImageResource(android.R.drawable.ic_menu_gallery);
+              // Ja - vis det
+              Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI,
+                      c.getInt(c.getColumnIndex(ContactsContract.Contacts._ID)));
+              ImageView iv = new ImageView(this);
+              InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(cr, uri);
+              if (input != null) {
+                iv.setImageBitmap(BitmapFactory.decodeStream(input));
+                input.close();
+              } else {
+                iv.setImageResource(android.R.drawable.ic_menu_gallery);
+              }
+              resultatHolder.addView(iv);
             }
-            resultatHolder.addView(iv);
           }
           c.close();
         } else if (requestCode == TAG_BILLEDE) {
@@ -163,7 +181,7 @@ public class BenytIntentsMedResultat extends AppCompatActivity implements OnClic
           resultatHolder.addView(iv);
         }
 
-      } catch (IOException e) {
+      } catch (Exception e) {
         e.printStackTrace();
         Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
       }
