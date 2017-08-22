@@ -44,7 +44,7 @@ public class ForgrundsService extends Service {
     Intent i = new Intent(this, BenytService.class);
     NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
             .setContentIntent(PendingIntent.getActivity(this, 0, i, 0))
-            .setSmallIcon(R.drawable.logo)
+            .setSmallIcon(R.drawable.bil)
 //            .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo))
             .setTicker("AndroidElementer holdes i hukommelsen")
             .setContentTitle("Bliver i hukommelsen")

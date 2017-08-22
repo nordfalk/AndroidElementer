@@ -1,11 +1,10 @@
 package lekt50_aktivitetsgenkendelse;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,12 +12,10 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.ActivityRecognition;
+import com.google.android.gms.location.ActivityRecognitionClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import lekt04_arkitektur.MinApp;
 import lekt50_googlested.TekstTilTale;
@@ -26,23 +23,29 @@ import lekt50_googlested.TekstTilTale;
 /**
  * @author Jacob Nordfalk
  */
-public class Aktivitetsgenkendelse_akt extends Activity implements OnClickListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<Status> {
+public class Aktivitetsgenkendelse_akt extends Activity implements OnClickListener {
   PendingIntent pendingIntent;
 
   Button knap1, knap2, knap3;
   TextView tv;
+  ActivityRecognitionClient activityRecognitionClient;
+
   static Aktivitetsgenkendelse_akt instans;
-  private GoogleApiClient googleApiClient;
+  static StringBuilder log = new StringBuilder();
+
+  static void log(String s) {
+    if (instans != null) instans.tv.append(s + "\n");
+    log.append(s + "\n");
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    instans = this;
 
     TableLayout tl = new TableLayout(this);
     tv = new TextView(this);
     tv.setText("Detektering af brugerens aktiviteter\n");
+    tv.append(log); // vis evt gammel log
     tl.addView(tv);
 
     knap1 = new Button(this);
@@ -69,19 +72,17 @@ public class Aktivitetsgenkendelse_akt extends Activity implements OnClickListen
     Intent intent = new Intent(this, Aktivitetsgenkendelse_reciever.class);
     pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
-    googleApiClient = new GoogleApiClient.Builder(this)
-            .addConnectionCallbacks(this)
-            .addOnConnectionFailedListener(this)
-            .addApi(ActivityRecognition.API)
-            .build();
-    googleApiClient.connect();
+    activityRecognitionClient = ActivityRecognition.getClient(this);
+    TekstTilTale.instans(this);
+    instans = this;
+
   }
 
 
   @Override
-  public void onConnected(Bundle bundle) {
-    tv.append("Forbundet\n");
-    TekstTilTale.instans(this).tal("Der er forbindelse med Google");
+  protected void onDestroy() {
+    super.onDestroy();
+    instans = null;
   }
 
 
@@ -89,12 +90,15 @@ public class Aktivitetsgenkendelse_akt extends Activity implements OnClickListen
   public void onClick(View hvadBlevDerKlikketPå) {
     try {
       if (hvadBlevDerKlikketPå == knap1) {
-        ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(
-                googleApiClient, 10000, pendingIntent)
-        .setResultCallback(this);
+        Task task = activityRecognitionClient.requestActivityUpdates(10000L, pendingIntent);
+        task.addOnCompleteListener(new OnCompleteListener() {
+          @Override
+          public void onComplete(@NonNull Task task) {
+            log("Aktivitetsgenkendelse startet: "+task.isSuccessful());
+          }
+        });
       } else if (hvadBlevDerKlikketPå == knap2) {
-        ActivityRecognition.ActivityRecognitionApi.removeActivityUpdates(
-                googleApiClient, pendingIntent);
+        Task task = activityRecognitionClient.removeActivityUpdates(pendingIntent);
       } else if (hvadBlevDerKlikketPå == knap3) {
         finish();
         System.exit(0);
@@ -105,56 +109,4 @@ public class Aktivitetsgenkendelse_akt extends Activity implements OnClickListen
     }
   }
 
-
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
-    instans = null;
-    googleApiClient.disconnect();
-  }
-
-  @Override
-  public void onConnectionSuspended(int i) {
-    tv.append("Ikke forbundet\n");
-    TekstTilTale.instans(this).tal("Ikke forbundet med Google");
-    googleApiClient.connect();
-  }
-
-
-  /** Håndtering af forbindelsesfejl */
-  @Override
-  public void onConnectionFailed(ConnectionResult connectionResult) {
-    tv.append("Forbindelsesfejl " + connectionResult);
-    TekstTilTale.instans(this).tal("Forbindelsesfejl "+connectionResult);
-
-    if (connectionResult.hasResolution()) {
-      try {
-        connectionResult.startResolutionForResult(this, 9000);
-      } catch (IntentSender.SendIntentException e) {
-        e.printStackTrace();
-      }
-    } else {
-      Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(), this, 9000);
-
-      // If Google Play services can provide an error dialog
-      if (errorDialog != null) {
-        errorDialog.show();
-      }
-    }
-  }
-
-  /** Håndtering af forbindelsesfejl */
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == 9000 && resultCode == RESULT_OK) {
-      googleApiClient.connect();
-    }
-  }
-
-  @Override
-  public void onResult(Status status) {
-    if (status.isSuccess()) {
-
-    }
-  }
 }

@@ -160,8 +160,8 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
 
       NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
               .setContentIntent(pi)
-              .setSmallIcon(R.drawable.logo)
-              .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.bil))
+              .setSmallIcon(R.drawable.bil)
+              .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo))
               .setTicker("Der skal tegnes!")
               .setContentTitle("Tegn!")
               .setContentText("Du er nødt til at tegne lidt")

@@ -89,12 +89,12 @@ public class OpdagAppInstallation extends Activity implements OnClickListener {
       // I/System.out( 2870): Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:dk.nordfalk.teoriproeve.ce flg=0x10000000 (has extras) }
       Toast.makeText(ctx, "onReceive" + ctx + ":\n" + i, Toast.LENGTH_LONG).show();
 
-      // Vi viser også en notifikation så man kan komme hen og slå det fra
+      // Vis også en notifikation så man kan komme hen og slå det fra
       Intent intent = new Intent(ctx, OpdagAppInstallation.class);
       PendingIntent aktivitet = PendingIntent.getActivity(ctx, 0, intent, 0);
       NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx)
               .setContentIntent(aktivitet)
-              .setSmallIcon(R.drawable.logo)
+              .setSmallIcon(R.drawable.bil)
               .setTicker("Installation")
               .setContentTitle(i.getAction())
               .setContentText(""+i.getExtras());

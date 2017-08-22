@@ -17,7 +17,7 @@ import java.util.Locale;
  *
  * @author Jacob Nordfalk
  */
-public class TekstTilTale implements OnInitListener {
+public class TekstTilTale {
 
   // Singleton designmønster
   private static TekstTilTale instans;
@@ -25,7 +25,7 @@ public class TekstTilTale implements OnInitListener {
   public static TekstTilTale instans(Context ctx) {
     if (instans==null) {
       instans = new TekstTilTale();
-      instans.tts = new TextToSpeech(ctx.getApplicationContext(), instans);
+      instans.tts = new TextToSpeech(ctx.getApplicationContext(), instans.onInitListener);
     }
     return instans;
   }
@@ -34,22 +34,28 @@ public class TekstTilTale implements OnInitListener {
   private boolean initialiseret;
   private String tekstDerVenter = "Tekst til tale initialiseret.";
 
-
-  // Fra TextToSpeech.OnInitListener
-  public void onInit(int status) {
-    if (status == TextToSpeech.SUCCESS) {
-      initialiseret = true;
-      int res = tts.setLanguage(Locale.getDefault());
-      if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
-        res = tts.setLanguage(Locale.US);
+  OnInitListener onInitListener = new OnInitListener() {
+    @Override
+    public void onInit(int status) {
+      if (status == TextToSpeech.SUCCESS) {
+        initialiseret = true;
+        int res = tts.setLanguage(new Locale("da", ""));
         if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
-          initialiseret = false;
+          res = tts.setLanguage(Locale.getDefault());
+          if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
+            res = tts.setLanguage(Locale.US);
+            if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
+              initialiseret = false;
+            }
+          }
         }
-      }
 
-      if (initialiseret) tts.speak(tekstDerVenter, TextToSpeech.QUEUE_ADD, null);
+        if (initialiseret) tts.speak(tekstDerVenter, TextToSpeech.QUEUE_ADD, null);
+      }
     }
-  }
+  };
+
+
 
   public void tal(String tekst) {
     Log.d(tekst);

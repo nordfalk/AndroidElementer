@@ -1,15 +1,19 @@
 package lekt50_aktivitetsgenkendelse;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 
 import java.util.Date;
 
-import lekt50_googlested.Log;
+import dk.nordfalk.android.elementer.R;
 import lekt50_googlested.TekstTilTale;
 
 
@@ -17,6 +21,8 @@ import lekt50_googlested.TekstTilTale;
  * Created by j on 10-11-13.
  */
 public class Aktivitetsgenkendelse_reciever extends BroadcastReceiver {
+  private String forrigeTekst;
+
   @Override
   public void onReceive(Context context, Intent intent) {
 
@@ -24,19 +30,31 @@ public class Aktivitetsgenkendelse_reciever extends BroadcastReceiver {
 
       ActivityRecognitionResult res = ActivityRecognitionResult.extractResult(intent);
 
-      DetectedActivity akt = res.getMostProbableActivity();
-      String aktivitetsnavn = getBeskrivelse(akt.getType());
+      DetectedActivity mostProbableActivity = res.getMostProbableActivity();
+      String aktivitetsnavn = getBeskrivelse(mostProbableActivity.getType());
 
-      String tekst = aktivitetsnavn+" med "+ akt.getConfidence() +" procents sandsynlighed";
-      TekstTilTale.instans(context).tal(tekst);
+      String tekst = aktivitetsnavn+" med "+ mostProbableActivity.getConfidence() +" procents sandsynlighed";
+      if (!tekst.equals(forrigeTekst)) {
+        TekstTilTale.instans(context).tal(tekst); // læs kun ændringer op
+        forrigeTekst = tekst;
+      }
 
-      if (Aktivitetsgenkendelse_akt.instans != null) {
-        Aktivitetsgenkendelse_akt.instans.tv.append("\n" + new Date() + "\n");
-        for (DetectedActivity a : res.getProbableActivities()) {
-          String log = a.getType() + ":" + getBeskrivelse(a.getType())+" "+ +a.getConfidence()+ "%\n";
-          Aktivitetsgenkendelse_akt.instans.tv.append(log);
-          Log.d(log);
-        }
+      Aktivitetsgenkendelse_akt.log("\n" + new Date());
+      for (DetectedActivity a : res.getProbableActivities()) {
+        Aktivitetsgenkendelse_akt.log(a.getType() + ":" + getBeskrivelse(a.getType())+" "+ +a.getConfidence()+ "%");
+      }
+      if (Aktivitetsgenkendelse_akt.instans == null) {
+        // Vis en notifikation så man kan komme hen og slå aktivitetsgenkendelse fra
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, Aktivitetsgenkendelse_akt.class), 0);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.bil)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.logo))
+                .setContentTitle("Aktivitetsgenkendelse")
+                .setContentText(tekst);
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(42, builder.build());
       }
     }
   }

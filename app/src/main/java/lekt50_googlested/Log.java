@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Log {
 
   public static void d(Object string) {
-    d("", string);
+    d("AndroidElementer", string);
   }
 
   public static void d(String TAG, Object string) {
@@ -21,7 +21,7 @@ public class Log {
   }
 
   public static void i(Object string) {
-    i("", string);
+    i("AndroidElementer", string);
   }
 
 

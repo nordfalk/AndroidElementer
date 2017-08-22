@@ -28,7 +28,7 @@ public class Taleeventyr extends AppCompatActivity implements OnInitListener {
     personer.add("Axel");
     personer.add("Freja");
     personer.add("Søren");
-    personer.add("Diller");
+    personer.add("Dilbert");
     personer.add("Jacob");
     personer.add("Tumbe");
     personer.add("Sebastian");

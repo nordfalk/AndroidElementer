@@ -43,7 +43,6 @@ public class Stedplacering_akt extends Activity implements View.OnClickListener 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    instans = this;
 
     TableLayout tl = new TableLayout(this);
     tv = new TextView(this);
@@ -89,6 +88,13 @@ public class Stedplacering_akt extends Activity implements View.OnClickListener 
     geofencingClient = LocationServices.getGeofencingClient(this);
 
     TekstTilTale.instans(this);
+    instans = this;
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    instans = null;
   }
 
   void log(String s) {
@@ -161,8 +167,6 @@ public class Stedplacering_akt extends Activity implements View.OnClickListener 
     @Override
     public void onLocationResult(LocationResult locationResult) {
       for (Location l : locationResult.getLocations()) {
-        // Update UI with location data
-        // ...
         log("onLocationChanged( " + l);
         TekstTilTale.instans(null).tal("ny placering registreret inden for " + (int) l.getAccuracy() + " meter");
       }

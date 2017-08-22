@@ -1,7 +1,11 @@
 package lekt50_googlested;
 
 import android.app.IntentService;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
@@ -9,6 +13,7 @@ import com.google.android.gms.location.GeofencingEvent;
 import java.util.List;
 
 import dk.nordfalk.android.elementer.R;
+import lekt50_aktivitetsgenkendelse.Aktivitetsgenkendelse_akt;
 
 /**
  * Created by j on 19-11-15.
@@ -42,6 +47,18 @@ public class GeofenceIntentService extends IntentService {
           Stedplacering_akt.instans.log(tekst+" "+geofences);
         }
       });
+    } else {
+      // Vis også en notifikation så man kan komme hen og slå det fra
+      PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, Stedplacering_akt.class), 0);
+      NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+              .setContentIntent(pendingIntent)
+              .setSmallIcon(R.drawable.logo)
+              .setTicker("Geofence")
+              .setContentText(tekst);
+
+      NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+      notificationManager.notify(42, builder.build());
+
     }
 
   }
