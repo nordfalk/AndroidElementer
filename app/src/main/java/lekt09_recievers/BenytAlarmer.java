@@ -1,6 +1,6 @@
 package lekt09_recievers;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -20,7 +20,7 @@ import lekt09_services.MinIntentService;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytAlarmer extends Activity implements OnClickListener {
+public class BenytAlarmer extends AppCompatActivity implements OnClickListener {
 
   Button knap1, knap2;
 

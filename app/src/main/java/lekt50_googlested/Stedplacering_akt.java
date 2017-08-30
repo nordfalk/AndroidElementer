@@ -2,7 +2,7 @@ package lekt50_googlested;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +28,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.ArrayList;
 
 
-public class Stedplacering_akt extends Activity implements View.OnClickListener {
+public class Stedplacering_akt extends AppCompatActivity implements View.OnClickListener {
 
   static Stedplacering_akt instans;
 

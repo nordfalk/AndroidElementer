@@ -1,10 +1,10 @@
 package lekt10_livscyklus;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class ManglendeKaldTilSuperklasse extends Activity {
+public class ManglendeKaldTilSuperklasse extends AppCompatActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {

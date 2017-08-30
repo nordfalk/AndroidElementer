@@ -1,6 +1,6 @@
 package lekt09_recievers;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -24,7 +24,7 @@ import dk.nordfalk.android.elementer.R;
  *
  * @author Jacob Nordfalk
  */
-public class OpdagAppInstallation extends Activity implements OnClickListener {
+public class OpdagAppInstallation extends AppCompatActivity implements OnClickListener {
 
   Button registrer, afregistrer;
   static InstallationsReciever reciever = new InstallationsReciever();

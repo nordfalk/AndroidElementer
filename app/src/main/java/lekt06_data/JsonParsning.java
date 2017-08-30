@@ -1,6 +1,6 @@
 package lekt06_data;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -14,7 +14,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class JsonParsning extends Activity {
+public class JsonParsning extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,6 @@
 package ufaerdigt.lekt06_youtube;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -13,7 +13,7 @@ import android.widget.VideoView;
 
 import dk.nordfalk.android.elementer.R;
 
-public class BenytVideoView extends Activity implements OnClickListener {
+public class BenytVideoView extends AppCompatActivity implements OnClickListener {
 
   //private String url = "rtsp://v3.cache3.c.youtube_videoview.com/CigLENy73wIaHwnMkA0Ndzke5BMYESARFEgGUgx1c2VyX3VwbG9hZHMM/0/0/0/video.3gp";
   //private String videoUrl = "file:///sdcard/DCIM/100MEDIA/VIDEO0025.3gp";

@@ -15,7 +15,7 @@
  */
 package lekt05_sensorer;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -28,7 +28,7 @@ import java.util.Arrays;
 /**
  * Kompas - korrekt implementation
  */
-public class Kompas2 extends Activity implements SensorEventListener {
+public class Kompas2 extends AppCompatActivity implements SensorEventListener {
   SensorManager sensorManager;
   KompasView kompasView;
   private float[] gData = new float[3];

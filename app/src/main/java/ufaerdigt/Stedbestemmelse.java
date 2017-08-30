@@ -5,7 +5,7 @@
 package ufaerdigt;
 
 import android.Manifest;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * @author Jacob Nordfalk
  */
-public class Stedbestemmelse extends Activity implements LocationListener {
+public class Stedbestemmelse extends AppCompatActivity implements LocationListener {
 
   TextView textView;
   ScrollView scrollView;

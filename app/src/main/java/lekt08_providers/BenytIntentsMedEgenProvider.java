@@ -1,6 +1,7 @@
 package lekt08_providers;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,7 +23,7 @@ import android.widget.ToggleButton;
  * Se også https://developer.android.com/training/secure-file-sharing/
  * @author Jacob Nordfalk
  */
-public class BenytIntentsMedEgenProvider extends Activity implements OnClickListener {
+public class BenytIntentsMedEgenProvider extends AppCompatActivity implements OnClickListener {
 
   Button tagBillede, sendBillede;
   ToggleButton visLog;

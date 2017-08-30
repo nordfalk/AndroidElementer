@@ -4,7 +4,7 @@
  */
 package lekt06_data;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -45,7 +45,7 @@ class KundeDb extends SQLiteOpenHelper {
 /**
  * @author Jacob Nordfalk
  */
-public class BenytSQLiteOpenHelper extends Activity {
+public class BenytSQLiteOpenHelper extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

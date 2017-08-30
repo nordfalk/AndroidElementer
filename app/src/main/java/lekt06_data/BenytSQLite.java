@@ -4,7 +4,7 @@
  */
 package lekt06_data;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytSQLite extends Activity {
+public class BenytSQLite extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,6 @@
 package lekt09_services;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +18,7 @@ import dk.nordfalk.android.elementer.R;
  * Hvis skærmen vendes knyttes IntentService'en korrekt til næste aktivitet og
  * fortsætter med at fungere der.
  */
-public class BenytIntentService extends Activity implements OnClickListener {
+public class BenytIntentService extends AppCompatActivity implements OnClickListener {
 
   ProgressBar progressBar;
   Button knap, annullerknap;

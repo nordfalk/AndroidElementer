@@ -5,7 +5,7 @@
 package lekt08_providers;
 
 import android.Manifest;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -26,7 +26,7 @@ import java.util.Arrays;
 /**
  * @author Jacob Nordfalk
  */
-public class VisKontakter extends Activity {
+public class VisKontakter extends AppCompatActivity {
 
   private TextView textView;
 

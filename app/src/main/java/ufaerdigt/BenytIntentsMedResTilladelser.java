@@ -2,6 +2,7 @@ package ufaerdigt;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;

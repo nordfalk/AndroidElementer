@@ -1,6 +1,6 @@
 package lekt06_asynkron;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -32,7 +32,7 @@ import dk.nordfalk.android.elementer.R;
  * den fordel, at der ikke er nogen begrænsninger for hvor mange forskellige
  * typer data der kan sendes i samme omgang.
  */
-public class Asynk5Message extends Activity implements OnClickListener {
+public class Asynk5Message extends AppCompatActivity implements OnClickListener {
 
   ProgressBar progressBar;
   Button knap, annullerknap;

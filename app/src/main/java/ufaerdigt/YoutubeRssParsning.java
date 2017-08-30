@@ -1,6 +1,6 @@
 package ufaerdigt;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -64,7 +64,7 @@ class Klip {
  *
  * @author Jacob Nordfalk
  */
-public class YoutubeRssParsning extends Activity implements OnItemClickListener {
+public class YoutubeRssParsning extends AppCompatActivity implements OnItemClickListener {
 
   /**
    * Listen over videoklip - en klassevariabel der kun indlæses én gang

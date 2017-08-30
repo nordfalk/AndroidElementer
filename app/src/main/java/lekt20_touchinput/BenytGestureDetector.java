@@ -1,6 +1,6 @@
 package lekt20_touchinput;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytGestureDetector extends Activity implements OnGestureListener {
+public class BenytGestureDetector extends AppCompatActivity implements OnGestureListener {
 
   GestureDetector detector;
   TextView textView;

@@ -1,6 +1,6 @@
 package lekt03_diverse;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;

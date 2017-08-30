@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,7 +16,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class Grafikdemo1 extends Activity {
+public class Grafikdemo1 extends AppCompatActivity {
 
   private Drawable enBil;
   private Paint tekststreg;

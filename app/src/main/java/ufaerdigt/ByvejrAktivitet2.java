@@ -10,7 +10,7 @@
 // http://www.geonames.org/postal-codes/postal-codes-denmark.html
 package ufaerdigt;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -52,7 +52,7 @@ import lekt02_aktiviteter.Indstillinger_akt;
  *
  * @author Jacob Nordfalk
  */
-public class ByvejrAktivitet2 extends Activity {
+public class ByvejrAktivitet2 extends AppCompatActivity {
 
   private static final String TAG = "Vejret";
   ImageView imageView_dag1;

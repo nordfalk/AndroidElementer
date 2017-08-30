@@ -1,6 +1,6 @@
 package lekt10_livscyklus;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -18,7 +18,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class DialogDerOverleverSkaermvending extends Activity implements OnClickListener {
+public class DialogDerOverleverSkaermvending extends AppCompatActivity implements OnClickListener {
 
   Button visAlertDialog, visAlertDialog1, visAlertDialog2;
 

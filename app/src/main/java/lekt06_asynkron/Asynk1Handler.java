@@ -1,6 +1,6 @@
 package lekt06_asynkron;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,7 +14,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class Asynk1Handler extends Activity implements OnClickListener {
+public class Asynk1Handler extends AppCompatActivity implements OnClickListener {
 
   Handler handler = new Handler();
   Runnable opgave;

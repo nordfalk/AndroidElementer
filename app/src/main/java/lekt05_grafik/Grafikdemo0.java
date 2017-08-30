@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -32,7 +32,7 @@ class GrafikView extends View {
   }
 }
 
-public class Grafikdemo0 extends Activity {
+public class Grafikdemo0 extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

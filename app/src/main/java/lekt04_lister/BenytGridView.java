@@ -1,6 +1,6 @@
 package lekt04_lister;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
 
-public class BenytGridView extends Activity implements OnItemClickListener {
+public class BenytGridView extends AppCompatActivity implements OnItemClickListener {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {

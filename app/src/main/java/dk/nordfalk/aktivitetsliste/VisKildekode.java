@@ -1,6 +1,6 @@
 package dk.nordfalk.aktivitetsliste;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;

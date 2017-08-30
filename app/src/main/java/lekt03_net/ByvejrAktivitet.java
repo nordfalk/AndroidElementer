@@ -10,7 +10,7 @@
 // http://www.geonames.org/postal-codes/postal-codes-denmark.html
 package lekt03_net;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
@@ -36,7 +36,7 @@ import java.net.URL;
  *
  * @author Jacob Nordfalk
  */
-public class ByvejrAktivitet extends Activity implements OnClickListener {
+public class ByvejrAktivitet extends AppCompatActivity implements OnClickListener {
 
   ImageView imageView_dag1;
   ImageView imageView_dag3_9;

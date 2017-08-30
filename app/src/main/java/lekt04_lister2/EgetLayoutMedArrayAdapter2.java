@@ -1,6 +1,6 @@
 package lekt04_lister2;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
 
-public class EgetLayoutMedArrayAdapter2 extends Activity implements OnItemClickListener {
+public class EgetLayoutMedArrayAdapter2 extends AppCompatActivity implements OnItemClickListener {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {

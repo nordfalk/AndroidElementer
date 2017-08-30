@@ -1,7 +1,7 @@
 package lekt08_providers;
 
 import android.Manifest;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class VisKontakterMedListView extends Activity implements OnItemClickListener {
+public class VisKontakterMedListView extends AppCompatActivity implements OnItemClickListener {
 
   private TextView textView;
   private ListView listView;

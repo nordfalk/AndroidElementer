@@ -1,6 +1,6 @@
 package lekt50_aktivitetsgenkendelse;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ import lekt50_googlested.TekstTilTale;
 /**
  * @author Jacob Nordfalk
  */
-public class Aktivitetsgenkendelse_akt extends Activity implements OnClickListener {
+public class Aktivitetsgenkendelse_akt extends AppCompatActivity implements OnClickListener {
   PendingIntent pendingIntent;
 
   Button knap1, knap2, knap3;

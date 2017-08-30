@@ -1,6 +1,6 @@
 package lekt03_diverse;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;

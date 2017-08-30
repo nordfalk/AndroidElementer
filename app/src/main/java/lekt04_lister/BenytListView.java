@@ -1,6 +1,6 @@
 package lekt04_lister;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class BenytListView extends Activity implements OnItemClickListener {
+public class BenytListView extends AppCompatActivity implements OnItemClickListener {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {

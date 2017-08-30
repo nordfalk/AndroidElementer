@@ -1,6 +1,6 @@
 package lekt09_services;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytService extends Activity implements OnClickListener {
+public class BenytService extends AppCompatActivity implements OnClickListener {
 
   Button knap1, knap2, knap3, knap4, knap5;
 

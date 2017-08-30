@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +22,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class KnapperMedEgenGrafik extends Activity {
+public class KnapperMedEgenGrafik extends AppCompatActivity {
 
 
   @Override

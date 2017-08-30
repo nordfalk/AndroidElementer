@@ -1,6 +1,6 @@
 package lekt09_recievers;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 /**
  * @author Jacob Nordfalk
  */
-public class ModtagSMSer extends Activity implements OnClickListener {
+public class ModtagSMSer extends AppCompatActivity implements OnClickListener {
 
   static SMSReciever reciever;
   Button registrer, afregistrer;

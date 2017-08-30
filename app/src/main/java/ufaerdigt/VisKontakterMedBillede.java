@@ -1,6 +1,6 @@
 package ufaerdigt;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.database.Cursor;
@@ -24,7 +24,7 @@ import java.util.Set;
 
 import dk.nordfalk.android.elementer.R;
 
-public class VisKontakterMedBillede extends Activity {
+public class VisKontakterMedBillede extends AppCompatActivity {
 
   private static LinkedHashMap<String, Kontakt> kontakter;
   private ListView listView;

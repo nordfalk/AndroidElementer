@@ -1,6 +1,6 @@
 package lekt06_asynkron;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -22,7 +22,7 @@ import dk.nordfalk.android.elementer.R;
  * Se også diskussionen på
  * http://groups.google.com/group/android-developers/browse_thread/thread/e1d5b8f8a3142892
  */
-public class Asynk4Korrekt extends Activity implements OnClickListener {
+public class Asynk4Korrekt extends AppCompatActivity implements OnClickListener {
 
   ProgressBar progressBar;
   Button knap, annullerknap;

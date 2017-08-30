@@ -1,6 +1,6 @@
 package lekt06_asynkron;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 
-public class Asynk3AsyncTask extends Activity implements OnClickListener {
+public class Asynk3AsyncTask extends AppCompatActivity implements OnClickListener {
   ProgressBar progressBar;
   Button knap1, knap2, knap3, knap3annuller;
   AsyncTask asyncTask3;

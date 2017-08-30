@@ -1,6 +1,6 @@
 package lekt06_data;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -11,7 +11,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class CSVParsning extends Activity {
+public class CSVParsning extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

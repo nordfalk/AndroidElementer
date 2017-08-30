@@ -1,6 +1,6 @@
 package lekt04_lister2;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;

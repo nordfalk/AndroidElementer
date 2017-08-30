@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 /**
  * @author Jacob Nordfalk
  */
-public class ProgrammatiskLayout2 extends Activity implements OnClickListener {
+public class ProgrammatiskLayout2 extends AppCompatActivity implements OnClickListener {
 
   String teksten = "GrafikView";
   Button okKnap;

@@ -1,6 +1,6 @@
 package lekt09_recievers;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 /**
  * @author Jacob Nordfalk
  */
-public class OpdagNetvaerksAEndring extends Activity implements OnClickListener {
+public class OpdagNetvaerksAEndring extends AppCompatActivity implements OnClickListener {
 
   static BroadcastReceiver reciever = new BroadcastReceiver() {
 

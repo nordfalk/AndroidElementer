@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +24,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytAnimationer extends Activity implements OnClickListener {
+public class BenytAnimationer extends AppCompatActivity implements OnClickListener {
 
   Button knap1, knap2, knap3, knap4, knap5, knap6;
   private int animIndeks;

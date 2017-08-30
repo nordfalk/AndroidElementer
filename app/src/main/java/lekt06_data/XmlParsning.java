@@ -1,6 +1,6 @@
 package lekt06_data;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -31,7 +31,7 @@ class Bank {
 /**
  * @author Jacob Nordfalk
  */
-public class XmlParsning extends Activity {
+public class XmlParsning extends AppCompatActivity {
   //Ku også parse f.eks http://www.dmi.dk/dmi/rss-nyheder.xml ?
 
   @Override

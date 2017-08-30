@@ -1,6 +1,6 @@
 package lekt05_sensorer;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -24,7 +24,7 @@ import dk.nordfalk.android.elementer.R;
  * Kan du holde bilen på skærmen uden at ramme stjernerne?
  * Som tiden går bliver sidevinden kraftigere og kraftigere...
  */
-public class Balancespil extends Activity implements SensorEventListener {
+public class Balancespil extends AppCompatActivity implements SensorEventListener {
   SensorManager sensorManager;
   Sensor sensor;
   WakeLock wakeLock;

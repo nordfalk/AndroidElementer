@@ -1,6 +1,7 @@
 package dk.nordfalk.aktivitetsliste;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.Application;
 import android.app.KeyguardManager;
 import android.content.pm.ActivityInfo;

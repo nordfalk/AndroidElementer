@@ -1,6 +1,6 @@
 package lekt05_sensorer;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,7 +16,7 @@ import dk.nordfalk.android.elementer.R;
 /**
  * @author Jacob Nordfalk
  */
-public class VisSensorer extends Activity implements SensorEventListener {
+public class VisSensorer extends AppCompatActivity implements SensorEventListener {
   TextView textView;
   String[] senesteMålinger = new String[100];
   SensorManager sensorManager;

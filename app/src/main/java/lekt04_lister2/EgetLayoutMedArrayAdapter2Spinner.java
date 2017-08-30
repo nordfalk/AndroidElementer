@@ -1,6 +1,6 @@
 package lekt04_lister2;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
 
-public class EgetLayoutMedArrayAdapter2Spinner extends Activity implements OnItemSelectedListener {
+public class EgetLayoutMedArrayAdapter2Spinner extends AppCompatActivity implements OnItemSelectedListener {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {

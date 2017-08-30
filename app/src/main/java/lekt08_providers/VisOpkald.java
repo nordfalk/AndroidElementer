@@ -5,7 +5,7 @@
 package lekt08_providers;
 
 import android.Manifest;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,7 +30,7 @@ import java.util.Date;
 /**
  * @author Jacob Nordfalk
  */
-public class VisOpkald extends Activity {
+public class VisOpkald extends AppCompatActivity {
 
   private TextView textView;
 

@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,7 +13,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 
-public class Tegneprogram extends Activity {
+public class Tegneprogram extends AppCompatActivity {
   Tegneflade tegneflade;
 
   @Override

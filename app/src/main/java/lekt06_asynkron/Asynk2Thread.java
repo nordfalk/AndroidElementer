@@ -1,6 +1,6 @@
 package lekt06_asynkron;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.widget.TableLayout;
 /**
  * Demonstrerer hvordan tråde kan benyttes - og ikke benyttes - direkte med Javas Thread-klasse
  */
-public class Asynk2Thread extends Activity implements OnClickListener {
+public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
   Button knap1, knap2, knap3;
 
   @Override

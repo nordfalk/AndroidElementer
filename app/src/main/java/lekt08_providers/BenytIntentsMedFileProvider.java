@@ -1,6 +1,7 @@
 package lekt08_providers;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import java.io.FileNotFoundException;
  * Se også https://developer.android.com/training/secure-file-sharing/
  * @author Jacob Nordfalk
  */
-public class BenytIntentsMedFileProvider extends Activity implements OnClickListener {
+public class BenytIntentsMedFileProvider extends AppCompatActivity implements OnClickListener {
 
   Button tagBillede, sendBillede;
   TextView resultatTextView;

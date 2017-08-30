@@ -1,6 +1,6 @@
 package lekt20_touchinput;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytScaleGestureDetector extends Activity implements OnScaleGestureListener {
+public class BenytScaleGestureDetector extends AppCompatActivity implements OnScaleGestureListener {
 
   ScaleGestureDetector detector;
   TextView tv;

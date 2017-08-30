@@ -2,7 +2,7 @@ package ufaerdigt;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -40,7 +40,7 @@ import lekt50_googlested.Log;
  * Aktivitet til at hente kontoinformation
  * Se https://developers.google.com/android/guides/http-auth
  */
-public class Autorisering_akt extends Activity implements OnClickListener {
+public class Autorisering_akt extends AppCompatActivity implements OnClickListener {
   private TextView tv;
   private Spinner kontospinner;
   private Spinner adgangspinner;

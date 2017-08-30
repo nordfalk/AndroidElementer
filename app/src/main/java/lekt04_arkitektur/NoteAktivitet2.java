@@ -10,7 +10,7 @@
 // http://www.geonames.org/postal-codes/postal-codes-denmark.html
 package lekt04_arkitektur;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +25,7 @@ import android.widget.TextView;
  *
  * @author Jacob Nordfalk
  */
-public class NoteAktivitet2 extends Activity implements OnClickListener {
+public class NoteAktivitet2 extends AppCompatActivity implements OnClickListener {
 
   EditText editText_postnr;
   private TextView alleNoterTv;

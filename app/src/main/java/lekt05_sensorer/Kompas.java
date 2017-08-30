@@ -15,7 +15,7 @@
  */
 package lekt05_sensorer;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -29,7 +29,7 @@ import java.util.Arrays;
  * Simpelt kompas.
  * Bemærk at Sensor.TYPE_ORIENTATION frarådes, se Kompas2 for korrekt implementation
  */
-public class Kompas extends Activity implements SensorEventListener {
+public class Kompas extends AppCompatActivity implements SensorEventListener {
   SensorManager sensorManager;
   KompasView kompasView;
 

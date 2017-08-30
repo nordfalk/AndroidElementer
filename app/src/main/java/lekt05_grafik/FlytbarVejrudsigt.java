@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -15,7 +15,7 @@ import lekt03_net.ByvejrAktivitet;
 /**
  * @author Jacob Nordfalk
  */
-public class FlytbarVejrudsigt extends Activity {
+public class FlytbarVejrudsigt extends AppCompatActivity {
 
   float x, y;
   float xFingerSidst, yFingerSidst;

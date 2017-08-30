@@ -1,6 +1,6 @@
 package lekt03_net;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class BenytNetOgAsyncTask extends Activity implements OnClickListener {
+public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickListener {
   Button knap1, knap2, knap3;
   TextView textView;
 

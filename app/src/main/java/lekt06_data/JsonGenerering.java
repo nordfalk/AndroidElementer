@@ -1,6 +1,6 @@
 package lekt06_data;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 /**
  * @author Jacob Nordfalk
  */
-public class JsonGenerering extends Activity {
+public class JsonGenerering extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
