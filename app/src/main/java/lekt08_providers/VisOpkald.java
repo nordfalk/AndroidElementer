@@ -4,14 +4,24 @@
  */
 package lekt08_providers;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CallLog;
 import android.provider.CallLog.Calls;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Arrays;
@@ -22,14 +32,32 @@ import java.util.Date;
  */
 public class VisOpkald extends Activity {
 
+  private TextView textView;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    TextView textView = new TextView(this);
-    textView.append("Herunder kommmer opkald\n");
+
+    textView = new TextView(this);
     ScrollView scrollView = new ScrollView(this);
     scrollView.addView(textView);
     setContentView(scrollView);
+
+    visOpkald();
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    visOpkald();
+  }
+
+  private void visOpkald() {
+    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALL_LOG}, 4242);
+      Toast.makeText(this, "Bruger skal godkende tilladelser først", Toast.LENGTH_LONG).show();
+      return;
+    }
+    textView.append("Herunder kommmer opkald\n");
 
     String[] kolonner = {Calls.DATE, Calls.TYPE, Calls.NUMBER, Calls.CACHED_NAME, Calls.DURATION};
     String where = Calls.DATE + " >= " + (System.currentTimeMillis() - 1000 * 60 * 60 * 24 * 7); // sidste 7 dage
@@ -47,6 +75,5 @@ public class VisOpkald extends Activity {
       textView.append(df.format(new Date(c.getLong(0))) + "  " + c.getInt(1) + " " + c.getString(2) + "  " + c.getString(3) + "  " + c.getInt(4) + "  " + "\n");
     }
     c.close();
-
   }
 }

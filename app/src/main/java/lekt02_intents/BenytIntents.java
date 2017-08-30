@@ -28,24 +28,12 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
   EditText tekstfelt, nummerfelt;
   Button ringOp, sendSms, delApp, sendEpost, webadresse, wifiIndstillinger;
 
-
-  /**
-   * Ofte har man som udvikler brug for info om den telefon brugeren har.
-   * Denne metode giver telefonmodel, Androidversion og programversion etc.
-   */
-  public String lavTelefoninfo() throws Exception {
-    PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
-    return "\nProgram: " + getPackageName() + " version " + pi.versionName
-            + "\nTelefonmodel: " + Build.MODEL + "\n" + Build.PRODUCT
-            + "\nAndroid version " + Build.VERSION.RELEASE + "\nsdk: " + Build.VERSION.SDK_INT;
-  }
-
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     TableLayout tl = new TableLayout(this);
+
     tekstfelt = new EditText(this);
     tekstfelt.setText("Skriv tekst her");
     tl.addView(tekstfelt);
@@ -98,6 +86,18 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
   }
 
 
+  /**
+   * Ofte har man som udvikler brug for info om den telefon brugeren har.
+   * Denne metode giver telefonmodel, Androidversion og programversion etc.
+   */
+  public String lavTelefoninfo() throws Exception {
+    PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
+    return "\nProgram: " + getPackageName() + " version " + pi.versionName
+            + "\nTelefonmodel: " + Build.MODEL + "\n" + Build.PRODUCT
+            + "\nAndroid version " + Build.VERSION.RELEASE + "\nsdk: " + Build.VERSION.SDK_INT;
+  }
+
+
   public void onClick(View v) {
     String nummer = nummerfelt.getText().toString();
     String tekst = tekstfelt.getText().toString();
@@ -107,7 +107,6 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
       Toast.makeText(this, "Skriv et telefonnummer", Toast.LENGTH_LONG).show();
       return;
     }
-
 
     try {
       if (v == ringOp) {
