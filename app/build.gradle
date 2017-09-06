@@ -28,14 +28,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
-    productFlavors {
-    }
     // For at kildekoden og alle resurserne (src/main) kan ses inde fra AndroidElementer
     // så kopierer vi dem fra src/main ind i assets-mappen (der normalt kun har src/main/assets)
     sourceSets { main { assets.srcDirs = ['src/main', 'src/main/assets'] } }
 }
 dependencies {
-    // Støttebiblioteker - se http://developer.android.com/tools/support-library/
+
+    // Kompatibilitetsbiblioteker - se http://developer.android.com/tools/support-library/
     // Understøttelse af fragmenter
     compile 'com.android.support:support-v4:25.3.1'
     // Understøttelse af actionbar/Toolbar
@@ -43,7 +42,7 @@ dependencies {
     // Understøttelse af venstremenu
     compile 'com.android.support:design:25.3.1'
 
-//    compile 'com.google.android.gms:play-services:9.6.1'
+    // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
     compile 'com.google.android.gms:play-services-auth:11.2.0'
     compile 'com.google.android.gms:play-services-location:11.2.0'
 }
