@@ -13,8 +13,8 @@ android {
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
-        versionCode 61
-        versionName '2.6  9.aug 2017'
+        versionCode 62
+        versionName '2.6.1  6.sept 2017'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
         /*
