@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -17,26 +17,23 @@ import java.util.Locale;
 import dk.nordfalk.android.elementer.R;
 
 public class Talegenkendelse extends AppCompatActivity implements View.OnClickListener {
-  EditText udtaleTekst;
-  Button udtalKnap;
-
-  private static final int REQ_CODE_SPEECH_INPUT = 100;
+  Button startTalegenkendelse;
+  TextView genkendtTale;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    udtaleTekst = new EditText(this);
-    udtaleTekst.setText("Genkendt tekst kommer her.");
-    udtaleTekst.setId(R.id.editText); // sæt ID så den redigerede tekst bliver genskabt ved skærmvending
+    startTalegenkendelse = new Button(this);
+    startTalegenkendelse.setOnClickListener(this);
+    startTalegenkendelse.setText("Start talegenkendelse");
 
-    udtalKnap = new Button(this);
-    udtalKnap.setOnClickListener(this);
-    udtalKnap.setText("Talekenkendelse");
-    udtalKnap.setEnabled(false);
+    genkendtTale = new TextView(this);
+    genkendtTale.setText("Genkendt tekst kommer her.\n\nDu skal tale "+Locale.getDefault().getDisplayLanguage());
+    genkendtTale.setId(R.id.editText); // sæt ID så den redigerede tekst bliver genskabt ved skærmvending
 
     TableLayout ll = new TableLayout(this);
-    ll.addView(udtaleTekst, new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
-    ll.addView(udtalKnap);
+    ll.addView(startTalegenkendelse);
+    ll.addView(genkendtTale, new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
     setContentView(ll);
   }
 
@@ -44,27 +41,28 @@ public class Talegenkendelse extends AppCompatActivity implements View.OnClickLi
     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hello, How can I help you?");
+    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Sig noget på "+Locale.getDefault().getDisplayLanguage());
     try {
-      startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+      startActivityForResult(intent, 123456); // bare et eller andet tal
     } catch (ActivityNotFoundException ex) {
       ex.printStackTrace();
+      genkendtTale.append("\n\nDer skete en fejl: "+ex);
     }
   }
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+//    genkendtTale.append("\n\nonActivityResult OK data="+String.valueOf(data.toUri(Intent.URI_ANDROID_APP_SCHEME)));
 
-    switch (requestCode) {
-      case REQ_CODE_SPEECH_INPUT: {
-        if (resultCode == RESULT_OK && null != data) {
-          ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-          udtaleTekst.setText(result.get(0));
-        }
-        break;
+    if (requestCode == 123456 && resultCode == RESULT_OK && data != null) {
+      genkendtTale.append("\n\nonActivityResult OK data="+String.valueOf(data.getExtras()));
+      ArrayList<String> resultatListe = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+      for (String resultat : resultatListe) {
+        genkendtTale.append("\nGenkendt: "+resultat);
       }
-
+    } else {
+      genkendtTale.append("\n\nonActivityResult Ikke genkendt "+resultCode+" data="+data);
     }
   }
 }

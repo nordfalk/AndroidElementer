@@ -53,7 +53,7 @@ public class VisOpkald extends AppCompatActivity {
 
   private void visOpkald() {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
-      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALL_LOG}, 4242);
+      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALL_LOG}, 123456);
       Toast.makeText(this, "Bruger skal godkende tilladelser først", Toast.LENGTH_LONG).show();
       return;
     }

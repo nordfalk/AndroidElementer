@@ -78,7 +78,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
             Toast.makeText(this, "Her skal vises et rationale/forklaring: ...", Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Giv tilladelse for at eksemplet virker :-)", Toast.LENGTH_LONG).show();
           }
-          ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 4242);
+          ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 123456);
         } else {
           startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + nummer)));
         }
