@@ -15,9 +15,6 @@ import android.widget.ImageView;
 import dk.nordfalk.android.elementer.R;
 
 public class AktivitetsovergangBegynd extends AppCompatActivity implements View.OnClickListener {
-  private Button knap1, knap2, knap3;
-  private ViewGroup rod;
-  private ImageView ikon;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,18 +25,19 @@ public class AktivitetsovergangBegynd extends AppCompatActivity implements View.
     findViewById(R.id.knap3).setOnClickListener(this);
   }
 
-  public void onClick(View trykketPåKnap) {
+  public void onClick(View knappen) {
 
     Intent intent = new Intent(this, AktivitetsovergangSlut.class);
+    intent.putExtra("knap-teksten", ((Button) knappen).getText());
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       // Lav bindinger til mål-aktiviteten, så der kan laves glidende overgange
       // Navnene skal passe med det TransitionName viewsne har i mål-aktiviteten
       Pair<View, String> par1 = Pair.create(findViewById(R.id.ikon), "ikon");
-      Pair<View, String> par2 = Pair.create(trykketPåKnap, "knappen");
-      Pair<View, String> par3 = Pair.create(findViewById(R.id.knap3), "knap3");
+      Pair<View, String> par2 = Pair.create(knappen, "knappen");
+
       ActivityOptionsCompat options = ActivityOptionsCompat.
-              makeSceneTransitionAnimation(this, par1, par2, par3);
+              makeSceneTransitionAnimation(this, par1, par2);
       startActivity(intent, options.toBundle());
     } else {
       startActivity(intent);

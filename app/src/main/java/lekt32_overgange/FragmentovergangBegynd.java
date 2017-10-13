@@ -3,6 +3,7 @@ package lekt32_overgange;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,29 +36,27 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
     // Lav bindinger til mål-aktiviteten, så der kan laves glidende overgange
     // Navnene skal passe med det TransitionName viewsne har i mål-aktiviteten
 
-    FragmentovergangSlut fragmentovergangSlut = new FragmentovergangSlut();
+    FragmentovergangSlut f = new FragmentovergangSlut();
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      setSharedElementReturnTransition(TransitionInflater.from(
-              getActivity()).inflateTransition(R.transition.lekt32_overgange_trans));
-      setExitTransition(TransitionInflater.from(
-              getActivity()).inflateTransition(android.R.transition.fade));
+      Transition overgang = TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans);
+      f.setSharedElementEnterTransition(overgang);
 
-      fragmentovergangSlut.setSharedElementEnterTransition(TransitionInflater.from(
-              getActivity()).inflateTransition(R.transition.lekt32_overgange_trans));
-      fragmentovergangSlut.setEnterTransition(TransitionInflater.from(
-              getActivity()).inflateTransition(android.R.transition.fade));
+      //this.setSharedElementReturnTransition(overgang);
+      this.setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+
+      //f.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+
       ikon.setTransitionName("ikon");
       trykketPåKnap.setTransitionName("knappen");
-      knap3.setTransitionName("knap3");
     }
 
     getFragmentManager().beginTransaction()
-            .replace(R.id.fragmentindhold, fragmentovergangSlut)
+            .replace(R.id.fragmentindhold, f)
             .addToBackStack("Overgange")
             .addSharedElement(ikon, "ikon")
             .addSharedElement(trykketPåKnap, "knappen")
-//            .addSharedElement(knap3, "knap3")
+            .setTransition(R.transition.lekt32_overgange_trans)
             .commit();
   }
 }
