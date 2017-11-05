@@ -43,7 +43,7 @@ public class Talegenkendelse extends AppCompatActivity implements View.OnClickLi
     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
     intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Sig noget på "+Locale.getDefault().getDisplayLanguage());
     try {
-      startActivityForResult(intent, 123456); // bare et eller andet tal
+      startActivityForResult(intent, 1234); // bare et eller andet tal
     } catch (ActivityNotFoundException ex) {
       ex.printStackTrace();
       genkendtTale.append("\n\nDer skete en fejl: "+ex);
@@ -55,7 +55,7 @@ public class Talegenkendelse extends AppCompatActivity implements View.OnClickLi
     super.onActivityResult(requestCode, resultCode, data);
 //    genkendtTale.append("\n\nonActivityResult OK data="+String.valueOf(data.toUri(Intent.URI_ANDROID_APP_SCHEME)));
 
-    if (requestCode == 123456 && resultCode == RESULT_OK && data != null) {
+    if (requestCode == 1234 && resultCode == RESULT_OK && data != null) {
       genkendtTale.append("\n\nonActivityResult OK data="+String.valueOf(data.getExtras()));
       ArrayList<String> resultatListe = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
       for (String resultat : resultatListe) {
