@@ -46,7 +46,7 @@ public class BenytLayoutInflater extends AppCompatActivity implements OnClickLis
     findViewById(R.id.listeelem_overskrift).setOnClickListener(this);  // FORKERT!
     findViewById(R.id.listeelem_beskrivelse).setOnClickListener(this); // FORKERT!
 
-    // Løsningen er at vente med at fæstne viesne til layoutet til EFTER kald til findViewById()
+    // Løsningen er at vente med at fæstne viewsne til layoutet til EFTER kald til findViewById()
     View rod = getLayoutInflater().inflate(R.layout.lekt04_listeelement, indhold, false); // false=fæstn ikke
     rod.findViewById(R.id.listeelem_billede).setOnClickListener(this);    // rigtigt
     rod.findViewById(R.id.listeelem_overskrift).setOnClickListener(this); // rigtigt
