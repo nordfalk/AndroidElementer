@@ -69,7 +69,7 @@ public class NoteAktivitet extends AppCompatActivity implements OnClickListener 
   @Override
   public void onClick(View v) {
     String note = editText.getText().toString();
-    MinApp.prefs.edit().putString("seneste_note", note).commit();
+    MinApp.prefs.edit().putString("seneste_note", note).apply();
     MinApp.getData().noter.add(note);
     MinApp.gemData();
     editText.setText("");

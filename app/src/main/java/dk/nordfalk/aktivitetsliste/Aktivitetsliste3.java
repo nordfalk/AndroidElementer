@@ -236,7 +236,7 @@ public class Aktivitetsliste3 extends AppCompatActivity {
       akt.prefs.edit().
               putString("sidstKlikketPåAkt", navn).
               putInt("kategoriPos", kategoriPos).
-              commit();
+              apply();
 
       String dokUrl = pakke.dokumenter.get(navn);
       if (dokUrl!=null) {

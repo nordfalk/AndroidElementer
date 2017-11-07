@@ -133,7 +133,7 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
             try {
               String rssdata = hentUrl("https://www.version2.dk/it-nyheder/rss");
               String titler = findTitler(rssdata);
-              prefs.edit().putString("titler", titler).commit();     // Gem i prefs
+              prefs.edit().putString("titler", titler).apply();     // Gem i prefs
               return titler;
             } catch (Exception e) {
               e.printStackTrace();

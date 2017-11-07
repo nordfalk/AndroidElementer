@@ -254,7 +254,7 @@ public class VisKildekode extends AppCompatActivity {
               setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
                   float str = Float.parseFloat(input.getText().toString());
-                  getPreferences(MODE_PRIVATE).edit().putFloat("skriftstørrelse", str).commit();
+                  getPreferences(MODE_PRIVATE).edit().putFloat("skriftstørrelse", str).apply();
                   tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, str);
                 }
               }).show();
