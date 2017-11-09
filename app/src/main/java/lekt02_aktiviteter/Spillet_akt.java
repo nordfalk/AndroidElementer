@@ -51,6 +51,7 @@ public class Spillet_akt extends AppCompatActivity implements View.OnClickListen
     spilKnap.setOnClickListener(this);
 
     setContentView(tl);
+    logik.logStatus(); // Så vi kan se det rigtige ord i loggen
   }
 
   @Override

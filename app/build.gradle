@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    buildToolsVersion '26.0.2'
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
@@ -45,4 +45,7 @@ dependencies {
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
     compile 'com.google.android.gms:play-services-auth:11.2.0'
     compile 'com.google.android.gms:play-services-location:11.2.0'
+
+    // Til afprøvning
+    testImplementation 'junit:junit:4.12'
 }
