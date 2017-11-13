@@ -102,6 +102,8 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       t.setGravity(Gravity.CENTER, 0, 0);
       t.show();
     } else if (hvadBlevDerKlikketPå == visSnackBar) {
+      // Bemærk - kræver at designbiblioteket er med i build.gradle - f.eks. med
+      // compile 'com.android.support:design:25.3.1'
       Snackbar.make(hvadBlevDerKlikketPå, "En kort Snackbar", Snackbar.LENGTH_LONG).setAction("Vis en mere", new OnClickListener() {
         @Override
         public void onClick(View v) {

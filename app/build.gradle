@@ -39,7 +39,8 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     // Understøttelse af actionbar/Toolbar
     compile 'com.android.support:appcompat-v7:25.3.1'
-    // Understøttelse af venstremenu
+
+    // Understøttelse af venstremenu og SnackBar
     compile 'com.android.support:design:25.3.1'
 
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul

@@ -44,7 +44,8 @@ public class TekstTilTale extends AppCompatActivity implements OnInitListener, O
       friskStart = true; // tjek om skærm vendt eller aktivitet genstartet efter JVM har været smidt ud af hukommelsen
     }
     udtaleTekst = new EditText(this);
-    udtaleTekst.setText("Min danske oot tale - med Locale US - eer maiet dorli.");
+    // udtaleTekst.setText("Min danske oot tale - med Locale US - eer maiet dorli.");
+    udtaleTekst.setText("En snegl på vejen er tegn på regn, i Spanien.");
     udtaleTekst.setId(R.id.editText); // sæt ID så den redigerede tekst bliver genskabt ved skærmvending
 
     udtalKnap = new Button(this);
