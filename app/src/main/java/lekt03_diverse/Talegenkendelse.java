@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import dk.nordfalk.android.elementer.R;
 public class Talegenkendelse extends AppCompatActivity implements View.OnClickListener {
   Button startTalegenkendelse;
   TextView genkendtTale;
+  private ScrollView sv;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,10 @@ public class Talegenkendelse extends AppCompatActivity implements View.OnClickLi
     TableLayout ll = new TableLayout(this);
     ll.addView(startTalegenkendelse);
     ll.addView(genkendtTale, new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
-    setContentView(ll);
+
+    sv = new ScrollView(this);
+    sv.addView(ll);
+    setContentView(sv);
   }
 
   public void onClick(View view) {
@@ -64,5 +69,6 @@ public class Talegenkendelse extends AppCompatActivity implements View.OnClickLi
     } else {
       genkendtTale.append("\n\nonActivityResult Ikke genkendt "+resultCode+" data="+data);
     }
+    sv.scrollTo(0, Integer.MAX_VALUE); // rul ned til bunden
   }
 }

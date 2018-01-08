@@ -121,6 +121,7 @@ public class BenytRecyclerview extends AppCompatActivity {
       }
 
       if (v == beskrivelse) {
+        //xxxx TODO mere synlig!
         Snackbar.make(recyclerView, "Prøv at skifte layout-manager", Snackbar.LENGTH_INDEFINITE)
                 .setAction("Skift", new View.OnClickListener() {
                   @Override
@@ -143,10 +144,10 @@ public class BenytRecyclerview extends AppCompatActivity {
 
     if (aktivLayoutManager==1) {
       recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-      aktivLayoutManagerTekst = "GridLayoutManager 2 søjler";
+      aktivLayoutManagerTekst = "GridLayoutManager\n2 søjler synkront";
     } else if (aktivLayoutManager == 2) {
       recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
-      aktivLayoutManagerTekst = "StaggeredGridLayoutManager 2 søjler";
+      aktivLayoutManagerTekst = "StaggeredGridLayoutManager\n2 søjler (ikke synkront)";
     } else if (aktivLayoutManager == 3) {
       recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
       aktivLayoutManagerTekst = "LinearLayoutManager vandret";
