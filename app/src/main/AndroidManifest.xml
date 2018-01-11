@@ -151,6 +151,7 @@
         <activity android:name="lekt07_lister3.BenytRecyclerview" />
         <activity android:name="lekt07_lister3.BenytRecyclerviewMedGesti" />
         <activity android:name="lekt07_lister3.BenytRecyclerviewOverskrifter" />
+        <activity android:name="lekt07_lister3.EkspanderbarRecyclerview" />
 
         <activity android:name="lekt05_grafik.Grafikdemo0" />
         <activity android:name="lekt05_grafik.Tegneprogram" />
@@ -264,6 +265,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/lekt09_levendeikon_visklokken" />
         </receiver>
+
+        <activity android:name="lekt09_levendeikon.VisLevendeNotifikation" />
 
         <activity android:name="lekt10_livscyklus.ManglendeKaldTilSuperklasse" />
         <activity android:name="lekt10_livscyklus.LogAktivitet" />
