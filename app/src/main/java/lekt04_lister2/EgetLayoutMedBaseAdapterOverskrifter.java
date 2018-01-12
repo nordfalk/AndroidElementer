@@ -39,9 +39,9 @@ public class EgetLayoutMedBaseAdapterOverskrifter extends AppCompatActivity impl
     listView.setDivider(null);
     listView.setOnItemClickListener(this);
     // Det er også muligt at tilføje views som top- eller bundelementer
-    listView.addFooterView(new RatingBar(this));
-    listView.addFooterView(new RatingBar(this));
-    listView.addFooterView(getLayoutInflater().inflate(R.layout.lekt01_tre_knapper, null));
+    //listView.addFooterView(new RatingBar(this));
+    //listView.addFooterView(new RatingBar(this));
+    //listView.addFooterView(getLayoutInflater().inflate(R.layout.lekt01_tre_knapper, null));
     setContentView(listView);
   }
 

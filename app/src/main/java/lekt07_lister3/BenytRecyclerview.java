@@ -57,10 +57,12 @@ public class BenytRecyclerview extends AppCompatActivity {
       vh.overskrift =  (TextView) view.findViewById(R.id.listeelem_overskrift);
       vh.beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
       vh.billede = (ImageView) view.findViewById(R.id.listeelem_billede);
-
       vh.overskrift.setOnClickListener(vh);
       vh.beskrivelse.setOnClickListener(vh);
       vh.billede.setOnClickListener(vh);
+      vh.overskrift.setBackgroundResource(android.R.drawable.list_selector_background);
+      vh.beskrivelse.setBackgroundResource(android.R.drawable.list_selector_background);
+      vh.billede.setBackgroundResource(android.R.drawable.list_selector_background);
       return vh;
     }
 

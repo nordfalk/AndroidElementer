@@ -35,7 +35,7 @@ public class Liv3_nonConfigurationInstance extends LogAktivitet {
 
     if (dataFraForrigeAkrivitet == null) {
       data = new Programdata();
-      data.noter.add("første element");
+      data.noter.add("Bemærk, er der fragmenter hvor setRetainInstance(true) er kaldt vil dette eksempel IKKE virke. Første element");
     } else {
       data = dataFraForrigeAkrivitet;
       data.noter.add("dataFraForrigeAkrivitet " + data.noter.size());

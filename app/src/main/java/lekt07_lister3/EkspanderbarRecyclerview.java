@@ -28,30 +28,18 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
   {
     byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
     byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
+    byer.add(Arrays.asList("Stockholm", "Malmø", "Lund" ) );
+    byer.add(Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík" ) );
+    byer.add(Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður" ) );
+    byer.add(Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa" ) );
+    byer.add(Arrays.asList("Paris", "Lyon" ) );
+    byer.add(Arrays.asList("Madrid", "Barcelona", "Sevilla" ) );
+    byer.add(Arrays.asList("Lissabon", "Porto" ) );
+    byer.add(Arrays.asList("Kathmandu", "Bhaktapur" ) );
+    byer.add(Arrays.asList("Mumbai", "Delhi", "Bangalore" ) );
+    byer.add(Arrays.asList("Shanghai", "Zhengzhou" ) );
+    byer.add(Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama" ) );
+    byer.add(Arrays.asList("Bankok", "Sura Thani", "Phuket" ) );
   }
   HashSet<Integer> åbneLande = new HashSet<>(); // hvilke lande der lige nu er åbne
 
@@ -105,7 +93,7 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
       vh.beskrivelse.setText("Land nummer " + position + " på vh@"+Integer.toHexString(vh.hashCode()));
 
       if (!åben) {
-        vh.åbnLukBillede.setImageResource(android.R.drawable.ic_menu_add); // vis 'åbn' ikon
+        vh.åbnLukBillede.setImageResource(android.R.drawable.ic_input_add); // vis 'åbn' ikon
         for (View underview : vh.underviews) underview.setVisibility(View.GONE); // skjul underelementer
       } else {
         vh.åbnLukBillede.setImageResource(android.R.drawable.ic_delete); // vis 'luk' ikon
@@ -122,13 +110,13 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
           vh.underviews.add(underView);
         }
 
-        for (int i=0; i<vh.underviews.size(); i++) { // konfigurér underviews
+        for (int i=0; i<vh.underviews.size(); i++) { // sæt underviews til at vise det rigtige indhold
           TextView underView = vh.underviews.get(i);
-          if (byerILandet.size()<i) {
-            underView.setVisibility(View.GONE);      // for gå underelementer - underviewet skal ikke bruges
-          } else {
-            underView.setVisibility(View.VISIBLE);
+          if (i<byerILandet.size()) {
             underView.setText(byerILandet.get(i));
+            underView.setVisibility(View.VISIBLE);
+          } else {
+            underView.setVisibility(View.GONE);      // for underviewet skal ikke bruges
           }
         }
       }
