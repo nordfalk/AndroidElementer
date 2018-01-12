@@ -90,6 +90,10 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
       vh.overskrift.setOnClickListener(vh);
       vh.beskrivelse.setOnClickListener(vh);
       vh.åbnLukBillede.setOnClickListener(vh);
+//      vh.åbnLukBillede.setBackgroundResource(android.R.drawable.btn_default);
+      vh.overskrift.setBackgroundResource(android.R.drawable.list_selector_background);
+      vh.beskrivelse.setBackgroundResource(android.R.drawable.list_selector_background);
+      vh.landeview.setBackgroundResource(android.R.drawable.list_selector_background);
       vh.rodLayout.addView(vh.landeview);
       return vh;
     }
@@ -104,23 +108,28 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
         vh.åbnLukBillede.setImageResource(android.R.drawable.ic_menu_add); // vis 'åbn' ikon
         for (View underview : vh.underviews) underview.setVisibility(View.GONE); // skjul underelementer
       } else {
-        vh.åbnLukBillede.setImageResource(android.R.drawable.ic_menu_delete); // vis 'luk' ikon
+        vh.åbnLukBillede.setImageResource(android.R.drawable.ic_delete); // vis 'luk' ikon
 
         List<String> byerILandet = byer.get(position);
 
         while (vh.underviews.size()<byerILandet.size()) { // sørg for at der er nok underviews
           TextView underView = new TextView(vh.rodLayout.getContext());
           //underView.setPadding(0, 20, 0, 20);
+          underView.setBackgroundResource(android.R.drawable.list_selector_background);
           underView.setOnClickListener(vh);      // lad viewholderen håndtere evt klik
           underView.setId(vh.underviews.size()); // unik ID så vi senere kan se hvilket af underviewne der klikkes på
           vh.rodLayout.addView(underView);
           vh.underviews.add(underView);
         }
 
-        for (int i=0; i<byerILandet.size(); i++) {
+        for (int i=0; i<vh.underviews.size(); i++) { // konfigurér underviews
           TextView underView = vh.underviews.get(i);
-          underView.setVisibility(View.VISIBLE);
-          underView.setText(byerILandet.get(i));
+          if (byerILandet.size()<i) {
+            underView.setVisibility(View.GONE);      // for gå underelementer - underviewet skal ikke bruges
+          } else {
+            underView.setVisibility(View.VISIBLE);
+            underView.setText(byerILandet.get(i));
+          }
         }
       }
     }
