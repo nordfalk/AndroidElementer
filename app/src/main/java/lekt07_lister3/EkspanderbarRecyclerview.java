@@ -1,6 +1,7 @@
 package lekt07_lister3;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -57,8 +58,20 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
     recyclerView.setAdapter(adapter);
 
     setContentView(recyclerView);
+
+    // Understøttelse for skærmvending - kan evt udelades
+    if (savedInstanceState!=null) {
+      åbneLande = (HashSet<Integer>) savedInstanceState.getSerializable("åbneLande");
+      recyclerView.getLayoutManager().onRestoreInstanceState(savedInstanceState.getParcelable("liste"));
+    }
   }
 
+  @Override
+  protected void onSaveInstanceState(Bundle outState) { // Understøttelse for skærmvending - kan evt udelades
+    super.onSaveInstanceState(outState);
+    outState.putSerializable("åbneLande", åbneLande);
+    outState.putParcelable("liste", recyclerView.getLayoutManager().onSaveInstanceState());
+  }
 
   RecyclerView.Adapter adapter = new RecyclerView.Adapter<EkspanderbartListeelemViewholder>() {
 
