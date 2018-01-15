@@ -18,31 +18,35 @@ import java.util.List;
 
 import dk.nordfalk.android.elementer.R;
 
+
+class LandeOgByerData {
+  List<String> lande = Arrays.asList("Danmark", "Norge", "Sverige", "Island", "Færøerne", "Finland",
+          "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand");
+  List<List<String>> byer = new ArrayList<>();
+
+  {
+    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup"));
+    byer.add(Arrays.asList("Oslo", "Trondheim"));
+    byer.add(Arrays.asList("Stockholm", "Malmø", "Lund"));
+    byer.add(Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík"));
+    byer.add(Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður"));
+    byer.add(Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa"));
+    byer.add(Arrays.asList("Paris", "Lyon"));
+    byer.add(Arrays.asList("Madrid", "Barcelona", "Sevilla"));
+    byer.add(Arrays.asList("Lissabon", "Porto"));
+    byer.add(Arrays.asList("Kathmandu", "Bhaktapur"));
+    byer.add(Arrays.asList("Mumbai", "Delhi", "Bangalore"));
+    byer.add(Arrays.asList("Shanghai", "Zhengzhou"));
+    byer.add(Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama"));
+    byer.add(Arrays.asList("Bankok", "Sura Thani", "Phuket"));
+  }
+}
+
 public class EkspanderbarRecyclerview extends AppCompatActivity {
 
-  String[] landeArray = {"Danmark", "Norge", "Sverige", "Island", "Færøerne", "Finland",
-          "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand"};
-  // Vi laver en arrayliste så vi kan fjerne/indsætte elementer
-  List<String> lande = new ArrayList<>(Arrays.asList(landeArray));
-  List<List<String>> byer = new ArrayList<>();
-  {
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup" ) );
-    byer.add(Arrays.asList("Oslo", "Trondheim" ) );
-    byer.add(Arrays.asList("Stockholm", "Malmø", "Lund" ) );
-    byer.add(Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík" ) );
-    byer.add(Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður" ) );
-    byer.add(Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa" ) );
-    byer.add(Arrays.asList("Paris", "Lyon" ) );
-    byer.add(Arrays.asList("Madrid", "Barcelona", "Sevilla" ) );
-    byer.add(Arrays.asList("Lissabon", "Porto" ) );
-    byer.add(Arrays.asList("Kathmandu", "Bhaktapur" ) );
-    byer.add(Arrays.asList("Mumbai", "Delhi", "Bangalore" ) );
-    byer.add(Arrays.asList("Shanghai", "Zhengzhou" ) );
-    byer.add(Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama" ) );
-    byer.add(Arrays.asList("Bankok", "Sura Thani", "Phuket" ) );
-  }
-  HashSet<Integer> åbneLande = new HashSet<>(); // hvilke lande der lige nu er åbne
+  LandeOgByerData data = new LandeOgByerData();
 
+  HashSet<Integer> åbneLande = new HashSet<>(); // hvilke lande der lige nu er åbne
 
   RecyclerView recyclerView;
 
@@ -62,7 +66,7 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
 
     @Override
     public int getItemCount()  {
-      return lande.size();
+      return data.lande.size();
     }
 
     @Override
@@ -75,13 +79,10 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
       vh.overskrift = vh.landeview.findViewById(R.id.listeelem_overskrift);
       vh.beskrivelse = vh.landeview.findViewById(R.id.listeelem_beskrivelse);
       vh.åbnLukBillede = vh.landeview.findViewById(R.id.listeelem_billede);
-      vh.overskrift.setOnClickListener(vh);
-      vh.beskrivelse.setOnClickListener(vh);
+      vh.landeview.setOnClickListener(vh);
+      vh.landeview.setBackgroundResource(android.R.drawable.list_selector_background); // giv visuelt feedback når der trykkes på baggrunden
       vh.åbnLukBillede.setOnClickListener(vh);
 //      vh.åbnLukBillede.setBackgroundResource(android.R.drawable.btn_default);
-      vh.overskrift.setBackgroundResource(android.R.drawable.list_selector_background);
-      vh.beskrivelse.setBackgroundResource(android.R.drawable.list_selector_background);
-      vh.landeview.setBackgroundResource(android.R.drawable.list_selector_background);
       vh.rodLayout.addView(vh.landeview);
       return vh;
     }
@@ -89,7 +90,7 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
     @Override
     public void onBindViewHolder(EkspanderbartListeelemViewholder vh, int position) {
       boolean åben = åbneLande.contains(position);
-      vh.overskrift.setText(lande.get(position) +" åben="+åben);
+      vh.overskrift.setText(data.lande.get(position) +" åben="+åben);
       vh.beskrivelse.setText("Land nummer " + position + " på vh@"+Integer.toHexString(vh.hashCode()));
 
       if (!åben) {
@@ -98,7 +99,7 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
       } else {
         vh.åbnLukBillede.setImageResource(android.R.drawable.ic_delete); // vis 'luk' ikon
 
-        List<String> byerILandet = byer.get(position);
+        List<String> byerILandet = data.byer.get(position);
 
         while (vh.underviews.size()<byerILandet.size()) { // sørg for at der er nok underviews
           TextView underView = new TextView(vh.rodLayout.getContext());
@@ -145,17 +146,14 @@ public class EkspanderbarRecyclerview extends AppCompatActivity {
     public void onClick(View v) {
       final int position = getAdapterPosition();
 
-      if (v == åbnLukBillede) { // Klik på billede åbner/lukker for listen af byer i dette land
+      if (v == åbnLukBillede || v==landeview) { // Klik på billede åbner/lukker for listen af byer i dette land
         boolean åben = åbneLande.contains(position);
         if (åben) åbneLande.remove(position); // luk
         else åbneLande.add(position); // åbn
         adapter.notifyItemChanged(position);
-      }
-      else if (v == overskrift || v == beskrivelse) {
-        Toast.makeText(v.getContext(), "Klik på " + position, Toast.LENGTH_SHORT).show();
       } else {
         int id = v.getId();
-        Toast.makeText(v.getContext(), "Klik på by nummer " + id + " i "+lande.get(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(v.getContext(), "Klik på by nummer " + id + " i "+data.lande.get(position), Toast.LENGTH_SHORT).show();
       }
     }
   }
