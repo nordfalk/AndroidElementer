@@ -22,24 +22,22 @@ import dk.nordfalk.android.elementer.R;
 class LandeOgByerData {
   List<String> lande = Arrays.asList("Danmark", "Norge", "Sverige", "Island", "Færøerne", "Finland",
           "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand");
-  List<List<String>> byer = new ArrayList<>();
 
-  {
-    byer.add(Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup"));
-    byer.add(Arrays.asList("Oslo", "Trondheim"));
-    byer.add(Arrays.asList("Stockholm", "Malmø", "Lund"));
-    byer.add(Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík"));
-    byer.add(Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður"));
-    byer.add(Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa"));
-    byer.add(Arrays.asList("Paris", "Lyon"));
-    byer.add(Arrays.asList("Madrid", "Barcelona", "Sevilla"));
-    byer.add(Arrays.asList("Lissabon", "Porto"));
-    byer.add(Arrays.asList("Kathmandu", "Bhaktapur"));
-    byer.add(Arrays.asList("Mumbai", "Delhi", "Bangalore"));
-    byer.add(Arrays.asList("Shanghai", "Zhengzhou"));
-    byer.add(Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama"));
-    byer.add(Arrays.asList("Bankok", "Sura Thani", "Phuket"));
-  }
+  List<List<String>> byer = Arrays.asList(
+    Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup"),
+    Arrays.asList("Oslo", "Trondheim"),
+    Arrays.asList("Stockholm", "Malmø", "Lund"),
+    Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík"),
+    Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður"),
+    Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa"),
+    Arrays.asList("Paris", "Lyon"),
+    Arrays.asList("Madrid", "Barcelona", "Sevilla"),
+    Arrays.asList("Lissabon", "Porto"),
+    Arrays.asList("Kathmandu", "Bhaktapur"),
+    Arrays.asList("Mumbai", "Delhi", "Bangalore"),
+    Arrays.asList("Shanghai", "Zhengzhou"),
+    Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama"),
+    Arrays.asList("Bankok", "Sura Thani", "Phuket"));
 }
 
 public class EkspanderbarRecyclerview extends AppCompatActivity {
