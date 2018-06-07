@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
@@ -31,21 +31,26 @@ android {
     // For at kildekoden og alle resurserne (src/main) kan ses inde fra AndroidElementer
     // så kopierer vi dem fra src/main ind i assets-mappen (der normalt kun har src/main/assets)
     sourceSets { main { assets.srcDirs = ['src/main', 'src/main/assets'] } }
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 dependencies {
 
     // Kompatibilitetsbiblioteker - se http://developer.android.com/tools/support-library/
     // Understøttelse af fragmenter
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-v4:26.1.0'
     // Understøttelse af actionbar/Toolbar
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
 
     // Understøttelse af venstremenu og SnackBar
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:design:26.1.0'
 
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
-    compile 'com.google.android.gms:play-services-auth:11.2.0'
-    compile 'com.google.android.gms:play-services-location:11.2.0'
+    compile 'com.google.android.gms:play-services-auth:15.0.1'
+    compile 'com.google.android.gms:play-services-location:15.0.1'
 
     // Til afprøvning
     testImplementation 'junit:junit:4.12'
