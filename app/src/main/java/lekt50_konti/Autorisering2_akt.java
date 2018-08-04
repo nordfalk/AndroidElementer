@@ -2,13 +2,12 @@ package lekt50_konti;
 
 import android.accounts.Account;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -52,32 +51,15 @@ keytool -exportcert -keystore .android/debug.keystore -list -v
 
  */
 public class Autorisering2_akt extends AppCompatActivity implements OnClickListener {
-  private TextView tv;
+  private TextView logTv;
   private Button knap;
+  private ScrollView scrollView;
 
   private static final String TAG = "RestApiActivity";
 
-  // Scope for reading user's contacts
-  private static final String CONTACTS_SCOPE = "https://www.googleapis.com/auth/contacts.readonly";
-
-  /**
-   * View your complete date of birth.
-   */
   public static final String USER_BIRTHDAY_READ = "https://www.googleapis.com/auth/user.birthday.read";
-
-  /**
-   * View your phone numbers.
-   */
   public static final String USER_PHONENUMBERS_READ = "https://www.googleapis.com/auth/user.phonenumbers.read";
-
-  /**
-   * View your email address.
-   */
   public static final String USERINFO_EMAIL = "https://www.googleapis.com/auth/userinfo.email";
-
-  /**
-   * View your basic profile info.
-   */
   public static final String USERINFO_PROFILE = "https://www.googleapis.com/auth/userinfo.profile";
 
 
@@ -91,130 +73,120 @@ public class Autorisering2_akt extends AppCompatActivity implements OnClickListe
   // Global instance of the JSON factory
   private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
-  private GoogleSignInClient mGoogleSignInClient;
+  private GoogleSignInClient googleSignInClient;
 
-  private Account mAccount;
+  private Account account;
 
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    // Configure sign-in to request the user's ID, email address, basic profile,
-    // and readonly access to contacts.
+    TableLayout tl = new TableLayout(this);
+    knap = new Button(this);
+    knap.setOnClickListener(this);
+    tl.addView(knap);
+
+    logTv = new TextView(this);
+    tl.addView(logTv);
+
+    scrollView = new ScrollView(this);
+    scrollView.addView(tl);
+    setContentView(scrollView);
+
     GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestScopes(new Scope(CONTACTS_SCOPE))
             .requestScopes(new Scope(USERINFO_PROFILE))
             .requestEmail()
-            .requestProfile()
             .build();
 
-    mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    googleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
     // Check for existing Google Sign In account, if the user is already signed in
     // the GoogleSignInAccount will be non-null.
-    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-
-    if (account == null) {
-      Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-      startActivityForResult(signInIntent, RC_SIGN_IN);
-    } else {
-      System.out.println(account.toJson());
-    }
-
-
-    TableLayout tl = new TableLayout(this);
-    tv = new TextView(this);
-    tl.addView(tv);
-
-    /*
-    if (konti.length==0) {
-      tv.setText("Du skal først logge ind på en Google-konto på telefonen\n"+account);
-//      GoogleAuthUtil.removeAccount(this, account);
-    } else {
-      tv.setText("Eksempel på at hente data på en bruger.\n\n" +
-          "Spinner 1: Hvilken adgang app'en skal have (f.eks. profil):\n" +
-                      Arrays.toString(adgange) + "\n\n" +
-          "Spinner 2: Hvilken konto:\n" +
-              Arrays.toString(konti) +
-              "\n\nHerunder kommer log af kaldene der foretages:\n"
-
-      );
-      adgangspinner = new Spinner(this);
-      adgangspinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adgange));
-      tl.addView(adgangspinner);
-
-      kontospinner = new Spinner(this);
-      kontospinner.setAdapter(new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, konti));
-      tl.addView(kontospinner);
-
-    }
-    */
-    knap = new Button(this);
-    knap.setText("Hent info for den valgte adgang og konto");
-    knap.setOnClickListener(this);
-    tl.addView(knap);
-
-    ScrollView sv = new ScrollView(this);
-    sv.addView(tl);
-    setContentView(sv);
+    //GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
+    //account = googleSignInAccount.getAccount();
+    //if (googleSignInAccount != null) {
+    //  log("googleSignInAccount = "+googleSignInAccount.toJson());
+    //}
+    opdaterKnap();
   }
+
+  private void opdaterKnap() {
+    if (account != null) {
+      log("Logget ind med " + account);
+      knap.setText("Log ud og prøv igen");
+    } else {
+      log("Logget ud");
+      knap.setText("Log ind");
+    }
+  }
+
+  private void log(String str) {
+    Log.d(TAG, str);
+    logTv.append("\n");
+    logTv.append(str);
+    logTv.append("\n");
+    scrollView.scrollTo(0, Integer.MAX_VALUE);
+  }
+
+
+  @Override
+  public void onClick(View view) {
+    if (account==null) {
+      startActivityForResult(googleSignInClient.getSignInIntent(), RC_SIGN_IN);
+    } else {
+      googleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+          log("Logget ud");
+        }
+      });
+    }
+  }
+
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+    log("onActivityResult req="+requestCode+" res="+resultCode+" data="+data);
 
-    // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
     if (requestCode == RC_SIGN_IN) {
       Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-      handleSignInResult(task);
+
+      try {
+        GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
+        log("googleSignInAccount = "+googleSignInAccount);
+        account = googleSignInAccount.getAccount();
+
+        hentProfildata();
+      } catch (ApiException e) {
+        android.util.Log.w(TAG, "handleSignInResult:error", e);
+        account = null;
+      }
+      opdaterKnap();
     }
 
     // Handling a user-recoverable auth exception
     if (requestCode == RC_RECOVERABLE) {
       if (resultCode == RESULT_OK) {
-        getContacts();
-      } else {
-        Toast.makeText(this, "msg_contacts_failed", Toast.LENGTH_SHORT).show();
+        hentProfildata();
       }
     }
   }
 
-  private void handleSignInResult(@NonNull Task<GoogleSignInAccount> completedTask) {
-    android.util.Log.d(TAG, "handleSignInResult:" + completedTask.isSuccessful());
+  private void hentProfildata() {
 
-    try {
-      GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-      updateUI(account);
+    final ProgressDialog progressDialog = new ProgressDialog(this);
+    progressDialog.setMessage("Henter info, vent....");
+    progressDialog.setIndeterminate(true);
+    progressDialog.show();
+/* https://people.googleapis.com/v1/people/me?personFields=birthdays,phoneNumbers,genders
+Bearer ya29.GlsNBtG9MQAcLpimByEvIXePFD4-8SNm6KR3cjOKgHZfwNcB9-N-fQeixldqFgQJ35ponBdgpw1u9Wc5ggj2cI7X5NCRDoGtMUnbfoRhUw7pwJbwi7y_awsFk8zD
 
-      // Store the account from the result
-      mAccount = account.getAccount();
+https://people.googleapis.com/v1/people/me?personFields=birthdays,phoneNumbers,genders&access_token=ya29.GlsNBn0FKg4gnsfHsDB4lsibN8m6jncqLifQhefbE7BROOTrtuRjw2zvUvFG4aaqaFxeV4xaeYN3nB0pz8-3lcZOwDqGpN9wttfefUBlRFqYl7jphCzZtiOITjQu
 
-      // Asynchronously access the People API for the account
-      getContacts();
-    } catch (ApiException e) {
-      android.util.Log.w(TAG, "handleSignInResult:error", e);
-
-      // Clear the local account
-      mAccount = null;
-
-      // Signed out, show unauthenticated UI.
-      updateUI(null);
-    }
-  }
-
-  private void getContacts() {
-    if (mAccount == null) {
-      android.util.Log.w(TAG, "getContacts: null account");
-      return;
-    }
-
-    final ProgressDialog mProgressDialog = new ProgressDialog(this);
-    mProgressDialog.setMessage("R.string.loading");
-    mProgressDialog.setIndeterminate(true);
-    mProgressDialog.show();
-
+ */
 
     new AsyncTask() {
       @Override
@@ -222,12 +194,13 @@ public class Autorisering2_akt extends AppCompatActivity implements OnClickListe
         try {
           GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(
                   getApplicationContext(),
-                  Arrays.asList(CONTACTS_SCOPE, USERINFO_PROFILE, USER_PHONENUMBERS_READ, USERINFO_EMAIL, USER_BIRTHDAY_READ));
-          credential.setSelectedAccount(mAccount);
+                  Arrays.asList(USERINFO_PROFILE, USER_PHONENUMBERS_READ, USERINFO_EMAIL, USER_BIRTHDAY_READ))
+                  .setSelectedAccount(account);
 
-          PeopleService service = new PeopleService.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
-                  .setApplicationName("Google Sign In Quickstart")
-                  .build();
+          String tok = credential.getToken();
+          log("tok=\n"+tok);
+
+          PeopleService service = new PeopleService.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).build();
 
           Person profile = service.people().get("people/me").setPersonFields("birthdays,phoneNumbers,genders").execute();
           android.util.Log.d(TAG, " PROFFF " + profile);
@@ -235,13 +208,14 @@ public class Autorisering2_akt extends AppCompatActivity implements OnClickListe
 //                profile.getBirthdays().get(0).toString();
 
 
-          return profile.getGenders() + "\nx " + profile.getBirthdays();
+          return profile.getGenders() + "\nx " + profile.getBirthdays().get(0).getDate();
 
         } catch (UserRecoverableAuthIOException recoverableException) {
-          android.util.Log.w(TAG, "onRecoverableAuthException", recoverableException);
+          log("onRecoverableAuthException" + recoverableException);
           startActivityForResult(recoverableException.getIntent(), RC_RECOVERABLE);
-        } catch (IOException e) {
-          android.util.Log.w(TAG, "getContacts:exception", e);
+        } catch (Exception e) {
+          e.printStackTrace();
+          log(e.getMessage());
         }
 
         return null;
@@ -249,33 +223,9 @@ public class Autorisering2_akt extends AppCompatActivity implements OnClickListe
 
       @Override
       protected void onPostExecute(Object resultat) {
-        mProgressDialog.hide();
-        tv.setText("" + resultat);
+        progressDialog.hide();
+        log("Resultat: " + resultat);
       }
     }.execute();
-  }
-
-
-  @Override
-  public void onClick(View view) {
-    // Signing out clears the current authentication state and resets the default user,
-    // this should be used to "switch users" without fully un-linking the user's google
-    // account from your application.
-    mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
-      @Override
-      public void onComplete(@NonNull Task<Void> task) {
-        updateUI(null);
-      }
-    });
-  }
-
-  private void updateUI(@Nullable GoogleSignInAccount account) {
-    if (account != null) {
-      tv.setText("Logget ind med " + account);
-
-    } else {
-      tv.setText("Logget ud");
-
-    }
   }
 }
