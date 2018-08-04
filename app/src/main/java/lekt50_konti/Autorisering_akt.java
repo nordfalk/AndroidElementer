@@ -1,7 +1,8 @@
-package ufaerdigt;
+package lekt50_konti;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -42,15 +43,16 @@ import lekt50_googlested.Log;
  */
 public class Autorisering_akt extends AppCompatActivity implements OnClickListener {
   private TextView tv;
-  private Spinner kontospinner;
   private Spinner adgangspinner;
   private Button knap;
 
-  private Account[] konti;
+  private Account[] konto;
 
   private String[] adgange = {
     "oauth2:https://www.googleapis.com/auth/userinfo.profile",
     "oauth2:https://www.googleapis.com/auth/userinfo.email",
+    "oauth2:https://www.googleapis.com/auth/plus.login",
+    "oauth2:https://www.googleapis.com/auth/plus.me",
     "blogger",
     "youtube",
     "cl (Google kalender)",
@@ -58,36 +60,41 @@ public class Autorisering_akt extends AppCompatActivity implements OnClickListen
     "local (Google Maps)",
     "cp (Google Kontakter)",
     "mail (Gmail)",
-  };
+    };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     // Find kontonavne
     AccountManager accountManager = AccountManager.get(this);
-    konti = accountManager.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE); // "com.google"
+    konto = accountManager.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE); // "com.google"
 
     TableLayout tl = new TableLayout(this);
     tv = new TextView(this);
     tl.addView(tv);
 
-    if (konti.length==0) {
-      tv.setText("Du skal først logge ind på en Google-konto på telefonen");
+    if (konto.length==0) {
+      tv.setText("Du skal først logge ind på en konto.");
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        Intent intent = AccountManager.newChooseAccountIntent(null,null, null, null, null, null, null);
+        startActivityForResult(intent, 1002);
+        finish();
+      }
     } else {
       tv.setText("Eksempel på at hente data på en bruger.\n\n" +
           "Spinner 1: Hvilken adgang app'en skal have (f.eks. profil):\n" +
                       Arrays.toString(adgange) + "\n\n" +
           "Spinner 2: Hvilken konto:\n" +
-              Arrays.toString(konti) +
+              Arrays.toString(konto) +
               "\n\nHerunder kommer log af kaldene der foretages:\n"
 
       );
       adgangspinner = new Spinner(this);
-      adgangspinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adgange));
+      adgangspinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, adgange));
       tl.addView(adgangspinner);
 
-      kontospinner = new Spinner(this);
-      kontospinner.setAdapter(new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, konti));
+      TextView kontospinner = new TextView(this);
+      kontospinner.setText( Arrays.toString(konto));
       tl.addView(kontospinner);
 
       knap = new Button(this);
@@ -103,19 +110,8 @@ public class Autorisering_akt extends AppCompatActivity implements OnClickListen
 
   @Override
   public void onClick(View v) {
-    knap.setEnabled(false);
-    new AsyncTask() {
-      @Override
-      protected Object doInBackground(Object... params) {
-        hentAuthTokenBg();
-        return null;
-      }
-
-      @Override
-      protected void onPostExecute(Object o) {
-        knap.setEnabled(true);
-      }
-    }.execute();
+    tv.setText("");
+    startHentAuthToken();
   }
 
   public void log(final Object obj) {
@@ -154,9 +150,8 @@ public class Autorisering_akt extends AppCompatActivity implements OnClickListen
 
   private void hentAuthTokenBg() {
     try {
-      String kontonavn = konti[kontospinner.getSelectedItemPosition()].name;
       String adgang = adgange[adgangspinner.getSelectedItemPosition()].split(" ")[0];
-      String token = GoogleAuthUtil.getToken(this, kontonavn, adgang);
+      String token = GoogleAuthUtil.getToken(this, konto[0], adgang);
       if (!adgang.contains("oauth2:")) {
         log("Her er token til "+adgang+": "+token);
         return;
@@ -171,7 +166,7 @@ public class Autorisering_akt extends AppCompatActivity implements OnClickListen
         JSONObject profile = new JSONObject(læsStrengOgLuk(is));
         log("Fik:" + profile.toString(2));
       } else if (sc == 401) {
-        GoogleAuthUtil.invalidateToken(this, token);
+        GoogleAuthUtil.clearToken(this, token);
         log("Server auth error, please try again\n" + læsStrengOgLuk(con.getErrorStream()));
       } else {
         log("Server returned the following error code: " + sc);
@@ -190,17 +185,33 @@ public class Autorisering_akt extends AppCompatActivity implements OnClickListen
       log("Starter aktivitet " + userRecoverableException.getIntent());
       startActivityForResult(userRecoverableException.getIntent(), 1001);
     } catch (Exception ex) {
+      ex.printStackTrace();
       log(ex);
     }
   }
 
+  private void startHentAuthToken() {
+    knap.setEnabled(false);
+    new AsyncTask() {
+      @Override
+      protected Object doInBackground(Object... params) {
+        hentAuthTokenBg();
+        return null;
+      }
+
+      @Override
+      protected void onPostExecute(Object o) {
+        knap.setEnabled(true);
+      }
+    }.execute();
+  }
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     if (requestCode == 1001) {
       if (resultCode == RESULT_OK) {
         log("Prøver igen");
-        onClick(knap); // Prøv igen ved at trykke på knappen
+        startHentAuthToken(); // Prøv igen
         return;
       }
       if (resultCode == RESULT_CANCELED) {

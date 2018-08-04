@@ -289,6 +289,9 @@
         <activity android:name="lekt50_googlested.Stedplacering_akt" />
         <service android:name="lekt50_googlested.GeofenceIntentService" />
 
+        <activity android:name="lekt50_konti.Autorisering_akt" />
+        <activity android:name="lekt50_konti.Autorisering2_akt" />
+
         <!-- Ikke færdigt eller forældet  -->
         <activity android:name="ufaerdigt.BenytIntentsMedResTilladelser" />
         <activity android:name="ufaerdigt.ByvejrAktivitet2" />
@@ -297,7 +300,6 @@
         <activity android:name="ufaerdigt.lekt40_design.ScrollingActivity"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:label="Bla bla"/>
-        <activity android:name="ufaerdigt.Autorisering_akt" />
 
         <activity android:name="ufaerdigt.YoutubeRssParsning" />
         <activity

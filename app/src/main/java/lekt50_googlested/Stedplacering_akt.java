@@ -166,10 +166,10 @@ public class Stedplacering_akt extends AppCompatActivity implements View.OnClick
   LocationCallback locationCallback = new LocationCallback() {
     @Override
     public void onLocationResult(LocationResult locationResult) {
-      for (Location l : locationResult.getLocations()) {
-        log("onLocationChanged( " + l);
-        TekstTilTale.instans(null).tal("ny placering registreret inden for " + (int) l.getAccuracy() + " meter");
-      }
+      Location l = locationResult.getLastLocation();
+      log("onLocationChanged( " + l);
+      if (l==null) return;
+      TekstTilTale.instans(null).tal("ny placering registreret inden for " + (int) l.getAccuracy() + " meter");
     };
   };
 
