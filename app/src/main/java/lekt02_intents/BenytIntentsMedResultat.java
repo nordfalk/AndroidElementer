@@ -152,11 +152,8 @@ public class BenytIntentsMedResultat extends AppCompatActivity implements OnClic
             // Fra Android 6 (targetSdkVersion 23) og frem skal brugeren spørges om lov først
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
                     != PackageManager.PERMISSION_GRANTED) {
-              if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
-                Snackbar.make(resultatHolder, "Giv tilladelse og prøv igen", Snackbar.LENGTH_INDEFINITE).show();
-              } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS},1234);
-              }
+              Snackbar.make(resultatTextView, "Giv tilladelse og start forfra (vælg en kontakt igen for at se billedet)", Snackbar.LENGTH_INDEFINITE).show();
+              ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS},1234);
             } else {
               // Ja - vis det
               Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI,

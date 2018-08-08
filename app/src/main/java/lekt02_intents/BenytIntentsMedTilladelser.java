@@ -62,6 +62,13 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
 
 
   public void onClick(View v) {
+    if (v == info) {
+      startActivity(new Intent(Intent.ACTION_VIEW,
+              Uri.parse("https://developer.android.com/training/permissions/requesting")));
+      return;
+    }
+
+
     String nummer = nummerfelt.getText().toString();
     nummerfelt.setError(null);
     if (nummer.length() == 0) {
@@ -78,7 +85,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
             Toast.makeText(this, "Her skal vises et rationale/forklaring: ...", Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Giv tilladelse for at eksemplet virker :-)", Toast.LENGTH_LONG).show();
           }
-          ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 123456);
+          ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 12345);
         } else {
           startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + nummer)));
         }
@@ -95,6 +102,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
 
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    if (requestCode != 12345) return; // ikke vores requestCode
     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
       Snackbar.make(ringOpDirekte, "Du har afvist at give tilladelser", Snackbar.LENGTH_SHORT).show();
       return;

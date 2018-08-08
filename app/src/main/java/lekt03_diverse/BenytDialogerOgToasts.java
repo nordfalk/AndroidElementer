@@ -81,6 +81,7 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
     visProgressDialog.setOnClickListener(this);
     visProgressDialogMedBillede.setOnClickListener(this);
     visSnackBar.setOnClickListener(this);
+    visAlertDialog.setOnClickListener(this);
     visAlertDialog1.setOnClickListener(this);
     visAlertDialog2.setOnClickListener(this);
     visNoitifikation.setOnClickListener(this);
