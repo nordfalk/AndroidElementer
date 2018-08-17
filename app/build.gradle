@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
@@ -9,12 +9,12 @@ android {
 //      denne app kan installeres på telefoner med Android 4.0 (API 14) og frem
         minSdkVersion 14
 //      men den er beregnet til Android 5.1 (API 24)
-        targetSdkVersion 24
+        targetSdkVersion 27
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
-        versionCode 62
-        versionName '2.6.1  6.sept 2017'
+        versionCode 63
+        versionName '2.7  4.aug 2018'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
         /*
@@ -41,16 +41,22 @@ dependencies {
 
     // Kompatibilitetsbiblioteker - se http://developer.android.com/tools/support-library/
     // Understøttelse af fragmenter
-    compile 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     // Understøttelse af actionbar/Toolbar
-    compile 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 
     // Understøttelse af venstremenu og SnackBar
-    compile 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:design:27.1.1'
 
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
-    compile 'com.google.android.gms:play-services-auth:15.0.1'
-    compile 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
+
+    // Klientbibliotekerne til Google People API (https://developers.google.com/people/)
+    // se lekt50_konti.HentBrugersKoenAlderTelefonEmail
+    // implementation 'com.google.api-client:google-api-client-android:1.22.0'
+    // implementation 'com.google.apis:google-api-services-people:v1-rev139-1.22.0'
 
     // Til afprøvning
     testImplementation 'junit:junit:4.12'
