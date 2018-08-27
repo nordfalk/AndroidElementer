@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            app:startDestination="@id/velkomst_frag">
+
+    <fragment
+        android:id="@+id/velkomst_frag"
+        android:name="lekt04_fragnav.Velkomst_frag"
+        android:label="Velkomst_frag">
+        <action
+            app:destination="@id/hovedmenu"/>
+    </fragment>
+
+    <action
+        android:id="@+id/til_hovedmenu"
+        app:destination="@id/hovedmenu"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+    <fragment
+        android:id="@+id/hovedmenu"
+        android:name="lekt04_fragnav.Hovedmenu_frag"
+        android:label="Hovedmenu"
+        tools:layout="@layout/lekt01_tre_knapper">
+        <action
+            android:id="@+id/til_hjælp"
+            app:destination="@id/hjælp"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/til_indstillinger"
+            app:destination="@id/indstillinger"/>
+        <action
+            android:id="@+id/til_spillet"
+            app:destination="@id/spillet"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/hjælp"
+        android:name="lekt04_fragmenter.Hjaelp_frag"
+        android:label="Hjælp"
+        tools:layout="@layout/lekt04_listeelement"/>
+
+
+    <fragment
+        android:id="@+id/spillet"
+        android:name="lekt04_fragmenter.Spillet_frag"
+        android:label="Spillet"
+        tools:layout="@layout/lekt01_byvejr"/>
+
+    <activity
+        android:id="@+id/indstillinger"
+        android:name="lekt02_aktiviteter.Indstillinger_akt"
+        android:label="Indstillinger_akt"/>
+
+</navigation>

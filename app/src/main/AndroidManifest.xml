@@ -76,7 +76,7 @@
         <activity android:name="lekt01_views.ByvejrProgrammatisk" />
         <activity android:name="lekt01_views.ByvejrDeklarativ" />
         <activity android:name="lekt01_views.BenytHtmlKoder" />
-        <activity android:name="lekt01_views.BenytMenuer" />
+        <activity android:name="lekt03_diverse.BenytMenuer" />
         <activity android:name="lekt02_intents.BenytIntents" />
         <activity android:name="lekt02_intents.BenytIntentsFraGoogle" />
         <activity
@@ -130,7 +130,8 @@
         <activity android:name="lekt03_diverse.TemaFuldskaerm"     android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
         <activity android:name="lekt03_net.ByvejrAktivitet" />
-        <activity android:name="lekt04_fragmenter.Hovedaktivitet"/>
+        <activity android:name="lekt04_fragnav.Hovedaktivitet" />
+        <activity android:name="lekt04_fragmenter.Hovedaktivitet" />
         <activity android:name="lekt04_fragmenter.HovedaktivitetMedViewpager"/>
         <activity android:name="lekt04_arkitektur.NoteAktivitet" />
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />

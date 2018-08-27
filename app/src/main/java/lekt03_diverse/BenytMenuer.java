@@ -1,4 +1,4 @@
-package lekt01_views;
+package lekt03_diverse;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -29,7 +29,7 @@ public class BenytMenuer extends AppCompatActivity {
    */
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    textView.append("\nonCreateOptionsMenu");
+    textView.append("\nonCreateOptionsMenu blev kaldt");
     menu.add(Menu.NONE, 101, Menu.NONE, "javabog.dk");
     menu.add(Menu.NONE, 102, Menu.NONE, "Kør bil").setIcon(R.drawable.bil).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     menu.add(Menu.NONE, 103, Menu.NONE, "Indstillinger").setIcon(android.R.drawable.ic_menu_preferences).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -44,7 +44,7 @@ public class BenytMenuer extends AppCompatActivity {
    */
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    textView.append("\nonOptionsItemSelected(" + item.getTitle());
+    textView.append("\nonOptionsItemSelected kaldt med " + item.getTitle());
     if (item.getItemId() == 101) {
 
       Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://javabog.dk"));
