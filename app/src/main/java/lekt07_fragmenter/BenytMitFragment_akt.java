@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import dk.nordfalk.android.elementer.R;
 
@@ -15,7 +14,7 @@ public class BenytMitFragment_akt extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.lekt04_fragmenter);
+    setContentView(R.layout.lekt04_fragmenter_manuel_nav);
 
     if (savedInstanceState == null) {
       MitFragment_frag fragment = new MitFragment_frag();

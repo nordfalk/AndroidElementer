@@ -1,4 +1,4 @@
-package lekt04_fragmenter;
+package lekt04_fragmenter_manuel_nav;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +16,7 @@ public class Hovedaktivitet extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     requestWindowFeature(Window.FEATURE_ACTION_BAR);
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.lekt04_fragmenter);
+    setContentView(R.layout.lekt04_fragmenter_manuel_nav);
 
     if (savedInstanceState == null) {
       Fragment fragment = new Velkomst_frag();

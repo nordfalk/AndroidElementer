@@ -1,13 +1,9 @@
-package lekt04_fragnav;
+package lekt04_fragmenter_navhost;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.Window;
 
 import dk.nordfalk.android.elementer.R;
-import lekt04_fragmenter.Velkomst_frag;
 
 /**
  * @author Jacob Nordfalk
@@ -21,6 +17,8 @@ public class Hovedaktivitet extends AppCompatActivity {
     // (som bruger resursen navigation/lekt_04_fragnav_graph
     //  som igen starter lekt04_fragnav.Velkomst_frag
     //  som lidt senere starter lekt04_fragnav.Hovedmenu_frag)
-    setContentView(R.layout.lekt04_fragnav);
+
+    // Se https://developer.android.com/topic/libraries/architecture/navigation/
+    setContentView(R.layout.lekt04_fragmenter_navhost);
   }
 }

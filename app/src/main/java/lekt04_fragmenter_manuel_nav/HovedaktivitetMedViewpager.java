@@ -1,4 +1,4 @@
-package lekt04_fragmenter;
+package lekt04_fragmenter_manuel_nav;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import dk.nordfalk.aktivitetsliste.PagerSlidingTabStrip;
 import dk.nordfalk.aktivitetsliste.ZoomOutPageTransformer;
 import dk.nordfalk.android.elementer.R;
+import lekt04_fragmenter_navhost.Hjaelp_frag;
+import lekt04_fragmenter_navhost.Spillet_frag;
 
 /**
  * @author Jacob Nordfalk

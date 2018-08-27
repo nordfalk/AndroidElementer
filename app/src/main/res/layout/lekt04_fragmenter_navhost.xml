@@ -6,7 +6,7 @@
               android:layout_height="match_parent"
               android:background="#ff004000"
               android:orientation="vertical"
-              tools:context="lekt04_fragnav.Hovedaktivitet">
+              tools:context="lekt04_fragmenter_navhost.Hovedaktivitet">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/lekt_04_fragnav_host_fragment"
+        android:id="@+id/lekt_04_navhost_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/lekt_04_fragnav_graph"
+        app:navGraph="@navigation/lekt_04_navigationsgraf"
         app:defaultNavHost="true"
         />
 

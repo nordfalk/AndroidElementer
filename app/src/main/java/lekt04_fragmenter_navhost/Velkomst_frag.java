@@ -1,4 +1,4 @@
-package lekt04_fragnav;
+package lekt04_fragmenter_navhost;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +12,6 @@ import android.widget.ImageView;
 
 import androidx.navigation.Navigation;
 import dk.nordfalk.android.elementer.R;
-import lekt04_fragmenter.Hovedmenu_frag;
 
 public class Velkomst_frag extends Fragment implements Runnable {
 

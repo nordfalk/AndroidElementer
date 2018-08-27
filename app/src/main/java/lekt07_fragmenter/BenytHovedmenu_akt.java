@@ -1,7 +1,5 @@
 package lekt07_fragmenter;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -20,7 +18,7 @@ public class BenytHovedmenu_akt extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     requestWindowFeature(Window.FEATURE_ACTION_BAR);
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.lekt04_fragmenter);
+    setContentView(R.layout.lekt04_fragmenter_manuel_nav);
 /*
   Hvis der i layoutet i stedet for <FrameLayout... havde stået:
     <fragment

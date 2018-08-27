@@ -1,4 +1,4 @@
-package lekt04_fragmenter;
+package lekt04_fragmenter_manuel_nav;
 
 import android.os.Bundle;
 import android.os.Handler;

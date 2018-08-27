@@ -79,6 +79,7 @@
         <activity android:name="lekt03_diverse.BenytMenuer" />
         <activity android:name="lekt02_intents.BenytIntents" />
         <activity android:name="lekt02_intents.BenytIntentsFraGoogle" />
+
         <activity
             android:name="lekt02_intents.BenytIntentsMedResultat"
             android:screenOrientation="portrait" />
@@ -97,17 +98,19 @@
                     android:pathPrefix="/OOP/"
                     />
             </intent-filter>
+
+            <!--
+                 Dette filter fanger tryk på HJEM-knappen
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.HOME"/>
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            -->
+
         </activity>
         <activity android:name="lekt02_intents.BenytIntentsMedTilladelser" />
 
-        <!--
-             Dette filter fanger tryk på HJEM-knappen
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        -->
         <activity android:name="lekt02_aktiviteter.Velkomst_akt" />
         <activity android:name="lekt02_aktiviteter.Hovedmenu_akt" />
         <activity android:name="lekt02_aktiviteter.Hjaelp_akt" />
@@ -123,18 +126,23 @@
         <activity android:name="lekt03_diverse.TekstTilTale" />
         <activity android:name="lekt03_diverse.Taleeventyr" />
         <activity android:name="lekt03_diverse.Talegenkendelse" />
+
         <activity android:name="lekt03_diverse.TemaLyseFarver"     android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name="lekt03_diverse.TemaIngenTitel"     android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="lekt03_diverse.TemaSomEnDialog"    android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name="lekt03_diverse.TemaSomEnLysDialog" android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity android:name="lekt03_diverse.TemaFuldskaerm"     android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
         <activity android:name="lekt03_net.ByvejrAktivitet" />
-        <activity android:name="lekt04_fragnav.Hovedaktivitet" />
-        <activity android:name="lekt04_fragmenter.Hovedaktivitet" />
-        <activity android:name="lekt04_fragmenter.HovedaktivitetMedViewpager"/>
+
+        <activity android:name="lekt04_fragmenter_navhost.Hovedaktivitet" />
+        <activity android:name="lekt04_fragmenter_manuel_nav.Hovedaktivitet" />
+        <activity android:name="lekt04_fragmenter_manuel_nav.HovedaktivitetMedViewpager"/>
+
         <activity android:name="lekt04_arkitektur.NoteAktivitet" />
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />
+
         <activity android:name="lekt04_lister.BenytListView" />
         <activity android:name="lekt04_lister.BenytListActivity" />
         <activity android:name="lekt04_lister.BenytGallery" />
@@ -148,6 +156,7 @@
         <activity android:name="lekt04_lister2.EgetLayoutMedBaseAdapterViewholder" />
         <activity android:name="lekt04_lister2.EgetLayoutMedBaseAdapterOverskrifter" />
         <activity android:name="lekt04_lister2.VisAlleAndroidDrawables" />
+
         <activity android:name="lekt07_lister3.BenytRecyclerview0" />
         <activity android:name="lekt07_lister3.BenytRecyclerview" />
         <activity android:name="lekt07_lister3.BenytRecyclerviewMedGesti" />

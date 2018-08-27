@@ -1,6 +1,5 @@
-package lekt04_fragmenter;
+package lekt04_fragmenter_navhost;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.navigation.Navigation;
 import dk.nordfalk.android.elementer.R;
-import lekt02_aktiviteter.*;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
   Button hjaelpKnap, indstillingerKnap, spilKnap;
@@ -38,29 +37,16 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
   public void onClick(View v) {
     if (v == hjaelpKnap) {
 
-      getFragmentManager().beginTransaction()
-              .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-              .replace(R.id.fragmentindhold, new Hjaelp_frag())
-              .addToBackStack(null)
-              .commit();
+      Navigation.findNavController(v).navigate(R.id.til_hjælp);
 
     } else if (v == indstillingerKnap) {
 
-      // Der er ikke lavet et fragment for indstillinger, så her bruger vi aktiviteten
-      Intent i = new Intent(getActivity(), Indstillinger_akt.class);
-      startActivity(i);
+      Navigation.findNavController(v).navigate(R.id.til_indstillinger);
 
     } else if (v == spilKnap) {
 
-      Spillet_frag fragment = new Spillet_frag();
-      Bundle argumenter = new Bundle(); // Overfør data til fragmentet
-      argumenter.putString("velkomst", "\n\nHalløj fra Hovedmenu_frag!\n");
-      fragment.setArguments(argumenter);
+      Navigation.findNavController(v).navigate(R.id.til_spillet);
 
-      getFragmentManager().beginTransaction()
-              .replace(R.id.fragmentindhold, fragment)
-              .addToBackStack(null)
-              .commit();
     }
   }
 }

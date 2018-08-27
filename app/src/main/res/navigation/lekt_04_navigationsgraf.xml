@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/velkomst_frag"
-        android:name="lekt04_fragnav.Velkomst_frag"
+        android:name="lekt04_fragmenter_navhost.Velkomst_frag"
         android:label="Velkomst_frag">
         <action
             app:destination="@id/hovedmenu"/>
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/hovedmenu"
-        android:name="lekt04_fragnav.Hovedmenu_frag"
+        android:name="lekt04_fragmenter_navhost.Hovedmenu_frag"
         android:label="Hovedmenu"
         tools:layout="@layout/lekt01_tre_knapper">
         <action
@@ -43,14 +43,14 @@
 
     <fragment
         android:id="@+id/hjælp"
-        android:name="lekt04_fragmenter.Hjaelp_frag"
+        android:name="lekt04_fragmenter_navhost.Hjaelp_frag"
         android:label="Hjælp"
         tools:layout="@layout/lekt04_listeelement"/>
 
 
     <fragment
         android:id="@+id/spillet"
-        android:name="lekt04_fragmenter.Spillet_frag"
+        android:name="lekt04_fragmenter_navhost.Spillet_frag"
         android:label="Spillet"
         tools:layout="@layout/lekt01_byvejr"/>
 
