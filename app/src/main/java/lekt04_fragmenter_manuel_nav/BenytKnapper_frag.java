@@ -1,4 +1,4 @@
-package lekt07_fragmenter;
+package lekt04_fragmenter_manuel_nav;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -13,12 +13,11 @@ import android.widget.ImageView;
 import dk.nordfalk.android.elementer.R;
 
 /**
- * Et simpelt fragment. Fragmenter som indre klasser SKAL erklæres static
- * Sammenlign med BenytFlereKnapperXml
+ * Et simpelt fragment. Sammenlign med {@link lekt01_views.BenytKnapperDeklarativ
  *
  * @see lekt01_views.BenytKnapperDeklarativ
  */
-public class MitFragment_frag extends Fragment implements View.OnClickListener {
+public class BenytKnapper_frag extends Fragment implements View.OnClickListener {
   // Vi erklærer variabler herude så de huskes fra metode til metode
   private Button knap1, knap2, knap3;
   private View rod;
@@ -27,9 +26,9 @@ public class MitFragment_frag extends Fragment implements View.OnClickListener {
   public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
     rod = i.inflate(R.layout.lekt01_tre_knapper, container, false);
 
-    knap1 = (Button) rod.findViewById(R.id.knap1);
-    knap2 = (Button) rod.findViewById(R.id.knap2);
-    knap3 = (Button) rod.findViewById(R.id.knap3);
+    knap1 = rod.findViewById(R.id.knap1);
+    knap2 = rod.findViewById(R.id.knap2);
+    knap3 = rod.findViewById(R.id.knap3);
 
     knap1.setOnClickListener(this);
     knap2.setOnClickListener(this);
@@ -57,7 +56,7 @@ public class MitFragment_frag extends Fragment implements View.OnClickListener {
 
       knap2.setText("Hey, hvis der skal trykkes, så er det på MIG!\n" + etTal);
       // Erstat logoet med en bil
-      ImageView ikon = (ImageView) rod.findViewById(R.id.ikon);
+      ImageView ikon = rod.findViewById(R.id.ikon);
       ikon.setImageResource(R.drawable.bil);
 
     }

@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class GalgelogikUnitTest {
 
   @Test
-  public void afprøvMedSkovsnegl() throws Exception {
+  public void afprøvMedSkovsnegl() {
     Galgelogik spil = new Galgelogik();
     spil.muligeOrd.clear();
     spil.muligeOrd.add("skovsnegl");

@@ -266,7 +266,6 @@ public class VisKildekode extends AppCompatActivity {
   private void vælgFil() {
     try {
       final String sti = filnavn.substring(0, filnavn.lastIndexOf("/"));
-      ;
       final String[] filer = getAssets().list(sti);
       new AlertDialog.Builder(this).setTitle("Filer i " + sti).setItems(filer, new Dialog.OnClickListener() {
         public void onClick(DialogInterface arg0, int hvilken) {

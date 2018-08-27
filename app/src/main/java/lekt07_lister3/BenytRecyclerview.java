@@ -54,9 +54,9 @@ public class BenytRecyclerview extends AppCompatActivity {
     public ListeelemViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view = getLayoutInflater().inflate(R.layout.lekt04_listeelement, parent, false);
       ListeelemViewholder vh = new ListeelemViewholder(view);
-      vh.overskrift =  (TextView) view.findViewById(R.id.listeelem_overskrift);
-      vh.beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
-      vh.billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+      vh.overskrift = view.findViewById(R.id.listeelem_overskrift);
+      vh.beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
+      vh.billede = view.findViewById(R.id.listeelem_billede);
       vh.overskrift.setOnClickListener(vh);
       vh.beskrivelse.setOnClickListener(vh);
       vh.billede.setOnClickListener(vh);

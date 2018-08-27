@@ -1,7 +1,5 @@
 package lekt07_fragmenter;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -24,13 +22,13 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
     rod = (ViewGroup) i.inflate(R.layout.lekt01_tre_knapper, container, false);
     rod.findViewById(R.id.ikon).setVisibility(View.GONE);
 
-    knap1 = (Button) rod.findViewById(R.id.knap1);
+    knap1 = rod.findViewById(R.id.knap1);
     knap1.setText("MitFragment_frag");
 
-    knap2 = (Button) rod.findViewById(R.id.knap2);
+    knap2 = rod.findViewById(R.id.knap2);
     knap2.setText("BenytDialoger_frag");
 
-    knap3 = (Button) rod.findViewById(R.id.knap3);
+    knap3 = rod.findViewById(R.id.knap3);
     knap3.setText("Animation_frag");
 
     knap1.setOnClickListener(this);

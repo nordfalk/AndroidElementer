@@ -28,9 +28,9 @@ public class EgetLayoutMedArrayAdapter2 extends AppCompatActivity implements OnI
       public View getView(int position, View cachedView, ViewGroup parent) {
         View view = super.getView(position, cachedView, parent);
 
-        TextView beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
+        TextView beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
         beskrivelse.setText("Land nummer " + position);
-        ImageView billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+        ImageView billede = view.findViewById(R.id.listeelem_billede);
         if (position % 3 == 2) {
           billede.setImageResource(android.R.drawable.sym_action_call);
         } else {

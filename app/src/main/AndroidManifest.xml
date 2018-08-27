@@ -144,7 +144,6 @@
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />
 
         <activity android:name="lekt04_lister.BenytListView" />
-        <activity android:name="lekt04_lister.BenytListActivity" />
         <activity android:name="lekt04_lister.BenytGallery" />
         <activity android:name="lekt04_lister.BenytGridView" />
         <activity android:name="lekt04_lister.BenytSpinner" />

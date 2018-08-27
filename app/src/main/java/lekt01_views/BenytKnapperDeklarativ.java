@@ -28,9 +28,9 @@ public class BenytKnapperDeklarativ extends AppCompatActivity implements OnClick
 
     setContentView(R.layout.lekt01_tre_knapper);
     // findViewById() kan først kaldes efter setContentView()
-    knap1 = (Button) findViewById(R.id.knap1);
-    knap2 = (Button) findViewById(R.id.knap2);
-    knap3 = (Button) findViewById(R.id.knap3);
+    knap1 = findViewById(R.id.knap1);
+    knap2 = findViewById(R.id.knap2);
+    knap3 = findViewById(R.id.knap3);
 
     knap1.setOnClickListener(this);
     knap2.setOnClickListener(this);
@@ -55,7 +55,7 @@ public class BenytKnapperDeklarativ extends AppCompatActivity implements OnClick
 
       knap2.setText("Hey, hvis der skal trykkes, så er det på MIG!\n" + etTal);
       // Erstat logoet med en bil
-      ImageView ikon = (ImageView) findViewById(R.id.ikon);
+      ImageView ikon = findViewById(R.id.ikon);
       ikon.setImageResource(R.drawable.bil);
 
     }

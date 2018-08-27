@@ -22,13 +22,13 @@ public class BenytDialoger_frag extends Fragment implements View.OnClickListener
     View rod = i.inflate(R.layout.lekt01_tre_knapper, container, false);
     rod.findViewById(R.id.ikon).setVisibility(View.GONE);
 
-    knap1 = (Button) rod.findViewById(R.id.knap1);
+    knap1 = rod.findViewById(R.id.knap1);
     knap1.setText("TekstDialog_frag\nsom dialog");
 
-    knap2 = (Button) rod.findViewById(R.id.knap2);
+    knap2 = rod.findViewById(R.id.knap2);
     knap2.setText("TekstDialog_frag\nsom fragment");
 
-    knap3 = (Button) rod.findViewById(R.id.knap3);
+    knap3 = rod.findViewById(R.id.knap3);
     knap3.setText("TekstDialog_frag\nsom fragment\nmed argument");
 
     knap1.setOnClickListener(this);

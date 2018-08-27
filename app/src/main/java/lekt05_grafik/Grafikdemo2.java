@@ -39,6 +39,9 @@ class GrafikView2 extends View {
 
   @Override
   protected void onDraw(Canvas c) {
+    // Grafikken er beregnet til en skærm der er 480 punkter bred...
+    float skærmSkala = getWidth() / 480f; // ... så skalér derefter
+    c.scale(skærmSkala, skærmSkala);
 
     Paint paint = new Paint(); // burde ske udenfor onDraw() for bedre ydelse
     paint.setStyle(Paint.Style.FILL);
@@ -101,7 +104,7 @@ class GrafikView2 extends View {
     paint.setPathEffect(null);
     paint.setColor(Color.argb(128, 0, 255, 0)); // halvgennemsigtig grøn
     paint.setTextSize(48);
-    String roteretTekst = "Tryk for at rotere";
+    String roteretTekst = "Træk for at rotere";
 
     // find tekstens størrelse på skærmen
     Rect tekstomrids = new Rect();
@@ -109,12 +112,10 @@ class GrafikView2 extends View {
 
     // Husk 'lærredets' rotation (og translation etc)
     c.save();
-    int x = getWidth() / 2;
-    int y = getHeight() / 2;
     // rotér lærredet omkring tekstens center
-    c.rotate(rotation, x , y );
+    c.rotate(rotation, 240 , 240 );
     // tegn teksten
-    c.drawText(roteretTekst, x, y, paint);
+    c.drawText(roteretTekst, 240, 240, paint);
 
     // nulstil rotation (og translation etc)
     c.restore();

@@ -100,9 +100,9 @@ public class VisAlleAndroidDrawables extends AppCompatActivity implements Adapte
         // For at spare CPU-cykler cacher vi opslagene i findViewById(). Se
         // http://developer.android.com/training/improving-layouts/smooth-scrolling.html
         listeelem = new ListeelemViewholder();
-        listeelem.overskrift = (TextView) view.findViewById(R.id.listeelem_overskrift);
-        listeelem.beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
-        listeelem.billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+        listeelem.overskrift = view.findViewById(R.id.listeelem_overskrift);
+        listeelem.beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
+        listeelem.billede = view.findViewById(R.id.listeelem_billede);
         view.setTag(listeelem);
       } else {
         listeelem = (ListeelemViewholder) view.getTag();

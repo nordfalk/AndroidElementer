@@ -20,10 +20,10 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     rod = inflater.inflate(R.layout.lekt01_tre_knapper, container, false);
-    ikon = (ImageView) rod.findViewById(R.id.ikon);
-    knap1 = (Button) rod.findViewById(R.id.knap1);
-    knap2 = (Button) rod.findViewById(R.id.knap2);
-    knap3 = (Button) rod.findViewById(R.id.knap3);
+    ikon = rod.findViewById(R.id.ikon);
+    knap1 = rod.findViewById(R.id.knap1);
+    knap2 = rod.findViewById(R.id.knap2);
+    knap3 = rod.findViewById(R.id.knap3);
     knap1.setOnClickListener(this);
     knap2.setOnClickListener(this);
     knap3.setOnClickListener(this);

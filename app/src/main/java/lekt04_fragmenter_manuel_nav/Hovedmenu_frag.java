@@ -20,13 +20,13 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
   public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
     View rod = i.inflate(R.layout.lekt01_tre_knapper, container, false);
 
-    hjaelpKnap = (Button) rod.findViewById(R.id.knap1);
+    hjaelpKnap = rod.findViewById(R.id.knap1);
     hjaelpKnap.setText("Hjælp");
 
-    indstillingerKnap = (Button) rod.findViewById(R.id.knap2);
+    indstillingerKnap = rod.findViewById(R.id.knap2);
     indstillingerKnap.setText("Indstillinger");
 
-    spilKnap = (Button) rod.findViewById(R.id.knap3);
+    spilKnap = rod.findViewById(R.id.knap3);
     spilKnap.setText("Spil");
 
     hjaelpKnap.setOnClickListener(this);

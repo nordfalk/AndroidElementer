@@ -59,12 +59,12 @@ public class EgetLayoutMedBaseAdapter extends AppCompatActivity implements OnIte
       // view kan indeholde views fra et gammelt listeelement, der kan genbruges
       if (view==null) view = getLayoutInflater().inflate(R.layout.lekt04_listeelement, null);
 
-      TextView overskrift = (TextView) view.findViewById(R.id.listeelem_overskrift);
+      TextView overskrift = view.findViewById(R.id.listeelem_overskrift);
       overskrift.setText(lande[position]);
 
-      TextView beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
+      TextView beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
       beskrivelse.setText("Land nummer " + position);
-      ImageView billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+      ImageView billede = view.findViewById(R.id.listeelem_billede);
       if (position % 3 == 2) {
         billede.setImageResource(android.R.drawable.sym_action_call);
       } else {

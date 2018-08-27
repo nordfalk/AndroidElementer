@@ -246,8 +246,8 @@ public class ByvejrAktivitet2 extends AppCompatActivity {
     // TODO brug http://developer.android.com/reference/android/location/Geocoder.html i stedet
     int n = postnrGpsBy.findNærmestePunkt(pos);
     if (n != -1) {
-      valgtBy = postnrGpsBy.byNavn[n];
-      valgtPostNr = postnrGpsBy.postNr[n];
+      valgtBy = GpsDataPostnrBy.byNavn[n];
+      valgtPostNr = GpsDataPostnrBy.postNr[n];
       postnrByTextView.setText(valgtPostNr + " " + valgtBy);
     } else {
       advarBruger("Dette område er ikke dækket");
@@ -288,8 +288,8 @@ public class ByvejrAktivitet2 extends AppCompatActivity {
     DialogInterface.OnClickListener klikLytter = new DialogInterface.OnClickListener() {
 
       public void onClick(DialogInterface dialogenUbrugt, int n) {
-        valgtBy = postnrGpsBy.byNavn[n];
-        valgtPostNr = postnrGpsBy.postNr[n];
+        valgtBy = GpsDataPostnrBy.byNavn[n];
+        valgtPostNr = GpsDataPostnrBy.postNr[n];
         postnrByTextView.setText(valgtPostNr + " " + valgtBy);
         Log.d(TAG, "valgtBy=" + valgtBy + " valgtPostNr=" + valgtPostNr);
         hentBilleder(true, 5 * 60); // max 5 minutter gamle
@@ -298,7 +298,7 @@ public class ByvejrAktivitet2 extends AppCompatActivity {
 
     Builder ab = new Builder(this);
     ab.setTitle("Vælg by");
-    ab.setItems(postnrGpsBy.byNavn, klikLytter);
+    ab.setItems(GpsDataPostnrBy.byNavn, klikLytter);
     ab.show();
   }
 

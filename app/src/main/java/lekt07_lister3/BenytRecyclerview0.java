@@ -52,9 +52,9 @@ public class BenytRecyclerview0 extends AppCompatActivity {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder vh, int position) {
-      TextView overskrift = (TextView) vh.itemView.findViewById(R.id.listeelem_overskrift);
-      TextView beskrivelse = (TextView) vh.itemView.findViewById(R.id.listeelem_beskrivelse);
-      ImageView billede = (ImageView) vh.itemView.findViewById(R.id.listeelem_billede);
+      TextView overskrift = vh.itemView.findViewById(R.id.listeelem_overskrift);
+      TextView beskrivelse = vh.itemView.findViewById(R.id.listeelem_beskrivelse);
+      ImageView billede = vh.itemView.findViewById(R.id.listeelem_billede);
       overskrift.setText(lande.get(position));
 
       beskrivelse.setText("Land nummer " + position + " på vh@"+Integer.toHexString(vh.hashCode()));

@@ -26,10 +26,10 @@ public class ByvejrDeklarativ extends AppCompatActivity implements OnClickListen
 
     setContentView(R.layout.lekt01_byvejr); // Hvis layout ligger i res/layout/lekt01_byvejr.xmlejr.xml
     // findViewById() kan først kaldes efter setContentView()
-    editText = (EditText) findViewById(R.id.editText);
-    okKnap = (Button) findViewById(R.id.okKnap);
-    annullerKnap = (Button) findViewById(R.id.annullerKnap);
-    webView = (WebView) findViewById(R.id.webView);
+    editText = findViewById(R.id.editText);
+    okKnap = findViewById(R.id.okKnap);
+    annullerKnap = findViewById(R.id.annullerKnap);
+    webView = findViewById(R.id.webView);
     webView.loadUrl("http://javabog.dk");
 
     okKnap.setOnClickListener(this);

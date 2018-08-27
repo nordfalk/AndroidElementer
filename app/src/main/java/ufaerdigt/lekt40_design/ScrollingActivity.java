@@ -21,15 +21,15 @@ public class ScrollingActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.lekt40_scrolling);
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
+    ctl = findViewById(R.id.collapsingToolbarLayout);
     ctl.setTitle("CollapsingToolbar");
 
 
-    fab1 = (FloatingActionButton) findViewById(R.id.fab1);
-    fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+    fab1 = findViewById(R.id.fab1);
+    fab2 = findViewById(R.id.fab2);
 
     fab1.setOnClickListener(new View.OnClickListener() {
       @Override

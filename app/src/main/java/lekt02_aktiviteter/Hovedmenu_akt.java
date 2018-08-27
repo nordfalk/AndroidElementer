@@ -23,13 +23,13 @@ public class Hovedmenu_akt extends AppCompatActivity implements OnClickListener 
 
     setContentView(R.layout.lekt01_tre_knapper);
 
-    hjaelpKnap = (Button) findViewById(R.id.knap1);
+    hjaelpKnap = findViewById(R.id.knap1);
     hjaelpKnap.setText("Hjælp");
 
-    indstillingerKnap = (Button) findViewById(R.id.knap2);
+    indstillingerKnap = findViewById(R.id.knap2);
     indstillingerKnap.setText("Indstillinger");
 
-    spilKnap = (Button) findViewById(R.id.knap3);
+    spilKnap = findViewById(R.id.knap3);
     spilKnap.setText("Spil");
 
     hjaelpKnap.setOnClickListener(this);

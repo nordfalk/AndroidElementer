@@ -57,9 +57,9 @@ public class EgetLayoutMedBaseAdapterViewholder extends AppCompatActivity implem
       if (view==null) {
         view = getLayoutInflater().inflate(R.layout.lekt04_listeelement, null);
         vh = new ListeelemViewholder();
-        vh.overskrift =  (TextView) view.findViewById(R.id.listeelem_overskrift);
-        vh.beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
-        vh.billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+        vh.overskrift = view.findViewById(R.id.listeelem_overskrift);
+        vh.beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
+        vh.billede = view.findViewById(R.id.listeelem_billede);
         view.setTag(vh);
       } else {
         vh = (ListeelemViewholder) view.getTag();

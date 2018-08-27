@@ -106,16 +106,16 @@ public class EgetLayoutMedBaseAdapterOverskrifter extends AppCompatActivity impl
       String landEllerOverskrift = landeOgOverskrifter[position].substring(1);
       // Sæt indholdet afhængig af typen
       if (typen == 0) {
-        TextView tv = (TextView) view.findViewById(android.R.id.text1);
+        TextView tv = view.findViewById(android.R.id.text1);
         tv.setTextSize(36);
         tv.setText(landEllerOverskrift);
       } else if (typen == 1) {
-        TextView tv = (TextView) view.findViewById(android.R.id.text1);
+        TextView tv = view.findViewById(android.R.id.text1);
         tv.setText(landEllerOverskrift);
       } else {
-        TextView tvo = (TextView) view.findViewById(R.id.listeelem_overskrift);
+        TextView tvo = view.findViewById(R.id.listeelem_overskrift);
         tvo.setText(landEllerOverskrift);
-        TextView beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
+        TextView beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
         beskrivelse.setText("Position nummer " + position);
       }
 

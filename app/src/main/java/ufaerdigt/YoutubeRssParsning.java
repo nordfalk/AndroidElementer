@@ -249,9 +249,9 @@ public class YoutubeRssParsning extends AppCompatActivity implements OnItemClick
       if (view == null) {
         view = getLayoutInflater().inflate(R.layout.lekt04_listeelement, null);
       }
-      TextView listeelem_overskrift = (TextView) view.findViewById(R.id.listeelem_overskrift);
-      TextView listeelem_beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
-      ImageView listeelem_billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+      TextView listeelem_overskrift = view.findViewById(R.id.listeelem_overskrift);
+      TextView listeelem_beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
+      ImageView listeelem_billede = view.findViewById(R.id.listeelem_billede);
 
       Klip k = videoklip.get(position);
       listeelem_overskrift.setText(k.titel);

@@ -170,7 +170,7 @@ public class Stedplacering_akt extends AppCompatActivity implements View.OnClick
       log("onLocationChanged( " + l);
       if (l==null) return;
       TekstTilTale.instans(null).tal("ny placering registreret inden for " + (int) l.getAccuracy() + " meter");
-    };
+    }
   };
 
 }

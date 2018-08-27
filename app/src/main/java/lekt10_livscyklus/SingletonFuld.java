@@ -14,8 +14,6 @@ public class SingletonFuld {
   private SingletonFuld() {
   }
 
-  ;
-
   public static SingletonFuld getInstans() {
     if (instansen == null) {
       instansen = new SingletonFuld();

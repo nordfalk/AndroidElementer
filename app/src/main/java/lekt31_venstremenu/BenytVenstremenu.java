@@ -30,16 +30,16 @@ public class BenytVenstremenu extends AppCompatActivity implements OnClickListen
 
     setContentView(R.layout.lekt31_benyt_venstremenu);
     // findViewById() kan først kaldes efter setContentView()
-    knap1 = (Button) findViewById(R.id.knap1);
-    knap2 = (Button) findViewById(R.id.knap2);
-    knap3 = (Button) findViewById(R.id.knap3);
+    knap1 = findViewById(R.id.knap1);
+    knap2 = findViewById(R.id.knap2);
+    knap3 = findViewById(R.id.knap3);
 
     knap1.setOnClickListener(this);
     knap2.setOnClickListener(this);
     knap3.setOnClickListener(this);
 
-    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    mDrawerLayout = findViewById(R.id.drawer_layout);
+    NavigationView navigationView = findViewById(R.id.nav_view);
     if (navigationView != null) {
       setupDrawerContent(navigationView);
     }
@@ -76,7 +76,7 @@ public class BenytVenstremenu extends AppCompatActivity implements OnClickListen
 
       knap2.setText("Hey, hvis der skal trykkes, så er det på MIG!\n" + etTal);
       // Erstat logoet med en bil
-      ImageView ikon = (ImageView) findViewById(R.id.ikon);
+      ImageView ikon = findViewById(R.id.ikon);
       ikon.setImageResource(R.drawable.bil);
 
     }

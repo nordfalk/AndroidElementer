@@ -9,6 +9,7 @@
         android:name="lekt04_fragmenter_navhost.Velkomst_frag"
         android:label="Velkomst_frag">
         <action
+            android:id="@+id/til_hovedmenu"
             app:destination="@id/hovedmenu"/>
     </fragment>
 

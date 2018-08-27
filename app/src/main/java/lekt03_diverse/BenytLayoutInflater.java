@@ -27,7 +27,7 @@ public class BenytLayoutInflater extends AppCompatActivity implements OnClickLis
     findViewById(R.id.knap3).setVisibility(View.INVISIBLE); // tager stadig plads
     findViewById(R.id.ikon).setVisibility(View.GONE); // tager ikke plads i layoutet
 
-    ViewGroup indhold = (ViewGroup) findViewById(R.id.indhold);
+    ViewGroup indhold = findViewById(R.id.indhold);
 
     textView = new TextView(this);
     textView.setText("Man kan tilføje views til et eksisterende layout, både programmatisk og deklarativt." +

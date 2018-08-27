@@ -58,9 +58,9 @@ public class BenytRecyclerviewOverskrifter extends AppCompatActivity {
       if (viewType==0) {
         View itemView = getLayoutInflater().inflate(R.layout.lekt04_listeelement, parent, false);
         ListeelemViewholder vh = new ListeelemViewholder(itemView);
-        vh.overskrift = (TextView) itemView.findViewById(R.id.listeelem_overskrift);
-        vh.beskrivelse = (TextView) itemView.findViewById(R.id.listeelem_beskrivelse);
-        vh.billede = (ImageView) itemView.findViewById(R.id.listeelem_billede);
+        vh.overskrift = itemView.findViewById(R.id.listeelem_overskrift);
+        vh.beskrivelse = itemView.findViewById(R.id.listeelem_beskrivelse);
+        vh.billede = itemView.findViewById(R.id.listeelem_billede);
         return vh;
       } else {
         View itemView = getLayoutInflater().inflate(android.R.layout.simple_list_item_1, parent, false);
@@ -75,7 +75,7 @@ public class BenytRecyclerviewOverskrifter extends AppCompatActivity {
         vh.overskrift.setText(lande.get(position));
         vh.beskrivelse.setText("Land nummer " + position);
       } else {
-        TextView tv = (TextView) vh0.itemView.findViewById(android.R.id.text1);
+        TextView tv = vh0.itemView.findViewById(android.R.id.text1);
         tv.setTextSize(36);
         tv.setText(lande.get(position));
       }

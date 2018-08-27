@@ -59,9 +59,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
   private static final boolean TEKST_DER_FADER_OVER_I_IKONER = true;
   public interface IconTabProvider {
-    public int getPageIconResId(int position);
+    int getPageIconResId(int position);
 
-    public String getPageContentDescription(int position);
+    String getPageContentDescription(int position);
   }
 
 

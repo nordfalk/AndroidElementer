@@ -69,9 +69,9 @@ public class VisKontakterMedBillede extends AppCompatActivity {
       @Override
       public View getView(int position, View convertView, ViewGroup parent) {
         View view = super.getView(position, convertView, parent);
-        TextView listeelem_overskrift = (TextView) view.findViewById(R.id.listeelem_overskrift);
-        TextView listeelem_beskrivelse = (TextView) view.findViewById(R.id.listeelem_beskrivelse);
-        ImageView listeelem_billede = (ImageView) view.findViewById(R.id.listeelem_billede);
+        TextView listeelem_overskrift = view.findViewById(R.id.listeelem_overskrift);
+        TextView listeelem_beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
+        ImageView listeelem_billede = view.findViewById(R.id.listeelem_billede);
 
         Kontakt k = kontakter.get(numre.get(position));
 

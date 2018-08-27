@@ -26,15 +26,15 @@ public class Animation_frag extends Fragment {
   @Override
   public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
     rod = (ViewGroup) i.inflate(R.layout.lekt01_tre_knapper, container, false);
-    knap1 = (Button) rod.findViewById(R.id.knap1);
+    knap1 = rod.findViewById(R.id.knap1);
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB_MR1) {
       knap1.setText("Beklager, din telefon er for gammel til at bruge animationer");
       return rod;
     }
     knap1.setText("Animation");
-    knap2 = (Button) rod.findViewById(R.id.knap2);
+    knap2 = rod.findViewById(R.id.knap2);
     knap2.setText("Elastisk knap");
-    knap3 = (Button) rod.findViewById(R.id.knap3);
+    knap3 = rod.findViewById(R.id.knap3);
     knap3.setText("Sprængfuld af energi");
 
     knap1.setOnTouchListener(new View.OnTouchListener() {
