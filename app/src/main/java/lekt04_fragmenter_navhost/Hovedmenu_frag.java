@@ -45,7 +45,9 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
     } else if (v == spilKnap) {
 
-      Navigation.findNavController(v).navigate(R.id.til_spillet);
+      Bundle argumenter = new Bundle();
+      argumenter.putString("velkomst", "\n\nHalløj!! Denne tekst kommer fra "+getClass());
+      Navigation.findNavController(v).navigate(R.id.til_spillet, argumenter);
 
     }
   }

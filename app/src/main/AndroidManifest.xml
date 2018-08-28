@@ -137,6 +137,8 @@
         <activity android:name="lekt03_net.ByvejrAktivitet" />
 
         <activity android:name="lekt04_fragmenter_navhost.Hovedaktivitet" />
+        <activity android:name="lekt04_fragmenter_navhost.HovedaktivitetBundnavigation" />
+        <activity android:name="dk.nordfalk.aktivitetsliste.VisFragmentAkt" />
         <activity android:name="lekt04_fragmenter_manuel_nav.Hovedaktivitet" />
         <activity android:name="lekt04_fragmenter_manuel_nav.HovedaktivitetMedViewpager"/>
 
@@ -201,7 +203,7 @@
         <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
         <activity android:name="lekt06_asynkron.Asynk4Korrekt" />
         <activity android:name="lekt06_asynkron.Asynk5Message" />
-        <activity android:name="lekt07_fragmenter.BenytMitFragment_akt" />
+        <activity android:name="lekt04_fragmenter_manuel_nav.BenytKnapperFragment_akt" />
         <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
         <activity android:name="lekt08_providers.VisOpkald" />
         <activity android:name="lekt08_providers.VisKalender" />

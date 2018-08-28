@@ -1,8 +1,11 @@
 package lekt04_fragmenter_navhost;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import dk.nordfalk.android.elementer.R;
 
 /**
@@ -20,5 +23,9 @@ public class Hovedaktivitet extends AppCompatActivity {
 
     // Se https://developer.android.com/topic/libraries/architecture/navigation/
     setContentView(R.layout.lekt04_fragmenter_navhost);
+
+    // Hvis du ønsker at på fat i NavController og påvirke navigering fra aktiviteten kan det gøres med:
+    //NavHostFragment frag = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.lekt_04_navhost_fragment);
+    //NavController navController = frag.getNavController();
   }
 }

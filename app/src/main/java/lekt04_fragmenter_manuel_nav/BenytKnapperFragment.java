@@ -17,7 +17,7 @@ import dk.nordfalk.android.elementer.R;
  *
  * @see lekt01_views.BenytKnapperDeklarativ
  */
-public class BenytKnapper_frag extends Fragment implements View.OnClickListener {
+public class BenytKnapperFragment extends Fragment implements View.OnClickListener {
   // Vi erklærer variabler herude så de huskes fra metode til metode
   private Button knap1, knap2, knap3;
   private View rod;

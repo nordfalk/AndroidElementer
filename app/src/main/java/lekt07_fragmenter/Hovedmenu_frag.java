@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import dk.nordfalk.android.elementer.R;
+import lekt04_fragmenter_manuel_nav.BenytKnapperFragment;
 
 /**
  * Created by j on 30-09-14.
@@ -44,7 +45,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
     if (v == knap1) {
       getFragmentManager().beginTransaction()
               .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-              .replace(R.id.fragmentindhold, new MitFragment_frag())
+              .replace(R.id.fragmentindhold, new BenytKnapperFragment())
               .addToBackStack(null)
               .commit();
     } else if (v == knap2) {

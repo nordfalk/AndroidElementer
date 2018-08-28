@@ -76,7 +76,8 @@ public class HovedaktivitetMedViewpager extends AppCompatActivity {
     public Fragment getItem(int position) {
       Fragment f = null;
       if (position == 0) f = new Spillet_frag();
-      else if (position == 2) f = new Spillet_frag();
+      else if (position == 2) f = new BenytKnapperFragment();
+      else if (position == 3) f = new Spillet_frag();
       else f = new Hjaelp_frag();
 
 //      if (position == 0) f = new Hovedmenu_frag();

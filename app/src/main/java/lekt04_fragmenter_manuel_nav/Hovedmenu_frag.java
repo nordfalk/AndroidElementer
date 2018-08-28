@@ -56,7 +56,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
       Spillet_frag fragment = new Spillet_frag();
       Bundle argumenter = new Bundle(); // Overfør data til fragmentet
-      argumenter.putString("velkomst", "\n\nHalløj fra Hovedmenu_frag!\n");
+      argumenter.putString("velkomst", "\n\nHalløj!! Denne tekst kommer fra "+getClass());
       fragment.setArguments(argumenter);
 
       getFragmentManager().beginTransaction()
