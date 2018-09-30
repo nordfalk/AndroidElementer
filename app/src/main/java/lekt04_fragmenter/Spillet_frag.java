@@ -1,4 +1,4 @@
-package lekt04_fragmenter_navhost;
+package lekt04_fragmenter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

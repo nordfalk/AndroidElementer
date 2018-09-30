@@ -1,4 +1,4 @@
-package lekt04_fragmenter_manuel_nav;
+package lekt04_fragmenter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,6 @@ import android.widget.Button;
 
 import dk.nordfalk.android.elementer.R;
 import lekt02_aktiviteter.*;
-import lekt04_fragmenter_navhost.Hjaelp_frag;
-import lekt04_fragmenter_navhost.Spillet_frag;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
   Button hjaelpKnap, indstillingerKnap, spilKnap;

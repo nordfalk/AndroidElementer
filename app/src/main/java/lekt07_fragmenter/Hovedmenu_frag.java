@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import dk.nordfalk.android.elementer.R;
-import lekt04_fragmenter_manuel_nav.BenytKnapperFragment;
+import lekt04_fragmenter.BenytKnapperFragment;
 
 /**
  * Created by j on 30-09-14.

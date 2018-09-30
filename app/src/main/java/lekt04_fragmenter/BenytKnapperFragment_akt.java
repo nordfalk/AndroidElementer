@@ -1,10 +1,9 @@
-package lekt04_fragmenter_manuel_nav;
+package lekt04_fragmenter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import dk.nordfalk.android.elementer.R;
-import lekt04_fragmenter_manuel_nav.BenytKnapperFragment;
 
 
 public class BenytKnapperFragment_akt extends AppCompatActivity {

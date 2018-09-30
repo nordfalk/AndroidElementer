@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import lekt04_fragmenter_manuel_nav.BenytKnapperFragment;
+import lekt04_fragmenter.BenytKnapperFragment;
 
 
 /**

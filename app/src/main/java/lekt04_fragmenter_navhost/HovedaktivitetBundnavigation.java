@@ -1,21 +1,15 @@
 package lekt04_fragmenter_navhost;
 
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import dk.nordfalk.android.elementer.R;
-import lekt02_aktiviteter.Indstillinger_akt;
 
 /**
  * @author Jacob Nordfalk
