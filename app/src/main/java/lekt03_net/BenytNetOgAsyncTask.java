@@ -20,6 +20,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
 
+import lekt02_aktiviteter.Galgelogik;
+
 public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickListener {
   Button knap1, knap2, knap3, knap4, knap5;
   TextView textView;
@@ -108,6 +110,7 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
       //textView.setText( "Du trykkede på " + ((Button) hvadBlevDerKlikketPå).getText());
 
       if (hvadBlevDerKlikketPå == knap1) {
+
         // Nedenstående crasher da netværkskommunikation ikke må ske på hovedtråden
         String rssdata = hentUrl("https://www.version2.dk/it-nyheder/rss");
         String titler = findTitler(rssdata);
@@ -116,7 +119,7 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
 
       } else if (hvadBlevDerKlikketPå == knap2) {
         // Nedenstående tillader netværkskommunikation på hovedtråden
-        // fint til lige at prøve noget, men dårlig idé i længden
+        // fint til lige at prøve noget, men dårlig idé i længden og IKKE TILLADT i en aflevering
         StrictMode.ThreadPolicy normalThreadPolicy = StrictMode.getThreadPolicy();
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build()); // FRARÅDES !!!!
 
@@ -124,6 +127,9 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
         String titler = findTitler(rssdata);
         textView.setText(titler);
         setProgressBarIndeterminateVisibility(false);
+
+        Galgelogik gl = new Galgelogik(); // lidt mere netværk, for et syns skyld
+        gl.hentOrdFraDr();
 
         StrictMode.setThreadPolicy(normalThreadPolicy);
 
@@ -138,6 +144,9 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
           @Override
           protected Object doInBackground(Object... arg0) {
             try {
+              Galgelogik gl = new Galgelogik(); // lidt mere netværk, for et syns skyld
+              gl.hentOrdFraDr();
+
               String rssdata = hentUrl("https://www.version2.dk/it-nyheder/rss");
               String titler = findTitler(rssdata);
               return titler;
@@ -165,6 +174,9 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
           @Override
           protected Object doInBackground(Object... arg0) {
             try {
+              Galgelogik gl = new Galgelogik(); // lidt mere netværk, for et syns skyld
+              gl.hentOrdFraDr();
+
               String rssdata = hentUrl("https://www.version2.dk/it-nyheder/rss");
               String titler = findTitler(rssdata);
               prefs.edit().putString("titler", titler).apply();     // Gem i prefs
