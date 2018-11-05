@@ -23,6 +23,7 @@ public class BenytPreferenceManager extends AppCompatActivity implements View.On
     super.onCreate(savedInstanceState);
 
     LinearLayout linearLayout = new LinearLayout(this);
+    linearLayout.setOrientation(LinearLayout.VERTICAL);
 
     textView = new TextView(this);
     textView.setText("Skriv noget nedenfor");

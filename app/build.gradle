@@ -54,8 +54,8 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
 
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
-    implementation 'com.google.android.gms:play-services-auth:15.0.1'
-    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 
 
     // Klientbibliotekerne til Google People API (https://developers.google.com/people/)
