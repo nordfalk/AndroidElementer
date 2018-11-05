@@ -47,10 +47,14 @@ public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
     if (v == knap1) {
       knap1.setText("arbejder");  // <1>
       SystemClock.sleep(10000);
+      knap1.setText("arbejder mere...");
+      SystemClock.sleep(10000);
+      knap1.setText("og endnu mere... men det vises ikke...");
+      SystemClock.sleep(10000);
       knap1.setText("færdig!");
 
     } else if (v == knap2) {
-      knap2.setText("arbejder");  // <2>
+      knap2.setText("arbejder\nmen det crasher da kun hovedtråden må opdatere brugergrænsefladen");  // <2>
       Runnable r = new Runnable() {
         public void run() {
           SystemClock.sleep(10000);
