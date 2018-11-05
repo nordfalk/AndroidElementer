@@ -190,6 +190,7 @@
         <activity
             android:name="lekt05_sensorer.Balancespil"
             android:screenOrientation="portrait" />
+        <activity android:name="lekt06_data.BenytPreferenceManager" />
         <activity android:name="lekt06_data.CSVParsning" />
         <activity android:name="lekt06_data.JsonParsning" />
         <activity android:name="lekt06_data.JsonGenerering" />
