@@ -2,7 +2,12 @@ package lekt32_overgange;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.transition.*;
+import android.support.transition.AutoTransition;
+import android.support.transition.ChangeBounds;
+import android.support.transition.ChangeImageTransform;
+import android.support.transition.ChangeTransform;
+import android.support.transition.Fade;
+import android.support.transition.TransitionSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
@@ -41,18 +46,13 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
 
     FragmentovergangSlut slutfragment = new FragmentovergangSlut();
 
-    // Langsom overgang så vi kan se hvad der sker. Slet evt .setDuration(1000)
-    slutfragment.setEnterTransition(new Fade().setDuration(1000));
-    setExitTransition(new Fade().setDuration(1000));
+    // Langsomme overgange så vi kan se hvad der sker. Slet evt .setDuration(1000)
+    slutfragment.setEnterTransition(new AutoTransition().setDuration(1000));
+    setExitTransition(new AutoTransition().setDuration(1000));
 
-    // De enkelte views (haredElement) skal have animeret en række egenskaber:
-    TransitionSet transitionSet = new TransitionSet().setDuration(1000)
-            .addTransition(new ChangeBounds())
-            .addTransition(new ChangeTransform())
-            .addTransition(new ChangeImageTransform());
-
-    slutfragment.setSharedElementEnterTransition(transitionSet);
-    slutfragment.setSharedElementReturnTransition(transitionSet);
+    // De enkelte views (SharedElement) der skal animeres
+    slutfragment.setSharedElementEnterTransition(new AutoTransition().setDuration(1000));
+    slutfragment.setSharedElementReturnTransition(new AutoTransition().setDuration(1000));
 
     Bundle argumenter = new Bundle();
     argumenter.putCharSequence("knap-teksten", ((Button) knappen).getText());

@@ -2,6 +2,7 @@ package lekt32_overgange;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
@@ -14,10 +15,8 @@ public class AktivitetsovergangSlut extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.lekt32_overgange_slut);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      findViewById(R.id.ikon).setTransitionName("ikon");
-      findViewById(R.id.enKnap).setTransitionName("knappen");
-    }
+    ViewCompat.setTransitionName(findViewById(R.id.ikon), "ikon");
+    ViewCompat.setTransitionName(findViewById(R.id.enKnap), "knappen");
 
     String knapTeksten = getIntent().getStringExtra("knap-teksten");
     if (knapTeksten==null) knapTeksten = "Hov, fik ikke en knap-tekst?";
