@@ -6,17 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 
 import dk.nordfalk.android.elementer.R;
 
-public class VisFragmentoverrgange extends AppCompatActivity {
+public class VisFragmentovergange extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.lekt04_fragmenter_manuel_nav);
 
-    FragmentovergangBegynd fragmentovergangBegynd = new FragmentovergangBegynd();
     FragmentManager fragmentManager = getSupportFragmentManager();
     fragmentManager.beginTransaction()
-            .replace(R.id.fragmentindhold, fragmentovergangBegynd)
+            .replace(R.id.fragmentindhold, new FragmentovergangBegynd())
             .commit();
   }
 }

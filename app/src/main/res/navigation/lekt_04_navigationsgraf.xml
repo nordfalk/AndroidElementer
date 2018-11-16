@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            app:startDestination="@id/velkomst_frag">
+            app:startDestination="@id/hovedmenu">
 
     <fragment
         android:id="@+id/velkomst_frag"

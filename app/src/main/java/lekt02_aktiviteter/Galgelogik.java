@@ -74,6 +74,7 @@ public class Galgelogik {
     spilletErVundet = false;
     spilletErTabt = false;
     ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
+    System.out.println("nulstil() - sætter ordet (skult) til " + ordet);
     opdaterSynligtOrd();
   }
 

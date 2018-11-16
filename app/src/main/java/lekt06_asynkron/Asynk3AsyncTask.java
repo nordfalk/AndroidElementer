@@ -60,8 +60,6 @@ public class Asynk3AsyncTask extends AppCompatActivity implements OnClickListene
 
     if (v == knap1) {
 
-      knap1.setText("arbejder");
-
       class AsyncTask1 extends AsyncTask {
         @Override
         protected Object doInBackground(Object... arg0) {
@@ -75,6 +73,8 @@ public class Asynk3AsyncTask extends AppCompatActivity implements OnClickListene
         }
       }
       new AsyncTask1().execute();
+
+      knap1.setText("arbejder");
 
 
     } else if (v == knap2) {

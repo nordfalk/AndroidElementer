@@ -2,7 +2,13 @@ package lekt32_overgange;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.transition.ChangeBounds;
+import android.support.transition.ChangeClipBounds;
+import android.support.transition.ChangeImageTransform;
+import android.support.transition.ChangeTransform;
+import android.support.transition.TransitionSet;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
@@ -39,12 +45,21 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
     FragmentovergangSlut f = new FragmentovergangSlut();
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      Transition overgang = TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans);
-      f.setSharedElementEnterTransition(overgang);
+      //Transition overgang = TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans);
+      f.setSharedElementEnterTransition(new ChangeBounds());
+      f.setSharedElementReturnTransition(new ChangeBounds());
+//      this.setSharedElementReturnTransition(overgang);
 
       //this.setSharedElementReturnTransition(overgang);
-      this.setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
-
+      //this.setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans));
+      /*
+      TransitionSet returnTransition = new TransitionSet();
+      returnTransition.addTransition(new ChangeBounds());
+      returnTransition.addTransition(new ChangeClipBounds());
+      returnTransition.addTransition(new ChangeImageTransform());
+      returnTransition.addTransition(new ChangeTransform());
+      f.setSharedElementReturnTransition(returnTransition);
+      */
       //f.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
 
       ikon.setTransitionName("ikon");
@@ -56,7 +71,7 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
             .addToBackStack("Overgange")
             .addSharedElement(ikon, "ikon")
             .addSharedElement(trykketPåKnap, "knappen")
-            .setTransition(R.transition.lekt32_overgange_trans)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
             .commit();
   }
 }

@@ -292,7 +292,7 @@
         <activity android:name="lekt31_venstremenu.BenytVenstremenu" />
         <activity android:name="lekt32_overgange.AktivitetsovergangBegynd" />
         <activity android:name="lekt32_overgange.AktivitetsovergangSlut" />
-        <activity android:name="lekt32_overgange.VisFragmentoverrgange" />
+        <activity android:name="lekt32_overgange.VisFragmentovergange" />
 
 
         <activity android:name="lekt50_aktivitetsgenkendelse.Aktivitetsgenkendelse_akt" />

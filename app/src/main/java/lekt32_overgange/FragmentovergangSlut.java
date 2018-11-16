@@ -20,8 +20,8 @@ public class FragmentovergangSlut extends Fragment {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       view.findViewById(R.id.ikon).setTransitionName("ikon");
       view.findViewById(R.id.enKnap).setTransitionName("knappen");
-      Transition overgang = TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans);
-      setSharedElementReturnTransition(overgang);
+      //Transition overgang = TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans);
+      //setSharedElementReturnTransition(overgang);
     }
 
     return view;
