@@ -13,6 +13,10 @@ public class VisFragmentovergange extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.lekt04_fragmenter_manuel_nav);
 
+    // Vi sætter blå baggrund for at undgå at baggrunden kortvarigt bliver rødlig -
+    // fordi vi fader imellem to blå fragmenter
+    findViewById(R.id.fragmentindhold).setBackgroundColor(0xff333399);
+
     FragmentManager fragmentManager = getSupportFragmentManager();
     fragmentManager.beginTransaction()
             .replace(R.id.fragmentindhold, new FragmentovergangBegynd())

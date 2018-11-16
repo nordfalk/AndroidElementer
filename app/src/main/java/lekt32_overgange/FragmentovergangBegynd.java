@@ -2,15 +2,10 @@ package lekt32_overgange;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.transition.ChangeBounds;
-import android.support.transition.ChangeClipBounds;
-import android.support.transition.ChangeImageTransform;
-import android.support.transition.ChangeTransform;
-import android.support.transition.TransitionSet;
+import android.support.transition.*;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,44 +29,42 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
     knap2.setOnClickListener(this);
     knap3.setOnClickListener(this);
 
+    // Alle views der muligvis skal animeres skal have et navn i onCreateView()
+    ViewCompat.setTransitionName(ikon, "ikon");
+    ViewCompat.setTransitionName(knap1, "knap1");
+    ViewCompat.setTransitionName(knap2, "knap2");
+    ViewCompat.setTransitionName(knap3, "knap3");
     return rod;
   }
 
-  public void onClick(View trykketPåKnap) {
+  public void onClick(View knappen) {
+
+    FragmentovergangSlut slutfragment = new FragmentovergangSlut();
+
+    // Langsom overgang så vi kan se hvad der sker. Slet evt .setDuration(1000)
+    slutfragment.setEnterTransition(new Fade().setDuration(1000));
+    setExitTransition(new Fade().setDuration(1000));
+
+    // De enkelte views (haredElement) skal have animeret en række egenskaber:
+    TransitionSet transitionSet = new TransitionSet().setDuration(1000)
+            .addTransition(new ChangeBounds())
+            .addTransition(new ChangeTransform())
+            .addTransition(new ChangeImageTransform());
+
+    slutfragment.setSharedElementEnterTransition(transitionSet);
+    slutfragment.setSharedElementReturnTransition(transitionSet);
+
+    Bundle argumenter = new Bundle();
+    argumenter.putCharSequence("knap-teksten", ((Button) knappen).getText());
+    slutfragment.setArguments(argumenter);
 
     // Lav bindinger til mål-aktiviteten, så der kan laves glidende overgange
-    // Navnene skal passe med det TransitionName viewsne har i mål-aktiviteten
-
-    FragmentovergangSlut f = new FragmentovergangSlut();
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      //Transition overgang = TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans);
-      f.setSharedElementEnterTransition(new ChangeBounds());
-      f.setSharedElementReturnTransition(new ChangeBounds());
-//      this.setSharedElementReturnTransition(overgang);
-
-      //this.setSharedElementReturnTransition(overgang);
-      //this.setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(R.transition.lekt32_overgange_trans));
-      /*
-      TransitionSet returnTransition = new TransitionSet();
-      returnTransition.addTransition(new ChangeBounds());
-      returnTransition.addTransition(new ChangeClipBounds());
-      returnTransition.addTransition(new ChangeImageTransform());
-      returnTransition.addTransition(new ChangeTransform());
-      f.setSharedElementReturnTransition(returnTransition);
-      */
-      //f.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
-
-      ikon.setTransitionName("ikon");
-      trykketPåKnap.setTransitionName("knappen");
-    }
-
+    // Navnene her skal passe med det TransitionName viewsne har i mål-aktiviteten
     getFragmentManager().beginTransaction()
-            .replace(R.id.fragmentindhold, f)
-            .addToBackStack("Overgange")
             .addSharedElement(ikon, "ikon")
-            .addSharedElement(trykketPåKnap, "knappen")
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+            .addSharedElement(knappen, "knappen")
+            .replace(R.id.fragmentindhold, slutfragment)
+            .addToBackStack(null)
             .commit();
   }
 }
