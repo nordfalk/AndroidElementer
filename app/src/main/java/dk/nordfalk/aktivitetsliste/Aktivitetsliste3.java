@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,7 +36,7 @@ import dk.nordfalk.android.elementer.R;
 
 public class Aktivitetsliste3 extends AppCompatActivity {
   int onStartTæller;
-  ToggleButton seKildekodeToggleButton;
+  CheckBox seKildekodeToggleButton;
   ViewPager viewPager;
   private SharedPreferences prefs;
   private String sidstKlikketPåAkt;
@@ -64,10 +65,8 @@ public class Aktivitetsliste3 extends AppCompatActivity {
     ((LinearLayout.LayoutParams) viewPager.getLayoutParams()).weight = 1;
     setContentView(ll);
 
-    seKildekodeToggleButton = new ToggleButton(this);
-    seKildekodeToggleButton.setTextOff("Se kilde");
-    seKildekodeToggleButton.setTextOn("Se kilde");
-    seKildekodeToggleButton.setChecked(false);
+    seKildekodeToggleButton = new CheckBox(this);
+    seKildekodeToggleButton.setText("Se kilde");
 
     ActionBar actionBar = getSupportActionBar();
     actionBar.setDisplayShowCustomEnabled(true);

@@ -83,7 +83,7 @@ public class Aktivitetsdata {
       // ... og tænd skærmen 30 sekunder, og også lidt efter...
       PowerManager powerManager = (PowerManager) app.getSystemService(Context.POWER_SERVICE);
       PowerManager.WakeLock wakeLock = powerManager.newWakeLock(
-              PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "Aktivitetsliste");
+              PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "androidelementer:Aktivitetsliste");
       wakeLock.acquire(30000);
     } catch (Exception e) {
       e.printStackTrace();
