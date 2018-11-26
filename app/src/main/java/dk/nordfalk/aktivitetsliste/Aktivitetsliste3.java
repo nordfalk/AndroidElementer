@@ -54,6 +54,7 @@ public class Aktivitetsliste3 extends AppCompatActivity {
     viewPager.setPageTransformer(false, new ZoomOutPageTransformer());
 
     PagerSlidingTabStrip pagerSlidingTabStrip = new PagerSlidingTabStrip(this);
+    pagerSlidingTabStrip.setAllCaps(false);
     pagerSlidingTabStrip.setViewPager(viewPager);
 
     LinearLayout ll = new LinearLayout(this);
