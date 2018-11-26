@@ -15,6 +15,8 @@ import dk.nordfalk.android.elementer.R;
  * @author Jacob Nordfalk
  */
 public class HovedaktivitetBundnavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+  private NavController navController;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -28,17 +30,22 @@ public class HovedaktivitetBundnavigation extends AppCompatActivity implements B
     setContentView(R.layout.lekt04_fragmenter_navhost);
 
 
+    // Hvis du ønsker at på fat i NavController og påvirke navigering fra aktiviteten kan det gøres med:
+    NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.lekt_04_navhost_fragment);
+    navController = navHostFragment.getNavController();
+
     BottomNavigationView bottomNavigationView = findViewById(R.id.bundnavigation);
     bottomNavigationView.setVisibility(View.VISIBLE);
+
+    // Hvis menuens ID'er svarer til ID'erne i navigationsgrafen kan de bindes sammen således
+    //NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+    // Ellers er man nødt til at håndtere det selv, med en OnNavigationItemSelectedListener, som nedenfor
     bottomNavigationView.setOnNavigationItemSelectedListener(this);
   }
 
   @Override
   public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-    // Hvis du ønsker at på fat i NavController og påvirke navigering fra aktiviteten kan det gøres med:
-    NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.lekt_04_navhost_fragment);
-    NavController navController = navHostFragment.getNavController();
 
     if (item.getItemId() == R.id.javabog) {
 

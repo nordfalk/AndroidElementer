@@ -36,7 +36,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
     TableLayout tl = new TableLayout(this);
 
     TextView tv = new TextView(this);
-    tv.setText("Fra Android 6 (targetSdkVersion 23) og frem skal brugeren spørges om lov først før visse handlinger kan udføres.\n\n");
+    tv.setText("Brugeren skal spørges om lov først før visse handlinger kan udføres.\n\n");
     tl.addView(tv);
 
     nummerfelt = new EditText(this);
