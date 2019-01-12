@@ -13,7 +13,7 @@ import com.google.android.gms.location.GeofencingEvent;
 import java.util.List;
 
 import dk.nordfalk.android.elementer.R;
-import lekt50_aktivitetsgenkendelse.Aktivitetsgenkendelse_akt;
+import lekt03_diverse.BenytNotifikation;
 
 /**
  * Created by j on 19-11-15.
@@ -50,7 +50,7 @@ public class GeofenceIntentService extends IntentService {
     } else {
       // Vis også en notifikation så man kan komme hen og slå det fra
       PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, Stedplacering_akt.class), 0);
-      NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+      NotificationCompat.Builder builder = new NotificationCompat.Builder(this, BenytNotifikation.opretNotifKanal(this))
               .setContentIntent(pendingIntent)
               .setSmallIcon(R.drawable.logo)
               .setTicker("Geofence")

@@ -60,6 +60,7 @@
 
     <application
         android:name="lekt04_arkitektur.MinApp"
+        android:label="AndroidElementer"
         android:theme="@style/AppTheme"
         android:icon="@drawable/logo"
         android:allowBackup="true">
@@ -123,6 +124,7 @@
         <activity android:name="lekt03_diverse.BenytLayoutInflater" />
         <activity android:name="lekt03_diverse.BenytMenuerFraXml" />
         <activity android:name="lekt03_diverse.BenytDialogerOgToasts" />
+        <activity android:name="lekt03_diverse.BenytNotifikation" />
         <activity android:name="lekt03_diverse.TekstTilTale" />
         <activity android:name="lekt03_diverse.Taleeventyr" />
         <activity android:name="lekt03_diverse.Talegenkendelse" />
@@ -320,7 +322,7 @@
         <!-- aktivitet som kan ses fra startskærmen -->
         <activity
             android:name="dk.nordfalk.aktivitetsliste.Aktivitetsliste3"
-            android:label="AndroidElementer" >
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

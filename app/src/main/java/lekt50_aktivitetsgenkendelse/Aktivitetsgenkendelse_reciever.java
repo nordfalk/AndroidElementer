@@ -14,6 +14,7 @@ import com.google.android.gms.location.DetectedActivity;
 import java.util.Date;
 
 import dk.nordfalk.android.elementer.R;
+import lekt03_diverse.BenytNotifikation;
 import lekt50_googlested.TekstTilTale;
 
 
@@ -46,7 +47,7 @@ public class Aktivitetsgenkendelse_reciever extends BroadcastReceiver {
       if (Aktivitetsgenkendelse_akt.instans == null) {
         // Vis en notifikation så man kan komme hen og slå aktivitetsgenkendelse fra
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, Aktivitetsgenkendelse_akt.class), 0);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, BenytNotifikation.opretNotifKanal(context))
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.bil)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.logo))

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 import dk.nordfalk.android.elementer.R;
+import lekt03_diverse.BenytNotifikation;
 import lekt05_grafik.Tegneprogram;
 
 /**
@@ -87,7 +88,7 @@ public class VisLevendeNotifikation extends AppCompatActivity implements OnClick
       Intent intent = new Intent(this, Tegneprogram.class);
       PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
 
-      NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+      NotificationCompat.Builder builder = new NotificationCompat.Builder(this, BenytNotifikation.opretNotifKanal(this))
               .setContentIntent(pi)
               .setSmallIcon(R.drawable.bil)
               .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo))

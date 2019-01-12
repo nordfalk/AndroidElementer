@@ -49,6 +49,7 @@ public class ForgrundsService extends Service {
             .setTicker("AndroidElementer holdes i hukommelsen")
             .setContentTitle("Bliver i hukommelsen")
             .setContentText("Klik her for at stoppe servicen")
+            .setChannelId("krusedulle")
             ;
     startForeground(42, builder.build());
     return START_STICKY; // evt START_REDELIVER_INTENT hvis intentdata skal huskes i fald at processen bliver genstartet

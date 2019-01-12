@@ -1,17 +1,10 @@
 package lekt03_diverse;
 
-import android.support.v7.app.AppCompatActivity;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -25,14 +18,13 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
-import lekt05_grafik.Tegneprogram;
 
 /**
  * @author Jacob Nordfalk
  */
 public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickListener {
 
-  Button visStandardToast, visToastMedBillede, visSnackBar, visAlertDialog, visAlertDialog1, visAlertDialog2, visProgressDialog, visProgressDialogMedBillede, visNoitifikation;
+  Button visStandardToast, visToastMedBillede, visSnackBar, visAlertDialog, visAlertDialog1, visAlertDialog2, visProgressDialog, visProgressDialogMedBillede;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +64,6 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
     visProgressDialogMedBillede.setText("vis ProgressDialog Med Billede");
     tl.addView(visProgressDialogMedBillede);
 
-    visNoitifikation = new Button(this);
-    visNoitifikation.setText("vis Noitifikation");
-    tl.addView(visNoitifikation);
-
     visStandardToast.setOnClickListener(this);
     visToastMedBillede.setOnClickListener(this);
     visProgressDialog.setOnClickListener(this);
@@ -84,7 +72,6 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
     visAlertDialog.setOnClickListener(this);
     visAlertDialog1.setOnClickListener(this);
     visAlertDialog2.setOnClickListener(this);
-    visNoitifikation.setOnClickListener(this);
 
     ScrollView sv = new ScrollView(this);
     sv.addView(tl);
@@ -122,7 +109,6 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       dialog.setIcon(R.drawable.logo);
       dialog.setMessage("Denne her har én knap");
       dialog.setPositiveButton("Vis endnu en toast", new AlertDialog.OnClickListener() {
-
         public void onClick(DialogInterface arg0, int arg1) {
           Toast.makeText(BenytDialogerOgToasts.this, "Standard-toast", Toast.LENGTH_LONG).show();
         }
@@ -135,7 +121,6 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       et.setText("Denne her viser et generelt view og har to knapper");
       dialog.setView(et);
       dialog.setPositiveButton("Vis endnu en toast", new AlertDialog.OnClickListener() {
-
         public void onClick(DialogInterface arg0, int arg1) {
           Toast.makeText(BenytDialogerOgToasts.this, "Endnu en standard-toast", Toast.LENGTH_LONG).show();
         }
@@ -151,30 +136,11 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       dialog.setIcon(R.drawable.logo);
       dialog.setMessage("hej herfra");
       dialog.setOnCancelListener(new OnCancelListener() {
-
         public void onCancel(DialogInterface dialog) {
           Toast.makeText(BenytDialogerOgToasts.this, "Annulleret", Toast.LENGTH_LONG).show();
         }
       });
       dialog.show();
-    } else if (hvadBlevDerKlikketPå == visNoitifikation) {
-      Intent intent = new Intent(this, Tegneprogram.class);
-      PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-
-      NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-              .setContentIntent(pi)
-              .setSmallIcon(R.drawable.bil)
-              .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo))
-              .setTicker("Der skal tegnes!")
-              .setContentTitle("Tegn!")
-              .setContentText("Du er nødt til at tegne lidt")
-              .setSubText("Bla bla bla og en længere forklaring");
-
-      long[] vibrate = {0, 100, 300, 400, 500, 510, 550, 560, 600, 610, 650, 610, -1};
-      builder.setVibrate(vibrate);
-
-      NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-      notificationManager.notify(42, builder.build());
     }
   }
 }
