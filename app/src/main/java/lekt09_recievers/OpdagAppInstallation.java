@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
+import lekt03_diverse.BenytNotifikation;
 
 /**
  * Eksempel på en broadcast reciever
@@ -92,7 +93,7 @@ public class OpdagAppInstallation extends AppCompatActivity implements OnClickLi
       // Vis også en notifikation så man kan komme hen og slå det fra
       Intent intent = new Intent(ctx, OpdagAppInstallation.class);
       PendingIntent aktivitet = PendingIntent.getActivity(ctx, 0, intent, 0);
-      NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx)
+      NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx, BenytNotifikation.opretNotifKanal(ctx))
               .setContentIntent(aktivitet)
               .setSmallIcon(R.drawable.bil)
               .setTicker("Installation")
