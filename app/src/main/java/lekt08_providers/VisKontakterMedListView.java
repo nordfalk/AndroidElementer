@@ -52,7 +52,7 @@ public class VisKontakterMedListView extends AppCompatActivity implements OnItem
 
   private void visKontakter() {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 123456);
+      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 1234);
       Toast.makeText(this, "Bruger skal godkende tilladelser først", Toast.LENGTH_LONG).show();
       return;
     }

@@ -43,6 +43,9 @@ public class VisOpkald extends AppCompatActivity {
     scrollView.addView(textView);
     setContentView(scrollView);
 
+    textView.append("Bemærk: Eksemplet virker ikke i versionen installeret fra Google Play. \n" +
+            "Se https://android-developers.googleblog.com/2019/01/reminder-smscall-log-policy-changes.html\n");
+
     visOpkald();
   }
 
@@ -53,8 +56,9 @@ public class VisOpkald extends AppCompatActivity {
 
   private void visOpkald() {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+      textView.append("Bruger skal godkende tilladelser først\n\n");
+      if (textView.getText().length()>1000) return; // undgå uendelig løkke i fald tilladelserne ikke er i manifest
       ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALL_LOG}, 1234);
-      Toast.makeText(this, "Bruger skal godkende tilladelser først", Toast.LENGTH_LONG).show();
       return;
     }
     textView.append("Herunder kommmer opkald\n");
