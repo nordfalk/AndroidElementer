@@ -17,8 +17,8 @@ public class BenytVideoView extends AppCompatActivity implements OnClickListener
 
   //private String url = "rtsp://v3.cache3.c.youtube_videoview.com/CigLENy73wIaHwnMkA0Ndzke5BMYESARFEgGUgx1c2VyX3VwbG9hZHMM/0/0/0/video.3gp";
   //private String videoUrl = "file:///sdcard/DCIM/100MEDIA/VIDEO0025.3gp";
-  private String videoUrl = "http://javabog.dk/billeder/AK2008/15022008012.mp4";
-  private String link = "http://javabog.dk";
+  private String videoUrl = "https://javabog.dk/billeder/AK2008/15022008012.mp4";
+  private String link = "https://javabog.dk";
   private VideoView videoView;
   private TextView overskrift;
   private TextView beskrivelse;

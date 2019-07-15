@@ -11,7 +11,7 @@ public class BenytWebView extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     WebView webView = new WebView(this);
-    webView.loadUrl("http://javabog.dk");
+    webView.loadUrl("https://javabog.dk");
     setContentView(webView);
   }
 }

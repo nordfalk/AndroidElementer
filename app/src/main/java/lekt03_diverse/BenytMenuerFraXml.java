@@ -44,7 +44,7 @@ public class BenytMenuerFraXml extends AppCompatActivity {
     textView.append("\nonOptionsItemSelected(" + item.getTitle());
     if (item.getItemId() == R.id.javabog) {
 
-      Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://javabog.dk"));
+      Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://javabog.dk"));
       startActivity(intent);
 
     } else if (item.getItemId() == R.id.bil) {

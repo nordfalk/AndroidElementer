@@ -47,7 +47,7 @@ public class BenytMenuer extends AppCompatActivity {
     textView.append("\nonOptionsItemSelected kaldt med " + item.getTitle());
     if (item.getItemId() == 101) {
 
-      Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://javabog.dk"));
+      Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://javabog.dk"));
       startActivity(intent);
 
     } else if (item.getItemId() == 102) {

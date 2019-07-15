@@ -93,7 +93,7 @@ public class Kompas extends AppCompatActivity implements SensorEventListener {
               data = data + "_t="+sobs.timestamp+"_v="+sobs.values[0];
             }
 
-            URL url = new URL("http://javabog.dk/sensorObs_id=jacob"+data);
+            URL url = new URL("https://javabog.dk/sensorObs_id=jacob"+data);
             URLConnection uc = url.openConnection();
             uc.setDoOutput(true);
             uc.connect();

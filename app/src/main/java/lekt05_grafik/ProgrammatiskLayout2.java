@@ -75,7 +75,7 @@ public class ProgrammatiskLayout2 extends AppCompatActivity implements OnClickLi
 
 
     WebView webView = new WebView(this);
-    webView.loadUrl("http://javabog.dk");
+    webView.loadUrl("https://javabog.dk");
     tableLayout.addView(webView);
     webView.getLayoutParams().height = 300; //LayoutParams.WRAP_CONTENT;
 

@@ -53,7 +53,7 @@ public class ByvejrProgrammatisk extends AppCompatActivity implements OnClickLis
     tableLayout.addView(annullerKnap);
 
     webView = new WebView(this);
-    webView.loadUrl("http://javabog.dk");
+    webView.loadUrl("https://javabog.dk");
     tableLayout.addView(webView);
     webView.getLayoutParams().height = 300; //LayoutParams.WRAP_CONTENT;
 
@@ -71,7 +71,7 @@ public class ByvejrProgrammatisk extends AppCompatActivity implements OnClickLis
     if (hvadBlevDerKlikketPå == okKnap) {
       String valgtPostNr = editText.getText().toString();
       Toast.makeText(this, "Viser byvejr for " + valgtPostNr, Toast.LENGTH_LONG).show();
-      webView.loadUrl("http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
+      webView.loadUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
     } else {
       Toast.makeText(this, "Denne knap er ikke implementeret endnu", Toast.LENGTH_LONG).show();
     }

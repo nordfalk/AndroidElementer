@@ -64,6 +64,7 @@
         android:label="AndroidElementer"
         android:theme="@style/AppTheme"
         android:icon="@drawable/logo"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true">
 
         <!--
@@ -86,7 +87,7 @@
             android:name="lekt02_intents.BenytIntentsMedResultat"
             android:screenOrientation="portrait" />
 
-        <!-- Denne aktivitet fanger browsning af URLer der starter med http://javabog.dk/OOP/ -->
+        <!-- Denne aktivitet fanger browsning af URLer der starter med https://javabog.dk/OOP/ -->
         <activity android:name="lekt02_intents.FangBrowseIntent" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -94,6 +95,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data
+                    android:scheme="https"
+                    android:host="javabog.dk"
+                    android:pathPrefix="/OOP/"
+                    />
                 <data
                     android:scheme="http"
                     android:host="javabog.dk"

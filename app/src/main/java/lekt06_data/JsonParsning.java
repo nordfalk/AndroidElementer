@@ -23,7 +23,7 @@ public class JsonParsning extends AppCompatActivity {
 
     try {
       InputStream is = getResources().openRawResource(R.raw.data_jsoneksempel);
-      //InputStream is = new URL("http://javabog.dk/eksempel.json").openStream();
+      //InputStream is = new URL("https://javabog.dk/eksempel.json").openStream();
 
       byte b[] = new byte[is.available()]; // kun små filer
       is.read(b);

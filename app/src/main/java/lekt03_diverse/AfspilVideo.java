@@ -14,7 +14,7 @@ public class AfspilVideo extends AppCompatActivity {
     VideoView videoView = new VideoView(this);
     setContentView(videoView);
 
-    videoView.setVideoPath("http://javabog.dk/filer/hej_fra_Jacob.mp4");
+    videoView.setVideoPath("https://javabog.dk/filer/hej_fra_Jacob.mp4");
     // Du kan eventuelt pege på en lokal fil fra SD-kortet i stedet
     //videoView.setVideoPath("file:///sdcard/DCIM/100MEDIA/VIDEO0025.3gp");
     videoView.setMediaController(new MediaController(this));

@@ -30,7 +30,7 @@ public class ByvejrDeklarativ extends AppCompatActivity implements OnClickListen
     okKnap = findViewById(R.id.okKnap);
     annullerKnap = findViewById(R.id.annullerKnap);
     webView = findViewById(R.id.webView);
-    webView.loadUrl("http://javabog.dk");
+    webView.loadUrl("https://javabog.dk");
 
     okKnap.setOnClickListener(this);
     annullerKnap.setOnClickListener(this);
@@ -41,7 +41,7 @@ public class ByvejrDeklarativ extends AppCompatActivity implements OnClickListen
     if (hvadBlevDerKlikketPå == okKnap) {
       String valgtPostNr = editText.getText().toString();
       Toast.makeText(this, "Viser byvejr for " + valgtPostNr, Toast.LENGTH_LONG).show();
-      webView.loadUrl("http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
+      webView.loadUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
     } else {
       Toast.makeText(this, "Denne knap er ikke implementeret endnu", Toast.LENGTH_LONG).show();
     }

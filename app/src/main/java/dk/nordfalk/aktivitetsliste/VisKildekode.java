@@ -103,7 +103,7 @@ public class VisKildekode extends AppCompatActivity {
         TransformFilter dokFilter = new TransformFilter() {
           public final String transformUrl(final Matcher match, String url) {
             String klassenavn = match.group(1);
-            return "http://developer.android.com/reference/" + klassenavn.replace('.', '/') + ".html";
+            return "https://developer.android.com/reference/" + klassenavn.replace('.', '/') + ".html";
           }
         };
         Linkify.addLinks(tv, Pattern.compile("import (android.*?);"), null, null, dokFilter);
