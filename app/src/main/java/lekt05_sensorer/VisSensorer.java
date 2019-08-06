@@ -21,6 +21,7 @@ public class VisSensorer extends AppCompatActivity implements SensorEventListene
   String[] senesteMålinger = new String[100];
   SensorManager sensorManager;
   MediaPlayer enLyd;
+  long senesteSkærmopdatering;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,10 @@ public class VisSensorer extends AppCompatActivity implements SensorEventListene
     if (sensortype < senesteMålinger.length) {
       senesteMålinger[sensortype] = måling;
     }
+
+    long nu = System.currentTimeMillis(); // max 50 visninger per sekund
+    if (nu < senesteSkærmopdatering + 20) return;
+    senesteSkærmopdatering = nu;
 
     StringBuilder tekst = new StringBuilder();
     // Tilføj alle de forskellige sensorers seneste målinger til tekst
