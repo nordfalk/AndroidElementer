@@ -1,14 +1,13 @@
 package dk.nordfalk.aktivitetsliste;
 
-import android.app.Activity;
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.app.Application;
 import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -76,7 +75,7 @@ public class Aktivitetsdata {
     try {
       // App'en startes i frisk JVM, den er sikkert lige installeret fra USB-kabel, så...
       // Fjern evt skærmlås ...
-      KeyguardManager keyguardManager = (KeyguardManager) app.getSystemService(Activity.KEYGUARD_SERVICE);
+      KeyguardManager keyguardManager = (KeyguardManager) app.getSystemService(AppCompatActivity.KEYGUARD_SERVICE);
       KeyguardManager.KeyguardLock lock = keyguardManager.newKeyguardLock(Context.KEYGUARD_SERVICE);
       lock.disableKeyguard();
 

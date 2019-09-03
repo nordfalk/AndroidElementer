@@ -1,7 +1,5 @@
 package dk.nordfalk.aktivitetsliste;
 
-import android.support.v7.app.AppCompatActivity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -12,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.util.Linkify;
 import android.text.util.Linkify.TransformFilter;

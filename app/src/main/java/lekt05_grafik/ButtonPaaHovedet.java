@@ -7,12 +7,12 @@ package lekt05_grafik;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.widget.Button;
+import android.support.v7.widget.AppCompatButton;
 
 /**
  * @author j
  */
-public class ButtonPaaHovedet extends Button {
+public class ButtonPaaHovedet extends AppCompatButton {
 
   public ButtonPaaHovedet(Context c) {
     super(c);

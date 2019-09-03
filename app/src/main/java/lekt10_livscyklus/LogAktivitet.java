@@ -1,13 +1,13 @@
 package lekt10_livscyklus;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 /**
  * @author Jacob Nordfalk
  */
-public class LogAktivitet extends Activity {
+public class LogAktivitet extends AppCompatActivity {
 
   /**
    * Denne klassevariabel vil tælle antallet af objekter (instanser af klassen)
@@ -80,24 +80,6 @@ public class LogAktivitet extends Activity {
   protected void onDestroy() {
     Log.d(logNavn, "onDestroy()");
     super.onDestroy();
-  }
-
-  /**
-   * Når skærmen vendes eller tastaturet bliver skubbet ind siger man der er sket
-   * en ændring i telefonens konfiguration.
-   * Så skal komponenterne have ændret størrelse
-   * Evt skal et andet layout vises (layout-land)
-   * Evt skærmtastatur skal vises/skjules
-   * Systemet vil kalde denne metode så du kan give et enkelt objekt som indeholder
-   * data der ikke er relateret til telefonens konfiguration (eonConfigurationInstance).
-   * Dette bliver overført til det nye aktivitets-objekt oprettes med de nye skærmdimensioner etc.
-   * I den nye instans kan du få objektet ved at kalde getLastNonConfigurationInstance()
-   *
-   * @return Data der ikke er relateret til telefonens konfiguration
-   */
-  public Object onRetainNonConfigurationInstance() {
-    Log.d(logNavn, "onRetainNonConfigurationInstance()");
-    return super.onRetainNonConfigurationInstance();
   }
 
   /**
