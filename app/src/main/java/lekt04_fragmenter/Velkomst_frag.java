@@ -33,6 +33,7 @@ public class Velkomst_frag extends Fragment implements Runnable {
   }
 
   public void run() {
+    if (getActivity()==null) return; // Hvis brugeren er hoppet ud af aktiviteten
     Fragment fragment = new Hovedmenu_frag();
     getFragmentManager().beginTransaction()
             .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)

@@ -8,9 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.LinearLayout;
-
-import dk.nordfalk.aktivitetsliste.PagerSlidingTabStrip;
 import dk.nordfalk.aktivitetsliste.ZoomOutPageTransformer;
 import dk.nordfalk.android.elementer.R;
 
@@ -24,22 +21,11 @@ public class HovedaktivitetMedViewpager extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     requestWindowFeature(Window.FEATURE_ACTION_BAR);
     super.onCreate(savedInstanceState);
-//    setContentView(R.layout.lekt04_fragmenter);
+    setContentView(R.layout.viewpager_med_titel);
 
-    viewPager = new ViewPager(this);
-    viewPager.setId(R.id.viewPager);
+    viewPager = findViewById(R.id.viewPager);
     viewPager.setAdapter(new GalgelegViewPagerAdapter(getSupportFragmentManager()));
     viewPager.setPageTransformer(false, new ZoomOutPageTransformer());
-
-    PagerSlidingTabStrip pagerSlidingTabStrip = new PagerSlidingTabStrip(this);
-    pagerSlidingTabStrip.setViewPager(viewPager);
-
-    LinearLayout ll = new LinearLayout(this);
-    ll.setOrientation(LinearLayout.VERTICAL);
-    ll.addView(pagerSlidingTabStrip);
-    ll.addView(viewPager);
-    ((LinearLayout.LayoutParams) viewPager.getLayoutParams()).weight = 1;
-    setContentView(ll);
 
     setTitle("Hovedaktivitet");
     // Man kan trykke på app-ikonet i øverste venstre hjørne
