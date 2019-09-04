@@ -1,11 +1,9 @@
 package lekt32_overgange;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.ViewCompat;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

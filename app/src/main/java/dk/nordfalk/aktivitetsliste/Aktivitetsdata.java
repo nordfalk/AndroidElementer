@@ -7,7 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.PowerManager;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -96,12 +96,14 @@ public class Aktivitetsdata {
     try {
       for (ActivityInfo a : app.getPackageManager().
               getPackageInfo(app.getPackageName(), PackageManager.GET_ACTIVITIES).activities) {
+        //Log.d(TAG, "indlæsPakker: "+a);
+        if (a.name.startsWith("com.google")) continue; // Udelad Google-aktiviteter der bliver vævet med ind i manifestet
         aktiviteterIManifestet.add(a.name);
       }
     } catch (PackageManager.NameNotFoundException ex) {
       ex.printStackTrace();
     }
-    aktiviteterIManifestet.add("AndroidManifest.xml");
+    //aktiviteterIManifestet.add("AndroidManifest.xml");
 
     final File cachefil = new File(app.getCacheDir(), "Aktivitetslistecache.ser");
 

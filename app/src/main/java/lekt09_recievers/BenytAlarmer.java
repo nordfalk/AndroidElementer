@@ -1,6 +1,6 @@
 package lekt09_recievers;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -14,8 +14,6 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import lekt09_services.MinIntentService;
 
 /**
  * @author Jacob Nordfalk

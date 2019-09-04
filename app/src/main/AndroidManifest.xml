@@ -236,7 +236,7 @@
 
         <!-- standardløsningen er at bruge FileProvider fra supportbiblioteket -->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="dk.nordfalk.android.elementer.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -292,7 +292,6 @@
         <activity android:name="lekt10_livscyklus.LogAktivitet" />
         <activity android:name="lekt10_livscyklus.Liv1_singleton" />
         <activity android:name="lekt10_livscyklus.Liv2_gemIFil" />
-        <activity android:name="lekt10_livscyklus.Liv3_nonConfigurationInstance" />
         <activity android:name="lekt10_livscyklus.Liv4_bundle" />
         <activity android:name="lekt10_livscyklus.DialogDerOverleverSkaermvending" />
 

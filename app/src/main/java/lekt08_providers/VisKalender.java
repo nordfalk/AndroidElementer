@@ -10,12 +10,11 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.CalendarContract.Calendars;
 import android.provider.CalendarContract.Events;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +49,7 @@ public class VisKalender extends AppCompatActivity {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
       ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALENDAR}, 1234);
       Toast.makeText(this, "Bruger skal godkende tilladelser først", Toast.LENGTH_LONG).show();
-      new Exception().printStackTrace();
+      //new Exception().printStackTrace();
       return;
     }
     textView.append("Herunder kommmer kalender\n\n");

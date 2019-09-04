@@ -41,21 +41,21 @@ dependencies {
 
     // Kompatibilitetsbiblioteker - se http://developer.android.com/tools/support-library/
     // Understøttelse af fragmenter
-    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // Understøttelse af actionbar/Toolbar
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
 
     // Navigation
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha05'
-    implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha05'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
     //implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
     // Understøttelse af venstremenu og SnackBar
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 
 
     // Klientbibliotekerne til Google People API (https://developers.google.com/people/)

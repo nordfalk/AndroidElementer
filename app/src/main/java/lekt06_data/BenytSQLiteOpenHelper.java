@@ -4,7 +4,7 @@
  */
 package lekt06_data;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

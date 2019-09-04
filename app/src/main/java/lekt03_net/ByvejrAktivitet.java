@@ -10,7 +10,7 @@
 // http://www.geonames.org/postal-codes/postal-codes-denmark.html
 package lekt03_net;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;

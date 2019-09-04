@@ -1,7 +1,7 @@
 package lekt09_recievers;
 
-import android.support.v7.app.AppCompatActivity;
-import android.app.Notification;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

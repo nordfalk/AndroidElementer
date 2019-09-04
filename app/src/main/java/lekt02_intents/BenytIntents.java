@@ -1,6 +1,5 @@
 package lekt02_intents;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,8 +7,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.provider.Settings.Secure;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.util.Linkify;
 import android.view.View;

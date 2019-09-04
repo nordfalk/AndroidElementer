@@ -1,6 +1,6 @@
 package ufaerdigt.lekt06_youtube;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;

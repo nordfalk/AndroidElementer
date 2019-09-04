@@ -1,10 +1,8 @@
 package lekt07_fragmenter;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

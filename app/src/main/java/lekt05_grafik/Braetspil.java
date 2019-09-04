@@ -1,6 +1,6 @@
 package lekt05_grafik;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,7 +9,6 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;

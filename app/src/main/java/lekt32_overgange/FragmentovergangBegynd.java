@@ -1,21 +1,18 @@
 package lekt32_overgange;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.transition.AutoTransition;
-import android.support.transition.ChangeBounds;
-import android.support.transition.ChangeImageTransform;
-import android.support.transition.ChangeTransform;
-import android.support.transition.Fade;
-import android.support.transition.TransitionSet;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewCompat;
+import androidx.transition.AutoTransition;
+import androidx.transition.ChangeBounds;
+import androidx.transition.ChangeImageTransform;
+import androidx.transition.ChangeTransform;
+import androidx.transition.Fade;
+import androidx.transition.TransitionSet;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import dk.nordfalk.android.elementer.R;
 

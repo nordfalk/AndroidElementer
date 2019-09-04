@@ -3,7 +3,7 @@ package lekt50_konti;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;

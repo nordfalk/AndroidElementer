@@ -1,7 +1,7 @@
 package lekt04_fragmenter;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +34,10 @@ public class Spillet_frag extends Fragment implements View.OnClickListener {
     info.setText("Velkommen til mit fantastiske spil." +
             "\nDu skal gætte dette ord: "+logik.getSynligtOrd() +
             "\nSkriv et bogstav herunder og tryk 'Spil'.\n");
-    String velkomst = getArguments().getString("velkomst");
-    if (velkomst!=null) info.append(velkomst);
+    if (getArguments()!=null) {
+      String velkomst = getArguments().getString("velkomst");
+      if (velkomst!=null) info.append(velkomst);
+    }
     tl.addView(info);
 
     et = new EditText(getActivity());

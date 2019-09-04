@@ -1,7 +1,7 @@
 package lekt03_diverse;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.util.Linkify;
 import android.view.View;
 import android.view.View.OnClickListener;
