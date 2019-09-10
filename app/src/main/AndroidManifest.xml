@@ -79,7 +79,7 @@
         <activity android:name="lekt01_views.ByvejrProgrammatisk" />
         <activity android:name="lekt01_views.ByvejrDeklarativ" />
         <activity android:name="lekt01_views.BenytHtmlKoder" />
-        <activity android:name="lekt03_diverse.BenytMenuer" />
+
         <activity android:name="lekt02_intents.BenytIntents" />
         <activity android:name="lekt02_intents.BenytIntentsFraGoogle" />
 
@@ -129,6 +129,7 @@
         <activity android:name="lekt03_diverse.AfspilVideo" />
         <activity android:name="lekt03_diverse.BenytWebView2" />
         <activity android:name="lekt03_diverse.BenytLayoutInflater" />
+        <activity android:name="lekt03_diverse.BenytMenuer" />
         <activity android:name="lekt03_diverse.BenytMenuerFraXml" />
         <activity android:name="lekt03_diverse.BenytDialogerOgToasts" />
         <activity android:name="lekt03_diverse.BenytNotifikation" />
@@ -136,19 +137,23 @@
         <activity android:name="lekt03_diverse.Taleeventyr" />
         <activity android:name="lekt03_diverse.Talegenkendelse" />
 
-        <activity android:name="lekt03_diverse.TemaLyseFarver"     android:theme="@style/Theme.AppCompat.Light" />
-        <activity android:name="lekt03_diverse.TemaIngenTitel"     android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name="lekt03_diverse.TemaSomEnDialog"    android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name="lekt03_diverse.TemaSomEnLysDialog" android:theme="@style/Theme.AppCompat.Light.Dialog" />
-        <activity android:name="lekt03_diverse.TemaFuldskaerm"     android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="lekt03x_temaer.TemaLyseFarver"     android:theme="@style/Theme.AppCompat.Light" />
+        <activity android:name="lekt03x_temaer.TemaIngenTitel"     android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name="lekt03x_temaer.TemaSomEnDialog"    android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name="lekt03x_temaer.TemaSomEnLysDialog" android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity android:name="lekt03x_temaer.TemaFuldskaerm"     android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
         <activity android:name="lekt03_net.ByvejrAktivitet" />
 
-        <activity android:name="lekt04_fragmenter_navhost.Hovedaktivitet" />
-        <activity android:name="lekt04_fragmenter_navhost.HovedaktivitetBundnavigation" />
         <activity android:name="lekt04_fragmenter.Hovedaktivitet" />
         <activity android:name="lekt04_fragmenter.HovedaktivitetMedViewpager"/>
+        <activity android:name="lekt04_fragmenter.BenytKnapperFragment_akt" />
+
+        <activity android:name="lekt04_fragmenter_navhost.Hovedaktivitet" />
+        <activity android:name="lekt04_fragmenter_navhost.HovedaktivitetBundnavigation" />
+
+        <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
 
         <activity android:name="lekt04_arkitektur.NoteAktivitet" />
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />
@@ -199,6 +204,7 @@
         <activity
             android:name="lekt05_sensorer.Balancespil"
             android:screenOrientation="portrait" />
+
         <activity android:name="lekt06_data.BenytPreferenceManager" />
         <activity android:name="lekt06_data.CSVParsning" />
         <activity android:name="lekt06_data.JsonParsning" />
@@ -212,8 +218,6 @@
         <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
         <activity android:name="lekt06_asynkron.Asynk4Korrekt" />
         <activity android:name="lekt06_asynkron.Asynk5Message" />
-        <activity android:name="lekt04_fragmenter.BenytKnapperFragment_akt" />
-        <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
         <activity android:name="lekt08_providers.VisOpkald" />
         <activity android:name="lekt08_providers.VisKalender" />
         <activity android:name="lekt08_providers.VisKontakter" />
@@ -295,8 +299,6 @@
         <activity android:name="lekt10_livscyklus.Liv4_bundle" />
         <activity android:name="lekt10_livscyklus.DialogDerOverleverSkaermvending" />
 
-        <activity android:name="lekt20_touchinput.BenytGestureDetector" />
-        <activity android:name="lekt20_touchinput.BenytScaleGestureDetector" />
         <activity android:name="lekt31_venstremenu.BenytVenstremenu" />
         <activity android:name="lekt32_overgange.AktivitetsovergangBegynd" />
         <activity android:name="lekt32_overgange.AktivitetsovergangSlut" />
@@ -312,6 +314,8 @@
         <activity android:name="lekt50_konti.HentBrugersKoenAlderTelefonEmail" />
 
         <!-- Ikke færdigt eller forældet  -->
+        <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytGestureDetector" />
+        <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytScaleGestureDetector" />
         <activity android:name="ufaerdigt.BenytIntentsMedResTilladelser" />
         <activity android:name="ufaerdigt.ByvejrAktivitet2" />
         <activity android:name="ufaerdigt.Stedbestemmelse" />

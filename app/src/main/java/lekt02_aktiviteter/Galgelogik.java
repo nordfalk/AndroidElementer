@@ -20,6 +20,19 @@ public class Galgelogik {
   private boolean spilletErVundet;
   private boolean spilletErTabt;
 
+  public Galgelogik() {
+    muligeOrd.add("bil");
+    muligeOrd.add("computer");
+    muligeOrd.add("programmering");
+    muligeOrd.add("motorvej");
+    muligeOrd.add("busrute");
+    muligeOrd.add("gangsti");
+    muligeOrd.add("skovsnegl");
+    muligeOrd.add("solsort");
+    muligeOrd.add("nitten");
+    nulstil();
+  }
+
 
   public ArrayList<String> getBrugteBogstaver() {
     return brugteBogstaver;
@@ -53,20 +66,6 @@ public class Galgelogik {
     return spilletErTabt || spilletErVundet;
   }
 
-  public Galgelogik() {
-    muligeOrd.add("bil");
-    muligeOrd.add("computer");
-    muligeOrd.add("programmering");
-    muligeOrd.add("motorvej");
-    muligeOrd.add("busrute");
-    muligeOrd.add("gangsti");
-    muligeOrd.add("skovsnegl");
-    muligeOrd.add("solsort");
-    muligeOrd.add("seksten");
-    muligeOrd.add("sytten");
-    muligeOrd.add("atten");
-    nulstil();
-  }
 
   public void nulstil() {
     brugteBogstaver.clear();
@@ -74,7 +73,6 @@ public class Galgelogik {
     spilletErVundet = false;
     spilletErTabt = false;
     ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
-    System.out.println("nulstil() - sætter ordet (skult) til " + ordet);
     opdaterSynligtOrd();
   }
 
@@ -109,7 +107,7 @@ public class Galgelogik {
       sidsteBogstavVarKorrekt = false;
       System.out.println("Bogstavet var IKKE korrekt: " + bogstav);
       antalForkerteBogstaver = antalForkerteBogstaver + 1;
-      if (antalForkerteBogstaver >= 6) {
+      if (antalForkerteBogstaver > 6) {
         spilletErTabt = true;
       }
     }
@@ -141,6 +139,9 @@ public class Galgelogik {
   }
 
 
+  /**
+   * Hent ord fra DRs forside (https://dr.dk)
+   */
   public void hentOrdFraDr() throws Exception {
     String data = hentUrl("https://dr.dk");
     //System.out.println("data = " + data);
@@ -161,6 +162,38 @@ public class Galgelogik {
     System.out.println("data = " + Arrays.asList(data.split("\\s+")));
     muligeOrd.clear();
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
+
+    System.out.println("muligeOrd = " + muligeOrd);
+    nulstil();
+  }
+
+
+  /**
+   * Hent ord og sværhedsgrad fra et online regneark. Du kan redigere i regnearket, på adressen
+   * https://docs.google.com/spreadsheets/d/1RnwU9KATJB94Rhr7nurvjxfg09wAHMZPYB3uySBPO6M/edit?usp=sharing
+   * @param sværhedsgrader en streng med de tilladte sværhedsgrader - f.eks "3" for at medtage kun svære ord, eller "12" for alle nemme og halvsvære ord
+   * @throws Exception
+   */
+
+  public void hentOrdFraRegneark(String sværhedsgrader) throws Exception {
+    String id = "1RnwU9KATJB94Rhr7nurvjxfg09wAHMZPYB3uySBPO6M";
+
+    System.out.println("Henter data som kommasepareret CSV fra regnearket https://docs.google.com/spreadsheets/d/"+id+"/edit?usp=sharing");
+
+    String data = hentUrl("https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&id=" + id);
+    int linjeNr = 0;
+
+    muligeOrd.clear();
+    for (String linje : data.split("\n")) {
+      if (linjeNr<20) System.out.println("linje = " + linje); // udskriv de første 20 linjer
+      if (linjeNr++ < 1 ) continue; // Spring første linje med kolonnenavnene over
+      String[] felter = linje.split(",", -1);// -1 er for at beholde tomme indgange, f.eks. bliver ",,," splittet i et array med 4 tomme strenge
+      String sværhedsgrad = felter[0].trim();
+      String ordet = felter[1].trim().toLowerCase();
+      if (ordet.isEmpty()) continue; // spring over linjer med tomme ord
+      if (!sværhedsgrader.contains(sværhedsgrad)) continue; // filtrér på sværhedsgrader
+      muligeOrd.add(ordet);
+    }
 
     System.out.println("muligeOrd = " + muligeOrd);
     nulstil();

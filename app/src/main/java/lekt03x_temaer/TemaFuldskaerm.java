@@ -1,4 +1,4 @@
-package lekt03_diverse;
+package lekt03x_temaer;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;

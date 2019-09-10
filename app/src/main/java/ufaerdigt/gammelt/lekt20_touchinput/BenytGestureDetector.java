@@ -1,4 +1,4 @@
-package lekt20_touchinput;
+package ufaerdigt.gammelt.lekt20_touchinput;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
