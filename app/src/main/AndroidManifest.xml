@@ -137,14 +137,14 @@
         <activity android:name="lekt03_diverse.Taleeventyr" />
         <activity android:name="lekt03_diverse.Talegenkendelse" />
 
+        <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
+        <activity android:name="lekt03_net.ByvejrAktivitet" />
+
         <activity android:name="lekt03x_temaer.TemaLyseFarver"     android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name="lekt03x_temaer.TemaIngenTitel"     android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="lekt03x_temaer.TemaSomEnDialog"    android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name="lekt03x_temaer.TemaSomEnLysDialog" android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity android:name="lekt03x_temaer.TemaFuldskaerm"     android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
-        <activity android:name="lekt03_net.ByvejrAktivitet" />
 
         <activity android:name="lekt04_fragmenter.Hovedaktivitet" />
         <activity android:name="lekt04_fragmenter.HovedaktivitetMedViewpager"/>
@@ -159,23 +159,18 @@
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />
 
         <activity android:name="lekt04_lister.BenytListView" />
-        <activity android:name="lekt04_lister.BenytGallery" />
         <activity android:name="lekt04_lister.BenytGridView" />
         <activity android:name="lekt04_lister.BenytSpinner" />
-        <activity android:name="lekt04_lister.EgetLayoutMedArrayAdapter" />
-
-        <activity android:name="lekt04_lister2.EgetLayoutMedArrayAdapter2" />
-        <activity android:name="lekt04_lister2.EgetLayoutMedArrayAdapter2Spinner" />
-        <activity android:name="lekt04_lister2.EgetLayoutMedBaseAdapter" />
-        <activity android:name="lekt04_lister2.EgetLayoutMedBaseAdapterViewholder" />
-        <activity android:name="lekt04_lister2.EgetLayoutMedBaseAdapterOverskrifter" />
+        <activity android:name="lekt04_lister.BenytListViewEgetLayout" />
+        <activity android:name="lekt04_lister.BenytListViewEgetLayout2" />
+        <activity android:name="lekt04_lister.BenytSpinnerEgetLayout2" />
         <activity android:name="lekt04_lister2.VisAlleAndroidDrawables" />
 
-        <activity android:name="lekt07_lister3.BenytRecyclerview0" />
-        <activity android:name="lekt07_lister3.BenytRecyclerview" />
-        <activity android:name="lekt07_lister3.BenytRecyclerviewMedGesti" />
-        <activity android:name="lekt07_lister3.BenytRecyclerviewOverskrifter" />
-        <activity android:name="lekt07_lister3.EkspanderbarRecyclerview" />
+        <activity android:name="lekt07_lister2.BenytRecyclerview0" />
+        <activity android:name="lekt07_lister2.BenytRecyclerview" />
+        <activity android:name="lekt07_lister2.BenytRecyclerviewMedGesti" />
+        <activity android:name="lekt07_lister2.BenytRecyclerviewOverskrifter" />
+        <activity android:name="lekt07_lister2.BenytRecyclerviewEkspanderbar" />
 
         <activity android:name="lekt05_grafik.Grafikdemo0" />
         <activity android:name="lekt05_grafik.Tegneprogram" />

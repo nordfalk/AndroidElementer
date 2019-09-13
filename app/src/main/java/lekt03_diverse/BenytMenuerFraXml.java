@@ -32,7 +32,7 @@ public class BenytMenuerFraXml extends AppCompatActivity {
     super.onCreateOptionsMenu(menu); // tilføj systemets standardmenuer
     textView.append("\nonCreateOptionsMenu " + menu);
     // ofte vil man lægge menupunkterne ud i en XML-fil og pakke den ud således
-    getMenuInflater().inflate(R.menu.lekt03_benytmenuer2, menu);
+    getMenuInflater().inflate(R.menu.lekt03_benytmenuer, menu);
     return true;
   }
 

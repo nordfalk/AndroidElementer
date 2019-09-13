@@ -1,4 +1,4 @@
-package lekt04_lister2;
+package ufaerdigt.gammelt.lekt04_lister2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Gallery;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
 
-public class BenytGallery extends AppCompatActivity implements OnItemClickListener {
+public class BenytListViewEgetLayout extends AppCompatActivity implements OnItemClickListener {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -20,16 +20,18 @@ public class BenytGallery extends AppCompatActivity implements OnItemClickListen
     String[] lande = {"Danmark", "Norge", "Sverige", "Finland", "Holland", "Italien", "Tyskland",
             "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand"};
 
-    Gallery gallery = new Gallery(this);
-    gallery.setOnItemClickListener(this);
-    gallery.setSpacing(25); // 25 punkter
+    ArrayAdapter adapter = new ArrayAdapter(this, R.layout.lekt04_listeelement, R.id.listeelem_overskrift, lande);
 
-    gallery.setAdapter(new ArrayAdapter(this, R.layout.lekt04_listeelement, R.id.listeelem_overskrift, lande));
-    setContentView(gallery);
+    ListView listView = new ListView(this);
+    listView.setOnItemClickListener(this);
+    listView.setAdapter(adapter);
 
+    setContentView(listView);
   }
 
-  public void onItemClick(AdapterView<?> l, View v, int position, long id) {
+  public void onItemClick(AdapterView<?> liste, View v, int position, long id) {
     Toast.makeText(this, "Klik på " + position, Toast.LENGTH_SHORT).show();
+    // v vil pege på det LinearLayout der er roden i R.layout.lekt04_listeelement
+    //Toast.makeText(this, " v = " + v, Toast.LENGTH_SHORT).show();
   }
 }

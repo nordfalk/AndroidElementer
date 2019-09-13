@@ -1,4 +1,4 @@
-package lekt07_lister3;
+package lekt07_lister2;
 
 import android.os.Bundle;
 
@@ -20,28 +20,28 @@ import java.util.List;
 import dk.nordfalk.android.elementer.R;
 
 
-class LandeOgByerData {
-  List<String> lande = Arrays.asList("Danmark", "Norge", "Sverige", "Island", "Færøerne", "Finland",
-          "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand");
+public class BenytRecyclerviewEkspanderbar extends AppCompatActivity {
 
-  List<List<String>> byer = Arrays.asList(
-    Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup"),
-    Arrays.asList("Oslo", "Trondheim"),
-    Arrays.asList("Stockholm", "Malmø", "Lund"),
-    Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík"),
-    Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður"),
-    Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa"),
-    Arrays.asList("Paris", "Lyon"),
-    Arrays.asList("Madrid", "Barcelona", "Sevilla"),
-    Arrays.asList("Lissabon", "Porto"),
-    Arrays.asList("Kathmandu", "Bhaktapur"),
-    Arrays.asList("Mumbai", "Delhi", "Bangalore"),
-    Arrays.asList("Shanghai", "Zhengzhou"),
-    Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama"),
-    Arrays.asList("Bankok", "Sura Thani", "Phuket"));
-}
+  static class LandeOgByerData {
+    List<String> lande = Arrays.asList("Danmark", "Norge", "Sverige", "Island", "Færøerne", "Finland",
+            "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand");
 
-public class EkspanderbarRecyclerview extends AppCompatActivity {
+    List<List<String>> byer = Arrays.asList(
+            Arrays.asList("København", "Århus", "Odense", "Aalborg", "Ballerup"),
+            Arrays.asList("Oslo", "Trondheim"),
+            Arrays.asList("Stockholm", "Malmø", "Lund"),
+            Arrays.asList("Reykjavík", "Kópavogur", "Hafnarfjörður", "Dalvík"),
+            Arrays.asList("Tórshavn", "Klaksvík", "Fuglafjørður"),
+            Arrays.asList("Helsinki", "Espoo", "Tampere", "Vantaa"),
+            Arrays.asList("Paris", "Lyon"),
+            Arrays.asList("Madrid", "Barcelona", "Sevilla"),
+            Arrays.asList("Lissabon", "Porto"),
+            Arrays.asList("Kathmandu", "Bhaktapur"),
+            Arrays.asList("Mumbai", "Delhi", "Bangalore"),
+            Arrays.asList("Shanghai", "Zhengzhou"),
+            Arrays.asList("Tokyo", "Osaka", "Hiroshima", "Kawasaki", "Yokohama"),
+            Arrays.asList("Bankok", "Sura Thani", "Phuket"));
+  }
 
   LandeOgByerData data = new LandeOgByerData();
 

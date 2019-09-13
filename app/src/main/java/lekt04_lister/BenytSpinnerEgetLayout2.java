@@ -1,20 +1,21 @@
-package lekt04_lister2;
+package lekt04_lister;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
 
-public class EgetLayoutMedArrayAdapter2 extends AppCompatActivity implements OnItemClickListener {
+public class BenytSpinnerEgetLayout2 extends AppCompatActivity implements OnItemSelectedListener {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,13 @@ public class EgetLayoutMedArrayAdapter2 extends AppCompatActivity implements OnI
     String[] lande = {"Danmark", "Norge", "Sverige", "Finland", "Holland", "Italien", "Tyskland",
             "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand"};
 
+    Spinner spinner = new Spinner(this);
+    spinner.setOnItemSelectedListener(this);
+    // Standard-udseende
+    //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, android.R.id.text1, lande);
+    //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+    // Eget layout af listeelementerne
     ArrayAdapter adapter = new ArrayAdapter(this, R.layout.lekt04_listeelement, R.id.listeelem_overskrift, lande) {
       @Override
       public View getView(int position, View cachedView, ViewGroup parent) {
@@ -39,22 +47,26 @@ public class EgetLayoutMedArrayAdapter2 extends AppCompatActivity implements OnI
 
         return view;
       }
+
+      @Override
+      public View getDropDownView(int position, View convertView, ViewGroup parent) {
+        return getView(position, convertView, parent);
+      }
     };
 
-    ListView listView = new ListView(this);
-    listView.setOnItemClickListener(this);
-    listView.setAdapter(adapter);
+    spinner.setAdapter(adapter);
+    spinner.setPrompt("Vælg et land");
 
-    //listView.setDivider(getResources().getDrawable(android.R.drawable.divider_horizontal_dark));
-    // Rød kasse omkring det valgte element
-    listView.setSelector(android.R.drawable.ic_notification_overlay);
-
-    setContentView(listView);
+    TableLayout tl = new TableLayout(this);
+    tl.addView(spinner);
+    setContentView(tl);
   }
 
-  public void onItemClick(AdapterView<?> l, View v, int position, long id) {
+  public void onItemSelected(AdapterView<?> liste, View v, int position, long id) {
     Toast.makeText(this, "Klik på " + position, Toast.LENGTH_SHORT).show();
-    //setResult(113, new Intent(position  eller noget andet der skan tilbage til kalderen));
-    //finish();
+  }
+
+  public void onNothingSelected(AdapterView<?> liste) {
+    Toast.makeText(this, "Intet valgt", Toast.LENGTH_SHORT).show();
   }
 }

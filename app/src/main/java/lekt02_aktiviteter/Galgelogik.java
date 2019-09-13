@@ -190,8 +190,9 @@ public class Galgelogik {
       String[] felter = linje.split(",", -1);// -1 er for at beholde tomme indgange, f.eks. bliver ",,," splittet i et array med 4 tomme strenge
       String sværhedsgrad = felter[0].trim();
       String ordet = felter[1].trim().toLowerCase();
-      if (ordet.isEmpty()) continue; // spring over linjer med tomme ord
+      if (sværhedsgrad.isEmpty() || ordet.isEmpty()) continue; // spring over linjer med tomme ord
       if (!sværhedsgrader.contains(sværhedsgrad)) continue; // filtrér på sværhedsgrader
+      System.out.println("Tilføjer "+ordet+" med sværhedsgrad "+sværhedsgrad);
       muligeOrd.add(ordet);
     }
 

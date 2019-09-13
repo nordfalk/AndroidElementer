@@ -1,4 +1,4 @@
-package lekt07_lister3;
+package lekt07_lister2;
 
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;

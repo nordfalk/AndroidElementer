@@ -41,8 +41,6 @@ dependencies {
 
     // Kompatibilitetsbiblioteker - se http://developer.android.com/tools/support-library/
     // Understøttelse af fragmenter
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    // Understøttelse af actionbar/Toolbar
     implementation 'androidx.appcompat:appcompat:1.0.2'
 
     // Navigation

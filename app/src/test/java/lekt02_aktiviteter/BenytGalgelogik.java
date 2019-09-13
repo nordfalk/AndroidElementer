@@ -16,13 +16,11 @@ public class BenytGalgelogik {
     */
 
     // Kommentér ind for at hente ord fra et online regneark
-    /*
     try {
       spil.hentOrdFraRegneark("12");
     } catch (Exception e) {
       e.printStackTrace();
     }
-    */
     spil.logStatus();
 
     spil.gætBogstav("e");
