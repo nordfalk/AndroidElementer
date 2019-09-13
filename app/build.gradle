@@ -13,8 +13,8 @@ android {
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
-        versionCode 66
-        versionName '2.8.1  23.juli 2019'
+        versionCode 67
+        versionName '2.9.0  13.sep 2019'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
         /*
@@ -39,17 +39,14 @@ android {
 }
 dependencies {
 
-    // Kompatibilitetsbiblioteker - se http://developer.android.com/tools/support-library/
-    // Understøttelse af fragmenter
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    // Kompatibilitetsbiblioteker til bl.a. fragmenter
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
-    // Navigation
-    implementation 'androidx.navigation:navigation-fragment:2.0.0'
-    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    // Navigation og venstremenu
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
     //implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
-    // Understøttelse af venstremenu og SnackBar
-    implementation 'com.google.android.material:material:1.0.0'
 
     // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
