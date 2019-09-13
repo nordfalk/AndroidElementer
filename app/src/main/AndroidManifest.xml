@@ -153,8 +153,6 @@
         <activity android:name="lekt04_fragmenter_navhost.Hovedaktivitet" />
         <activity android:name="lekt04_fragmenter_navhost.HovedaktivitetBundnavigation" />
 
-        <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
-
         <activity android:name="lekt04_arkitektur.NoteAktivitet" />
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />
 
@@ -165,12 +163,6 @@
         <activity android:name="lekt04_lister.BenytListViewEgetLayout2" />
         <activity android:name="lekt04_lister.BenytSpinnerEgetLayout2" />
         <activity android:name="lekt04_lister.VisAlleAndroidDrawables" />
-
-        <activity android:name="lekt07_lister2.BenytRecyclerview0" />
-        <activity android:name="lekt07_lister2.BenytRecyclerview" />
-        <activity android:name="lekt07_lister2.BenytRecyclerviewMedGesti" />
-        <activity android:name="lekt07_lister2.BenytRecyclerviewOverskrifter" />
-        <activity android:name="lekt07_lister2.BenytRecyclerviewEkspanderbar" />
 
         <activity android:name="lekt05_grafik.Grafikdemo0" />
         <activity android:name="lekt05_grafik.Tegneprogram" />
@@ -206,6 +198,15 @@
         <activity android:name="lekt06_data.XmlParsning" />
         <activity android:name="lekt06_data.BenytSQLite" />
         <activity android:name="lekt06_data.BenytSQLiteOpenHelper" />
+
+
+        <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
+
+        <activity android:name="lekt07_lister2.BenytRecyclerview0" />
+        <activity android:name="lekt07_lister2.BenytRecyclerview" />
+        <activity android:name="lekt07_lister2.BenytRecyclerviewMedGesti" />
+        <activity android:name="lekt07_lister2.BenytRecyclerviewOverskrifter" />
+        <activity android:name="lekt07_lister2.BenytRecyclerviewEkspanderbar" />
 
         <activity android:name="lekt06_asynkron.Asynk1Handler" />
         <activity android:name="lekt06_asynkron.Asynk2Thread" />
