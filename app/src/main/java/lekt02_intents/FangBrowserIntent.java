@@ -8,7 +8,7 @@ import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FangBrowseIntent extends AppCompatActivity {
+public class FangBrowserIntent extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

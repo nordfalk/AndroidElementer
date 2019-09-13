@@ -22,7 +22,7 @@ import lekt05_grafik.Tegneprogram;
 /**
  * @author Jacob Nordfalk
  */
-public class BenytNotifikation extends AppCompatActivity implements OnClickListener {
+public class VisNotifikation extends AppCompatActivity implements OnClickListener {
 
   Button visNoitifikation, lukNotifikation;
 

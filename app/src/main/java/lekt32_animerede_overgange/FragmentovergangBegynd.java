@@ -1,12 +1,7 @@
-package lekt32_overgange;
+package lekt32_animerede_overgange;
 
 import android.os.Bundle;
 import androidx.transition.AutoTransition;
-import androidx.transition.ChangeBounds;
-import androidx.transition.ChangeImageTransform;
-import androidx.transition.ChangeTransform;
-import androidx.transition.Fade;
-import androidx.transition.TransitionSet;
 import androidx.fragment.app.Fragment;
 import androidx.core.view.ViewCompat;
 import android.view.LayoutInflater;

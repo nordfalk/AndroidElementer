@@ -1,4 +1,4 @@
-package lekt04_lister2;
+package lekt04_lister;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
@@ -146,6 +147,13 @@ public class VisAlleAndroidDrawables extends AppCompatActivity implements Adapte
 
 
       return view;
+    }
+
+    private class ListeelemViewholder {
+      public int position;
+      public TextView overskrift;
+      public TextView beskrivelse;
+      public ImageView billede;
     }
   }
 

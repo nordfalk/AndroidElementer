@@ -82,13 +82,14 @@
 
         <activity android:name="lekt02_intents.BenytIntents" />
         <activity android:name="lekt02_intents.BenytIntentsFraGoogle" />
+        <activity android:name="lekt02_intents.BenytIntentsMedTilladelser" />
 
         <activity
             android:name="lekt02_intents.BenytIntentsMedResultat"
             android:screenOrientation="portrait" />
 
         <!-- Denne aktivitet fanger browsning af URLer der starter med https://javabog.dk/OOP/ -->
-        <activity android:name="lekt02_intents.FangBrowseIntent" >
+        <activity android:name="lekt02_intents.FangBrowserIntent" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -117,7 +118,6 @@
             -->
 
         </activity>
-        <activity android:name="lekt02_intents.BenytIntentsMedTilladelser" />
 
         <activity android:name="lekt02_aktiviteter.Velkomst_akt" />
         <activity android:name="lekt02_aktiviteter.Hovedmenu_akt" />
@@ -127,15 +127,15 @@
 
         <activity android:name="lekt03_diverse.AfspilLyd" />
         <activity android:name="lekt03_diverse.AfspilVideo" />
-        <activity android:name="lekt03_diverse.BenytWebView2" />
-        <activity android:name="lekt03_diverse.BenytLayoutInflater" />
-        <activity android:name="lekt03_diverse.BenytMenuer" />
-        <activity android:name="lekt03_diverse.BenytMenuerFraXml" />
         <activity android:name="lekt03_diverse.BenytDialogerOgToasts" />
-        <activity android:name="lekt03_diverse.BenytNotifikation" />
+        <activity android:name="lekt03_diverse.VisNotifikation" />
         <activity android:name="lekt03_diverse.TekstTilTale" />
         <activity android:name="lekt03_diverse.Taleeventyr" />
         <activity android:name="lekt03_diverse.Talegenkendelse" />
+        <activity android:name="lekt03_diverse.BenytMenuer" />
+        <activity android:name="lekt03_diverse.BenytMenuerFraXml" />
+        <activity android:name="lekt03_diverse.BenytWebView2" />
+        <activity android:name="lekt03_diverse.BenytLayoutInflater" />
 
         <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
         <activity android:name="lekt03_net.ByvejrAktivitet" />
@@ -164,7 +164,7 @@
         <activity android:name="lekt04_lister.BenytListViewEgetLayout" />
         <activity android:name="lekt04_lister.BenytListViewEgetLayout2" />
         <activity android:name="lekt04_lister.BenytSpinnerEgetLayout2" />
-        <activity android:name="lekt04_lister2.VisAlleAndroidDrawables" />
+        <activity android:name="lekt04_lister.VisAlleAndroidDrawables" />
 
         <activity android:name="lekt07_lister2.BenytRecyclerview0" />
         <activity android:name="lekt07_lister2.BenytRecyclerview" />
@@ -175,7 +175,6 @@
         <activity android:name="lekt05_grafik.Grafikdemo0" />
         <activity android:name="lekt05_grafik.Tegneprogram" />
         <activity android:name="lekt05_grafik.Braetspil" />
-        <activity android:name="lekt05_grafik.FlytbarVejrudsigt" />
         <activity android:name="lekt05_grafik.Grafikdemo1" />
         <activity android:name="lekt05_grafik.Grafikdemo2" />
         <activity android:name="lekt05_grafik.KnapperMedEgenGrafik" />
@@ -295,9 +294,9 @@
         <activity android:name="lekt10_livscyklus.DialogDerOverleverSkaermvending" />
 
         <activity android:name="lekt31_venstremenu.BenytVenstremenu" />
-        <activity android:name="lekt32_overgange.AktivitetsovergangBegynd" />
-        <activity android:name="lekt32_overgange.AktivitetsovergangSlut" />
-        <activity android:name="lekt32_overgange.VisFragmentovergange" />
+        <activity android:name="lekt32_animerede_overgange.AktivitetsovergangBegynd" />
+        <activity android:name="lekt32_animerede_overgange.AktivitetsovergangSlut" />
+        <activity android:name="lekt32_animerede_overgange.VisFragmentovergange" />
 
 
         <activity android:name="lekt50_aktivitetsgenkendelse.Aktivitetsgenkendelse_akt" />
@@ -309,6 +308,7 @@
         <activity android:name="lekt50_konti.HentBrugersKoenAlderTelefonEmail" />
 
         <!-- Ikke færdigt eller forældet  -->
+        <activity android:name="ufaerdigt.gammelt.FlytbarVejrudsigt" />
         <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytGestureDetector" />
         <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytScaleGestureDetector" />
         <activity android:name="ufaerdigt.BenytIntentsMedResTilladelser" />

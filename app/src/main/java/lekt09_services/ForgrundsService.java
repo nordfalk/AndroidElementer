@@ -8,7 +8,7 @@ import androidx.core.app.NotificationCompat;
 import android.widget.Toast;
 
 import dk.nordfalk.android.elementer.R;
-import lekt03_diverse.BenytNotifikation;
+import lekt03_diverse.VisNotifikation;
 
 /**
  * Simpel service der, når startet, forsøger at holde app'en i hukommelsen
@@ -40,7 +40,7 @@ public class ForgrundsService extends Service {
   public int onStartCommand(Intent intent, int flags, int startId) {
     Toast.makeText(this, TAG + " onStartCommand("+flags + " " + startId, Toast.LENGTH_LONG).show();
     Intent i = new Intent(this, BenytService.class);
-    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, BenytNotifikation.opretNotifKanal(this))
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, VisNotifikation.opretNotifKanal(this))
             .setContentIntent(PendingIntent.getActivity(this, 0, i, 0))
             .setSmallIcon(R.drawable.bil)
 //            .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo))

@@ -1,4 +1,4 @@
-package lekt05_grafik;
+package ufaerdigt.gammelt;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;

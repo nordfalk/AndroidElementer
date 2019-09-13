@@ -1,4 +1,4 @@
-package lekt32_overgange;
+package lekt32_animerede_overgange;
 
 import android.content.Intent;
 import android.os.Build;
