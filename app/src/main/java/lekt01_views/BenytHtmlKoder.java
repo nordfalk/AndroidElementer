@@ -24,7 +24,7 @@ public class BenytHtmlKoder extends AppCompatActivity {
             "B (<b>bold</b>), I (<i>italic</i>), U (<u>underline</u>), TT (<tt>monospace</tt>), <big>BIG</big>, " +
             "<small>SMALL</small>, SUP (<sup>superscript</sup>) og SUB (<sub>subscript</sub>)<br /><br /><br />" +
             "<br />" +
-            "Med Linkify&period;addLinks() kan man putte lænker ind i tekst.<br />\n" +
+            "Med Linkify.addLinks() kan man putte lænker ind i tekst.<br />\n" +
             "Mit telefonnummer er 26206512, min e-post er jacob.nordfalk@gmail.com " +
             "og jeg har en hjemmeside på https://javabog.dk\n" +
             "Måske vil https://javabog.dk/OOP/kapitel2.jsp åbne AndroidElementers webbrowser.";

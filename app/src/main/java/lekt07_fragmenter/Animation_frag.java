@@ -23,15 +23,10 @@ public class Animation_frag extends Fragment {
   private ViewGroup rod;
   private Button knap1, knap2, knap3;
 
-  @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
   @Override
   public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
     rod = (ViewGroup) i.inflate(R.layout.lekt01_tre_knapper, container, false);
     knap1 = rod.findViewById(R.id.knap1);
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB_MR1) {
-      knap1.setText("Beklager, din telefon er for gammel til at bruge animationer");
-      return rod;
-    }
     knap1.setText("Animation");
     knap2 = rod.findViewById(R.id.knap2);
     knap2.setText("Elastisk knap");
