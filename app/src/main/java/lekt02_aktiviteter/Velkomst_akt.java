@@ -38,7 +38,7 @@ public class Velkomst_akt extends AppCompatActivity implements Runnable {
     startActivity(new Intent(this, Hovedmenu_akt.class));
     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
-    aktivitetDerVisesNu.finish();  // <2> Luk velkomsaktiviteten
+    aktivitetDerVisesNu.finish();  // <2> Luk velkomstaktiviteten
     aktivitetDerVisesNu = null;
   }
 

@@ -31,6 +31,12 @@ public class Spillet_akt extends AppCompatActivity implements View.OnClickListen
     info.setText("Velkommen til mit fantastiske spil." +
             "\nDu skal gætte dette ord: "+logik.getSynligtOrd() +
             "\nSkriv et bogstav herunder og tryk 'Spil'.\n");
+/*
+      Intent i = new Intent(this, Spillet_akt.class);
+      i.putExtra("velkomst", "\n\nHalløj fra Hovedmenu_akt!\n");
+      startActivity(i);
+ */
+
     String velkomst = getIntent().getStringExtra("velkomst");
     if (velkomst!=null) info.append(velkomst);
     tl.addView(info);

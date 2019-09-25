@@ -115,24 +115,11 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
         //     startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+nummer)));
       } else if (v == sendSms) {
         // Åbner et SMS-vindue og lader brugeren sende SMS'en
-        // Kilde: http://andmobidev.blogspot.com/2010/01/launching-smsmessages-activity-using.html
-        //Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"+number));
-        tekst = tekst + lavTelefoninfo();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setType("vnd.android-dir/mms-sms");
-        intent.putExtra("sms_body", tekst);
-        intent.putExtra("address", nummer);
-        /*
         // Kilde: https://developer.android.com/guide/components/intents-common.html#Messaging
         tekst = tekst + lavTelefoninfo();
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("smsto:"));
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("smsto:"+nummer));
         intent.putExtra("sms_body", tekst);
-        intent.putExtra("address", nummer);
-        startActivity(intent);
-
-         */
-
         startActivity(intent);
       } else if (v == sendEpost) {
         tekst = tekst + lavTelefoninfo();
@@ -144,7 +131,9 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
         i.putExtra(Intent.EXTRA_CC, new String[]{"jacob.nordfalk@gmail.com"});
         startActivity(Intent.createChooser(i, "Send e-post..."));
       } else if (v == delApp) {
-        Intent i = new Intent(Intent.ACTION_SEND).putExtra(Intent.EXTRA_SUBJECT, "Prøv AndroidElementer").putExtra(Intent.EXTRA_TEXT, "Hej!\n\n" +
+        Intent i = new Intent(Intent.ACTION_SEND)
+                .putExtra(Intent.EXTRA_SUBJECT, "Prøv AndroidElementer")
+                .putExtra(Intent.EXTRA_TEXT, "Hej!\n\n" +
                 "Hvis du programmerer til Android så prøv denne her eksempelsamling\n" +
                 "AndroidElementer\n" +
                 "https://play.google.com/store/apps/details?id=dk.nordfalk.android.elementer").setType("text/plain");
