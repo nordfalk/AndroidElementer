@@ -32,9 +32,11 @@ public class Spillet_akt extends AppCompatActivity implements View.OnClickListen
             "\nDu skal gætte dette ord: "+logik.getSynligtOrd() +
             "\nSkriv et bogstav herunder og tryk 'Spil'.\n");
 /*
+  Hovedmenu_akt startede denne aktivitet med
       Intent i = new Intent(this, Spillet_akt.class);
       i.putExtra("velkomst", "\n\nHalløj fra Hovedmenu_akt!\n");
       startActivity(i);
+  derfor vil velkomst få værdien 'Halløj fra Hovedmenu_akt!' nedenfor
  */
 
     String velkomst = getIntent().getStringExtra("velkomst");

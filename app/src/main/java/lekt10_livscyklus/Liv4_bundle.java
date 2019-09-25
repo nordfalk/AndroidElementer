@@ -58,15 +58,16 @@ public class Liv4_bundle extends LogAktivitet {
   protected void onRestoreInstanceState(Bundle savedInstanceState) {
     // her genskabes indhold for alle views med id
     super.onRestoreInstanceState(savedInstanceState);
+    // vi kunne også her genskabe andet indhold (men vi gør det i onCreate() i dette eksempel)
     // data.navn = savedInstanceState.getString("navn");
   }
 
   @Override
   protected void onSaveInstanceState(Bundle outState) {
-    outState.putInt("alder", ++data.alder);
+    super.onSaveInstanceState(outState); // gem indhold for alle views med id
+    outState.putInt("alder", ++data.alder); // gem yderligere indhold
     outState.putString("navn", data.navn);
     outState.putStringArrayList("noter", data.noter);
     outState.putSerializable("data", data);
-    super.onSaveInstanceState(outState); // gem indhold for alle views med id
   }
 }
