@@ -1,6 +1,5 @@
 package lekt06_data;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -9,6 +8,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 
+import androidx.appcompat.app.AppCompatActivity;
 import dk.nordfalk.android.elementer.R;
 
 /**
@@ -22,7 +22,13 @@ public class JsonParsning extends AppCompatActivity {
     TextView tv = new TextView(this);
 
     try {
+      JSONObject obj = new JSONObject("{ navn: 'Jacob', efternavn: 'Nordfalk' }");
+      tv.append("Jacobs efternavn: " + obj.getString("efternavn") );
+      tv.append("\n\nHele JSON-objektet: " + obj.toString(2) );
+
+      tv.append("\n\nEksempel på parsning fra en fil: ");
       InputStream is = getResources().openRawResource(R.raw.data_jsoneksempel);
+      // Vi kunne hente over netværket (men det kræver at vi er i en baggrundstråd)
       //InputStream is = new URL("https://javabog.dk/eksempel.json").openStream();
 
       byte b[] = new byte[is.available()]; // kun små filer
@@ -32,7 +38,7 @@ public class JsonParsning extends AppCompatActivity {
 
       JSONObject json = new JSONObject(str);
       String bank = json.getString("bank");
-      tv.append("\n=== Oversigt over " + bank + "s kunder ===\n");
+      tv.append("\n\n=== Oversigt over " + bank + "s kunder ===\n");
       double totalKredit = 0;
 
       JSONArray kunder = json.getJSONArray("kunder");

@@ -17,8 +17,7 @@
       android:key="foretrukkenPostNr"
       android:title="Foretrukken postnummer"
       android:summary="Dit foretrukne postnummer"
-      android:defaultValue="" />
-<!--       android:password="true" -->
+      android:defaultValue="2750" />
 
     <PreferenceScreen
             android:key="underskaerm"

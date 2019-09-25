@@ -1,12 +1,12 @@
 package lekt01_views;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import dk.nordfalk.android.elementer.R;
 
 /**
@@ -36,21 +36,21 @@ public class BenytKnapperDeklarativ extends AppCompatActivity implements OnClick
     knap3.setOnClickListener(this);
   }
 
-  public void onClick(View v) {
+  public void onClick(View knappenDerBlevTrykketPå) {
     System.out.println("Der blev trykket på en knap");
 
     // Vis et tal der skifter så vi kan se hver gang der trykkes
     long etTal = System.currentTimeMillis();
 
-    if (v == knap1) {
+    if (knappenDerBlevTrykketPå == knap1) {
 
       knap1.setText("Du trykkede på mig. Tak! \n" + etTal);
 
-    } else if (v == knap2) {
+    } else if (knappenDerBlevTrykketPå == knap2) {
 
       knap3.setText("Nej nej, tryk på mig i stedet!\n" + etTal);
 
-    } else if (v == knap3) {
+    } else if (knappenDerBlevTrykketPå == knap3) {
 
       knap2.setText("Hey, hvis der skal trykkes, så er det på MIG!\n" + etTal);
       // Erstat logoet med en bil

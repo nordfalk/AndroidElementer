@@ -10,15 +10,17 @@
 // http://www.geonames.org/postal-codes/postal-codes-denmark.html
 package lekt03_net;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,6 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
  * Simpel aktivitet der viser byvejret i Valby
  *
@@ -41,8 +45,7 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
   ImageView imageView_dag1;
   ImageView imageView_dag3_9;
   ImageView imageView_dag10_14;
-  int valgtPostNr = 2500;
-  String valgtBy = "Valby";
+  String valgtPostNr = "2750";
   EditText editText_postnr;
 
   @Override
@@ -58,8 +61,11 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
     textView.setText("Vælg postnummer");
     række.addView(textView);
 
+    // indlæs foretrukken postnummer fra PreferenceManager
+    valgtPostNr = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString("foretrukkenPostNr", "2750");
     editText_postnr = new EditText(this);
-    editText_postnr.setText("2500");
+    editText_postnr.setText(valgtPostNr);
     række.addView(editText_postnr);
 
     Button button_postnr = new Button(this);
@@ -103,16 +109,24 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
     scrollView.addView(linearLayout);
     setContentView(scrollView);
 
-    hentBilleder();
+    startHentBilleder();
   }
 
   @Override
   public void onClick(View v) {
-    valgtPostNr = Integer.parseInt("" + editText_postnr.getText());
-    hentBilleder(); // max 1 time gamle
+    valgtPostNr = editText_postnr.getText().toString();
+    startHentBilleder();
+
+    // Skjul tastaturet
+    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(editText_postnr.getWindowToken(), 0);
+
+    // gem foretrukkent postnummer i PreferenceManager
+    PreferenceManager.getDefaultSharedPreferences(this)
+            .edit().putString("foretrukkenPostNr", valgtPostNr).apply();
   }
 
-  private void hentBilleder() {
+  private void startHentBilleder() {
     new AsyncTask() {
 
       public Bitmap byvejr_dag1;
