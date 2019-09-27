@@ -294,7 +294,7 @@
         <activity android:name="lekt10_livscyklus.Liv4_bundle" />
         <activity android:name="lekt10_livscyklus.DialogDerOverleverSkaermvending" />
 
-        <activity android:name="lekt31_venstremenu.BenytVenstremenu" />
+        <activity android:name="lekt31_venstremenu.BenytVenstremenu" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="lekt32_animerede_overgange.AktivitetsovergangBegynd" />
         <activity android:name="lekt32_animerede_overgange.AktivitetsovergangSlut" />
         <activity android:name="lekt32_animerede_overgange.VisFragmentovergange" />
