@@ -39,16 +39,18 @@ public class BenytVenstremenu extends AppCompatActivity implements NavigationVie
     navigationView.setNavigationItemSelectedListener(this);
     coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
-    drawerLayout.setScrimColor(Color.TRANSPARENT);
-
+    //drawerLayout.setScrimColor(Color.TRANSPARENT);  // hvis indhold ikke skal mørknes når venstremenu vises
     ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0) {
+      /* hvis indhold skal skubbes ud mod højre når venstremenu vises
       @Override
       public void onDrawerSlide(View drawerView, float slideOffset) {
         super.onDrawerSlide(drawerView, slideOffset);
         float slideX = drawerView.getWidth() * slideOffset;
         coordinatorLayout.setTranslationX(slideX);
       }
+      */
     };
+
     // Man kan trykke på hamburgermenuen i øverste venstre hjørne
     // (og det betyder at brugeren vil se venstremenuen)
     actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -66,10 +68,10 @@ public class BenytVenstremenu extends AppCompatActivity implements NavigationVie
 
   @Override
   public boolean onNavigationItemSelected(MenuItem menuItem) {
-    menuItem.setChecked(true);
+    menuItem.setChecked(!menuItem.isChecked());
     drawerLayout.closeDrawers();
     // Ved at bruge coordinatorLayout eller et view indeni får vi indholdet til at tilpasse sig at snackbaren fylder noget
-    Snackbar.make(coordinatorLayout, "Du trykkede på "+menuItem.toString(), Snackbar.LENGTH_SHORT).show();
+    Snackbar.make(coordinatorLayout, "Valgte "+menuItem+ " i menuen", Snackbar.LENGTH_SHORT).show();
     return true;
   }
 

@@ -23,6 +23,8 @@ public class Velkomst_frag extends Fragment implements Runnable {
     ImageView iv = new ImageView(getActivity());
     iv.setImageResource(R.drawable.logo);
     iv.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.egen_anim));
+    // En lettere måde at lave små animationer på:
+    //iv.animate().rotation(360*2).setDuration(2000);
 
     // Hvis savedInstanceState ikke er null er fragmentet ved at blive genstartet
     if (savedInstanceState == null) {

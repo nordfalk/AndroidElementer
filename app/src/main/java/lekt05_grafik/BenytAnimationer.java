@@ -26,9 +26,8 @@ import dk.nordfalk.android.elementer.R;
  */
 public class BenytAnimationer extends AppCompatActivity implements OnClickListener {
 
-  Button knap1, knap2, knap3, knap4, knap5, knap6;
+  Button knap1, knap2, knap3, knap4, knap5, knap6, knap7;
   private int animIndeks;
-  private Button knap7;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +147,7 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
         }
       });
     } else if (hvadBlevDerKlikketPå == knap5) {
-      startActivity(new Intent(this, Grafikdemo2.class));
+      startActivity(new Intent(this, Braetspil.class));
       overridePendingTransition(R.anim.egen_anim, android.R.anim.fade_out);
     } else if (hvadBlevDerKlikketPå == knap6) {
 
@@ -158,8 +157,8 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
       };
       int animResId = animationer[animIndeks++ % animationer.length];
       String navn = getResources().getResourceEntryName(animResId);
-      knap5.setText("Viste " + navn);
-      knap5.startAnimation(AnimationUtils.loadAnimation(this, animResId));
+      knap6.setText("Viser " + navn);
+      knap6.startAnimation(AnimationUtils.loadAnimation(this, animResId));
     } else if (hvadBlevDerKlikketPå == knap7) {
       //Animation settet bruges til at samle flere former for animationer (scale,rotate,translate)
       AnimationSet animationSet = new AnimationSet(true);
@@ -187,6 +186,6 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
     super.onRestart();
     // Når der vendes tilbage til denne aktivitet skal den gamle aktivitet
     // fades ud og denne aktivitet flyve ind med animationen i res/anim/egen_anim.xml
-    overridePendingTransition(R.anim.egen_anim, android.R.anim.fade_out);
+    overridePendingTransition(R.anim.hyperspace_out, android.R.anim.slide_out_right);
   }
 }

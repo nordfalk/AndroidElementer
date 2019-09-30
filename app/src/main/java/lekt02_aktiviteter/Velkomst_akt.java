@@ -24,8 +24,11 @@ public class Velkomst_akt extends AppCompatActivity implements Runnable {
 
     ImageView iv = new ImageView(this);
     iv.setImageResource(R.drawable.logo);
-    iv.startAnimation(AnimationUtils.loadAnimation(this, R.anim.egen_anim));
     setContentView(iv);
+
+    iv.startAnimation(AnimationUtils.loadAnimation(this, R.anim.egen_anim));
+    // En lettere måde at lave små animationer på:
+    //iv.animate().rotation(360*2).setDuration(2000);
 
     // Hvis savedInstanceState ikke er null er det en aktivitet der er ved at blive genstartet
     if (savedInstanceState == null) {
@@ -36,6 +39,7 @@ public class Velkomst_akt extends AppCompatActivity implements Runnable {
 
   public void run() {
     startActivity(new Intent(this, Hovedmenu_akt.class));
+    // overgang til næste aktivitet
     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
     aktivitetDerVisesNu.finish();  // <2> Luk velkomstaktiviteten

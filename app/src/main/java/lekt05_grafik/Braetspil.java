@@ -10,9 +10,12 @@ import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -130,11 +133,25 @@ public class Braetspil extends AppCompatActivity {
         }
       }
       if (e.getAction() == MotionEvent.ACTION_UP && valgtBrik != null) {
-        RectF rectF = valgtBrik.rectF;
+        RectF rectF = new RectF(valgtBrik.rectF);
         rectF.offsetTo(finger.x - rectF.width() / 2, finger.y - rectF.height() / 2);
         fixerTilBane(rectF);
-        System.out.println("valgtBrik.rectF=" + valgtBrik.rectF);
+        // tjek for sammenstød med andre brikker
+        for (Brik brik : brikker) {
+          if (brik!=valgtBrik && rectF.intersect(brik.rectF)) {
+            Snackbar.make(this, "Der er ikke plads til brikken der!", Snackbar.LENGTH_SHORT).show();
+            performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+            valgtBrik = null;
+            invalidate();
+            return true;
+          }
+
+          System.out.println("valgtBrik.rectF=" + valgtBrik.rectF);
+        }
+        valgtBrik.rectF = rectF;
         valgtBrik = null;
+
+        // Tjek om regnestykket er løst
         boolean korrekt = true;
         for (int i = 0; i < 4; i++) {
           Brik s1 = brikker.get(i);

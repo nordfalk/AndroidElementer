@@ -72,11 +72,12 @@
                      android:layout_height="wrap_content"/>
 
             <Button
+                android:id="@+id/okKnap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
-                android:text="En knap"/>
+                android:text="En OK-knap (med en fab hængende)"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_anchor="@id/rod"
+        app:layout_anchor="@id/okKnap"
         app:layout_anchorGravity="bottom|end"
         android:src="@android:drawable/ic_media_ff"/>
 

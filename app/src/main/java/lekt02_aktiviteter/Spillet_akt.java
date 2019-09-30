@@ -86,6 +86,5 @@ public class Spillet_akt extends AppCompatActivity implements View.OnClickListen
     if (logik.erSpilletTabt()) {
       info.setText("Du har tabt, ordet var : " + logik.getOrdet());
     }
-
   }
 }
