@@ -117,9 +117,7 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
     valgtPostNr = editText_postnr.getText().toString();
     startHentBilleder();
 
-    // Skjul tastaturet
-    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-    imm.hideSoftInputFromWindow(editText_postnr.getWindowToken(), 0);
+    skjulTastatur(v);
 
     // gem foretrukkent postnummer i PreferenceManager
     PreferenceManager.getDefaultSharedPreferences(this)
@@ -164,15 +162,20 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
     }
   }
 
-  private void advarBruger(String advarsel) {
-    Log.w("Vejret", advarsel);
-    Toast.makeText(this, advarsel, Toast.LENGTH_LONG).show();
-  }
-
   public static Bitmap opretBitmapFraUrl(String url) throws IOException {
     InputStream is = new URL(url).openStream();
     Bitmap bitmap = BitmapFactory.decodeStream(is);
     is.close();
     return bitmap;
+  }
+
+  private void advarBruger(String advarsel) {
+    Log.w("Vejret", advarsel);
+    Toast.makeText(this, advarsel, Toast.LENGTH_LONG).show();
+  }
+
+  public void skjulTastatur(View v) {
+    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
   }
 }

@@ -1,6 +1,8 @@
 package lekt07_lister2;
 
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -26,6 +28,7 @@ public class BenytRecyclerview extends AppCompatActivity {
   // Vi laver en arrayliste så vi kan fjerne/indsætte elementer
   ArrayList<String> lande = new ArrayList<>(Arrays.asList(landeArray));
 
+  ListeelemAdapter listeelemAdapter = new ListeelemAdapter();
   RecyclerView recyclerView;
 
   @Override
@@ -36,15 +39,17 @@ public class BenytRecyclerview extends AppCompatActivity {
 
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     //recyclerView.setOnItemClickListener(this); FINDES IKKE - i stedet skal man lytte efter onClick på de enkelte vieww
-    recyclerView.setAdapter(adapter);
+    recyclerView.setAdapter(listeelemAdapter);
 
     setContentView(recyclerView);
     Snackbar.make(recyclerView, "Tryk en titel for at flytte et element til toppen " +
             "eller på billedet for at fjerne det", Snackbar.LENGTH_INDEFINITE).show();
+    FloatingActionButton fab = new FloatingActionButton(this);
+    recyclerView.addView(fab);
   }
 
 
-  RecyclerView.Adapter adapter = new RecyclerView.Adapter<ListeelemViewholder>() {
+  class ListeelemAdapter extends RecyclerView.Adapter<ListeelemViewholder> {
     @Override
     public int getItemCount()  {
       return lande.size();
@@ -52,17 +57,8 @@ public class BenytRecyclerview extends AppCompatActivity {
 
     @Override
     public ListeelemViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View view = getLayoutInflater().inflate(R.layout.lekt04_listeelement, parent, false);
-      ListeelemViewholder vh = new ListeelemViewholder(view);
-      vh.overskrift = view.findViewById(R.id.listeelem_overskrift);
-      vh.beskrivelse = view.findViewById(R.id.listeelem_beskrivelse);
-      vh.billede = view.findViewById(R.id.listeelem_billede);
-      vh.overskrift.setOnClickListener(vh);
-      vh.beskrivelse.setOnClickListener(vh);
-      vh.billede.setOnClickListener(vh);
-      vh.overskrift.setBackgroundResource(android.R.drawable.list_selector_background);
-      vh.beskrivelse.setBackgroundResource(android.R.drawable.list_selector_background);
-      vh.billede.setBackgroundResource(android.R.drawable.list_selector_background);
+      View listeelementViews = getLayoutInflater().inflate(R.layout.lekt04_listeelement, parent, false);
+      ListeelemViewholder vh = new ListeelemViewholder(listeelementViews);
       return vh;
     }
 
@@ -82,18 +78,35 @@ public class BenytRecyclerview extends AppCompatActivity {
 
 
   /**
-   * En Viewholder husker forskellige views i et listeelement, sådan at søgninger i viewhierakiet
-   * med findViewById() kun behøver at ske EN gang.
-   * Se https://developer.android.com/training/material/lists-cards.html
+   * En Viewholder holder referencer til de forskellige views i et listeelement,
+   * sådan at søgninger i viewhierakiet med findViewById() kun behøver at ske EN gang.
+   * Se https://developer.android.com/guide/topics/ui/layout/recyclerview
    */
   class ListeelemViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView overskrift;
     TextView beskrivelse;
     ImageView billede;
 
-    public ListeelemViewholder(View itemView) {
-      super(itemView);
+    public ListeelemViewholder(View listeelementViews) {
+      super(listeelementViews);
+      overskrift = listeelementViews.findViewById(R.id.listeelem_overskrift);
+      beskrivelse = listeelementViews.findViewById(R.id.listeelem_beskrivelse);
+      billede = listeelementViews.findViewById(R.id.listeelem_billede);
+      // Gør listeelementer klikbare og vis det ved at deres baggrunsfarve ændrer sig ved berøring
+      overskrift.setBackgroundResource(android.R.drawable.list_selector_background);
+      beskrivelse.setBackgroundResource(android.R.drawable.list_selector_background);
+      billede.setBackgroundResource(android.R.drawable.list_selector_background);
+      overskrift.setOnClickListener(this);
+      beskrivelse.setOnClickListener(this);
+      billede.setOnClickListener(this);
     }
+
+
+    /**
+     * Håndtering af klik på de forskellige views i listeelementet.
+     * Metoden kan fjernes hvis du ikke understøtter klik
+     * @param v Viewet der blev klikket på
+     */
 
     @Override
     public void onClick(View v) {
@@ -102,13 +115,13 @@ public class BenytRecyclerview extends AppCompatActivity {
       Toast.makeText(v.getContext(), "Klik på " + position, Toast.LENGTH_SHORT).show();
       if (v == billede) { // Klik på billede fjerner landet fra listen
         lande.remove(position);
-        adapter.notifyItemRemoved(position);
+        listeelemAdapter.notifyItemRemoved(position);
         Snackbar.make(recyclerView, landenavn + " fjernet", Snackbar.LENGTH_INDEFINITE)
                 .setAction("Fortryd", new View.OnClickListener() {
                   @Override
                   public void onClick(View view) {
                     lande.add(position, landenavn);
-                    adapter.notifyItemInserted(position);
+                    listeelemAdapter.notifyItemInserted(position);
                     recyclerView.smoothScrollToPosition(position);
                     Snackbar.make(recyclerView, "OK, du får "+landenavn + " tilbage", Snackbar.LENGTH_LONG).show();
                   }
@@ -118,7 +131,7 @@ public class BenytRecyclerview extends AppCompatActivity {
       if (v == overskrift) { // Klik på overskrift flytter landet op til toppen
         lande.remove(position);
         lande.add(0, landenavn);
-        adapter.notifyItemMoved(position, 0);
+        listeelemAdapter.notifyItemMoved(position, 0);
         recyclerView.scrollToPosition(0);
       }
 
@@ -137,7 +150,7 @@ public class BenytRecyclerview extends AppCompatActivity {
 
 
   /**
-   * Skifter LayoutManager - kan fjernes
+   * Denne metode skifter LayoutManager og kan sagtens fjernes
    */
   int aktivLayoutManager;
   private void skiftLayoutManager() {
