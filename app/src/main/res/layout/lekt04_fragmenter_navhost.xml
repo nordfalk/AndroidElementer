@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/lekt_04_navhost_fragment"
+        android:id="@+id/lekt_04_navhost"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/lekt_04_navigationsgraf"
         app:defaultNavHost="true"

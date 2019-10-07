@@ -185,14 +185,14 @@ public class Galgelogik {
 
     muligeOrd.clear();
     for (String linje : data.split("\n")) {
-      if (linjeNr<20) System.out.println("linje = " + linje); // udskriv de første 20 linjer
+      if (linjeNr<20) System.out.println("Læst linje = " + linje); // udskriv de første 20 linjer
       if (linjeNr++ < 1 ) continue; // Spring første linje med kolonnenavnene over
       String[] felter = linje.split(",", -1);// -1 er for at beholde tomme indgange, f.eks. bliver ",,," splittet i et array med 4 tomme strenge
       String sværhedsgrad = felter[0].trim();
       String ordet = felter[1].trim().toLowerCase();
       if (sværhedsgrad.isEmpty() || ordet.isEmpty()) continue; // spring over linjer med tomme ord
       if (!sværhedsgrader.contains(sværhedsgrad)) continue; // filtrér på sværhedsgrader
-      System.out.println("Tilføjer "+ordet+" med sværhedsgrad "+sværhedsgrad);
+      System.out.println("Tilføjer "+ordet+", der har sværhedsgrad "+sværhedsgrad);
       muligeOrd.add(ordet);
     }
 

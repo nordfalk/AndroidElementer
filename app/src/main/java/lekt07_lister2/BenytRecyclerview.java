@@ -42,6 +42,8 @@ public class BenytRecyclerview extends AppCompatActivity {
     recyclerView.setAdapter(listeelemAdapter);
 
     setContentView(recyclerView);
+
+
     Snackbar.make(recyclerView, "Tryk en titel for at flytte et element til toppen " +
             "eller på billedet for at fjerne det", Snackbar.LENGTH_INDEFINITE)
             .setAction("Skift\nlayout", new View.OnClickListener() {
@@ -116,7 +118,8 @@ public class BenytRecyclerview extends AppCompatActivity {
     public void onClick(View v) {
       final int position = getAdapterPosition();
       final String landenavn = lande.get(position);
-      Toast.makeText(v.getContext(), "Klik på " + position, Toast.LENGTH_SHORT).show();
+      Toast.makeText(v.getContext(), "Klik på " + position + "/" + landenavn, Toast.LENGTH_SHORT).show();
+
       if (v == billede) { // Klik på billede fjerner landet fra listen
         lande.remove(position);
         listeelemAdapter.notifyItemRemoved(position);
@@ -140,7 +143,7 @@ public class BenytRecyclerview extends AppCompatActivity {
       }
 
       if (v == beskrivelse) {
-        //xxxx TODO mere synlig!
+        skiftLayoutManager();
       }
     }
   }
@@ -168,7 +171,7 @@ public class BenytRecyclerview extends AppCompatActivity {
       aktivLayoutManagerTekst = "LinearLayoutManager bagfra";
     } else {
       recyclerView.setLayoutManager(new LinearLayoutManager(this));
-      aktivLayoutManagerTekst = "LinearLayoutManager (normal)";
+      aktivLayoutManagerTekst = "Normal LinearLayoutManager";
       aktivLayoutManager = 0;
     }
     Snackbar.make(recyclerView, aktivLayoutManagerTekst, Snackbar.LENGTH_INDEFINITE).setAction("Skift", new View.OnClickListener() {

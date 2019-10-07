@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.navigation.NavController;
+import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 import dk.nordfalk.android.elementer.R;
 
@@ -31,8 +32,8 @@ public class HovedaktivitetBundnavigation extends AppCompatActivity implements B
 
 
     // Hvis du ønsker at på fat i NavController og påvirke navigering fra aktiviteten kan det gøres med:
-    NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.lekt_04_navhost_fragment);
-    navController = navHostFragment.getNavController();
+    NavHost navHost = (NavHost) getSupportFragmentManager().findFragmentById(R.id.lekt_04_navhost);
+    navController = navHost.getNavController();
 
     BottomNavigationView bottomNavigationView = findViewById(R.id.bundnavigation);
     bottomNavigationView.setVisibility(View.VISIBLE);
