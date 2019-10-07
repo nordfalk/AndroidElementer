@@ -43,9 +43,13 @@ public class BenytRecyclerview extends AppCompatActivity {
 
     setContentView(recyclerView);
     Snackbar.make(recyclerView, "Tryk en titel for at flytte et element til toppen " +
-            "eller på billedet for at fjerne det", Snackbar.LENGTH_INDEFINITE).show();
-    FloatingActionButton fab = new FloatingActionButton(this);
-    recyclerView.addView(fab);
+            "eller på billedet for at fjerne det", Snackbar.LENGTH_INDEFINITE)
+            .setAction("Skift\nlayout", new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                skiftLayoutManager();
+              }
+            }).show();
   }
 
 
@@ -137,13 +141,6 @@ public class BenytRecyclerview extends AppCompatActivity {
 
       if (v == beskrivelse) {
         //xxxx TODO mere synlig!
-        Snackbar.make(recyclerView, "Prøv at skifte layout-manager", Snackbar.LENGTH_INDEFINITE)
-                .setAction("Skift", new View.OnClickListener() {
-                  @Override
-                  public void onClick(View view) {
-                    skiftLayoutManager();
-                  }
-                }).show();
       }
     }
   }
