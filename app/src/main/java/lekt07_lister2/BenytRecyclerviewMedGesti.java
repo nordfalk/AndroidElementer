@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,7 +97,7 @@ public class BenytRecyclerviewMedGesti extends AppCompatActivity {
       super.onSelectedChanged(vh, actionState);
       Log.d("Lande", "onSelectedChanged "+vh+" "+actionState);
       if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
-        vh.itemView.animate().scaleX(0.8f).scaleY(0.8f).alpha(0.6f);
+        vh.itemView.animate().scaleX(0.8f).scaleY(0.8f).rotation(-10).alpha(0.6f);
       }
     }
 
@@ -123,7 +124,7 @@ public class BenytRecyclerviewMedGesti extends AppCompatActivity {
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder vh) {
       super.clearView(recyclerView, vh);
       Log.d("Lande", "clearView "+vh);
-      vh.itemView.animate().scaleX(1).scaleY(1).alpha(1);
+      vh.itemView.animate().scaleX(1).scaleY(1).rotation(0).alpha(1).setInterpolator(new OvershootInterpolator());
     }
   };
 }

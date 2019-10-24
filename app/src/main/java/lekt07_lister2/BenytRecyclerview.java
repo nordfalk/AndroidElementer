@@ -116,7 +116,7 @@ public class BenytRecyclerview extends AppCompatActivity {
 
     @Override
     public void onClick(View v) {
-      final int position = getAdapterPosition();
+      final int position = super.getAdapterPosition(); // listeelementets position
       final String landenavn = lande.get(position);
       Toast.makeText(v.getContext(), "Klik på " + position + "/" + landenavn, Toast.LENGTH_SHORT).show();
 
