@@ -155,6 +155,7 @@
 
         <activity android:name="lekt04_arkitektur.NoteAktivitet" />
         <activity android:name="lekt04_arkitektur.NoteAktivitet2" />
+        <activity android:name="lekt04_arkitektur.NoteAktivitetLiveData" />
 
         <activity android:name="lekt04_lister.BenytListView" />
         <activity android:name="lekt04_lister.BenytGridView" />

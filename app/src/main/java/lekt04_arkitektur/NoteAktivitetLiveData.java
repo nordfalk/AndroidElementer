@@ -1,6 +1,5 @@
 package lekt04_arkitektur;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,15 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+
 /**
  * Simpel aktivitet til at tage noter
- * Benytter MinApp.data - som vi er SIKRE på er initialiseret,
- * da Application Singletons onCreate() metode bliver kaldt som
- * det første når en app (gen)startes
  *
  * @author Jacob Nordfalk
  */
-public class NoteAktivitet extends AppCompatActivity implements OnClickListener {
+public class NoteAktivitetLiveData extends AppCompatActivity implements OnClickListener {
 
   EditText noteEditText;
   private TextView alleNoterTv;
@@ -37,9 +36,6 @@ public class NoteAktivitet extends AppCompatActivity implements OnClickListener 
     noteEditText = new EditText(this);
     linearLayout.addView(noteEditText);
 
-    String seneste_note = MinApp.prefs.getString("seneste_note","");
-    noteEditText.setText(seneste_note);
-
     Button okKnap = new Button(this);
     okKnap.setText("OK");
     okKnap.setOnClickListener(this);
@@ -53,21 +49,32 @@ public class NoteAktivitet extends AppCompatActivity implements OnClickListener 
     scrollView.addView(linearLayout);
     setContentView(scrollView);
 
-    opdaterSkærm();
+    MinApp.livedata.observe(this, new Observer<Programdata>() {
+      @Override
+      public void onChanged(Programdata programdata) {
+        opdaterSkærm(programdata);
+      }
+    });
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    // Ingen afregistrering nødvendig! AppCompatActivity afregistrerer sig selv :-)
   }
 
   @Override
   public void onClick(View v) {
     String note = noteEditText.getText().toString();
-    MinApp.prefs.edit().putString("seneste_note", note).apply();
-    MinApp.getData().noter.add(note);
-    MinApp.gemData();
     noteEditText.setText("");
-    opdaterSkærm();
+
+    Programdata data = MinApp.livedata.getValue();
+    data.noter.add(note);
+    MinApp.livedata.setValue(data);
   }
 
-  private void opdaterSkærm() {
-    String notetekst = MinApp.getData().noter.toString().replaceAll(", ", "\n");
+  private void opdaterSkærm(Programdata programdata) {
+    String notetekst = programdata.noter.toString().replaceAll(", ", "\n");
     alleNoterTv.setText("Noter:\n" + notetekst);
   }
 }

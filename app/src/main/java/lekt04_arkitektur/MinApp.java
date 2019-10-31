@@ -31,6 +31,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import ufaerdigt.lekt06_youtube.FilCache;
 
 /**
@@ -51,6 +53,7 @@ public class MinApp extends Application {
    */
   public static Handler forgrundstråd = new Handler();
   private static Programdata data;
+  public static final MutableLiveData<Programdata> livedata = new MutableLiveData<>();
 
   public static Programdata getData() {
     // if (data == null) data = new Programdata(); // klassisk singleon unødvendigt da den oprettes i onCreate()
@@ -81,6 +84,14 @@ public class MinApp extends Application {
     data.observatører.add(new Runnable() {
       @Override
       public void run() {
+        MinApp.gemData();
+      }
+    });
+
+    livedata.setValue(data);
+    livedata.observeForever(new Observer<Programdata>() {
+      @Override
+      public void onChanged(Programdata programdata) {
         MinApp.gemData();
       }
     });

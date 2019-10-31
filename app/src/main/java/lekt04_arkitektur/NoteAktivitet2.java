@@ -1,13 +1,3 @@
-/*
- * /dmi/femdgn_dk.png
- * /dmi/index/danmark/solvarsel.htm
- * /dmi/varsel.xml  - DMI - varsel om farligt vejr
- * /dmi/rss-nyheder
- */        //http://servlet.dmi.dk/byvejr/servlet/byvejr?valgtBy=2500&tabel=dag10_14
-// For kun at se denne proces' output:
-// adb logcat -v tag ActivityManager:I Vejret:V System.err:V *:S
-// Fremtidig geokodning bliver med
-// http://www.geonames.org/postal-codes/postal-codes-denmark.html
 package lekt04_arkitektur;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,16 +15,10 @@ import android.widget.TextView;
  *
  * @author Jacob Nordfalk
  */
-public class NoteAktivitet2 extends AppCompatActivity implements OnClickListener {
+public class NoteAktivitet2 extends AppCompatActivity implements OnClickListener, Runnable {
 
-  EditText editText_postnr;
+  EditText noteEditText;
   private TextView alleNoterTv;
-  private Runnable dataobservatør = new Runnable() {
-    @Override
-    public void run() {
-      opdaterSkærm();
-    }
-  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +31,8 @@ public class NoteAktivitet2 extends AppCompatActivity implements OnClickListener
     textView.setText("Velkommen, " + MinApp.getData().navn + ", skriv dine noter herunder:");
     linearLayout.addView(textView);
 
-    editText_postnr = new EditText(this);
-    linearLayout.addView(editText_postnr);
+    noteEditText = new EditText(this);
+    linearLayout.addView(noteEditText);
 
     Button okKnap = new Button(this);
     okKnap.setText("OK");
@@ -63,26 +47,28 @@ public class NoteAktivitet2 extends AppCompatActivity implements OnClickListener
     scrollView.addView(linearLayout);
     setContentView(scrollView);
 
-    MinApp.getData().observatører.add(dataobservatør);
-    opdaterSkærm();
+    MinApp.getData().observatører.add(this);
+    run(); // opdatér skærm
+  }
+
+
+  @Override
+  public void run() {
+    String notetekst = MinApp.getData().noter.toString().replaceAll(", ", "\n");
+    alleNoterTv.setText("Noter:\n" + notetekst);
+  }
+
+  @Override
+  public void onClick(View v) {
+    String note = noteEditText.getText().toString();
+    noteEditText.setText("");
+    MinApp.getData().noter.add(note);    // ændr modellen
+    MinApp.getData().kaldObservatører(); // kalder run() på dataobservatør (og evt andre observatører)
   }
 
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    MinApp.getData().observatører.remove(dataobservatør);
-  }
-
-  @Override
-  public void onClick(View v) {
-    String note = editText_postnr.getText().toString();
-    editText_postnr.setText("");
-    MinApp.getData().noter.add(note);
-    MinApp.getData().kaldObservatører(); // kalder run() på dataobservatør (og evt andre observatører)
-  }
-
-  private void opdaterSkærm() {
-    String notetekst = MinApp.getData().noter.toString().replaceAll(", ", "\n");
-    alleNoterTv.setText("Noter:\n" + notetekst);
+    MinApp.getData().observatører.remove(this); // ryd op (undgå hukommelseslæk)
   }
 }
