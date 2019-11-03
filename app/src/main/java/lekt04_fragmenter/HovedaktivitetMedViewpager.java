@@ -21,7 +21,7 @@ public class HovedaktivitetMedViewpager extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     requestWindowFeature(Window.FEATURE_ACTION_BAR);
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.viewpager_med_titel);
+    setContentView(R.layout.lekt04_fragmenter_viewpager);
 
     viewPager = findViewById(R.id.viewPager);
     viewPager.setAdapter(new GalgelegViewPagerAdapter(getSupportFragmentManager()));

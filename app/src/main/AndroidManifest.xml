@@ -192,6 +192,13 @@
             android:name="lekt05_sensorer.Balancespil"
             android:screenOrientation="portrait" />
 
+        <activity android:name="lekt06_asynkron.Asynk1Handler" />
+        <activity android:name="lekt06_asynkron.Asynk2Thread" />
+        <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
+        <activity android:name="lekt06_asynkron.Asynk4Korrekt" />
+        <activity android:name="lekt06_asynkron.Asynk5Message" />
+
+
         <activity android:name="lekt06_data.BenytPreferenceManager" />
         <activity android:name="lekt06_data.CSVParsning" />
         <activity android:name="lekt06_data.JsonParsning" />
@@ -201,19 +208,15 @@
         <activity android:name="lekt06_data.BenytSQLiteOpenHelper" />
 
 
-        <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
-
         <activity android:name="lekt07_lister2.BenytRecyclerview0" />
         <activity android:name="lekt07_lister2.BenytRecyclerview" />
         <activity android:name="lekt07_lister2.BenytRecyclerviewMedGesti" />
         <activity android:name="lekt07_lister2.BenytRecyclerviewOverskrifter" />
         <activity android:name="lekt07_lister2.BenytRecyclerviewEkspanderbar" />
 
-        <activity android:name="lekt06_asynkron.Asynk1Handler" />
-        <activity android:name="lekt06_asynkron.Asynk2Thread" />
-        <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
-        <activity android:name="lekt06_asynkron.Asynk4Korrekt" />
-        <activity android:name="lekt06_asynkron.Asynk5Message" />
+
+        <activity android:name="lekt07_fragmenter.BenytHovedmenu_akt" />
+
         <activity android:name="lekt08_providers.VisOpkald" />
         <activity android:name="lekt08_providers.VisKalender" />
         <activity android:name="lekt08_providers.VisKontakter" />

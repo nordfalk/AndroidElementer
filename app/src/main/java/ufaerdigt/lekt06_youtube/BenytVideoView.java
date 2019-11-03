@@ -25,7 +25,7 @@ public class BenytVideoView extends AppCompatActivity implements OnClickListener
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
-    setContentView(R.layout.youtube_videoview);
+    setContentView(R.layout.ufaerdigt_youtube_videoview);
 
     videoView = findViewById(R.id.youtube_videoView);
     overskrift = findViewById(R.id.youtube_overskrift);
