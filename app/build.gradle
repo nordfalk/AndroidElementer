@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-//    buildToolsVersion '27.0.3'
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
@@ -15,6 +14,7 @@ android {
 
         versionCode 67
         versionName '2.9.0  13.sep 2019'
+        testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
         /*
@@ -49,7 +49,7 @@ dependencies {
     //implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
 
-    // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelsesmodul
+    // Vi benytter Google Play Services autoriseringsmodul og stedbestemmelses-modul
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
@@ -61,4 +61,6 @@ dependencies {
 
     // Til afprøvning
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
 }
