@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Baggrunden til en knap, der viser et billede -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- En selector giver valg mellem forskellige drawables eller shapes i baggrunden
+  afhængig af om en knap, listelement eller lignende er trykket ned, har fokus eller er disablet -->
+  <item android:drawable="@drawable/logo" android:state_pressed="true">
+  </item>
+
+  <!-- Den mest generelle skal være nederst -->
+  <item android:drawable="@drawable/bil">
+  </item>
+
+
+</selector>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Baggrunden til en blå knap fra API v21+. En <ripple> farver viewet når der trykkes på det. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+        android:color="@color/hvid">
+
+  <item android:drawable="@drawable/bil">
+  </item>
+
+</ripple>

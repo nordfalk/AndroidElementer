@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Baggrunden til en blå knap fra API v21+. En <ripple> farver viewet når der trykkes på det. -->
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
         android:color="@color/hvid">
   <item>
+    <!-- En selector giver valg mellem forskellige drawables eller shapes i baggrunden
+      afhængig af om en knap, listelement eller lignende er trykket ned, har fokus eller er disablet -->
     <selector>
 
+      <!-- Hvis knappen er disablet -->
       <item android:state_enabled="false">
         <shape android:shape="rectangle">
           <corners android:radius="4dp"/>
@@ -12,7 +16,7 @@
       </item>
 
 
-      <!-- Den mest generelle skal være nederst -->
+      <!-- Det normale farve skal være nederst -->
       <item>
         <shape android:shape="rectangle">
           <corners android:radius="4dp"/>
