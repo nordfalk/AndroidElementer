@@ -195,6 +195,7 @@
         <activity android:name="lekt06_asynkron.Asynk1Handler" />
         <activity android:name="lekt06_asynkron.Asynk2Thread" />
         <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
+        <activity android:name="lekt06_asynkron.Asynk4ViewModel" />
         <activity android:name="lekt06_asynkron.Asynk4Korrekt" />
         <activity android:name="lekt06_asynkron.Asynk5Message" />
 

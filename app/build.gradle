@@ -41,6 +41,7 @@ dependencies {
 
     // Kompatibilitetsbiblioteker til bl.a. fragmenter
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'android.arch.lifecycle:extensions:2.1.0'
 
     // Navigation og venstremenu
     implementation 'androidx.navigation:navigation-fragment:2.1.0'

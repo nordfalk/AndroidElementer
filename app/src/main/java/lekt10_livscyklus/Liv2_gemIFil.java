@@ -22,10 +22,6 @@ public class Liv2_gemIFil extends LogAktivitet {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-
-//    getAssets().open("benytwebview.html");
-//    getResources().openRawResource(R.raw.jeg_bremser_haardt);
-
     try {
       data = (Programdata) Serialisering.hent(getCacheDir() + "/programdata.ser");
       Log.d("data.noter", "" + data);
