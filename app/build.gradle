@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
 //      denne app kan installeres på telefoner med Android 4.0 (API 14) og frem
         minSdkVersion 14
 //      men den er beregnet til Android 5.1 (API 24)
-        targetSdkVersion 28
+        targetSdkVersion 29
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
-        versionCode 67
-        versionName '2.9.0  13.sep 2019'
+        versionCode 68
+        versionName '2.9.1  14.nov 2019'
         testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
