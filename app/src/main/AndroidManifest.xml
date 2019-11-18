@@ -140,6 +140,7 @@
         <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
         <activity android:name="lekt03_net.ByvejrAktivitet" />
 
+        <activity android:name="lekt03x_temaer.BenytKnapperDeklarativLys" android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name="lekt03x_temaer.TemaLyseFarver"     android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name="lekt03x_temaer.TemaIngenTitel"     android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="lekt03x_temaer.TemaSomEnDialog"    android:theme="@style/Theme.AppCompat.Dialog" />
