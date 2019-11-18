@@ -72,6 +72,7 @@ public class Galgelogik {
     antalForkerteBogstaver = 0;
     spilletErVundet = false;
     spilletErTabt = false;
+    if (muligeOrd.isEmpty()) throw new IllegalStateException("Listen over mulige ord er tom!");
     ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
     opdaterSynligtOrd();
   }

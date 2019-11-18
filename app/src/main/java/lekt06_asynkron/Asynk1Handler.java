@@ -72,7 +72,7 @@ public class Asynk1Handler extends AppCompatActivity implements OnClickListener 
         public void run() {
           if (antalSekunderGået++ < 10) {
             knap2.setText(antalSekunderGået+"...");
-            handler.postDelayed(this, 1000); // udfør denne Runnable igen om 1 sekund
+            handler.postDelayed(opgave /* =this */, 1000); // udfør denne Runnable igen om 1 sekund
           } else {
             knap2.setText("færdig!"); // Der er gået 10 sekunder
           }
