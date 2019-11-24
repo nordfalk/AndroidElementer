@@ -1,4 +1,4 @@
-package lekt01_views;
+package lekt02_aktiviteter;
 
 
 import org.junit.Rule;
@@ -8,7 +8,6 @@ import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.rule.ActivityTestRule;
 import dk.nordfalk.android.elementer.R;
-import lekt02_aktiviteter.Hovedmenu_akt;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -18,7 +17,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-public class BenytGalgespilTest {
+public class HovedmenuTest {
 
   @Rule
   public ActivityTestRule<Hovedmenu_akt> testRule = new ActivityTestRule<>(Hovedmenu_akt.class);
