@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     defaultConfig {
 //      app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
 //      denne app kan installeres på telefoner med Android 4.0 (API 14) og frem
         minSdkVersion 14
 //      men den er beregnet til Android 5.1 (API 24)
-        targetSdkVersion 29
+        targetSdkVersion 28
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
@@ -36,6 +36,12 @@ android {
         abortOnError false
     }
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+        //unitTests.returnDefaultValues = true
+    }
 }
 dependencies {
 
@@ -59,8 +65,14 @@ dependencies {
     // implementation 'com.google.api-client:google-api-client-android:1.22.0'
     // implementation 'com.google.apis:google-api-services-people:v1-rev139-1.22.0'
 
-    // Til afprøvning
+    // Til afprøvning i standard JVM, dvs uden at køre emulator eller telefon (src/test)
     testImplementation 'junit:junit:4.12'
+    // Brug Roboelectric til at simulere Android-miljø fra standard JVM
+    testImplementation "org.robolectric:robolectric:4.3"
+    testImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'androidx.test:rules:1.2.0'
+
+    // Til afprøvning i en emulator (src/androidTest)
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
 }
