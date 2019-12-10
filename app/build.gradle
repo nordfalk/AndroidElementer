@@ -47,7 +47,8 @@ dependencies {
 
     // Kompatibilitetsbiblioteker til bl.a. fragmenter
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'android.arch.lifecycle:extensions:2.1.0'
+    // Til eksemplet lekt06_asynkron.Asynk4ViewModel
+    //implementation 'android.arch.lifecycle:extensions:2.1.0'
 
     // Navigation og venstremenu
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
@@ -72,7 +73,7 @@ dependencies {
     testImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation 'androidx.test:rules:1.2.0'
 
-    // Til afprøvning i en emulator (src/androidTest)
+    // Til afprøvning i en emulator/fysisk telefon (src/androidTest)
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
 }

@@ -1,12 +1,17 @@
 package lekt09_recievers;
 
 import androidx.appcompat.app.AppCompatActivity;
+import dk.nordfalk.android.elementer.R;
+
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,7 +25,7 @@ import android.widget.Toast;
  */
 public class BenytAlarmer extends AppCompatActivity implements OnClickListener {
 
-  Button knap1, knap2;
+  Button knap1, knapStop;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +40,46 @@ public class BenytAlarmer extends AppCompatActivity implements OnClickListener {
     knap1.setText("Start regelmæssig alarm");
     tl.addView(knap1);
 
-    knap2 = new Button(this);
-    knap2.setText("Stop regelmæssig alarm");
-    tl.addView(knap2);
+    knapStop = new Button(this);
+    knapStop.setText("Stop regelmæssig alarm");
+    tl.addView(knapStop);
 
     ScrollView sv = new ScrollView(this);
     sv.addView(tl);
     setContentView(sv);
 
     knap1.setOnClickListener(this);
-    knap2.setOnClickListener(this);
+    knapStop.setOnClickListener(this);
   }
 
   public void onClick(View klikketPå) {
+    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+    Intent intent = new Intent(this, AlarmReciever.class);
+    PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+    if (getPackageManager().queryBroadcastReceivers(intent, 0).size()==0) {
+      String fejl = "Du mangler at definere "+intent.getComponent().toShortString()+" i manifestet";
+      System.out.println(fejl);
+      new AlertDialog.Builder(this).setTitle("Mangel i manifestet").setMessage(fejl).show();
+      return;
+    }
+
 
     if (klikketPå == knap1) {
-      AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-      PendingIntent pi = PendingIntent.getBroadcast(this, 0, new Intent(this, AlarmReciever.class), 0);
-//      am.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis() + 1000, 60000, pi);
+//      am.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis() + 1000, 60000, alarmIntent);
 
-      am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-              AlarmManager.INTERVAL_HALF_HOUR,
-              AlarmManager.INTERVAL_HALF_HOUR, pi);
-    } else if (klikketPå == knap2) {
-      AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-      PendingIntent pi = PendingIntent.getService(this, 0, new Intent(this, AlarmReciever.class), 0);
-      am.cancel(pi);
+      alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+              SystemClock.elapsedRealtime() +
+                      5 * 1000, alarmIntent);
+      finish();
+      /*
+      alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+              SystemClock.elapsedRealtime() + 1000,
+              15*1000, alarmIntent);
+
+       */
+    } else if (klikketPå == knapStop) {
+      alarmManager.cancel(alarmIntent);
     }
   }
 
@@ -71,7 +90,11 @@ public class BenytAlarmer extends AppCompatActivity implements OnClickListener {
     public void onReceive(Context ctx, Intent i) {
       System.out.println("AndroidElementer AlarmReciever onReceive" + ctx + ":\n" + i);
       Toast.makeText(ctx, "AndroidElementer AlarmReciever onReceive", Toast.LENGTH_LONG).show();
-      ctx.startActivity(new Intent(ctx, BenytAlarmer.class));
+      ctx.startActivity(new Intent(ctx, BenytAlarmer.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+      // Spil en lyd
+      MediaPlayer enLyd = MediaPlayer.create(ctx, R.raw.dyt);
+      enLyd.setVolume(1, 1);
+      enLyd.start();
     }
   }
 

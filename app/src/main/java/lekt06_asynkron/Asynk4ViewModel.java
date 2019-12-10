@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import dk.nordfalk.android.elementer.R;
 
 
@@ -61,8 +61,13 @@ public class Asynk4ViewModel extends AppCompatActivity implements OnClickListene
     knap.setOnClickListener(this);
     annullerknap.setOnClickListener(this);
 
+    // kræver flg bibliotek i app/build.gradle:
+//    implementation 'android.arch.lifecycle:extensions:2.1.0'
+//  viewModel = androidx.lifecycle.ViewModelProviders.of(this).get(MinViewModel.class);
 // ny syntax:   viewModel = new ViewModelProvider(this).get(MinViewModel.class)
-    viewModel = ViewModelProviders.of(this).get(MinViewModel.class);
+
+    // hurtigt hack hvis lifecycle:extensions ikke er inkluderet:
+    viewModel =  new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(MinViewModel.class);
 
     viewModel.observabelLiveData.observe(this, new Observer() {
       @Override

@@ -17,9 +17,11 @@ public class VisFragmentovergange extends AppCompatActivity {
     // fordi vi fader imellem to blå fragmenter
     findViewById(R.id.fragmentindhold).setBackgroundColor(0xff333399);
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    fragmentManager.beginTransaction()
-            .replace(R.id.fragmentindhold, new FragmentovergangBegynd())
-            .commit();
+    if (savedInstanceState==null) {
+      FragmentManager fragmentManager = getSupportFragmentManager();
+      fragmentManager.beginTransaction()
+              .replace(R.id.fragmentindhold, new FragmentovergangBegynd())
+              .commit();
+    }
   }
 }
