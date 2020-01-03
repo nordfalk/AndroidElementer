@@ -22,12 +22,12 @@ import dk.nordfalk.android.elementer.R;
  * Se også diskussionen på
  * http://groups.google.com/group/android-developers/browse_thread/thread/e1d5b8f8a3142892
  */
-public class Asynk4Korrekt extends AppCompatActivity implements OnClickListener {
+public class Asynk4Static extends AppCompatActivity implements OnClickListener {
 
   ProgressBar progressBar;
   Button knap, annullerknap;
 
-  static Asynk4Korrekt synligAktivitet;
+  static Asynk4Static synligAktivitet;
   static AsyncTaskUdskifteligAktivitet asyncTask;
 
   @Override
@@ -92,29 +92,29 @@ public class Asynk4Korrekt extends AppCompatActivity implements OnClickListener 
   /**
    * en AsyncTask hvor input er int, progress er double, resultat er String
    */
-  static class AsyncTaskUdskifteligAktivitet extends AsyncTask<Integer, Double, String> {
+  static class AsyncTaskUdskifteligAktivitet extends AsyncTask {
+    int antalSkridt = 500;
+    int ventetidPrSkridtIMilisekunder = 50;
+    double procent;
+    double resttidISekunder;
 
     @Override
-    protected String doInBackground(Integer... param) {
-      int antalSkridt = param[0];
-      int ventetidPrSkridtIMilisekunder = param[1];
+    protected Object doInBackground(Object[] objects) {
       for (int i = 0; i < antalSkridt; i++) {
         SystemClock.sleep(ventetidPrSkridtIMilisekunder);
         if (isCancelled()) {
           return null; // stop uden resultat
         }
-        double procent = i * 100.0 / antalSkridt;
-        double resttidISekunder = (antalSkridt - i) * ventetidPrSkridtIMilisekunder / 100 / 10.0;
+        procent = i * 100.0 / antalSkridt;
+        resttidISekunder = (antalSkridt - i) * ventetidPrSkridtIMilisekunder / 100 / 10.0;
         publishProgress(procent, resttidISekunder); // sendes som parameter til onProgressUpdate()
       }
       return "færdig med doInBackground()!"; // resultat (String) sendes til onPostExecute()
     }
 
     @Override
-    protected void onProgressUpdate(Double... progress) {
+    protected void onProgressUpdate(Object... progress) {
       if (synligAktivitet == null) return;
-      double procent = progress[0];
-      double resttidISekunder = progress[1];
       String tekst = "arbejder - " + procent + "% færdig, mangler " + resttidISekunder + " sekunder endnu";
       Log.d("AsyncTask", tekst);
       synligAktivitet.knap.setText(tekst);
@@ -122,9 +122,9 @@ public class Asynk4Korrekt extends AppCompatActivity implements OnClickListener 
     }
 
     @Override
-    protected void onPostExecute(String resultat) {
+    protected void onPostExecute(Object resultat) {
       if (synligAktivitet == null) return;
-      synligAktivitet.knap.setText(resultat);
+      synligAktivitet.knap.setText((String) resultat);
       synligAktivitet.knap.setEnabled(true);
       synligAktivitet.annullerknap.setVisibility(View.GONE); // Skjul knappen
       asyncTask = null;

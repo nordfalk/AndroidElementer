@@ -76,7 +76,7 @@ public class VisSensorer extends AppCompatActivity implements SensorEventListene
         if (!enLyd.isPlaying()) {
           enLyd.start(); // BANG!
         }
-        måling = måling + "\nBANG!!";
+        måling = måling + "\n\nBANG!!\n\n";
       }
     }
 

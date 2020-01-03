@@ -197,8 +197,7 @@
         <activity android:name="lekt06_asynkron.Asynk2Thread" />
         <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
         <activity android:name="lekt06_asynkron.Asynk4ViewModel" />
-        <activity android:name="lekt06_asynkron.Asynk4Korrekt" />
-        <activity android:name="lekt06_asynkron.Asynk5Message" />
+        <activity android:name="lekt06_asynkron.Asynk4Static" />
 
 
         <activity android:name="lekt06_data.BenytPreferenceManager" />
@@ -317,6 +316,7 @@
         <activity android:name="lekt50_konti.HentBrugersKoenAlderTelefonEmail" />
 
         <!-- Ikke færdigt eller forældet  -->
+        <activity android:name="ufaerdigt.Asynk5Message" />
         <activity android:name="ufaerdigt.gammelt.FlytbarVejrudsigt" />
         <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytGestureDetector" />
         <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytScaleGestureDetector" />

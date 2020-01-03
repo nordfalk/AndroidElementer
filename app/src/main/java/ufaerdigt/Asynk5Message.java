@@ -1,4 +1,4 @@
-package lekt06_asynkron;
+package ufaerdigt;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
