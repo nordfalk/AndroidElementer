@@ -48,13 +48,13 @@ public class Balancespil extends AppCompatActivity implements SensorEventListene
     setContentView(spilView);
 
     sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+    sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
     try {
       PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
       // Hold skærmen helt tændt, også lidt efter...
       wakeLock = powerManager.newWakeLock(
-              PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "Spil");
+              PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "AndroidElementer:Balancespil");
     } catch (Exception e) {
       e.printStackTrace();
       Toast.makeText(this, "Kunne ikke holde skærmen tændt:\n" + e, Toast.LENGTH_LONG).show();
@@ -87,6 +87,7 @@ public class Balancespil extends AppCompatActivity implements SensorEventListene
 
   public void onSensorChanged(SensorEvent event) {
     float dt = (event.timestamp - sidsteTid) / 1000000000f; // sekunder siden sidste måling
+    if (dt < 0.01) return; // ikke opdatere oftere end 100 gange i sekundet
     sidsteTid = event.timestamp;
     if (dt > 1) {
       System.out.println("dt = " + dt);
@@ -99,8 +100,8 @@ public class Balancespil extends AppCompatActivity implements SensorEventListene
       maxPointOpnået = pointOpnået; // ny rekord!
     }
 
-    hældning = event.values[1];
-    krængning = event.values[2];
+    hældning = -event.values[1];
+    krængning = event.values[0];
 
     // Beregn vinden
     vindretning = (360 * pointOpnået * 3 / 5) % 360; // en ny retning hvert sekund
@@ -109,8 +110,8 @@ public class Balancespil extends AppCompatActivity implements SensorEventListene
     float vindDX = (float) Math.cos(r) * vindstyrke * dt;
     float vindDY = (float) Math.sin(r) * vindstyrke * dt;
 
-    bilX = bilX - 50 * krængning * dt + vindDX;
-    bilY = bilY - 50 * hældning * dt + vindDY;
+    bilX = bilX - 100 * krængning * dt + vindDX;
+    bilY = bilY - 100 * hældning * dt + vindDY;
 
     duDøde = false;
     if (bilX * bilX + bilY * bilY > 100000) {

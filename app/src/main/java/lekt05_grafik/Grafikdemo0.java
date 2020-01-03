@@ -28,9 +28,9 @@ public class Grafikdemo0 extends AppCompatActivity {
     protected void onDraw(Canvas c) {
       Paint tekstStregtype = new Paint();
       tekstStregtype.setColor(Color.GREEN);
-      tekstStregtype.setTextSize(24);
+      tekstStregtype.setTextSize(64);
       tekstStregtype.setAntiAlias(true);
-      c.drawText("Hej verden", 0, 20, tekstStregtype);
+      c.drawText("Hej verden", 100, 100, tekstStregtype);
     }
   }
 

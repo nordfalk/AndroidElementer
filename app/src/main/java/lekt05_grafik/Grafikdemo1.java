@@ -35,11 +35,11 @@ public class Grafikdemo1 extends AppCompatActivity {
 
     tekststreg = new Paint();
     tekststreg.setColor(Color.GREEN);
-    tekststreg.setTextSize(24);
+    tekststreg.setTextSize(48);
     tekststreg.setStyle(Paint.Style.FILL);
 
     cirkel = new Path();
-    cirkel.addCircle(150, 150, 100, Direction.CW);
+    cirkel.addCircle(300, 300, 200, Direction.CW);
 
     cirkelstreg = new Paint();
     cirkelstreg.setStyle(Paint.Style.STROKE);
@@ -53,7 +53,7 @@ public class Grafikdemo1 extends AppCompatActivity {
   }
 
   void tegnGrafik(Canvas c) {
-    int t = (int) (System.currentTimeMillis() - t0) / 10; // millisekunder sekunder siden start
+    int t = (int) (System.currentTimeMillis() - t0); // millisekunder sekunder siden start
     int x = t * 20 / 1000; // går fra 0 til 200
     int y = t * 40 / 1000; // går fra 0 til 400
     //System.out.println(t + " x=" + x + " y=" + y);
@@ -61,11 +61,11 @@ public class Grafikdemo1 extends AppCompatActivity {
     c.drawPath(cirkel, cirkelstreg);
     c.drawTextOnPath("Hvornår er en Tuborg bedst?", cirkel, x, y - 100, tekststreg);
 
-    c.rotate(t * 0.05f, x, y);  // rotér om (x,y)
-    enBil.setBounds(x, y, x + 50, y + 50 + (int) (10 * Math.sin(t * Math.PI / 1000)));
+    c.rotate(t * 0.05f, x+200, y+200);  // rotér om (x,y)
+    enBil.setBounds(x, y, x + 200, y + 200 + (int) (10 * Math.sin(t * Math.PI / 1000)));
     enBil.draw(c);
     c.drawText("t=" + t, x, y - 20, tekststreg);
-    if (t < 10000) {
+    if (t < 20000) {
       grafikView.postInvalidateDelayed(10); // tegn igen om 1/100 sekund
     } else {
       finish(); // afslut aktiviteten hvis der er gået 10 sekunder

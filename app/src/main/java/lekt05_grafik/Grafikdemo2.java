@@ -23,7 +23,6 @@ public class Grafikdemo2 extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     GrafikView2 grafikView = new GrafikView2(this);
-    grafikView.setBackgroundResource(R.drawable.logo);
     setContentView(grafikView);
   }
 
@@ -40,7 +39,7 @@ public class Grafikdemo2 extends AppCompatActivity {
     @Override
     protected void onDraw(Canvas c) {
       // Grafikken er beregnet til en skærm der er 480 punkter bred...
-      float skærmSkala = getWidth() / 480f; // ... så skalér derefter
+      float skærmSkala = getWidth() / 400f; // ... så skalér derefter
       c.scale(skærmSkala, skærmSkala);
 
       Paint paint = new Paint(); // burde ske udenfor onDraw() for bedre ydelse

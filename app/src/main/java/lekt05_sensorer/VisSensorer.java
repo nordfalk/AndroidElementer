@@ -97,7 +97,7 @@ public class VisSensorer extends AppCompatActivity implements SensorEventListene
         tekst.append(enMåling).append("\n\n");
       }
     }
-    tekst.append("=========== Aktuel måling ===========\n" + måling);
+    tekst.append("=========== Aktuel måling ===========\n").append(måling);
 
 
     textView.setText(tekst);
