@@ -33,12 +33,12 @@ public class Braetspil extends AppCompatActivity {
   }
 
   class Brik {
-    RectF rectF = new RectF();
+    RectF position;
     String tekst;
 
     Brik(String string, int x, int y) {
       tekst = string;
-      rectF = new RectF(x + 2, y + 2, x + 38, y + 38);
+      position = new RectF(x + 2, y + 2, x + 38, y + 38);
     }
   }
 
@@ -72,7 +72,7 @@ public class Braetspil extends AppCompatActivity {
       brikker.add(new Brik("8", 170, 130));
 
       Brik forklaring = new Brik("Få regnestykket til at passe", 40, 280);
-      forklaring.rectF.right += 280;
+      forklaring.position.right += 280;
       brikker.add(forklaring);
     }
 
@@ -90,17 +90,17 @@ public class Braetspil extends AppCompatActivity {
       // Tegn først alle brikker, undtagen den valgte
       for (Brik brik : brikker) {
         if (brik == valgtBrik) continue;
-        c.drawRoundRect(brik.rectF, 10, 10, brikStregtype);
-        c.drawText(brik.tekst, brik.rectF.left + 13, brik.rectF.bottom - 10, tekstStregtype);
+        c.drawRoundRect(brik.position, 10, 10, brikStregtype);
+        c.drawText(brik.tekst, brik.position.left + 13, brik.position.bottom - 10, tekstStregtype);
       }
 
       // Tegn den valgte brik til sidst, på fingerens plads
       if (valgtBrik != null) {
-        RectF rectF = new RectF(valgtBrik.rectF);
+        RectF rectF = new RectF(valgtBrik.position);
         rectF.offsetTo(finger.x - rectF.width() / 2, finger.y - rectF.height() / 2);
         c.drawRoundRect(rectF, 10, 10, brikStregtype);
         c.drawText(valgtBrik.tekst, rectF.left + 13, rectF.bottom - 10, tekstStregtype);
-        //fixerTilBane(rectF);
+        //fixerTilBane(position);
         c.drawRoundRect(rectF, 12, 12, brikStregtypeValgt);
       } else {
         // Ingen brik valgt - tegn finger
@@ -113,16 +113,14 @@ public class Braetspil extends AppCompatActivity {
       //System.out.println(e);
       // Spillet er beregnet til en skærm der er 480 punkter bred...
       float skærmSkala = getWidth()/480f; // ... så skalér derefter
-      float ex = e.getX() / skærmSkala;
-      float ey = e.getY() / skærmSkala;
-      finger.x = ex;
-      finger.y = ey;
+      finger.x = e.getX() / skærmSkala;
+      finger.y = e.getY() / skærmSkala;
 
       if (e.getAction() == MotionEvent.ACTION_DOWN) {
-        for (Brik s : brikker) {
-          if (s.rectF.contains(ex, ey)) {
-            valgtBrik = s;
-            System.out.println("valgtBrik=" + s);
+        for (Brik brik : brikker) {
+          if (brik.position.contains(finger.x, finger.y)) {
+            valgtBrik = brik;
+            System.out.println("valgtBrik=" + brik);
             break;
           }
         }
@@ -133,12 +131,12 @@ public class Braetspil extends AppCompatActivity {
         }
       }
       if (e.getAction() == MotionEvent.ACTION_UP && valgtBrik != null) {
-        RectF rectF = new RectF(valgtBrik.rectF);
-        rectF.offsetTo(finger.x - rectF.width() / 2, finger.y - rectF.height() / 2);
-        fixerTilBane(rectF);
+        RectF position = new RectF(valgtBrik.position);
+        position.offsetTo(finger.x - position.width() / 2, finger.y - position.height() / 2);
+        fixerTilBane(position);
         // tjek for sammenstød med andre brikker
         for (Brik brik : brikker) {
-          if (brik!=valgtBrik && rectF.intersect(brik.rectF)) {
+          if (brik!=valgtBrik && position.intersect(brik.position)) {
             Snackbar.make(this, "Der er ikke plads til brikken der!", Snackbar.LENGTH_SHORT).show();
             performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             valgtBrik = null;
@@ -146,9 +144,9 @@ public class Braetspil extends AppCompatActivity {
             return true;
           }
 
-          System.out.println("valgtBrik.rectF=" + valgtBrik.rectF);
+          System.out.println("valgtBrik.position=" + valgtBrik.position);
         }
-        valgtBrik.rectF = rectF;
+        valgtBrik.position = position;
         valgtBrik = null;
 
         // Tjek om regnestykket er løst
@@ -156,7 +154,7 @@ public class Braetspil extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
           Brik s1 = brikker.get(i);
           Brik s2 = brikker.get(i + 1);
-          float afstandTilKorrekt = Math.abs(s1.rectF.top - s2.rectF.top) + Math.abs(s1.rectF.left + 40 - s2.rectF.left);
+          float afstandTilKorrekt = Math.abs(s1.position.top - s2.position.top) + Math.abs(s1.position.left + 40 - s2.position.left);
           Log.d("Braetspil", s1.tekst + " til " + s2.tekst + " afstandTilKorrekt = " + afstandTilKorrekt);
           if (afstandTilKorrekt > 1) korrekt = false;
         }

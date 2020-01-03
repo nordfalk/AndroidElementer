@@ -31,7 +31,7 @@ public class Tegneprogram extends AppCompatActivity {
     public Tegneflade(Context a) {
       super(a);
       tekstStregtype.setColor(Color.GREEN);
-      tekstStregtype.setTextSize(24);
+      tekstStregtype.setTextSize(48);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Tegneprogram extends AppCompatActivity {
     @Override
     protected void onDraw(Canvas c) {
       super.onDraw(c);
-      c.drawText("Tryk og træk over skærmen", 0, 20, tekstStregtype);
+      c.drawText("Tryk og træk over skærmen", 0, 50, tekstStregtype);
       for (Point p : berøringspunkter) {
         c.drawCircle(p.x, p.y, 3, tekstStregtype);
       }
