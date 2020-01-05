@@ -166,13 +166,14 @@
         <activity android:name="lekt04_lister.BenytSpinnerEgetLayout2" />
         <activity android:name="lekt04_lister.VisAlleAndroidDrawables" />
 
-        <activity android:name="lekt05_grafik.KnapperMedEgenGrafik" />
-        <activity android:name="lekt05_grafik.Tegneprogram" />
-        <activity android:name="lekt05_grafik.Braetspil" />
         <activity android:name="lekt05_grafik.Grafikdemo0" />
         <activity android:name="lekt05_grafik.Grafikdemo1" />
         <activity android:name="lekt05_grafik.Grafikdemo2" />
         <activity android:name="lekt05_grafik.Grafikdemo3" />
+        <activity android:name="lekt05_grafik.Tegneprogram" />
+        <activity android:name="lekt05_grafik.Braetspil" />
+        <activity android:name="lekt05_grafik.BraetspilImageView" />
+        <activity android:name="lekt05_grafik.KnapperMedEgenGrafik" />
         <activity android:name="lekt05_grafik.BenytAnimationer" />
 
         <!-- android:configChanges gør at aktiviteten selv håndterer skærvendingen, dvs den bliver ikke mere genstartet -->

@@ -12,8 +12,8 @@ android {
 // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
 // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
-        versionCode 68
-        versionName '2.9.1  14.nov 2019'
+        versionCode 70
+        versionName '2.9.3  5 jan 2020'
         testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
 
 //      dette giver en hurtigere build, men med højere hukommelsesforbrug
