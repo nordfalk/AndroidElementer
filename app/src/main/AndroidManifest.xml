@@ -26,6 +26,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
 
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
@@ -315,6 +316,9 @@
 
         <activity android:name="lekt50_konti.Autorisering_akt" />
         <activity android:name="lekt50_konti.HentBrugersKoenAlderTelefonEmail" />
+
+        <activity android:name="lekt51_bluetooth.BenytBluetooth" />
+
 
         <!-- Ikke færdigt eller forældet  -->
         <activity android:name="ufaerdigt.Asynk5Message" />
