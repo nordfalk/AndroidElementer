@@ -37,15 +37,6 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
   Button knap1, knap2, knap3, knap4;
   TextView logTv;
 
-  BroadcastReceiver reciever = new BroadcastReceiver() {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-      BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-      fundneEnheder.add(bluetoothDevice);
-      logTv.append("\nNy enhed fundet: "+bluetoothDevice.getName()+"\n"+bluetoothDevice.getAddress()+"\n\n");
-    }
-  };
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -89,16 +80,30 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
   @Override
   protected void onDestroy() {
     super.onDestroy();
+    unregisterReceiver(btEnhedFundetReceiver);
   }
+
+
+  BroadcastReceiver btEnhedFundetReceiver = new BroadcastReceiver() {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+      fundneEnheder.add(bluetoothDevice);
+      logTv.append("\nNy enhed fundet: "+bluetoothDevice.getName()+"\n"+bluetoothDevice.getAddress()+"\n\n");
+    }
+  };
 
 
   @Override
   public void onClick(View hvadBlevDerKlikketPå) {
     if (hvadBlevDerKlikketPå == knap1) {
       ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 12345);
+
     } else if (hvadBlevDerKlikketPå == knap2) {
+
+      registerReceiver(btEnhedFundetReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
       bluetoothAdapter.startDiscovery();
-      registerReceiver(reciever, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+
     } else if (hvadBlevDerKlikketPå == knap3) {
       ArrayList<String> navne = new ArrayList<>();
       for (BluetoothDevice enhed : fundneEnheder) navne.add(enhed.getName()+"/"+enhed.getAddress());
@@ -109,7 +114,7 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                   BluetoothDevice enhed = fundneEnheder.get(which);
-                  try {
+                  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) try {
                     UUID uuid = enhed.getUuids()[0].getUuid();
                     BluetoothSocket bts = enhed.createRfcommSocketToServiceRecord(uuid);
                     bts.connect();
@@ -124,7 +129,7 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
 
 
     } else if (hvadBlevDerKlikketPå == knap4) {
-      unregisterReceiver(reciever);
+      unregisterReceiver(btEnhedFundetReceiver);
     }
   }
 

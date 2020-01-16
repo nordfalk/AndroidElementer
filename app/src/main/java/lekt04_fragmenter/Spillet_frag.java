@@ -1,5 +1,7 @@
 package lekt04_fragmenter;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
@@ -22,6 +24,7 @@ public class Spillet_frag extends Fragment implements View.OnClickListener {
   private TextView info;
   private Button spilKnap;
   private EditText et;
+  private TextView korrektAnimation;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +47,15 @@ public class Spillet_frag extends Fragment implements View.OnClickListener {
     et.setHint("Skriv et bogstav her.");
     tl.addView(et);
 
+    korrektAnimation = new TextView(getActivity());
+    korrektAnimation.setText("korrektAnimation");
+    tl.addView(korrektAnimation);
+    korrektAnimation.setTextColor(Color.GREEN);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      korrektAnimation.setElevation(100); // læg viewet forrest så det ikke dækkes af andre views
+    }
+
+
     spilKnap = new Button(getActivity());
     spilKnap.setText("Spil");
     spilKnap.setCompoundDrawablesWithIntrinsicBounds(android.R.drawable.ic_media_play, 0, 0, 0);
@@ -64,6 +76,14 @@ public class Spillet_frag extends Fragment implements View.OnClickListener {
     logik.gætBogstav(bogstav);
     et.setText("");
     et.setError(null);
+
+    if (logik.erSidsteBogstavKorrekt()) {
+      korrektAnimation.setText(" Hurra, " +bogstav + " er rigtigt!");
+      korrektAnimation.setTranslationY(0);
+      korrektAnimation.setAlpha(1);
+       korrektAnimation.animate().translationY(-400).alpha(0).setDuration(2000);
+    }
+
     opdaterSkærm();
   }
 

@@ -46,12 +46,14 @@ public class BenytRecyclerview0 extends AppCompatActivity {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      System.out.println("onCreateViewHolder ");
       View itemView = getLayoutInflater().inflate(R.layout.lekt04_listeelement, parent, false);
       return new RecyclerView.ViewHolder(itemView) {};
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder vh, int position) {
+      System.out.println("onBindViewHolder "+position);
       TextView overskrift = vh.itemView.findViewById(R.id.listeelem_overskrift);
       TextView beskrivelse = vh.itemView.findViewById(R.id.listeelem_beskrivelse);
       ImageView billede = vh.itemView.findViewById(R.id.listeelem_billede);

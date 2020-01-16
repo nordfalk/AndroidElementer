@@ -26,7 +26,7 @@ import dk.nordfalk.android.elementer.R;
  */
 public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickListener {
 
-  Button visStandardToast, visToastMedBillede, visSnackBar, visAlertDialog, visAlertDialog1, visAlertDialog2, visProgressDialog, visProgressDialogMedBillede;
+  Button visStandardToast, visToastMedBillede, visSnackBar, visAlertDialog, visAlertDialog1, visAlertDialog2, visAlertDialogListe, visProgressDialog, visProgressDialogMedBillede;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,10 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
     visAlertDialog2 = new Button(this);
     visAlertDialog2.setText("vis AlertDialog med 2 knapper");
     tl.addView(visAlertDialog2);
+
+    visAlertDialogListe = new Button(this);
+    visAlertDialogListe.setText("vis AlertDialog med 2 knapper");
+    tl.addView(visAlertDialogListe);
 
     visProgressDialog = new Button(this);
     visProgressDialog.setText("vis Progress Dialog");
@@ -129,6 +133,20 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       });
       dialog.setNegativeButton("Nej tak", null);
       dialog.show();
+
+    } else if (hvadBlevDerKlikketPå == visAlertDialogListe) {
+      final String[] lande = {"Danmark", "Norge", "Sverige", "Finland", "Holland", "Italien", "Tyskland",
+              "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand"};
+
+      AlertDialog dialog = new AlertDialog.Builder(this)
+              .setTitle("Vælg en enhed")
+              .setItems(lande, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                  Snackbar.make(visAlertDialog2, "Du valgte "+lande[which], Snackbar.LENGTH_LONG).show();
+                }
+              }).show();
+
     } else if (hvadBlevDerKlikketPå == visProgressDialog) {
       ProgressDialog.show(this, "", "En ProgressDialog", true).setCancelable(true);
     } else if (hvadBlevDerKlikketPå == visProgressDialogMedBillede) {
