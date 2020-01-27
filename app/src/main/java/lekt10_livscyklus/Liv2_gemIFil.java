@@ -7,7 +7,7 @@ import android.widget.EditText;
 import java.io.IOException;
 
 import lekt04_arkitektur.Programdata;
-import lekt04_arkitektur.Serialisering;
+import nytteklasser.Serialisering;
 
 /**
  * Viser hvordan data kan gemmes i en fil. Her bruges serialisering.

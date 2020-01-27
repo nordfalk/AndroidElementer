@@ -27,7 +27,7 @@ import java.util.HashSet;
 
 import dk.nordfalk.android.elementer.R;
 import ufaerdigt.lekt06_youtube.BenytVideoView;
-import ufaerdigt.lekt06_youtube.FilCache;
+import nytteklasser.FilCache;
 
 /**
  * Hjælpeklasse til at holde info om et klip

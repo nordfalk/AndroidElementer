@@ -17,7 +17,7 @@ public class GalgelogikTest {
     Galgelogik spil = new Galgelogik();
     spil.muligeOrd.clear();
     spil.muligeOrd.add("skovsnegl");
-    spil.nulstil();
+    spil.startNytSpil();
 
     spil.gætBogstav("e");
     spil.gætBogstav("s");

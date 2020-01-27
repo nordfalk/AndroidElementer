@@ -33,7 +33,8 @@ import java.util.ArrayList;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import ufaerdigt.lekt06_youtube.FilCache;
+import nytteklasser.Serialisering;
+import nytteklasser.FilCache;
 
 /**
  * Her kan foretages fælles initialisering.

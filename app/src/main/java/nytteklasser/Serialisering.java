@@ -1,4 +1,4 @@
-package lekt04_arkitektur;
+package nytteklasser;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
