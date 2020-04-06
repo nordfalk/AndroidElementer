@@ -43,28 +43,32 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
 
     TableLayout tl = new TableLayout(this);
     logTv = new TextView(this);
-    logTv.setText("Allerede parrede enheder:\n");
-
-    Set<BluetoothDevice> parredeEnheder = bluetoothAdapter.getBondedDevices();
-
-    logTv.append(parredeEnheder.toString());
     tl.addView(logTv);
+    if (bluetoothAdapter==null) {
+      logTv.setText("\nDenne enhed har ikke Bluetooth\n");
+    } else {
+      logTv.setText("Allerede parrede enheder:\n");
 
-    knap1 = new Button(this);
-    knap1.setText("Bed om tilladelser");
-    tl.addView(knap1);
+      Set<BluetoothDevice> parredeEnheder = bluetoothAdapter.getBondedDevices();
 
-    knap2 = new Button(this);
-    knap2.setText("Søg efter ikke-parrede enheder");
-    tl.addView(knap2);
+      logTv.append(parredeEnheder.toString());
 
-    knap3 = new Button(this);
-    knap3.setText("Par en fundet enhed");
-    tl.addView(knap3);
+      knap1 = new Button(this);
+      knap1.setText("Bed om tilladelser");
+      tl.addView(knap1);
 
-    knap4 = new Button(this);
-    knap4.setText("Stop detektering");
-    tl.addView(knap4);
+      knap2 = new Button(this);
+      knap2.setText("Søg efter ikke-parrede enheder");
+      tl.addView(knap2);
+
+      knap3 = new Button(this);
+      knap3.setText("Par en fundet enhed");
+      tl.addView(knap3);
+
+      knap4 = new Button(this);
+      knap4.setText("Stop detektering");
+      tl.addView(knap4);
+    }
 
     ScrollView sv = new ScrollView(this);
     sv.addView(tl);

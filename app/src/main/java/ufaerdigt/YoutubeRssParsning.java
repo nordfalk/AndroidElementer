@@ -199,7 +199,7 @@ public class YoutubeRssParsning extends AppCompatActivity implements OnItemClick
         //is = new URL("http://gdata.youtube.com/feeds/api/users/javabog/uploads").openStream();
         // brug en cache
         //is = new FileInputStream(FilCache.hentFil("http://gdata.youtube.com/feeds/api/users/Esperantoestas/uploads", false));
-        is = new FileInputStream(FilCache.hentFil("http://gdata.youtube.com/feeds/api/users/javabog/uploads", false));
+        is = new FileInputStream(FilCache.hentFil("https://gdata.youtube.com/feeds/api/users/javabog/uploads", false));
         //is = getResources().openRawResource(R.raw.youtubefeed_eksempel);
         ArrayList<Klip> klip = parseRss(is);
         is.close();

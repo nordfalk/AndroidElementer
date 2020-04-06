@@ -28,6 +28,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
+    <!-- For at kunne starte en forgrundsservice på Android P (29) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
 
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
 
@@ -65,7 +68,6 @@
         android:label="AndroidElementer"
         android:theme="@style/AppTheme"
         android:icon="@drawable/logo"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true">
 
         <!--

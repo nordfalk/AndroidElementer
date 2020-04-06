@@ -2,6 +2,7 @@ package lekt09_recievers;
 
 import androidx.appcompat.app.AppCompatActivity;
 import dk.nordfalk.android.elementer.R;
+import nytteklasser.Afspilning;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -91,10 +92,11 @@ public class BenytAlarmer extends AppCompatActivity implements OnClickListener {
       System.out.println("AndroidElementer AlarmReciever onReceive" + ctx + ":\n" + i);
       Toast.makeText(ctx, "AndroidElementer AlarmReciever onReceive", Toast.LENGTH_LONG).show();
       ctx.startActivity(new Intent(ctx, BenytAlarmer.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-      // Spil en lyd
-      MediaPlayer enLyd = MediaPlayer.create(ctx, R.raw.dyt);
-      enLyd.setVolume(1, 1);
-      enLyd.start();
+
+      // Tjek også hvad lydstyrken er lige nu og hvis lyden er lavere end 1/5 af fuld lydstyrke
+      // så skru volumen og til 1/5 af fuld lydstyrke
+      Afspilning.tjekVolumenErMindst(ctx, 20);
+      Afspilning.start(MediaPlayer.create(ctx, R.raw.dyt));
     }
   }
 

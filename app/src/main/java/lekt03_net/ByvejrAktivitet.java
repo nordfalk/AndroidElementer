@@ -3,7 +3,8 @@
  * /dmi/index/danmark/solvarsel.htm
  * /dmi/varsel.xml  - DMI - varsel om farligt vejr
  * /dmi/rss-nyheder
- */        //http://servlet.dmi.dk/byvejr/servlet/byvejr?valgtBy=2500&tabel=dag10_14
+ */
+// https://servlet.dmi.dk/byvejr/servlet/byvejr?valgtBy=2500&tabel=dag10_14
 // For kun at se denne proces' output:
 // adb logcat -v tag ActivityManager:I Vejret:V System.err:V *:S
 // Fremtidig geokodning bliver med
@@ -134,9 +135,9 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
       @Override
       protected Object doInBackground(Object[] params) {
         try {
-          byvejr_dag1 = opretBitmapFraUrl("http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
-          byvejr_dag3_9 = opretBitmapFraUrl("http://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag3_9");
-          byvejr_dag10_14 = opretBitmapFraUrl("http://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag10_14");
+          byvejr_dag1 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
+          byvejr_dag3_9 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag3_9");
+          byvejr_dag10_14 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag10_14");
         } catch (Exception e) {
           e.printStackTrace();
           return e;

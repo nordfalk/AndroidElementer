@@ -201,4 +201,8 @@ public class Galgelogik {
     System.out.println("muligeOrd = " + muligeOrd);
     startNytSpil();
   }
+
+  public static void main(String[] args) throws Exception {
+    new Galgelogik().hentOrdFraRegneark("2");
+  }
 }
