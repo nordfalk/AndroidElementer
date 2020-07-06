@@ -81,14 +81,14 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
     setContentView(sv);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == knap1) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == knap1) {
       Animation animation = AnimationUtils.makeOutAnimation(this, true);
       knap1.startAnimation(animation);
-    } else if (hvadBlevDerKlikketPå == knap2) {
+    } else if (klikPåHvad == knap2) {
       knap1.startAnimation(AnimationUtils.makeInAnimation(this, true));
       knap2.startAnimation(AnimationUtils.makeOutAnimation(this, false));
-    } else if (hvadBlevDerKlikketPå == knap3) {
+    } else if (klikPåHvad == knap3) {
       // Se også http://developer.android.com/training/animation/cardflip.html
       Animation vende1 = AnimationUtils.loadAnimation(this, R.anim.vende1);
       final Animation vende2 = AnimationUtils.loadAnimation(this, R.anim.vende2);
@@ -109,7 +109,7 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
       });
       knap1.setText("FORSIDE");
       knap1.startAnimation(vende1);
-    } else if (hvadBlevDerKlikketPå == knap4) {
+    } else if (klikPåHvad == knap4) {
       TranslateAnimation translationsanim = new TranslateAnimation(-100.0f, 0, 0, 0);
       translationsanim.setDuration(5000); // 5 sekunder
       translationsanim.setInterpolator(new BounceInterpolator());
@@ -146,10 +146,10 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
           knap1.setText("onAnimationRepeat(\n" + animation);
         }
       });
-    } else if (hvadBlevDerKlikketPå == knap5) {
+    } else if (klikPåHvad == knap5) {
       startActivity(new Intent(this, Braetspil.class));
       overridePendingTransition(R.anim.egen_anim, android.R.anim.fade_out);
-    } else if (hvadBlevDerKlikketPå == knap6) {
+    } else if (klikPåHvad == knap6) {
 
       int[] animationer = {R.anim.egen_anim, R.anim.hyperspace_out,
               R.anim.push_left_in, R.anim.push_left_out, R.anim.push_up_in, R.anim.push_up_out,
@@ -159,7 +159,7 @@ public class BenytAnimationer extends AppCompatActivity implements OnClickListen
       String navn = getResources().getResourceEntryName(animResId);
       knap6.setText("Viser " + navn);
       knap6.startAnimation(AnimationUtils.loadAnimation(this, animResId));
-    } else if (hvadBlevDerKlikketPå == knap7) {
+    } else if (klikPåHvad == knap7) {
       //Animation settet bruges til at samle flere former for animationer (scale,rotate,translate)
       AnimationSet animationSet = new AnimationSet(true);
 

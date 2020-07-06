@@ -22,12 +22,12 @@ import dk.nordfalk.android.elementer.R;
  * Se også diskussionen på
  * http://groups.google.com/group/android-developers/browse_thread/thread/e1d5b8f8a3142892
  */
-public class Asynk4Static extends AppCompatActivity implements OnClickListener {
+public class Asynk4AsyncTaskStatic extends AppCompatActivity implements OnClickListener {
 
   ProgressBar progressBar;
   Button knap, annullerknap;
 
-  static Asynk4Static synligAktivitet;
+  static Asynk4AsyncTaskStatic synligAktivitet;
   static AsyncTaskUdskifteligAktivitet asyncTask;
 
   @Override
@@ -77,14 +77,14 @@ public class Asynk4Static extends AppCompatActivity implements OnClickListener {
   }
 
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
 
-    if (hvadBlevDerKlikketPå == knap) {
+    if (klikPåHvad == knap) {
       asyncTask = new AsyncTaskUdskifteligAktivitet();
       asyncTask.execute(500, 50);
       knap.setEnabled(false);
       annullerknap.setVisibility(View.VISIBLE);
-    } else if (hvadBlevDerKlikketPå == annullerknap) {
+    } else if (klikPåHvad == annullerknap) {
       asyncTask.cancel(false);
     }
   }
@@ -94,19 +94,19 @@ public class Asynk4Static extends AppCompatActivity implements OnClickListener {
    */
   static class AsyncTaskUdskifteligAktivitet extends AsyncTask {
     int antalSkridt = 500;
-    int ventetidPrSkridtIMilisekunder = 50;
+    int ventPrSkridtMs = 50;
     double procent;
     double resttidISekunder;
 
     @Override
     protected Object doInBackground(Object[] objects) {
       for (int i = 0; i < antalSkridt; i++) {
-        SystemClock.sleep(ventetidPrSkridtIMilisekunder);
+        SystemClock.sleep(ventPrSkridtMs);
         if (isCancelled()) {
           return null; // stop uden resultat
         }
         procent = i * 100.0 / antalSkridt;
-        resttidISekunder = (antalSkridt - i) * ventetidPrSkridtIMilisekunder / 100 / 10.0;
+        resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
         publishProgress(procent, resttidISekunder); // sendes som parameter til onProgressUpdate()
       }
       return "færdig med doInBackground()!"; // resultat (String) sendes til onPostExecute()

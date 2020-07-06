@@ -99,14 +99,14 @@ public class Asynk5Message extends AppCompatActivity implements OnClickListener 
     super.onDestroy();
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
 
-    if (hvadBlevDerKlikketPå == knap) {
+    if (klikPåHvad == knap) {
       afbryd.set(false);
       new Thread(beskedRunnable).start();
       knap.setEnabled(false);
       annullerknap.setVisibility(View.VISIBLE);
-    } else if (hvadBlevDerKlikketPå == annullerknap) {
+    } else if (klikPåHvad == annullerknap) {
       afbryd.set(true); // sæt afbryd til sand, da vi ønsker at afbryde tråden
     }
   }

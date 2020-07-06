@@ -113,16 +113,16 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
 
 
   @Override
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == knap1) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == knap1) {
       ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 12345);
 
-    } else if (hvadBlevDerKlikketPå == knap2) {
+    } else if (klikPåHvad == knap2) {
 
       registerReceiver(btEnhedFundetReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
       bluetoothAdapter.startDiscovery();
 
-    } else if (hvadBlevDerKlikketPå == knap3) {
+    } else if (klikPåHvad == knap3) {
       ArrayList<String> navne = new ArrayList<>();
       for (BluetoothDevice enhed : fundneEnheder) navne.add(enhed.getName()+"/"+enhed.getAddress());
 
@@ -146,7 +146,7 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
               }).show();
 
 
-    } else if (hvadBlevDerKlikketPå == knap4) {
+    } else if (klikPåHvad == knap4) {
       unregisterReceiver(btEnhedFundetReceiver);
     }
   }

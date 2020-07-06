@@ -103,13 +103,13 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
 
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
     setProgressBarIndeterminateVisibility(true);
     try {
-      textView.setText( "Du trykkede på " + hvadBlevDerKlikketPå);
-      //textView.setText( "Du trykkede på " + ((Button) hvadBlevDerKlikketPå).getText());
+      textView.setText( "Du trykkede på " + klikPåHvad);
+      //textView.setText( "Du trykkede på " + ((Button) klikPåHvad).getText());
 
-      if (hvadBlevDerKlikketPå == knap1) {
+      if (klikPåHvad == knap1) {
 
         // Nedenstående crasher da netværkskommunikation ikke må ske på hovedtråden
         String rssdata = hentUrl("https://www.version2.dk/it-nyheder/rss");
@@ -117,7 +117,7 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
         textView.setText(titler);
         setProgressBarIndeterminateVisibility(false);
 
-      } else if (hvadBlevDerKlikketPå == knap2) {
+      } else if (klikPåHvad == knap2) {
         // Nedenstående tillader netværkskommunikation på hovedtråden
         // fint til lige at prøve noget, men dårlig idé i længden og IKKE TILLADT i en aflevering
         StrictMode.ThreadPolicy normalThreadPolicy = StrictMode.getThreadPolicy();
@@ -133,11 +133,11 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
 
         StrictMode.setThreadPolicy(normalThreadPolicy);
 
-      } else if (hvadBlevDerKlikketPå == knap3) {
+      } else if (klikPåHvad == knap3) {
 
         Thread.sleep(30000); // blokér hovedtråd i 30 sekunder
 
-      } else if (hvadBlevDerKlikketPå == knap4) {
+      } else if (klikPåHvad == knap4) {
         textView.setText("Henter...");
 
         new AsyncTask() {
@@ -164,7 +164,7 @@ public class BenytNetOgAsyncTask extends AppCompatActivity implements OnClickLis
         }.execute();
 
 
-      } else if (hvadBlevDerKlikketPå == knap5) {
+      } else if (klikPåHvad == knap5) {
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String titler = prefs.getString("titler", "(henter, vent et øjeblik)"); // Hent fra prefs

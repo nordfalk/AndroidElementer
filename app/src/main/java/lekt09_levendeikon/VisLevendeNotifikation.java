@@ -58,10 +58,10 @@ public class VisLevendeNotifikation extends AppCompatActivity implements OnClick
     setContentView(sv);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == visStandardToast) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == visStandardToast) {
       Toast.makeText(this, "Standard-toast", Toast.LENGTH_LONG).show();
-    } else if (hvadBlevDerKlikketPå == visToastMedBillede) {
+    } else if (klikPåHvad == visToastMedBillede) {
       Toast t = new Toast(this);
       ImageView im = new ImageView(this);
       im.setImageResource(R.drawable.logo);
@@ -69,9 +69,9 @@ public class VisLevendeNotifikation extends AppCompatActivity implements OnClick
       t.setView(im);
       t.setGravity(Gravity.CENTER, 0, 0);
       t.show();
-    } else if (hvadBlevDerKlikketPå == visProgressDialog) {
+    } else if (klikPåHvad == visProgressDialog) {
       ProgressDialog.show(this, "", "En ProgressDialog", true).setCancelable(true);
-    } else if (hvadBlevDerKlikketPå == visProgressDialogMedBillede) {
+    } else if (klikPåHvad == visProgressDialogMedBillede) {
       ProgressDialog dialog = new ProgressDialog(this);
       dialog.setIndeterminate(true); // drejende hjul
       dialog.setTitle("En ProgressDialog");
@@ -84,7 +84,7 @@ public class VisLevendeNotifikation extends AppCompatActivity implements OnClick
         }
       });
       dialog.show();
-    } else if (hvadBlevDerKlikketPå == visNoitifikation) {
+    } else if (klikPåHvad == visNoitifikation) {
       Intent intent = new Intent(this, Tegneprogram.class);
       PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
 

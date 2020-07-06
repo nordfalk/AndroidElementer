@@ -45,13 +45,13 @@ public class ModtagSMSer extends AppCompatActivity implements OnClickListener {
     afregistrer.setOnClickListener(this);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == registrer && reciever == null) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == registrer && reciever == null) {
       reciever = new SMSReciever();
       IntentFilter filter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
       getApplicationContext().registerReceiver(reciever, filter);
       Toast.makeText(this, "Send nu en SMS til telefonen", Toast.LENGTH_SHORT).show();
-    } else if (hvadBlevDerKlikketPå == afregistrer && reciever != null) {
+    } else if (klikPåHvad == afregistrer && reciever != null) {
       getApplicationContext().unregisterReceiver(reciever);
       reciever = null;
       Toast.makeText(this, "Afregistreret", Toast.LENGTH_SHORT).show();

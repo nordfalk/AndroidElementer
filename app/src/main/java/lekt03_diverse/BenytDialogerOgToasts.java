@@ -84,10 +84,10 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
     setContentView(sv);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == visStandardToast) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == visStandardToast) {
       Toast.makeText(this, "Standard-toast", Toast.LENGTH_LONG).show();
-    } else if (hvadBlevDerKlikketPå == visToastMedBillede) {
+    } else if (klikPåHvad == visToastMedBillede) {
       Toast t = new Toast(this);
       ImageView im = new ImageView(this);
       im.setImageResource(R.drawable.logo);
@@ -95,21 +95,21 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       t.setView(im);
       t.setGravity(Gravity.CENTER, 0, 0);
       t.show();
-    } else if (hvadBlevDerKlikketPå == visSnackBar) {
+    } else if (klikPåHvad == visSnackBar) {
       // Bemærk - kræver at designbiblioteket er med i build.gradle - f.eks. med
       // compile 'com.android.support:design:25.3.1'
-      Snackbar.make(hvadBlevDerKlikketPå, "En kort Snackbar", Snackbar.LENGTH_LONG).setAction("Vis en mere", new OnClickListener() {
+      Snackbar.make(klikPåHvad, "En kort Snackbar", Snackbar.LENGTH_LONG).setAction("Vis en mere", new OnClickListener() {
         @Override
         public void onClick(View v) {
           Snackbar.make(visSnackBar, "OK, her er en lang snackbar", Snackbar.LENGTH_SHORT).show();
         }
       }).show();
-    } else if (hvadBlevDerKlikketPå == visAlertDialog) {
+    } else if (klikPåHvad == visAlertDialog) {
       AlertDialog.Builder dialog = new AlertDialog.Builder(this);
       dialog.setTitle("En AlertDialog");
       dialog.setMessage("Denne her har ingen knapper");
       dialog.show();
-    } else if (hvadBlevDerKlikketPå == visAlertDialog1) {
+    } else if (klikPåHvad == visAlertDialog1) {
       AlertDialog.Builder dialog = new AlertDialog.Builder(this);
       dialog.setTitle("En AlertDialog");
       dialog.setIcon(R.drawable.logo);
@@ -120,7 +120,7 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
         }
       });
       dialog.show();
-    } else if (hvadBlevDerKlikketPå == visAlertDialog2) {
+    } else if (klikPåHvad == visAlertDialog2) {
       AlertDialog.Builder dialog = new AlertDialog.Builder(this);
       dialog.setTitle("En AlertDialog");
       EditText et = new EditText(this);
@@ -134,7 +134,7 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
       dialog.setNegativeButton("Nej tak", null);
       dialog.show();
 
-    } else if (hvadBlevDerKlikketPå == visAlertDialogListe) {
+    } else if (klikPåHvad == visAlertDialogListe) {
       final String[] lande = {"Danmark", "Norge", "Sverige", "Finland", "Holland", "Italien", "Tyskland",
               "Frankrig", "Spanien", "Portugal", "Nepal", "Indien", "Kina", "Japan", "Thailand"};
 
@@ -147,9 +147,9 @@ public class BenytDialogerOgToasts extends AppCompatActivity implements OnClickL
                 }
               }).show();
 
-    } else if (hvadBlevDerKlikketPå == visProgressDialog) {
+    } else if (klikPåHvad == visProgressDialog) {
       ProgressDialog.show(this, "", "En ProgressDialog", true).setCancelable(true);
-    } else if (hvadBlevDerKlikketPå == visProgressDialogMedBillede) {
+    } else if (klikPåHvad == visProgressDialogMedBillede) {
       ProgressDialog dialog = new ProgressDialog(this);
       dialog.setIndeterminate(true); // drejende hjul
       dialog.setTitle("En ProgressDialog");

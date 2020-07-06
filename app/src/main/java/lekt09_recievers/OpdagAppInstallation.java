@@ -68,11 +68,11 @@ public class OpdagAppInstallation extends AppCompatActivity implements OnClickLi
     return i;
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == registrer) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == registrer) {
       registerReceiver(reciever, lavIntentFilter());
       Toast.makeText(this, "Installer eller fjern nu en app", Toast.LENGTH_LONG).show();
-    } else if (hvadBlevDerKlikketPå == afregistrer) {
+    } else if (klikPåHvad == afregistrer) {
       try {
         unregisterReceiver(reciever);
         Toast.makeText(this, "Afregistreret", Toast.LENGTH_LONG).show();

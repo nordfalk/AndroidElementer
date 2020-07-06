@@ -65,9 +65,9 @@ public class ByvejrProgrammatisk extends AppCompatActivity implements OnClickLis
     annullerKnap.setOnClickListener(this);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    System.out.println("Der blev klikket på " + hvadBlevDerKlikketPå);
-    if (hvadBlevDerKlikketPå == okKnap) {
+  public void onClick(View klikPåHvad) {
+    System.out.println("Der blev klikket på " + klikPåHvad);
+    if (klikPåHvad == okKnap) {
       String valgtPostNr = editText.getText().toString();
       Toast.makeText(this, "Viser byvejr for " + valgtPostNr, Toast.LENGTH_LONG).show();
       webView.loadUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");

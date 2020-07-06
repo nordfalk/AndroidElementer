@@ -56,18 +56,18 @@ public class BenytIntentsFraGoogle extends AppCompatActivity implements OnClickL
      Sætter placering til Valby i 100 meters højde
    */
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
     try {
-      if (hvadBlevDerKlikketPå == kortvisning) {
+      if (klikPåHvad == kortvisning) {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:55.65407,12.493775?z=3"));
         startActivity(i);
-      } else if (hvadBlevDerKlikketPå == rutevisning) {
+      } else if (klikPåHvad == rutevisning) {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=55.65407,12.493775&daddr=55.66,12.5"));
         startActivity(i);
-      } else if (hvadBlevDerKlikketPå == gadevisning) {
+      } else if (klikPåHvad == gadevisning) {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("google.streetview:cbll=55.65407,12.493775&cbp=1"));
         startActivity(i);
-      } else if (hvadBlevDerKlikketPå == googlePlay) {
+      } else if (klikPåHvad == googlePlay) {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=dk.nordfalk.esperanto.radio"));
         startActivity(i);
       }

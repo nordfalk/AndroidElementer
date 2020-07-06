@@ -44,10 +44,10 @@ public class TemaFuldskaerm extends AppCompatActivity implements OnClickListener
     slutFuldskærm.setOnClickListener(this);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
     View decorView = getWindow().getDecorView();
 
-    if (hvadBlevDerKlikketPå == startFuldskærm) {
+    if (klikPåHvad == startFuldskærm) {
 
       getWindow().getDecorView().setSystemUiVisibility(
               View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -56,7 +56,7 @@ public class TemaFuldskaerm extends AppCompatActivity implements OnClickListener
                       | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                       | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-    } else if (hvadBlevDerKlikketPå == slutFuldskærm) {
+    } else if (klikPåHvad == slutFuldskærm) {
 
       getWindow().getDecorView().setSystemUiVisibility(
               View.SYSTEM_UI_FLAG_LAYOUT_STABLE);

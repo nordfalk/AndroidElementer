@@ -68,8 +68,8 @@ public class Grafikdemo3 extends AppCompatActivity implements OnClickListener {
     annullerKnap.setOnClickListener(this);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    System.out.println("Der blev klikket på " + hvadBlevDerKlikketPå);
+  public void onClick(View klikPåHvad) {
+    System.out.println("Der blev klikket på " + klikPåHvad);
     teksten = editText.getText().toString();
     minGrafik.invalidate();
   }

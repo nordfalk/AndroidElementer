@@ -48,8 +48,8 @@ public class VisNotifikation extends AppCompatActivity implements OnClickListene
     setContentView(sv);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == visNoitifikation) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == visNoitifikation) {
       Intent intent = new Intent(this, Tegneprogram.class);
       NotificationCompat.Builder builder = new NotificationCompat.Builder(this, opretNotifKanal(this))
               .setContentIntent(PendingIntent.getActivity(this, 0, intent, 0))
@@ -64,7 +64,7 @@ public class VisNotifikation extends AppCompatActivity implements OnClickListene
 
       NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
       notificationManager.notify(42, builder.build());
-    } else if (hvadBlevDerKlikketPå == lukNotifikation) {
+    } else if (klikPåHvad == lukNotifikation) {
       NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
       notificationManager.cancel(42);
     }

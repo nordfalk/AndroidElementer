@@ -88,12 +88,12 @@ public class DialogDerOverleverSkaermvending extends AppCompatActivity implement
     }
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == visAlertDialog) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == visAlertDialog) {
       showDialog(1001);
-    } else if (hvadBlevDerKlikketPå == visAlertDialog1) {
+    } else if (klikPåHvad == visAlertDialog1) {
       showDialog(1002);
-    } else if (hvadBlevDerKlikketPå == visAlertDialog2) {
+    } else if (klikPåHvad == visAlertDialog2) {
       showDialog(1003);
     }
   }

@@ -48,12 +48,11 @@ public class Asynk4ViewModel extends AppCompatActivity implements OnClickListene
     tl.addView(progressBar);
 
     knap = new Button(this);
-    knap.setText("AsyncTask med løbende opdatering og resultat");
+    knap.setText("Start opgaven");
     tl.addView(knap);
 
     annullerknap = new Button(this);
-    annullerknap.setText("Annullér AsyncTask");
-    annullerknap.setVisibility(View.GONE); // Skjul knappen
+    annullerknap.setText("Annullér opgaven");
     tl.addView(annullerknap);
 
     setContentView(tl);
@@ -69,21 +68,18 @@ public class Asynk4ViewModel extends AppCompatActivity implements OnClickListene
     // hurtigt hack hvis lifecycle:extensions ikke er inkluderet:
     viewModel =  new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(MinViewModel.class);
 
-    viewModel.observabelLiveData.observe(this, new Observer() {
-      @Override
-      public void onChanged(Object o) {
-        annullerknap.setVisibility(viewModel.kører? View.VISIBLE : View.GONE);
-        knap.setText(viewModel.knapTekst);
-        progressBar.setProgress(viewModel.progressBarVærdi);
-      }
+    viewModel.observabelLiveData.observe(this, o -> {
+      annullerknap.setVisibility(viewModel.kører? View.VISIBLE : View.GONE);
+      knap.setText(viewModel.knapTekst);
+      progressBar.setProgress(viewModel.progressBarVærdi);
     });
   }
 
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == knap) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == knap) {
       viewModel.startAsyncTask(500, 50);
-    } else if (hvadBlevDerKlikketPå == annullerknap) {
+    } else if (klikPåHvad == annullerknap) {
       viewModel.asyncTask.cancel(false);
     }
   }

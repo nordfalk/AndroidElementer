@@ -63,10 +63,10 @@ public class BenytIntentsMedEgenProvider extends AppCompatActivity implements On
     setContentView(sv);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == visLog) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == visLog) {
       MinEgenProvider.visLogPåSkærm = visLog.isChecked();
-    } else if (hvadBlevDerKlikketPå == tagBillede) {
+    } else if (klikPåHvad == tagBillede) {
       Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
       // Vi vil have billedet gemt i vores content provider
       i.putExtra(MediaStore.EXTRA_OUTPUT, MinEgenProvider.URI);

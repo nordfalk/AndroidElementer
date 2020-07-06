@@ -65,11 +65,11 @@ public class BenytIntentService extends AppCompatActivity implements OnClickList
   }
 
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
 
-    if (hvadBlevDerKlikketPå == knap) {
+    if (klikPåHvad == knap) {
       startService(new Intent(this, MinIntentService.class));
-    } else if (hvadBlevDerKlikketPå == annullerknap) {
+    } else if (klikPåHvad == annullerknap) {
       MinIntentService.annulleret = true;
     }
   }

@@ -66,9 +66,9 @@ public class BenytIntentsMedFileProvider extends AppCompatActivity implements On
     billedeUri = FileProvider.getUriForFile(this, "dk.nordfalk.android.elementer.fileprovider", billedeFil);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
 
-    if (hvadBlevDerKlikketPå == tagBillede) {
+    if (klikPåHvad == tagBillede) {
       Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
       // Vi vil have billedet gemt i filen via FileProvider
       billedeFil.delete();

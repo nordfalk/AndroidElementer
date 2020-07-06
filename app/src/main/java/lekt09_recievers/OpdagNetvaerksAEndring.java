@@ -56,14 +56,14 @@ public class OpdagNetvaerksAEndring extends AppCompatActivity implements OnClick
     setContentView(tl);
   }
 
-  public void onClick(View hvadBlevDerKlikketPå) {
-    if (hvadBlevDerKlikketPå == registrer) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == registrer) {
       IntentFilter intentFilter = new IntentFilter();
       intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
       intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
       registerReceiver(reciever, intentFilter);
       Toast.makeText(this, "Registreret", Toast.LENGTH_LONG).show();
-    } else if (hvadBlevDerKlikketPå == afregistrer) {
+    } else if (klikPåHvad == afregistrer) {
       try {
         unregisterReceiver(reciever);
         Toast.makeText(this, "Afregistreret", Toast.LENGTH_LONG).show();
