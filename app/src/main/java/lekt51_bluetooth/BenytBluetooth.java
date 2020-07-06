@@ -27,6 +27,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.material.snackbar.Snackbar;
+
 /**
  * @author Jacob Nordfalk
  */
@@ -47,6 +49,16 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
     if (bluetoothAdapter==null) {
       logTv.setText("\nDenne enhed har ikke Bluetooth\n");
     } else {
+      if (!bluetoothAdapter.isEnabled()) {
+          Snackbar.make(logTv, "Bluetooth er slukket", Snackbar.LENGTH_INDEFINITE).setAction("Tænd", new OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1234);
+              }
+          }).show();
+      }
+
+
       logTv.setText("Allerede parrede enheder:\n");
 
       Set<BluetoothDevice> parredeEnheder = bluetoothAdapter.getBondedDevices();
@@ -93,7 +105,9 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
     public void onReceive(Context context, Intent intent) {
       BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
       fundneEnheder.add(bluetoothDevice);
-      logTv.append("\nNy enhed fundet: "+bluetoothDevice.getName()+"\n"+bluetoothDevice.getAddress()+"\n\n");
+      int  rssi = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MIN_VALUE);
+      logTv.append("\nNy enhed fundet:"+bluetoothDevice.getName()+
+              "\n"+bluetoothDevice.getAddress()+"  "+rssi+" dB\n\n");
     }
   };
 

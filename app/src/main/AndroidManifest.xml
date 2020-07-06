@@ -65,7 +65,7 @@
 
     <application
         android:name="lekt04_arkitektur.MinApp"
-        android:label="AndroidElementer"
+        android:label="Elementer i Android"
         android:theme="@style/AppTheme"
         android:icon="@drawable/logo"
         android:allowBackup="true">
