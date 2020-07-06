@@ -16,7 +16,7 @@ import dk.nordfalk.android.elementer.R;
  */
 public class Asynk1Handler extends AppCompatActivity implements OnClickListener {
 
-  Handler handler = new Handler();
+  Handler uiThread = new Handler();
   Runnable opgave;
   Button knap1, knap2, knapAnnuller;
 
@@ -60,7 +60,7 @@ public class Asynk1Handler extends AppCompatActivity implements OnClickListener 
           knap1.setText("færdig!");
         }
       };
-      handler.postDelayed(opgave, 10000); // udfør om 10 sekunder
+      uiThread.postDelayed(opgave, 10000); // udfør om 10 sekunder
 
     } else if (v == knap2) {
 
@@ -80,10 +80,10 @@ public class Asynk1Handler extends AppCompatActivity implements OnClickListener 
           }
         }
       };
-      handler.postDelayed(opgave, 1000); // udfør om 1 sekund
+      uiThread.postDelayed(opgave, 1000); // udfør om 1 sekund
 
     } else if (v == knapAnnuller) {
-      handler.removeCallbacks(opgave);
+      uiThread.removeCallbacks(opgave);
     }
   }
 }
