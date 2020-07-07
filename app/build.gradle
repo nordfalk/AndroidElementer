@@ -1,27 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
-//      app'ens pakkenavn - dens unikke ID på telefonen
+        // app'ens pakkenavn - dens unikke ID på telefonen
         applicationId "dk.nordfalk.android.elementer"
-//      denne app kan installeres på telefoner med Android 4.0 (API 14) og frem
+        // denne app kan installeres på telefoner med Android 4.0 (API 14) og frem
         minSdkVersion 14
-//      men den er beregnet til Android 5.1 (API 24)
-        targetSdkVersion 28
-// targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
-// Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
+        // .... men den er blevet beregnet til Android 10.0 (API 29)
+        targetSdkVersion 29
+        // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
+        // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
         versionCode 71
         versionName '2.9.4 april 2020 - nyt navn'
         testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
 
-//      dette giver en hurtigere build, men med højere hukommelsesforbrug
-        /*
-        dexOptions {
-            javaMaxHeapSize "2g"
-        }
-        */
+        // dette giver en hurtigere build, men med højere hukommelsesforbrug
+        //dexOptions { javaMaxHeapSize "2g" }
     }
     buildTypes {
         release {
@@ -41,10 +41,6 @@ android {
             includeAndroidResources = true
         }
         //unitTests.returnDefaultValues = true
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 dependencies {

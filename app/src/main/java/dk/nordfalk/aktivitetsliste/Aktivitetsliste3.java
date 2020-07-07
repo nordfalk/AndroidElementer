@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import dk.nordfalk.android.elementer.R;
 
 public class Aktivitetsliste3 extends AppCompatActivity {
-  int onStartTæller;
   CheckBox seKildekodeToggleButton;
   ViewPager viewPager;
   private SharedPreferences prefs;
@@ -82,6 +81,19 @@ public class Aktivitetsliste3 extends AppCompatActivity {
       viewPager.setCurrentItem(prefs.getInt("kategoriPos", 2));
       sidstKlikketPåAkt = prefs.getString("sidstKlikketPåAkt","ukendt");
     }
+
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+      @Override
+      public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+      @Override
+      public void onPageSelected(int position) {
+        // Gem position og 'start aktivitet direkte' til næste gang
+        prefs.edit().putInt("kategoriPos", position).apply();
+      }
+      @Override
+      public void onPageScrollStateChanged(int state) {}
+    };
+    viewPager.addOnPageChangeListener(onPageChangeListener);
   }
 
 
@@ -151,6 +163,7 @@ public class Aktivitetsliste3 extends AppCompatActivity {
     private Aktivitetsliste3 akt;
     private Aktivitetsdata.Pakke pakke;
     private ArrayList<String> elementer;
+    private ListView listView;
 
     @Nullable
     @Override
@@ -209,7 +222,7 @@ public class Aktivitetsliste3 extends AppCompatActivity {
           return view;
         }
       };
-      ListView listView = new ListView(getActivity());
+      listView = new ListView(getActivity());
       listView.setAdapter(adapter);
       listView.setFastScrollEnabled(true);
 
@@ -223,18 +236,20 @@ public class Aktivitetsliste3 extends AppCompatActivity {
       } else {
         listView.setSelectionFromTop(pakke.dokumenter.size(), 50);
       }
-
       return listView;
     }
 
 
-    public void onItemClick(AdapterView<?> listView, View v, int position, long id) {
+    public void onItemClick(AdapterView<?> x, View v, int position, long id) {
       String navn = elementer.get(position);
+      listView.post(() -> {
+        listView.requestFocusFromTouch();
+        listView.setItemChecked(position, true);
+      });
 
       // Gem position og 'start aktivitet direkte' til næste gang
       akt.prefs.edit().
               putString("sidstKlikketPåAkt", navn).
-              putInt("kategoriPos", kategoriPos).
               apply();
 
       String dokUrl = pakke.dokumenter.get(navn);

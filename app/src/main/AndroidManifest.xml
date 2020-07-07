@@ -65,7 +65,6 @@
 
     <application
         android:name="lekt04_arkitektur.MinApp"
-        android:label="Elementer i Android"
         android:theme="@style/AppTheme"
         android:icon="@drawable/logo"
         android:allowBackup="true">
@@ -347,6 +346,7 @@
         <!-- aktivitet som kan ses fra startskærmen -->
         <activity
             android:name="dk.nordfalk.aktivitetsliste.Aktivitetsliste3"
+            android:label="Elementer i Android"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
