@@ -36,21 +36,21 @@ public class BenytKnapperDeklarativ extends AppCompatActivity implements OnClick
     knap3.setOnClickListener(this);
   }
 
-  public void onClick(View knappenDerBlevTrykketPå) {
+  public void onClick(View klikPåHvad) {
     System.out.println("Der blev trykket på en knap");
 
     // Vis et tal der skifter så vi kan se hver gang der trykkes
     long etTal = System.currentTimeMillis();
 
-    if (knappenDerBlevTrykketPå == knap1) {
+    if (klikPåHvad == knap1) {
 
       knap1.setText("Du trykkede på mig. Tak! \n" + etTal);
 
-    } else if (knappenDerBlevTrykketPå == knap2) {
+    } else if (klikPåHvad == knap2) {
 
       knap3.setText("Nej nej, tryk på mig i stedet!\n" + etTal);
 
-    } else if (knappenDerBlevTrykketPå == knap3) {
+    } else if (klikPåHvad == knap3) {
 
       knap2.setText("Hey, hvis der skal trykkes, så er det på MIG!\n" + etTal);
       // Erstat logoet med en bil

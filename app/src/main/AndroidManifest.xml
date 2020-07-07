@@ -77,6 +77,7 @@
         <activity android:name="lekt01_views.BenytEnKnap" />
         <activity android:name="lekt01_views.BenytKnapperProgrammatisk" />
         <activity android:name="lekt01_views.BenytKnapperDeklarativ" />
+        <activity android:name="lekt01_views.BenytKnapperDeklViewbinding" />
         <activity android:name="lekt01_views.BenytWebView" />
         <activity android:name="lekt01_views.ByvejrProgrammatisk" />
         <activity android:name="lekt01_views.ByvejrDeklarativ" />

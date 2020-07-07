@@ -64,9 +64,9 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
     knap3annuller.setOnClickListener(this);
   }
 
-  public void onClick(View v) {
+  public void onClick(View klikPåHvad) {
 
-    if (v == knap1) {
+    if (klikPåHvad == knap1) {
 
       bgThread.execute(() -> {
         uiThread.post(() -> knap1.setText("arbejder"));
@@ -76,7 +76,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
       knap1.setText("startet");
 
 
-    } else if (v == knap2) {
+    } else if (klikPåHvad == knap2) {
 
       int antalSkridt = 100;
       bgThread.execute(() -> {
@@ -96,7 +96,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
       knap2.setText("startet");
 
 
-    } else if (v == knap3) {
+    } else if (klikPåHvad == knap3) {
 
       annullereret = false;
       int antalSkridt = 100;
@@ -130,7 +130,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
       knap3.setText("startet");
 
 
-    } else if (v == knap3annuller) {
+    } else if (klikPåHvad == knap3annuller) {
 
       annullereret = true;
 

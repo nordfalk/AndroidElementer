@@ -18,7 +18,13 @@ public class BenytKnapperProgrammatisk extends AppCompatActivity implements OnCl
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    // Programmatisk layout
+    // Havde vi brugt deklarativt layout i XML havde vi her skrevet
+    //setContentView(R.layout.tre_knapper);
+    //knap1 = (Button) findViewById(R.id.knap1);
+    //knap2 = (Button) findViewById(R.id.knap2);
+    //knap3 = (Button) findViewById(R.id.knap3);
+
+    // Nu bruger vi programmatisk layout, og det ser således ud
     TableLayout tl = new TableLayout(this);
 
     knap1 = new Button(this);
@@ -34,32 +40,27 @@ public class BenytKnapperProgrammatisk extends AppCompatActivity implements OnCl
     tl.addView(knap3);
 
     setContentView(tl);
-    // Havde vi brugt deklarativt layout i XML havde vi i stedet her skrevet
-    //setContentView(R.layout.tre_knapper);
-    //knap1 = (Button) findViewById(R.id.knap1);
-    //knap2 = (Button) findViewById(R.id.knap2);
-    //knap3 = (Button) findViewById(R.id.knap3);
 
     knap1.setOnClickListener(this);
     knap2.setOnClickListener(this);
     knap3.setOnClickListener(this);
   }
 
-  public void onClick(View v) {
+  public void onClick(View klikPåHvad) {
     System.out.println("Der blev trykket på en knap");
 
     // Vis et tal der skifter så vi kan se hver gang der trykkes
     long etTal = System.currentTimeMillis();
 
-    if (v == knap1) {
+    if (klikPåHvad == knap1) {
 
       knap1.setText("Du trykkede på mig. Tak! \n" + etTal);
 
-    } else if (v == knap2) {
+    } else if (klikPåHvad == knap2) {
 
       knap3.setText("Nej nej, tryk på mig i stedet!\n" + etTal);
 
-    } else if (v == knap3) {
+    } else if (klikPåHvad == knap3) {
 
       knap2.setText("Hey, hvis der skal trykkes, så er det på MIG!\n" + etTal);
 
