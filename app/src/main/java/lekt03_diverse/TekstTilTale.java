@@ -103,7 +103,7 @@ public class TekstTilTale extends AppCompatActivity implements OnInitListener, O
     }
   }
 
-  public void onClick(View arg0) {
+  public void onClick(View v) {
     String tekst = udtaleTekst.getText().toString();
     tts.speak(tekst, TextToSpeech.QUEUE_ADD, null);
   }

@@ -90,21 +90,21 @@ public class BenytIntentsMedResultat extends AppCompatActivity implements OnClic
   }
 
   @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-  public void onClick(View v) {
+  public void onClick(View klikPåHvad) {
     try {
-      if (v == vælgKontakt) {
+      if (klikPåHvad == vælgKontakt) {
         Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(i, VÆLG_KONTAKT);
 
-      } else if (v == vælgGoogleKonto) {
+      } else if (klikPåHvad == vælgGoogleKonto) {
         Intent i = AccountManager.newChooseAccountIntent(null, null, new String[]{"com.google"}, false, null, null, null, null);
         startActivityForResult(i, 0);
 
-      } else if (v == vælgKonto) {
+      } else if (klikPåHvad == vælgKonto) {
         Intent i = AccountManager.newChooseAccountIntent(null, null, null, false, null, null, null, null);
         startActivityForResult(i, 0);
 
-      } else if (v == tagBillede) {
+      } else if (klikPåHvad == tagBillede) {
         // Bemærk at jeg måtte have android:configChanges="orientation" for at aktiviteten
         // ikke blev vendt og jeg mistede billedet. I et rigtigt ville jeg forsyne mine views med
         // ID'er så deres indhold overlevede at skærmen skiftede orientering

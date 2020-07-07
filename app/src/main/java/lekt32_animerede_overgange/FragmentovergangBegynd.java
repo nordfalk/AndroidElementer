@@ -34,7 +34,7 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
     return rod;
   }
 
-  public void onClick(View knappen) {
+  public void onClick(View klikPåHvad) {
 
     FragmentovergangSlut slutfragment = new FragmentovergangSlut();
 
@@ -47,14 +47,14 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
     slutfragment.setSharedElementReturnTransition(new AutoTransition().setDuration(1000));
 
     Bundle argumenter = new Bundle();
-    argumenter.putCharSequence("knap-teksten", ((Button) knappen).getText());
+    argumenter.putCharSequence("knap-teksten", ((Button) klikPåHvad).getText());
     slutfragment.setArguments(argumenter);
 
     // Lav bindinger til mål-aktiviteten, så der kan laves glidende overgange
     // Navnene her skal passe med det TransitionName viewsne har i mål-aktiviteten
     getFragmentManager().beginTransaction()
             .addSharedElement(ikon, "ikon")
-            .addSharedElement(knappen, "knappen")
+            .addSharedElement(klikPåHvad, "knappen")
             .replace(R.id.fragmentindhold, slutfragment)
             .addToBackStack(null)
             .commit();

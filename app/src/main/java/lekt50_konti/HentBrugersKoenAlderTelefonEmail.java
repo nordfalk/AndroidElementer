@@ -114,7 +114,7 @@ public class HentBrugersKoenAlderTelefonEmail extends AppCompatActivity implemen
 
 
   @Override
-  public void onClick(View view) {
+  public void onClick(View v) {
     if (account!=null) {
       googleSignInClient.signOut();
       account = null;

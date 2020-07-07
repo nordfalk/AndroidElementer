@@ -97,23 +97,23 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
   }
 
 
-  public void onClick(View v) {
+  public void onClick(View klikPåHvad) {
     String nummer = nummerfelt.getText().toString();
     String tekst = tekstfelt.getText().toString();
     nummerfelt.setError(null);
-    if (nummer.length() == 0 && v == ringOp) {
+    if (nummer.length() == 0 && klikPåHvad == ringOp) {
       nummerfelt.setError("Skriv et telefonnummer");
       Toast.makeText(this, "Skriv et telefonnummer", Toast.LENGTH_LONG).show();
       return;
     }
 
     try {
-      if (v == ringOp) {
+      if (klikPåHvad == ringOp) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + nummer));
         startActivity(intent);
         // eller blot:
         //     startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+nummer)));
-      } else if (v == sendSms) {
+      } else if (klikPåHvad == sendSms) {
         // Åbner et SMS-vindue og lader brugeren sende SMS'en
         // Kilde: https://developer.android.com/guide/components/intents-common.html#Messaging
         tekst = tekst + lavTelefoninfo();
@@ -121,7 +121,7 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
         intent.setData(Uri.parse("smsto:"+nummer));
         intent.putExtra("sms_body", tekst);
         startActivity(intent);
-      } else if (v == sendEpost) {
+      } else if (klikPåHvad == sendEpost) {
         tekst = tekst + lavTelefoninfo();
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
@@ -130,7 +130,7 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
         i.putExtra(Intent.EXTRA_TEXT, lavTelefoninfo());
         i.putExtra(Intent.EXTRA_CC, new String[]{"jacob.nordfalk@gmail.com"});
         startActivity(Intent.createChooser(i, "Send e-post..."));
-      } else if (v == delApp) {
+      } else if (klikPåHvad == delApp) {
         Intent i = new Intent(Intent.ACTION_SEND)
                 .putExtra(Intent.EXTRA_SUBJECT, "Prøv AndroidElementer")
                 .putExtra(Intent.EXTRA_TEXT, "Hej!\n\n" +
@@ -138,9 +138,9 @@ public class BenytIntents extends AppCompatActivity implements OnClickListener {
                 "AndroidElementer\n" +
                 "https://play.google.com/store/apps/details?id=dk.nordfalk.android.elementer").setType("text/plain");
         startActivity(Intent.createChooser(i, "Del via"));
-      } else if (v == wifiIndstillinger) {
+      } else if (klikPåHvad == wifiIndstillinger) {
         startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-      } else if (v == webadresse) {
+      } else if (klikPåHvad == webadresse) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developer.android.com/guide/components/intents-common.html"));
         startActivity(intent);
       }

@@ -31,18 +31,8 @@ public class ScrollingActivity extends AppCompatActivity {
     fab1 = findViewById(R.id.fab1);
     fab2 = findViewById(R.id.fab2);
 
-    fab1.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Snackbar.make(view, "En Snackbar er dukker op i bunden og er synlig et par sekunder og kan swipes væk", Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                  @Override
-                  public void onClick(View v) {
-                    ctl.setTitle("Snackbar trykket");
-                  }
-                }).show();
-      }
-    });
+    fab1.setOnClickListener(view -> Snackbar.make(view, "En Snackbar er dukker op i bunden og er synlig et par sekunder og kan swipes væk", Snackbar.LENGTH_LONG)
+            .setAction("OK", v -> ctl.setTitle("Snackbar trykket")).show());
 
   }
 

@@ -51,15 +51,15 @@ public class BenytPreferenceManager extends AppCompatActivity implements View.On
   }
 
   @Override
-  public void onClick(View view) {
+  public void onClick(View klikPåHvad) {
 
-    if (view == gem) {
+    if (klikPåHvad == gem) {
       String gemTekst = editText.getText().toString();
       prefs.edit().putString("editText", gemTekst).apply();
 
       textView.setText("Teksten blev gemt i PreferenceManager. Prøv at hente det nu, gerne efter en programgenstart");
     }
-    else if (view == hent) {
+    else if (klikPåHvad == hent) {
       String gemtTekst = prefs.getString("editText", "Ingen gemt editText fundet");
       editText.setText(gemtTekst);
 

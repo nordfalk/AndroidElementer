@@ -59,7 +59,7 @@ public class Spillet_akt extends AppCompatActivity implements View.OnClickListen
   }
 
   @Override
-  public void onClick(View view) {
+  public void onClick(View v) {
     String bogstav = et.getText().toString();
     if (bogstav.length() != 1) {
       et.setError("Skriv præcis ét bogstav");
@@ -68,10 +68,8 @@ public class Spillet_akt extends AppCompatActivity implements View.OnClickListen
     logik.gætBogstav(bogstav);
     et.setText("");
     et.setError(null);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
-      spilKnap.animate().rotationBy(3*360).setInterpolator(new DecelerateInterpolator());
+    spilKnap.animate().rotationBy(3*360).setInterpolator(new DecelerateInterpolator());
 //      spilKnap.animate().translationYBy(30).setInterpolator(new BounceInterpolator());
-    }
     opdaterSkærm();
   }
 

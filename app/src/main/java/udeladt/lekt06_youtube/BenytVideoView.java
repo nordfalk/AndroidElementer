@@ -70,7 +70,7 @@ public class BenytVideoView extends AppCompatActivity implements OnClickListener
     videoView.getParent().requestLayout();
   }
 
-  public void onClick(View arg0) {
+  public void onClick(View v) {
     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
     startActivity(intent);
   }

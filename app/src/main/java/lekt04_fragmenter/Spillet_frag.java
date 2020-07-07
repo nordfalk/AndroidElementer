@@ -67,7 +67,7 @@ public class Spillet_frag extends Fragment implements View.OnClickListener {
   }
 
   @Override
-  public void onClick(View view) {
+  public void onClick(View v) {
     String bogstav = et.getText().toString();
     if (bogstav.length() != 1) {
       et.setError("Skriv præcis ét bogstav");

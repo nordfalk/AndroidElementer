@@ -60,8 +60,8 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
   }
 
 
-  public void onClick(View v) {
-    if (v == info) {
+  public void onClick(View klikPåHvad) {
+    if (klikPåHvad == info) {
       startActivity(new Intent(Intent.ACTION_VIEW,
               Uri.parse("https://developer.android.com/training/permissions/requesting")));
       return;
@@ -78,7 +78,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
 
     // Kræver <uses-permission android:name="android.permission.CALL_PHONE" /> i manifestet.
     try {
-      if (v == ringOpDirekte) {
+      if (klikPåHvad == ringOpDirekte) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
           if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
             Toast.makeText(this, "Her skal vises et rationale/forklaring: ...", Toast.LENGTH_LONG).show();
@@ -88,7 +88,7 @@ public class BenytIntentsMedTilladelser extends AppCompatActivity implements OnC
         } else {
           startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + nummer)));
         }
-      } else if (v == info) {
+      } else if (klikPåHvad == info) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developer.android.com/training/permissions/index.html"));
         startActivity(intent);
       }

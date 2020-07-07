@@ -50,12 +50,9 @@ public class BenytBluetooth extends AppCompatActivity implements OnClickListener
       logTv.setText("\nDenne enhed har ikke Bluetooth\n");
     } else {
       if (!bluetoothAdapter.isEnabled()) {
-          Snackbar.make(logTv, "Bluetooth er slukket", Snackbar.LENGTH_INDEFINITE).setAction("Tænd", new OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1234);
-              }
-          }).show();
+          Snackbar.make(logTv, "Bluetooth er slukket", Snackbar.LENGTH_INDEFINITE)
+                  .setAction("Tænd", view -> startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1234))
+                  .show();
       }
 
 

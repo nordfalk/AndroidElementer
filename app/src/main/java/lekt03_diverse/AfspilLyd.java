@@ -45,7 +45,7 @@ public class AfspilLyd extends AppCompatActivity implements OnClickListener {
     }
   }
 
-  public void onClick(View arg0) {
+  public void onClick(View v) {
     enLyd.start();
   }
 

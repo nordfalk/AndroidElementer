@@ -140,14 +140,11 @@ public class ByvejrAktivitet2 extends AppCompatActivity {
     række.addView(button_postnr);
 
     // når bruger trykker OK skal det indlæses
-    button_postnr.setOnClickListener(new OnClickListener() {
-
-      public void onClick(View arg0) {
-        valgtPostNr = Integer.parseInt("" + editText_postnr.getText());
-        valgtBy = "ukendt";
-        postnrByTextView.setText(valgtPostNr + " " + valgtBy);
-        hentBilleder(true, 60 * 60); // max 1 time gamle
-      }
+    button_postnr.setOnClickListener(v -> {
+      valgtPostNr = Integer.parseInt("" + editText_postnr.getText());
+      valgtBy = "ukendt";
+      postnrByTextView.setText(valgtPostNr + " " + valgtBy);
+      hentBilleder(true, 60 * 60); // max 1 time gamle
     });
     // tilføj rækken
     linearLayout.addView(række);

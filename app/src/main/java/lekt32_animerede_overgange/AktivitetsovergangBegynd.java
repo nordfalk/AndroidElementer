@@ -22,16 +22,16 @@ public class AktivitetsovergangBegynd extends AppCompatActivity implements View.
     findViewById(R.id.knap3).setOnClickListener(this);
   }
 
-  public void onClick(View knappen) {
+  public void onClick(View klikPåHvad) {
 
     Intent intent = new Intent(this, AktivitetsovergangSlut.class);
-    intent.putExtra("knap-teksten", ((Button) knappen).getText());
+    intent.putExtra("knap-teksten", ((Button) klikPåHvad).getText());
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       // Lav bindinger til mål-aktiviteten, så der kan laves glidende overgange
       // Navnene skal passe med det TransitionName viewsne har i mål-aktiviteten
       Pair<View, String> par1 = Pair.create(findViewById(R.id.ikon), "ikon");
-      Pair<View, String> par2 = Pair.create(knappen, "knappen");
+      Pair<View, String> par2 = Pair.create(klikPåHvad, "knappen");
 
       ActivityOptionsCompat options = ActivityOptionsCompat.
               makeSceneTransitionAnimation(this, par1, par2);

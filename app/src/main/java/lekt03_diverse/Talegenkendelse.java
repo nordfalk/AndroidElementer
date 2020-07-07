@@ -45,7 +45,7 @@ public class Talegenkendelse extends AppCompatActivity implements View.OnClickLi
     setContentView(sv);
   }
 
-  public void onClick(View view) {
+  public void onClick(View v) {
     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault().toString());

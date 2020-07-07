@@ -46,12 +46,8 @@ public class BenytRecyclerview extends AppCompatActivity {
 
     Snackbar.make(recyclerView, "Tryk en titel for at flytte et element til toppen " +
             "eller på billedet for at fjerne det", Snackbar.LENGTH_INDEFINITE)
-            .setAction("Skift\nlayout", new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                skiftLayoutManager();
-              }
-            }).show();
+            .setAction("Skift\nlayout", v -> skiftLayoutManager())
+            .show();
   }
 
 
@@ -124,14 +120,11 @@ public class BenytRecyclerview extends AppCompatActivity {
         lande.remove(position);
         listeelemAdapter.notifyItemRemoved(position);
         Snackbar.make(recyclerView, landenavn + " fjernet", Snackbar.LENGTH_INDEFINITE)
-                .setAction("Fortryd", new View.OnClickListener() {
-                  @Override
-                  public void onClick(View view) {
-                    lande.add(position, landenavn);
-                    listeelemAdapter.notifyItemInserted(position);
-                    recyclerView.smoothScrollToPosition(position);
-                    Snackbar.make(recyclerView, "OK, du får "+landenavn + " tilbage", Snackbar.LENGTH_LONG).show();
-                  }
+                .setAction("Fortryd", view -> {
+                  lande.add(position, landenavn);
+                  listeelemAdapter.notifyItemInserted(position);
+                  recyclerView.smoothScrollToPosition(position);
+                  Snackbar.make(recyclerView, "OK, du får "+landenavn + " tilbage", Snackbar.LENGTH_LONG).show();
                 }).show();
       }
 
@@ -174,12 +167,8 @@ public class BenytRecyclerview extends AppCompatActivity {
       aktivLayoutManagerTekst = "Normal LinearLayoutManager";
       aktivLayoutManager = 0;
     }
-    Snackbar.make(recyclerView, aktivLayoutManagerTekst, Snackbar.LENGTH_INDEFINITE).setAction("Skift", new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        skiftLayoutManager();
-      }
-    }).show();
+    Snackbar.make(recyclerView, aktivLayoutManagerTekst, Snackbar.LENGTH_INDEFINITE)
+            .setAction("Skift", view -> skiftLayoutManager()).show();
   }
 
 }
