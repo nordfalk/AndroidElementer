@@ -21,6 +21,8 @@ public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
 
     TableLayout tl = new TableLayout(this);
     EditText editText = new EditText(this);
+    editText.setText("Demonstrerer hvordan tråde kan benyttes - og ikke benyttes - direkte med Javas Thread-klasse");
+    editText.append("\nPrøv at redigere her efter du har trykket på knapperne.");
     editText.setText("Prøv at redigere her efter du har trykket på knapperne");
     tl.addView(editText);
 
@@ -77,7 +79,7 @@ public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
             }
           };
           runOnUiThread(r2); // beder hovedtråden om at køre r2
-          // Her kunne uiThread.post(r2); også anvendes
+          // Her kunne uiThread.post(r2); også anvendes, se nedenfor
         }
       };
       new Thread(r).start();

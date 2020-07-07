@@ -200,12 +200,12 @@
         <activity android:name="lekt06_asynkron.Asynk1Handler" />
         <activity android:name="lekt06_asynkron.Asynk2Thread" />
         <activity android:name="lekt06_asynkron.Asynk3Executor" />
-        <activity android:name="lekt06_asynkron.Asynk4ExecutorMedModel" />
-        <activity android:name="lekt06_asynkron.Asynk4ViewModel" />
+        <activity android:name="lekt06_asynkron.Asynk4ExecutorModel" />
+        <activity android:name="lekt06_asynkron.Asynk4ExecutorViewModel" />
 
 
-        <activity android:name="lekt06_asynkron.Asynk3AsyncTask" />
-        <activity android:name="lekt06_asynkron.Asynk4AsyncTaskStatic" />
+        <activity android:name="udeladt.foraeldet.Asynk3AsyncTask" />
+        <activity android:name="udeladt.foraeldet.Asynk4AsyncTaskStatic" />
 
 
         <activity android:name="lekt06_data.BenytPreferenceManager" />
@@ -327,21 +327,21 @@
 
 
         <!-- Ikke færdigt eller forældet  -->
-        <activity android:name="ufaerdigt.Asynk5Message" />
-        <activity android:name="ufaerdigt.gammelt.FlytbarVejrudsigt" />
-        <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytGestureDetector" />
-        <activity android:name="ufaerdigt.gammelt.lekt20_touchinput.BenytScaleGestureDetector" />
-        <activity android:name="ufaerdigt.BenytIntentsMedResTilladelser" />
-        <activity android:name="ufaerdigt.ByvejrAktivitet2" />
-        <activity android:name="ufaerdigt.Stedbestemmelse" />
+        <activity android:name="udeladt.Asynk5Message" />
+        <activity android:name="udeladt.foraeldet.FlytbarVejrudsigt" />
+        <activity android:name="udeladt.foraeldet.lekt20_touchinput.BenytGestureDetector" />
+        <activity android:name="udeladt.foraeldet.lekt20_touchinput.BenytScaleGestureDetector" />
+        <activity android:name="udeladt.BenytIntentsMedResTilladelser" />
+        <activity android:name="udeladt.ByvejrAktivitet2" />
+        <activity android:name="udeladt.Stedbestemmelse" />
 
-        <activity android:name="ufaerdigt.lekt40_design.ScrollingActivity"
+        <activity android:name="udeladt.lekt40_design.ScrollingActivity"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:label="Bla bla"/>
 
-        <activity android:name="ufaerdigt.YoutubeRssParsning" />
+        <activity android:name="udeladt.foraeldet.YoutubeRssParsning" />
         <activity
-            android:name="ufaerdigt.lekt06_youtube.BenytVideoView"
+            android:name="udeladt.lekt06_youtube.BenytVideoView"
             android:configChanges="orientation" />
 
         <!-- aktivitet som kan ses fra startskærmen -->

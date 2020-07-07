@@ -1,4 +1,4 @@
-package ufaerdigt;
+package udeladt.foraeldet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import dk.nordfalk.android.elementer.R;
-import ufaerdigt.lekt06_youtube.BenytVideoView;
+import udeladt.lekt06_youtube.BenytVideoView;
 import nytteklasser.FilCache;
 
 /**

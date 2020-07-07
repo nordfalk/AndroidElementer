@@ -87,9 +87,9 @@ public class Aktivitetsgenkendelse_akt extends AppCompatActivity implements OnCl
 
 
   @Override
-  public void onClick(View hvadBlevDerKlikketPå) {
+  public void onClick(View klikPåHvad) {
     try {
-      if (hvadBlevDerKlikketPå == knap1) {
+      if (klikPåHvad == knap1) {
         Task task = activityRecognitionClient.requestActivityUpdates(10000L, pendingIntent);
         task.addOnCompleteListener(new OnCompleteListener() {
           @Override
@@ -97,9 +97,9 @@ public class Aktivitetsgenkendelse_akt extends AppCompatActivity implements OnCl
             log("Aktivitetsgenkendelse startet: "+task.isSuccessful());
           }
         });
-      } else if (hvadBlevDerKlikketPå == knap2) {
+      } else if (klikPåHvad == knap2) {
         Task task = activityRecognitionClient.removeActivityUpdates(pendingIntent);
-      } else if (hvadBlevDerKlikketPå == knap3) {
+      } else if (klikPåHvad == knap3) {
         finish();
         System.exit(0);
       }

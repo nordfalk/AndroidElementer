@@ -12,8 +12,10 @@ import android.widget.TableLayout;
 import dk.nordfalk.android.elementer.R;
 
 /**
+ * Viser, hvordan en Handler kan sende opgaver til hovedtråden
  * @author Jacob Nordfalk
  */
+@SuppressWarnings("NonAsciiCharacters")
 public class Asynk1Handler extends AppCompatActivity implements OnClickListener {
 
   Handler uiThread = new Handler();
@@ -27,7 +29,8 @@ public class Asynk1Handler extends AppCompatActivity implements OnClickListener 
 
     TableLayout tl = new TableLayout(this);
     EditText editText = new EditText(this);
-    editText.setText("Prøv at redigere her efter du har trykket på knapperne");
+    editText.setText("Viser, hvordan en Handler kan sende opgaver til hovedtråden");
+    editText.append("\nPrøv at redigere her efter du har trykket på knapperne");
     editText.setId(R.id.editText); // Giv viewet et ID så dets indhold overlever en skærmvending
     tl.addView(editText);
 
@@ -54,27 +57,27 @@ public class Asynk1Handler extends AppCompatActivity implements OnClickListener 
   public void onClick(View v) {
 
     if (v == knap1) {
-      knap1.setText("arbejder");
-      opgave = new Runnable() {
+
+      opgave = new Runnable() {                // syntax for lokal indre anonym klasse
         public void run() {
           knap1.setText("færdig!");
         }
       };
-      uiThread.postDelayed(opgave, 10000); // udfør om 10 sekunder
+      opgave = () -> knap1.setText("færdig!"); // samme kode. bare med lambda-syntax
+
+      uiThread.postDelayed(opgave, 10000); // udfør opgaven om 10 sekunder
+      knap1.setText("arbejder...");            // dette bliver udført omgående, før ovenstående
 
     } else if (v == knap2) {
 
       knap2.setText("arbejder...");
-
-
       opgave = new Runnable() {
-
         int antalSekunderGået = 0;
-
+        @Override
         public void run() {
           if (antalSekunderGået++ < 10) {
-            knap2.setText(antalSekunderGået+"...");
-            //handler.postDelayed(opgave /* =this */, 1000); // udfør denne Runnable igen om 1 sekund
+            knap2.setText(antalSekunderGået + "...");
+            uiThread.postDelayed(this, 1000); // udfør denne Runnable igen om 1 sekund
           } else {
             knap2.setText("færdig!"); // Der er gået 10 sekunder
           }
@@ -83,7 +86,10 @@ public class Asynk1Handler extends AppCompatActivity implements OnClickListener 
       uiThread.postDelayed(opgave, 1000); // udfør om 1 sekund
 
     } else if (v == knapAnnuller) {
+
       uiThread.removeCallbacks(opgave);
+      knap2.setText("annulleret");
+
     }
   }
 }

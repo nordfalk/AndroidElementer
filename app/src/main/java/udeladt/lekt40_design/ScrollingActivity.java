@@ -1,6 +1,6 @@
 // Se http://android-developers.blogspot.de/2015/05/android-design-support-library.html
 // for Design Support Library
-package ufaerdigt.lekt40_design;
+package udeladt.lekt40_design;
 
 import android.os.Bundle;
 import com.google.android.material.appbar.CollapsingToolbarLayout;

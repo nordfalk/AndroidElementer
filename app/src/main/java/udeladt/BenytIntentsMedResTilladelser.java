@@ -1,4 +1,4 @@
-package ufaerdigt;
+package udeladt;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

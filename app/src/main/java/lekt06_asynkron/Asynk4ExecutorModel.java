@@ -3,7 +3,6 @@ package lekt06_asynkron;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,12 +22,13 @@ import dk.nordfalk.android.elementer.R;
  * Dette eksempel viser hvordan en model er knyttet korrekt til en aktivitet.
  * Hvis skærmen vendes knyttes modellen korrekt til næste aktivitet og
  * fortsætter med at fungere der.
+ * Modellen overlever at man forlader aktiviteten (trykker på tilbage) og går ind igen
  */
-public class Asynk4ExecutorMedModel extends AppCompatActivity implements OnClickListener {
+public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickListener {
 
   ProgressBar progressBar;
   Button knap, annullerknap;
-  static Baggrundsopgave baggrundsopgave;
+  static MinModel minModel;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,8 @@ public class Asynk4ExecutorMedModel extends AppCompatActivity implements OnClick
     TableLayout tl = new TableLayout(this);
 
     EditText editText = new EditText(this);
-    editText.setText("Prøv at redigere her efter du har trykket på knapperne");
+    editText.setText("Viser god praksis, hvor et model-objekt er knyttet til brugergrænsefladen");
+    editText.append("\n\nØvelse: Rotér skærmen. Gå ud og ind af skærmbilledet. Overlever baggrundsopgaverne? (svar: ja, og de beholder forbindelsen med brugergrænsefladen så man se dem)");
     editText.setId(R.id.editText); // Giv viewet et ID så dets indhold overlever en skærmvending
     tl.addView(editText);
 
@@ -61,38 +62,32 @@ public class Asynk4ExecutorMedModel extends AppCompatActivity implements OnClick
 
     // Hvis der er sket en konfigurationsændring så kan det være vi har en gammel
     // baggrundsopgave som allerede kører, og som vi nu skal observere
-    if (baggrundsopgave!=null) baggrundsopgave.observer = opdatérGui;
-    opdatérGui.run();
+    if (minModel !=null) minModel.observer = opdaterSkærm;
+    opdaterSkærm.run();
   }
 
 
   @Override
   protected void onDestroy() {
-    baggrundsopgave.observer = null; // Vigtigt, ellers bliver aktiviteten hængende i hukommelsen
+    if (minModel!=null) minModel.observer = null; // Vigtigt, ellers bliver aktiviteten hængende i hukommelsen
     super.onDestroy();
   }
 
 
-  private Runnable opdatérGui = new Runnable() {
+  private Runnable opdaterSkærm = new Runnable() {
     @Override
     public void run() {
-      if (baggrundsopgave == null) { // hvis opgaven ikke er startet
+      if (minModel == null) { // hvis opgaven ikke er startet
         annullerknap.setVisibility(View.GONE);
         return;
       }
 
-      progressBar.setProgress((int) baggrundsopgave.procent);
+      progressBar.setProgress((int) minModel.procent);
+      annullerknap.setVisibility(minModel.kører ? View.VISIBLE : View.GONE);
 
-      if (baggrundsopgave.annullereret) {
-        knap.setText("Annulleret før tid");
-        annullerknap.setVisibility(View.GONE);
-        return;
-      }
-
-      String tekst = "arbejder - " + baggrundsopgave.procent + "% færdig, mangler " + baggrundsopgave.resttidISekunder + " sekunder endnu";
-      Log.d("AsyncTask", tekst);
-      knap.setText(tekst);
-      annullerknap.setVisibility(View.VISIBLE);
+      if (minModel.annullereret) knap.setText("Annulleret før tid");
+      else if (!minModel.kører) knap.setText("Færdig");
+      else knap.setText("arbejder - " + minModel.procent + "% færdig, mangler " + minModel.resttidISekunder + " sekunder endnu");
     }
   };
 
@@ -100,48 +95,44 @@ public class Asynk4ExecutorMedModel extends AppCompatActivity implements OnClick
 
   public void onClick(View klikPåHvad) {
     if (klikPåHvad == knap) {
-      baggrundsopgave = new Baggrundsopgave();
-      baggrundsopgave.observer = opdatérGui;
-      baggrundsopgave.startBeregning();
+      minModel = new MinModel();
+      minModel.observer = opdaterSkærm;
+      minModel.startBeregning(500, 50);
     } else if (klikPåHvad == annullerknap) {
-      baggrundsopgave.annullereret = true;
+      minModel.annullereret = true;
     }
-    opdatérGui.run();
+    opdaterSkærm.run();
   }
 
 
 
 
-  static class Baggrundsopgave {
+  static class MinModel {
     double procent;
     double resttidISekunder;
     boolean annullereret;
-    boolean færdig;
+    boolean kører;
 
     Executor bgThread = Executors.newSingleThreadExecutor();
     Handler uiThread = new Handler();
     Runnable observer; // reference til GUI-objekterne
 
-    void startBeregning() {
-      bgThread.execute(() -> udførBeregningBg());
-    }
-
-    private void udførBeregningBg() {
-      int antalSkridt = 500;
-      int ventPrSkridtMs = 50;
-      for (int i = 0; i < antalSkridt; i++) {
-        // simulér nogle krævende beregninger eller netværkskald
-        SystemClock.sleep(ventPrSkridtMs);
-        procent = i * 100.0 / antalSkridt;
-        resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
-
+    void startBeregning(int antalSkridt, int ventPrSkridtMs) {
+      bgThread.execute(() -> {
+        kører = true;
+        for (int i = 0; i < antalSkridt; i++) {
+          System.out.println("i = " + i);
+          SystemClock.sleep(ventPrSkridtMs); // simulér nogle krævende beregninger eller netværkskald
+          if (annullereret) break;
+          procent = i * 100.0 / antalSkridt;
+          resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
+          uiThread.post(observer);
+        }
+        kører = false;
         uiThread.post(observer);
-        if (annullereret) return;
-      }
-      færdig = true;
-      uiThread.post(observer);
+        System.out.println("færdig");
+      });
     }
-
   }
 }
 

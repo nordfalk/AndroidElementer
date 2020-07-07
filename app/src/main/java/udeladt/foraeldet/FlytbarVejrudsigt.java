@@ -1,4 +1,4 @@
-package ufaerdigt.gammelt;
+package udeladt.foraeldet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;

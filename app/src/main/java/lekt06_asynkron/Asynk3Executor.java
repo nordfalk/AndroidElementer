@@ -30,7 +30,9 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
     TableLayout tl = new TableLayout(this);
 
     EditText editText = new EditText(this);
-    editText.setText("Prøv at redigere her efter du har trykket på knapperne");
+    editText.setText("Viser god praksis, hvor en baggrundstråd startes og benytter en Handler til at få brugergrænsefladen opdateret fra hovedtråden");
+    editText.append("\nØvelse: Tryk på flere af knapperne kort tid efter hinanden");
+    editText.append("\nØvelse: Rotér skærmen. Gå ud og ind af skærmbilledet. Overlever baggrundsopgaverne? (svar: ja, men de mister forbindelsen med brugergrænsefladen så man kan ikke se dem)");
     tl.addView(editText);
 
     progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
@@ -66,28 +68,32 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
 
     if (v == knap1) {
 
-      knap1.setText("arbejder"); // <1>
       bgThread.execute(() -> {
+        uiThread.post(() -> knap1.setText("arbejder"));
         SystemClock.sleep(10000); // <2>
-        uiThread.post(() -> knap1.setText("færdig!"));  // <3>
+        uiThread.post(() -> knap1.setText("færdig!"));
       });
+      knap1.setText("startet");
 
 
     } else if (v == knap2) {
 
       int antalSkridt = 100;
       bgThread.execute(() -> {
+        uiThread.post(() -> knap2.setText("arbejder"));
         for (int i = 0; i < antalSkridt; i++) {  // <2>
+          System.out.println("knap2 i = " + i);
           SystemClock.sleep(10000 / antalSkridt);
-          int finalI = i;
+          int finalI = i; // da i kan ændre sig imens nedenstående kører skal den kopieres over i en final variabel
           uiThread.post(() -> {
             knap2.setText("i = " + finalI);
             progressBar.setProgress(finalI);
           });
         }
-        uiThread.post(() -> knap1.setText("færdig!")); // <3>
+        uiThread.post(() -> knap2.setText("færdig!")); // <3>
+        System.out.println("knap2 færdig");
       });
-      knap2.setText("arbejder"); // <1>
+      knap2.setText("startet");
 
 
     } else if (v == knap3) {
@@ -97,7 +103,9 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
       int ventPrSkridtMs = 50;
 
       bgThread.execute(() -> {
+        uiThread.post(() -> knap3.setText("arbejder"));
         for (int i = 0; i < antalSkridt; i++) {
+          System.out.println("knap3 i = " + i);
           SystemClock.sleep(ventPrSkridtMs);
           if (annullereret) break; // stop uden resultat
 
@@ -111,6 +119,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
             progressBar.setProgress((int) procent);
           });
         }
+        System.out.println("knap3 færdig");
 
         uiThread.post(() -> {
           if (annullereret) knap3.setText("Annulleret før tid");
@@ -118,6 +127,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
           knap3annuller.setVisibility(View.GONE); // Skjul knappen
         });
       });
+      knap3.setText("startet");
 
 
     } else if (v == knap3annuller) {

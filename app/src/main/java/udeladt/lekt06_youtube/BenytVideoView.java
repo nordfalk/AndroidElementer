@@ -1,4 +1,4 @@
-package ufaerdigt.lekt06_youtube;
+package udeladt.lekt06_youtube;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package ufaerdigt;
+package udeladt;
 
 /**
  * Created by j on 21-08-13.

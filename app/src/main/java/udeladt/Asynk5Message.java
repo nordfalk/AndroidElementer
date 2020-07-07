@@ -1,4 +1,4 @@
-package ufaerdigt;
+package udeladt;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
