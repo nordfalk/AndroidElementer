@@ -28,7 +28,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
 
   ProgressBar progressBar;
   Button knap, annullerknap;
-  static MinModel minModel;
+  static MinModel minModel;  // bemærk: static - overlever så længe programmet stadig er i RAM
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
 
   @Override
   protected void onDestroy() {
-    if (minModel!=null) minModel.observer = null; // Vigtigt, ellers bliver aktiviteten hængende i hukommelsen
+    if (minModel!=null) minModel.observer = null; // Vigtigt, ellers kan aktiviteten ikke garbage collectes
     super.onDestroy();
   }
 
@@ -113,9 +113,9 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
     boolean annullereret;
     boolean kører;
 
-    Executor bgThread = Executors.newSingleThreadExecutor();
-    Handler uiThread = new Handler();
-    Runnable observer; // reference til GUI-objekterne
+    Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
+    Handler uiThread = new Handler();                        // håndtag til forgrundstråden
+    Runnable observer; // reference til brugergrænsefladen (aktiviteten observerer modellen)
 
     void startBeregning(int antalSkridt, int ventPrSkridtMs) {
       bgThread.execute(() -> {

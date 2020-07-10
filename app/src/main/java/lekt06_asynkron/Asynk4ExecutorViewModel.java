@@ -1,6 +1,7 @@
 package lekt06_asynkron;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +32,7 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
 
   ProgressBar progressBar;
   Button knap, annullerknap;
-  MinViewModel minModel;
+  MinViewModel minModel;  // bemærk: ikke static - overlever så længe programmet stadig er i RAM
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,20 +64,27 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     annullerknap.setOnClickListener(this);
 
     // kræver flg bibliotek i app/build.gradle:
-//    implementation 'android.arch.lifecycle:extensions:2.1.0'
-//  viewModel = androidx.lifecycle.ViewModelProviders.of(this).get(MinViewModel.class);
-// ny syntax:   viewModel = new ViewModelProvider(this).get(MinViewModel.class)
-
-    // hurtigt hack hvis lifecycle:extensions ikke er inkluderet:
+    //    implementation 'android.arch.lifecycle:extensions:2.1.0'
+    // viewModel = androidx.lifecycle.ViewModelProviders.of(this).get(MinViewModel.class);
+    // eller ny syntax:
+    // viewModel = new androidx.lifecycle.ViewModelProvider(this).get(MinViewModel.class)
+    // men... her er et hurtigt hack hvis lifecycle:extensions ikke er inkluderet app/build.gradle:
     minModel =  new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(MinViewModel.class);
 
     minModel.observabelLiveData.observe(this, opdaterSkærm);
   }
 
 
-  private Observer opdaterSkærm = new Observer() {
+  //@Override   // Det er IKKE nødvendigt af afregistrere aktiviteten som observatør - ViewModel gør det selv automagisk
+  //protected void onDestroy() {
+  //  if (minModel!=null) minModel.observabelLiveData.removeObserver(opdaterSkærm); // IKKE nødvendigt MinViewModel gør det selv
+  //  super.onDestroy();
+  //}
+
+
+  private Observer<MinViewModel> opdaterSkærm = new Observer<MinViewModel>() {
     @Override
-    public void onChanged(Object o) {
+    public void onChanged(MinViewModel o) {
       progressBar.setProgress((int) minModel.procent);
       annullerknap.setVisibility(minModel.kører ? View.VISIBLE : View.GONE);
 
@@ -102,9 +110,10 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     boolean annullereret;
     boolean kører;
 
-    Executor bgThread = Executors.newSingleThreadExecutor();
-    // Vi bruger her LiveData som observabel til at fortælle aktiviteten når der er sket ændringer
-    MutableLiveData observabelLiveData = new MutableLiveData();
+    Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
+
+    // LiveData bruges som observabel til at fortælle aktiviteten om ændringer - på hovedtråden
+    MutableLiveData<MinViewModel> observabelLiveData = new MutableLiveData<>();
 
 
     public void startBeregning(int antalSkridt, int ventPrSkridtMs) {
@@ -116,10 +125,10 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
           if (annullereret) break;
           procent = i * 100.0 / antalSkridt;
           resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
-          observabelLiveData.postValue(null);
+          observabelLiveData.postValue(this);
         }
         kører = false;
-        observabelLiveData.postValue(null);
+        observabelLiveData.postValue(this);
         System.out.println("færdig");
       });
     }
@@ -131,4 +140,3 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     }
   }
 }
-

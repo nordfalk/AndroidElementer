@@ -15,7 +15,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -31,13 +30,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Simpel aktivitet der viser byvejret i Ballerup
@@ -50,8 +49,8 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
   ImageView imageView_dag1, imageView_dag3_9, imageView_dag10_14;
   EditText editText_postnr;
 
-  Executor bgThread = Executors.newSingleThreadExecutor();
-  Handler uiThread = new Handler();
+  Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
+  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

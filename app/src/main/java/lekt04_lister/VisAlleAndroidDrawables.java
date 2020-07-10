@@ -2,9 +2,8 @@ package lekt04_lister;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +14,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import dk.nordfalk.android.elementer.R;
 
@@ -38,8 +42,10 @@ import dk.nordfalk.android.elementer.R;
  * @author j
  */
 public class VisAlleAndroidDrawables extends AppCompatActivity implements AdapterView.OnItemClickListener {
+  Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
+  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
   /**
-   * Om billeder og resurser skal indlæses i en baggrundstråd eller i GUI-tråden
+   * Om billeder og resurser skal indlæses i en baggrundstråd eller i hovedtråden
    */
   boolean asynkronIndlæsning = true;
   /**
@@ -114,35 +120,26 @@ public class VisAlleAndroidDrawables extends AppCompatActivity implements Adapte
       // For at sikre flydende scroll kan vi IKKE indlæse resursen i GUI-tråden
       if (!asynkronIndlæsning) {
         try {
-          listeelem.billede.setImageResource(resurseId);
+          Drawable drawable = res.getDrawable(resurseId);
+          listeelem.billede.setImageDrawable(drawable);
         } catch (Exception e) {// sker hvis en drawable med det ID ikke findes
         }
       } else {
         listeelem.billede.setImageDrawable(null);
         listeelem.position = position;
-        // Brug en AsyncTask til at indlæse billedet i baggrunden
-        new AsyncTask() {
-          @Override
-          protected Object doInBackground(Object... params) {
-            // Tjek om viewholderen er blevet genbrugt til anden position
-            if (listeelem.position == position) {
-              try {
-                return res.getDrawable(resurseId); // Overfør til onPostExecute()
-              } catch (Exception e) {// sker hvis en drawable med det ID ikke findes
-              }
-            }
-            return null;
-          }
+        // Indlæs billedet i baggrunden
 
-          @Override
-          protected void onPostExecute(Object resultat) {
-            // Tjek om viewholderen er blevet genbrugt til anden position
-            if (listeelem.position != position || resultat==null) {
-              return;
-            }
-            listeelem.billede.setImageDrawable((Drawable) resultat);
+        bgThread.execute(() -> {
+          if (listeelem.position != position) return; // der er gået lidt tid, det kan være position ikke mere er aktuel
+          try {
+            Drawable drawable = res.getDrawable(resurseId);
+            uiThread.post(() -> {
+              if (listeelem.position != position) return; // der er gået lidt tid, det kan være position ikke mere er aktuel
+              listeelem.billede.setImageDrawable(drawable);
+            });
+          } catch (Exception e) {// sker hvis en drawable med det ID ikke findes
           }
-        }.execute();
+        });
       }
 
 

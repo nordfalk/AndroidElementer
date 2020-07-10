@@ -20,8 +20,8 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
   Button knap1, knap2, knap3, knap3annuller;
   boolean annullereret;
 
-  Executor bgThread = Executors.newSingleThreadExecutor();
-  Handler uiThread = new Handler();
+  Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
+  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

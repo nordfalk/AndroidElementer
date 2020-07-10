@@ -1,20 +1,19 @@
 package lekt03_net;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
-import androidx.appcompat.app.AppCompatActivity;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,8 +31,8 @@ public class BenytNetFraBaggrundstraad extends AppCompatActivity implements OnCl
   TextView textView;
   ProgressBar progressBar;
 
-  Executor bgThread = Executors.newSingleThreadExecutor();
-  Handler uiThread = new Handler();
+  Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
+  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
 
 
   @Override
