@@ -140,7 +140,7 @@
         <activity android:name="lekt03_diverse.BenytWebView2" />
         <activity android:name="lekt03_diverse.BenytLayoutInflater" />
 
-        <activity android:name="lekt03_net.BenytNetOgAsyncTask" />
+        <activity android:name="lekt03_net.BenytNetFraBaggrundstraad" />
         <activity android:name="lekt03_net.ByvejrAktivitet" />
 
         <activity android:name="lekt03x_temaer.BenytKnapperDeklarativLys" android:theme="@style/Theme.AppCompat.Light" />

@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -33,21 +34,24 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * Simpel aktivitet der viser byvejret i Valby
+ * Simpel aktivitet der viser byvejret i Ballerup
  *
  * @author Jacob Nordfalk
  */
 public class ByvejrAktivitet extends AppCompatActivity implements OnClickListener {
 
-  ImageView imageView_dag1;
-  ImageView imageView_dag3_9;
-  ImageView imageView_dag10_14;
   String valgtPostNr = "2750";
+  ImageView imageView_dag1, imageView_dag3_9, imageView_dag10_14;
   EditText editText_postnr;
+
+  Executor bgThread = Executors.newSingleThreadExecutor();
+  Handler uiThread = new Handler();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -116,51 +120,45 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
   @Override
   public void onClick(View v) {
     valgtPostNr = editText_postnr.getText().toString();
-    startHentBilleder();
-
-    skjulTastatur(v);
-
     // gem foretrukkent postnummer i PreferenceManager
     PreferenceManager.getDefaultSharedPreferences(this)
             .edit().putString("foretrukkenPostNr", valgtPostNr).apply();
+
+    skjulTastatur(v);
+
+    startHentBilleder();
+  }
+
+
+  public void skjulTastatur(View v) {
+    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
   }
 
   private void startHentBilleder() {
-    new AsyncTask() {
+    bgThread.execute(() -> {
+      try {
+        Bitmap byvejr_dag1 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
+        Bitmap byvejr_dag3_9 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag3_9");
+        Bitmap byvejr_dag10_14 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag10_14");
 
-      public Bitmap byvejr_dag1;
-      public Bitmap byvejr_dag3_9;
-      public Bitmap byvejr_dag10_14;
-
-      @Override
-      protected Object doInBackground(Object[] params) {
-        try {
-          byvejr_dag1 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=" + valgtPostNr + "&mode=long");
-          byvejr_dag3_9 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag3_9");
-          byvejr_dag10_14 = opretBitmapFraUrl("https://servlet.dmi.dk/byvejr/servlet/byvejr?by=" + valgtPostNr + "&tabel=dag10_14");
-        } catch (Exception e) {
-          e.printStackTrace();
-          return e;
-        }
-        return null;
-      }
-
-      @Override
-      protected void onPostExecute(Object o) {
         // Dette skal gøres i GUI-tråden
-        imageView_dag1.setImageBitmap(byvejr_dag1);
-        // Sørg for at den er synlig på skærmen
-        imageView_dag1.requestRectangleOnScreen(new Rect());
-        imageView_dag3_9.setImageBitmap(byvejr_dag3_9);
-        imageView_dag10_14.setImageBitmap(byvejr_dag10_14);
+        uiThread.post(() -> {
+          imageView_dag1.setImageBitmap(byvejr_dag1);
+          // Sørg for at den er synlig på skærmen
+          imageView_dag1.requestRectangleOnScreen(new Rect());
+          imageView_dag3_9.setImageBitmap(byvejr_dag3_9);
+          imageView_dag10_14.setImageBitmap(byvejr_dag10_14);
+        });
+
+      } catch (Exception ex) {
+        ex.printStackTrace();
+        uiThread.post(() -> {
+          advarBruger("Kunne ikke få data fra DMI");
+          advarBruger("" + ex);
+        });
       }
-    }.execute();
-    try {
-    } catch (Exception ex) {
-      ex.printStackTrace();
-      advarBruger("Kunne ikke få data fra DMI");
-      advarBruger("" + ex);
-    }
+    });
   }
 
   public static Bitmap opretBitmapFraUrl(String url) throws IOException {
@@ -173,10 +171,5 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
   private void advarBruger(String advarsel) {
     Log.w("Vejret", advarsel);
     Toast.makeText(this, advarsel, Toast.LENGTH_LONG).show();
-  }
-
-  public void skjulTastatur(View v) {
-    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
   }
 }
