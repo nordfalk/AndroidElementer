@@ -37,6 +37,8 @@ import lekt50_googlested.Log;
  * XXXX forældet
  * Se https://developers.google.com/identity/sign-in/android/migration-guide
 
+ // targetSdkVersion skal være 22 eller under for at vi kan se brugerens konti umiddelbart.
+ // Se http://stackoverflow.com/questions/34561188/targetsdkversion-23-returns-0-length-array-via-accountmanager-getaccounts
 
  * Aktivitet til at hente kontoinformation
  * Se https://developers.google.com/android/guides/http-auth

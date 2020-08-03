@@ -70,7 +70,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
 
       bgThread.execute(() -> {
         uiThread.post(() -> knap1.setText("arbejder"));
-        SystemClock.sleep(10000); // <2>
+        SystemClock.sleep(10000);
         uiThread.post(() -> knap1.setText("færdig!"));
       });
       knap1.setText("startet");
@@ -81,7 +81,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
       int antalSkridt = 100;
       bgThread.execute(() -> {
         uiThread.post(() -> knap2.setText("arbejder"));
-        for (int i = 0; i < antalSkridt; i++) {  // <2>
+        for (int i = 0; i < antalSkridt; i++) {
           System.out.println("knap2 i = " + i);
           SystemClock.sleep(10000 / antalSkridt);
           int finalI = i; // da i kan ændre sig imens nedenstående kører skal den kopieres over i en final variabel
@@ -90,7 +90,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
             progressBar.setProgress(finalI);
           });
         }
-        uiThread.post(() -> knap2.setText("færdig!")); // <3>
+        uiThread.post(() -> knap2.setText("færdig!"));
         System.out.println("knap2 færdig");
       });
       knap2.setText("startet");
@@ -99,24 +99,21 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
     } else if (klikPåHvad == knap3) {
 
       annullereret = false;
-      int antalSkridt = 100;
-      int ventPrSkridtMs = 50;
 
       bgThread.execute(() -> {
         uiThread.post(() -> knap3.setText("arbejder"));
-        for (int i = 0; i < antalSkridt; i++) {
-          System.out.println("knap3 i = " + i);
-          SystemClock.sleep(ventPrSkridtMs);
+        for (int procent = 0; procent < 100; procent++) {
+          System.out.println("knap3 i = " + procent);
+          SystemClock.sleep(50);
           if (annullereret) break; // stop uden resultat
 
-          double procent = i * 100.0 / antalSkridt;
           System.out.println("procent = "+procent);
-          double resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
 
+          int finalProcent = procent;
           uiThread.post(() -> {
             knap3annuller.setVisibility(View.VISIBLE);
-            knap3.setText("arbejder - " + procent + "% færdig, mangler " + resttidISekunder + " sekunder endnu");
-            progressBar.setProgress((int) procent);
+            knap3.setText("arbejder - " + finalProcent + "% færdig");
+            progressBar.setProgress(finalProcent);
           });
         }
         System.out.println("knap3 færdig");
