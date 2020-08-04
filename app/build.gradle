@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -21,10 +22,12 @@ android {
         // dette giver en hurtigere build, men med højere hukommelsesforbrug
         //dexOptions { javaMaxHeapSize "2g" }
     }
+
     // View binding - se lekt01_views.BenytKnapperDeklViewbinding og
     buildFeatures {
         viewBinding = true
     }
+
     buildTypes {
         release {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
