@@ -86,7 +86,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
       progressBar.setProgress((int) minModel.procent);
       annullerknap.setVisibility(minModel.kører ? View.VISIBLE : View.GONE);
 
-      if (minModel.annullereret) knap.setText("Annulleret før tid");
+      if (minModel.annulleret) knap.setText("Annulleret før tid");
       else if (!minModel.kører) knap.setText("Færdig");
       else knap.setText("arbejder - " + minModel.procent + "% færdig, mangler " + minModel.resttidISekunder + " sekunder endnu");
     }
@@ -100,7 +100,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
       minModel.observer = opdaterSkærm;
       minModel.startBeregning(500, 50);
     } else if (klikPåHvad == annullerknap) {
-      minModel.annullereret = true;
+      minModel.annulleret = true;
     }
     opdaterSkærm.run();
   }
@@ -111,7 +111,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
   static class MinModel {
     double procent;
     double resttidISekunder;
-    boolean annullereret;
+    boolean annulleret;
     boolean kører;
 
     Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
@@ -124,7 +124,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
         for (int i = 0; i < antalSkridt; i++) {
           System.out.println("i = " + i);
           SystemClock.sleep(ventPrSkridtMs); // simulér nogle krævende beregninger eller netværkskald
-          if (annullereret) break;
+          if (annulleret) break;
           procent = i * 100.0 / antalSkridt;
           resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
           uiThread.post(observer);

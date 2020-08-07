@@ -1,7 +1,6 @@
 package lekt06_asynkron;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -88,7 +87,7 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
       progressBar.setProgress((int) minModel.procent);
       annullerknap.setVisibility(minModel.kører ? View.VISIBLE : View.GONE);
 
-      if (minModel.annullereret) knap.setText("Annulleret før tid");
+      if (minModel.annulleret) knap.setText("Annulleret før tid");
       else if (!minModel.kører) knap.setText("Færdig");
       else knap.setText("arbejder - " + minModel.procent + "% færdig, mangler " + minModel.resttidISekunder + " sekunder endnu");
     }
@@ -99,7 +98,7 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     if (klikPåHvad == knap) {
       minModel.startBeregning(500, 50);
     } else if (klikPåHvad == annullerknap) {
-      minModel.annullereret = true;
+      minModel.annulleret = true;
     }
   }
 
@@ -107,7 +106,7 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     // Data, som aktiviteten skal vise
     double procent;
     double resttidISekunder;
-    boolean annullereret;
+    boolean annulleret;
     boolean kører;
 
     Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
@@ -117,12 +116,13 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
 
 
     public void startBeregning(int antalSkridt, int ventPrSkridtMs) {
+      annulleret = false;
       bgThread.execute(() -> {
         kører = true;
         for (int i = 0; i < antalSkridt; i++) {
           System.out.println("i = " + i);
           SystemClock.sleep(ventPrSkridtMs); // simulér nogle krævende beregninger eller netværkskald
-          if (annullereret) break;
+          if (annulleret) break;
           procent = i * 100.0 / antalSkridt;
           resttidISekunder = (antalSkridt - i) * ventPrSkridtMs / 100 / 10.0;
           observabelLiveData.postValue(this);
@@ -136,7 +136,7 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     /** Denne metode køres når brugeren afslutter aktiviteten (trykker på tilbage-knappen) */
     @Override
     protected void onCleared() {
-      if (kører) annullereret = true;
+      if (kører) annulleret = true;
     }
   }
 }

@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 public class Asynk3Executor extends AppCompatActivity implements OnClickListener {
   ProgressBar progressBar;
   Button knap1, knap2, knap3, knap3annuller;
-  boolean annullereret;
+  boolean annulleret;
 
   /* Husk følgende i app/build.gradle, så vi benytter Java 8 og kan lave lambda-udtryk:
   android {
@@ -107,14 +107,14 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
 
     } else if (klikPåHvad == knap3) {
 
-      annullereret = false;
+      annulleret = false;
 
       bgThread.execute(() -> {
         uiThread.post(() -> knap3.setText("arbejder"));
         for (int procent = 0; procent < 100; procent++) {
           System.out.println("knap3 i = " + procent);
           SystemClock.sleep(50);
-          if (annullereret) break; // stop uden resultat
+          if (annulleret) break; // stop uden resultat
 
           System.out.println("procent = "+procent);
 
@@ -128,7 +128,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
         System.out.println("knap3 færdig");
 
         uiThread.post(() -> {
-          if (annullereret) knap3.setText("Annulleret før tid");
+          if (annulleret) knap3.setText("Annulleret før tid");
           else knap3.setText("færdig");
           knap3annuller.setVisibility(View.GONE); // Skjul knappen
         });
@@ -138,7 +138,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
 
     } else if (klikPåHvad == knap3annuller) {
 
-      annullereret = true;
+      annulleret = true;
 
     }
   }
