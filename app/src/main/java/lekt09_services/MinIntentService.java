@@ -7,6 +7,7 @@ package lekt09_services;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 
@@ -25,7 +26,7 @@ public class MinIntentService extends IntentService {
   /**
    * Håndtag til forgrundstråden
    */
-  public Handler forgrundstråd = new Handler();
+  public Handler forgrundstråd = new Handler(Looper.getMainLooper());
 
 
   @Override

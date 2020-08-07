@@ -2,6 +2,7 @@ package lekt06_asynkron;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,7 +22,7 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
   boolean annullereret;
 
   Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
-  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
+  Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

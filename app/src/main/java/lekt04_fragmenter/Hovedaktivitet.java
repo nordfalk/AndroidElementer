@@ -12,6 +12,8 @@ import dk.nordfalk.android.elementer.R;
  * @author Jacob Nordfalk
  */
 public class Hovedaktivitet extends AppCompatActivity {
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     requestWindowFeature(Window.FEATURE_ACTION_BAR);

@@ -3,6 +3,7 @@ package lekt06_asynkron;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import dk.nordfalk.android.elementer.R;
 @SuppressWarnings("NonAsciiCharacters")
 public class Asynk1Handler extends AppCompatActivity implements OnClickListener {
 
-  Handler uiThread = new Handler();
+  Handler uiThread = new Handler(Looper.getMainLooper());
   Runnable opgave;
   Button knap1, knap2, knapAnnuller;
 

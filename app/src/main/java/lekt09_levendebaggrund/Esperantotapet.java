@@ -23,6 +23,7 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.service.wallpaper.WallpaperService;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -41,7 +42,7 @@ public class Esperantotapet extends WallpaperService {
 
   class EsperantoEngine extends Engine {
 
-    Handler guiTråd = new Handler();
+    Handler guiTråd = new Handler(Looper.getMainLooper());
     Paint stjernePaint = new Paint();
     Paint tekstPaint = new Paint();
     Path stjernePath;

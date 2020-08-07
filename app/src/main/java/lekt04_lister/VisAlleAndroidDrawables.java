@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,7 @@ import dk.nordfalk.android.elementer.R;
  */
 public class VisAlleAndroidDrawables extends AppCompatActivity implements AdapterView.OnItemClickListener {
   Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
-  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
+  Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
   /**
    * Om billeder og resurser skal indlæses i en baggrundstråd eller i hovedtråden
    */

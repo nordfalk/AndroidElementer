@@ -3,6 +3,7 @@ package lekt03_net;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -31,8 +32,17 @@ public class BenytNetFraBaggrundstraad extends AppCompatActivity implements OnCl
   TextView textView;
   ProgressBar progressBar;
 
+  /* Husk følgende i app/build.gradle:
+  // Benyt Java 8 så vi kan lave lambda-udtryk, f.eks. i BenytNetFraBaggrundstraad
+  android {
+  ...
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+   */
   Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
-  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
+  Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
 
 
   @Override

@@ -2,6 +2,7 @@ package lekt06_asynkron;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -114,7 +115,7 @@ public class Asynk4ExecutorModel extends AppCompatActivity implements OnClickLis
     boolean kører;
 
     Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
-    Handler uiThread = new Handler();                        // håndtag til forgrundstråden
+    Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
     Runnable observer; // reference til brugergrænsefladen (aktiviteten observerer modellen)
 
     void startBeregning(int antalSkridt, int ventPrSkridtMs) {

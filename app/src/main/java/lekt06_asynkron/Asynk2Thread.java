@@ -85,5 +85,5 @@ public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
       new Thread(r).start();
     }
   }
-  //Handler uiThread = new Handler(); // brug evt denne i stedet for runOnUiThread(r2);
+  //Handler uiThread = new Handler(Looper.getMainLooper()); // brug evt denne i stedet for runOnUiThread(r2);
 }

@@ -24,6 +24,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -49,10 +50,8 @@ public class MinApp extends Application {
   // Globale data (kunne godt være gemt i en klassevariabel andetsteds)
   public static SharedPreferences prefs;
   public static MinApp instans;
-  /**
-   * Håndtag til forgrundstråden
-   */
-  public static Handler forgrundstråd = new Handler();
+  public static Handler forgrundstråd = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
+
   private static Programdata data;
   public static final MutableLiveData<Programdata> livedata = new MutableLiveData<>();
 

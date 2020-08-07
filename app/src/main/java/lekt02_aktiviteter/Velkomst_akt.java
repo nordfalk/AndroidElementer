@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.transition.TransitionManager;
+import android.os.Looper;
 import android.util.Log;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -14,7 +14,7 @@ import dk.nordfalk.android.elementer.R;
 public class Velkomst_akt extends AppCompatActivity implements Runnable {
 
   static Velkomst_akt aktivitetDerVisesNu = null;
-  Handler handler = new Handler();
+  Handler handler = new Handler(Looper.getMainLooper());
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
+
+    // Benyt Java 8 så vi kan lave lambda-udtryk, f.eks. i BenytNetFraBaggrundstraad
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

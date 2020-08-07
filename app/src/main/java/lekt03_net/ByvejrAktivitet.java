@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -50,7 +51,7 @@ public class ByvejrAktivitet extends AppCompatActivity implements OnClickListene
   EditText editText_postnr;
 
   Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
-  Handler uiThread = new Handler();                        // håndtag til forgrundstråden
+  Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
