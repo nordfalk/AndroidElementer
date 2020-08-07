@@ -5,9 +5,14 @@
     package="dk.nordfalk.android.elementer" >
 
     <!-- tilladelser -->
+
+    <!-- Efter at du har sat INTERNET ind skal du muligvis afinstallere din app fuldstændig og starte den igen før internetadgang virker -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission
         android:name="android.permission.GET_ACCOUNTS"
         android:maxSdkVersion="22"/>
+
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" tools:node="remove"/>
@@ -16,7 +21,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" tools:node="remove"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -35,7 +39,7 @@
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
 
     <!--
-      Undgå at appen bliver utilgængelig for visse enheder i Android Marked. Se
+      Undgå at appen bliver utilgængelig for visse enheder i Google Play. Se
       http://developer.android.com/guide/topics/manifest/uses-feature-element.html
     -->
     <uses-feature
@@ -63,16 +67,15 @@
         android:name="android.software.app_widgets"
         android:required="false" />
 
+
+
     <application
         android:name="lekt04_arkitektur.MinApp"
         android:theme="@style/AppTheme"
         android:icon="@drawable/logo"
         android:allowBackup="true">
 
-        <!--
-          aktiviteter som ikke kan ses fra startskærmen men som kan kaldes
-          internt i programmet
-        -->
+        <!-- Aktiviteter som ikke kan ses fra startskærmen men som kan kaldes internt i programmet har ikke noget <intent-filter> tag -->
 
         <activity android:name="lekt01_views.BenytEnKnap" />
         <activity android:name="lekt01_views.BenytKnapperProgrammatisk" />
@@ -91,7 +94,7 @@
             android:name="lekt02_intents.BenytIntentsMedResultat"
             android:screenOrientation="portrait" />
 
-        <!-- Denne aktivitet fanger browsning af URLer der starter med https://javabog.dk/OOP/ -->
+        <!-- Denne aktivitet har et intent-filter, der fanger browsning af URLer som starter med https://javabog.dk/OOP/ -->
         <activity android:name="lekt02_intents.FangBrowserIntent" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -355,16 +358,17 @@
             </intent-filter>
         </activity>
 
+
         <!-- Jeg skjuler alle aktiviteter der står herunder fra Aktivitetsliste -->
         <activity android:name="dk.nordfalk.aktivitetsliste.VisFragmentAkt" />
         <activity android:name="dk.nordfalk.aktivitetsliste.VisKildekodeIWebView"/>
         <activity android:name="dk.nordfalk.aktivitetsliste.VisKildekode">
-
             <!-- bruges af metoden VisKildekode.findWebUrl() -->
             <meta-data
                 android:name="HS_PRÆFIX"
                 android:value="https://github.com/nordfalk/AndroidElementer/tree/master/app/src/main/" />
         </activity>
+
     </application>
 
 </manifest>

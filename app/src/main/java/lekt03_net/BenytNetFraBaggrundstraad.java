@@ -32,8 +32,7 @@ public class BenytNetFraBaggrundstraad extends AppCompatActivity implements OnCl
   TextView textView;
   ProgressBar progressBar;
 
-  /* Husk følgende i app/build.gradle:
-  // Benyt Java 8 så vi kan lave lambda-udtryk, f.eks. i BenytNetFraBaggrundstraad
+  /* Husk følgende i app/build.gradle, så vi benytter Java 8 og kan lave lambda-udtryk:
   android {
   ...
     compileOptions {

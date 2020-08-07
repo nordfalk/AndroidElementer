@@ -21,6 +21,14 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
   Button knap1, knap2, knap3, knap3annuller;
   boolean annullereret;
 
+  /* Husk følgende i app/build.gradle, så vi benytter Java 8 og kan lave lambda-udtryk:
+  android {
+  ...
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+   */
   Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstråd
   Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
 
