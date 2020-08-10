@@ -21,6 +21,17 @@ public class BenytGalgelogik {
     } catch (Exception e) {
       e.printStackTrace();
     }
+
+    /* Serialisering af objekter som JSON. Kræver at du sætter
+    implementation 'com.google.code.gson:gson:2.8.6'
+    ind i dependencies { ... } i app/build.gradle
+
+    com.google.gson.Gson gson = new com.google.gson.Gson();
+    String spilSomStreng = gson.toJson(spil);
+    System.out.println("spilSomStreng = " + spilSomStreng);
+    Galgelogik spil2 = gson.fromJson(spilSomStreng, Galgelogik.class);
+     */
+
     spil.logStatus();
 
     spil.gætBogstav("e");

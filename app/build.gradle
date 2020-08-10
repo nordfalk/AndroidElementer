@@ -1,5 +1,16 @@
 apply plugin: 'com.android.application'
 
+/*
+ For at bruge Kotlin:
+ 1) Versionér og commit hele dit projekt
+ 2) Åbn en Java-klasse
+ 2) Vælg Code | Convert Java File to Kotlin File.
+ 3) Acceptér at der ændres i build-filerne.
+ 4) Lige under "apply plugin: 'kotlin-android'" indsætter du denne udvidelse, der giver automatisk view-binding og en masse andre gode ting:
+                apply plugin: 'kotlin-android-extensions'
+ 5) Du får dine viewbindings i Kotlin-aktiviteter med f.eks. import kotlinx.android.synthetic.main.lekt01_tre_knapper.*
+*/
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
