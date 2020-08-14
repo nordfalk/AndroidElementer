@@ -19,48 +19,14 @@ import lekt50_googlested.TekstTilTale;
 
 
 /**
- * Created by j on 10-11-13.
+ * @author Jacob Nordfalk
+ * Se https://developers.google.com/location-context/activity-recognition
  */
 public class Aktivitetsgenkendelse_reciever extends BroadcastReceiver {
   private String forrigeTekst;
 
-  @Override
-  public void onReceive(Context context, Intent intent) {
 
-    if (ActivityRecognitionResult.hasResult(intent)) {
-
-      ActivityRecognitionResult res = ActivityRecognitionResult.extractResult(intent);
-
-      DetectedActivity mostProbableActivity = res.getMostProbableActivity();
-      String aktivitetsnavn = getBeskrivelse(mostProbableActivity.getType());
-
-      String tekst = aktivitetsnavn+" med "+ mostProbableActivity.getConfidence() +" procents sandsynlighed";
-      if (!tekst.equals(forrigeTekst)) {
-        TekstTilTale.instans(context).tal(tekst); // læs kun ændringer op
-        forrigeTekst = tekst;
-      }
-
-      Aktivitetsgenkendelse_akt.log("\n" + new Date());
-      for (DetectedActivity a : res.getProbableActivities()) {
-        Aktivitetsgenkendelse_akt.log(a.getType() + ":" + getBeskrivelse(a.getType())+" "+ +a.getConfidence()+ "%");
-      }
-      if (Aktivitetsgenkendelse_akt.instans == null) {
-        // Vis en notifikation så man kan komme hen og slå aktivitetsgenkendelse fra
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, Aktivitetsgenkendelse_akt.class), 0);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, VisNotifikation.opretNotifKanal(context))
-                .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.bil)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.logo))
-                .setContentTitle("Aktivitetsgenkendelse")
-                .setContentText(tekst);
-
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(42, builder.build());
-      }
-    }
-  }
-
-  private String getBeskrivelse(int activityType) {
+  private String lavBeskrivelse(int activityType) {
     switch (activityType) {
       case DetectedActivity.IN_VEHICLE:
         return "Du kører bil";
@@ -77,5 +43,43 @@ public class Aktivitetsgenkendelse_reciever extends BroadcastReceiver {
       case DetectedActivity.UNKNOWN:
     }
     return "Ukendt aktivitet";
+  }
+
+
+  @Override
+  public void onReceive(Context context, Intent intent) {
+
+    if (ActivityRecognitionResult.hasResult(intent)) {
+
+      ActivityRecognitionResult res = ActivityRecognitionResult.extractResult(intent);
+
+      DetectedActivity mostProbableActivity = res.getMostProbableActivity();
+      String aktivitetsnavn = lavBeskrivelse(mostProbableActivity.getType());
+
+      String tekst = aktivitetsnavn+" med "+ mostProbableActivity.getConfidence() +" procents sandsynlighed";
+      if (!tekst.equals(forrigeTekst)) {
+        TekstTilTale.instans(context).tal(tekst); // læs kun ændringer op
+        forrigeTekst = tekst;
+      }
+
+      Aktivitetsgenkendelse_akt.log("\n" + new Date());
+      for (DetectedActivity a : res.getProbableActivities()) {
+        Aktivitetsgenkendelse_akt.log(a.getType() + ":" + lavBeskrivelse(a.getType())+" "+ +a.getConfidence()+ "%");
+      }
+
+      if (Aktivitetsgenkendelse_akt.instans == null) {
+        // Vis en notifikation så man kan komme hen og slå aktivitetsgenkendelse fra
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, Aktivitetsgenkendelse_akt.class), 0);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, VisNotifikation.opretNotifKanal(context))
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.bil)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.logo))
+                .setContentTitle("Aktivitetsgenkendelse")
+                .setContentText(tekst);
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(42, builder.build());
+      }
+    }
   }
 }

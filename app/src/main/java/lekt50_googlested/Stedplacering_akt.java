@@ -121,7 +121,7 @@ public class Stedplacering_akt extends AppCompatActivity implements View.OnClick
       LocationRequest locationRequest = LocationRequest.create();
       locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
       locationRequest.setExpirationDuration(10000);
-      locationRequest.setNumUpdates(1);
+      locationRequest.setNumUpdates(10);
       log("Anmoder om "+locationRequest);
       fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
     }

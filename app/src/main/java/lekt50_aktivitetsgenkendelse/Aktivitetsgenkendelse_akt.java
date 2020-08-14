@@ -22,6 +22,7 @@ import lekt50_googlested.TekstTilTale;
 
 /**
  * @author Jacob Nordfalk
+ * Se https://developers.google.com/location-context/activity-recognition
  */
 public class Aktivitetsgenkendelse_akt extends AppCompatActivity implements OnClickListener {
   PendingIntent pendingIntent;
