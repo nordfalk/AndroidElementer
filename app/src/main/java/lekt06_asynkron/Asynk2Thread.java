@@ -73,11 +73,7 @@ public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
         public void run() {
           SystemClock.sleep(10000);
           System.out.println("færdig!");
-          Runnable r2 = new Runnable() {
-            public void run() {
-              knap3.setText("færdig!");
-            }
-          };
+          Runnable r2 = () -> knap3.setText("færdig!");
           runOnUiThread(r2); // beder hovedtråden om at køre r2
           // Her kunne uiThread.post(r2); også anvendes, se nedenfor
         }
