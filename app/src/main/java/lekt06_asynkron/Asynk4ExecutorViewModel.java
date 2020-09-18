@@ -31,7 +31,7 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
 
   ProgressBar progressBar;
   Button knap, annullerknap;
-  MinViewModel minModel;  // bemærk: ikke static - overlever så længe programmet stadig er i RAM
+  MinViewModel minModel;  // bemærk: ikke static - overlever skærmvending v.hj.a. et skjult fragment
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
