@@ -43,13 +43,13 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
   public void onClick(View v) {
 
     if (v == knap1) {
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
               .replace(R.id.fragmentindhold, new BenytKnapperFragment())
               .addToBackStack(null)
               .commit();
     } else if (v == knap2) {
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               // Animationer - bemærk:
               // MED  kompativilitetsbibliotek SKAL de være af typen R.anim (ikke R.animator),
               // UDEN kompatibilitetsbibliotek SKAL de være af typen R.animator (ikke R.anim).
@@ -60,7 +60,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
               .addToBackStack(null)
               .commit();
     } else if (v == knap3) {
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               .replace(R.id.fragmentindhold, new Animation_frag())
               .addToBackStack(null).commit();
     }

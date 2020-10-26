@@ -63,8 +63,8 @@ public class Asynk2Thread extends AppCompatActivity implements OnClickListener {
           knap2.setText("færdig!"); // Fejl - kun hovedtråden må opdatere brugergrænsefladen!
         }
       };
-      new Thread(r).start();
-
+      Thread t = new Thread(r);
+      t.start();
     } else if (v == knap3) {
 
       knap3.setText("arbejder");  // <3>

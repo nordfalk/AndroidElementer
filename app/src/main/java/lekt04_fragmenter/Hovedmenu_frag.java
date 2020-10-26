@@ -38,7 +38,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
   public void onClick(View v) {
     if (v == hjaelpKnap) {
 
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
               .replace(R.id.fragmentindhold, new Hjaelp_frag())
               .addToBackStack(null)
@@ -57,7 +57,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
       argumenter.putString("velkomst", "\n\nHalløj!! Denne tekst kommer fra "+getClass());
       fragment.setArguments(argumenter);
 
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               .replace(R.id.fragmentindhold, fragment)
               .addToBackStack(null)
               .commit();

@@ -68,7 +68,8 @@ public class Asynk4ExecutorViewModel extends AppCompatActivity implements OnClic
     // eller ny syntax:
     // viewModel = new androidx.lifecycle.ViewModelProvider(this).get(MinViewModel.class)
     // men... her er et hurtigt hack hvis lifecycle:extensions ikke er inkluderet app/build.gradle:
-    minModel =  new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(MinViewModel.class);
+    ViewModelProvider viewModelProvider = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()));
+    minModel =  viewModelProvider.get(MinViewModel.class); // fremfinder tidligere viewmodel eller instantierer en ny
 
     minModel.observabelLiveData.observe(this, opdaterSkærm);
   }

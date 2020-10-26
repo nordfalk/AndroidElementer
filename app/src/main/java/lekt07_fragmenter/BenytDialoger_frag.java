@@ -41,10 +41,10 @@ public class BenytDialoger_frag extends Fragment implements View.OnClickListener
 
     if (v == knap1) {
       // DialogFragment har mulighed for at vises som en dialog
-      new TekstDialog_frag().show(getFragmentManager(), "dialog");
+      new TekstDialog_frag().show(getParentFragmentManager(), "dialog");
     } else if (v == knap2) {
       // ... eller som et fragment
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               .replace(R.id.fragmentindhold, new TekstDialog_frag())
               .addToBackStack(null)
               .commit();
@@ -56,7 +56,7 @@ public class BenytDialoger_frag extends Fragment implements View.OnClickListener
               "der har overført den som et argument til TekstDialog_frag.");
       TekstDialog_frag tekstDialogFrag = new TekstDialog_frag();
       tekstDialogFrag.setArguments(args);
-      getFragmentManager().beginTransaction()
+      getParentFragmentManager().beginTransaction()
               .replace(R.id.fragmentindhold, tekstDialogFrag)
               .addToBackStack(null)
               .commit();

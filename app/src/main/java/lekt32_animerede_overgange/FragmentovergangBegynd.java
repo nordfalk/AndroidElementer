@@ -52,7 +52,7 @@ public class FragmentovergangBegynd extends Fragment implements View.OnClickList
 
     // Lav bindinger til mål-aktiviteten, så der kan laves glidende overgange
     // Navnene her skal passe med det TransitionName viewsne har i mål-aktiviteten
-    getFragmentManager().beginTransaction()
+    getParentFragmentManager().beginTransaction()
             .addSharedElement(ikon, "ikon")
             .addSharedElement(klikPåHvad, "knappen")
             .replace(R.id.fragmentindhold, slutfragment)

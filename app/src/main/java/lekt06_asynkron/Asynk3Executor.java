@@ -77,10 +77,14 @@ public class Asynk3Executor extends AppCompatActivity implements OnClickListener
 
     if (klikPåHvad == knap1) {
 
+      knap1.setEnabled(false);
       bgThread.execute(() -> {
         uiThread.post(() -> knap1.setText("arbejder"));
         SystemClock.sleep(10000);
-        uiThread.post(() -> knap1.setText("færdig!"));
+        uiThread.post(() -> {
+          knap1.setText("færdig!");
+          knap1.setEnabled(true);
+        });
       });
       knap1.setText("startet");
 
