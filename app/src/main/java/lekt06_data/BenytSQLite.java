@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import java.io.File;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -28,11 +29,18 @@ public class BenytSQLite extends AppCompatActivity {
 
 
     // Oprettelse af database
-    SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(getFilesDir() + "/database.db", null);
+    File dbFil = new File(getFilesDir(), "/database.db");
+    boolean databaseFandtes = dbFil.exists();
 
-    // Oprette tabel - foregår via SQL
-    db.execSQL("DROP TABLE IF EXISTS kunder;");
-    db.execSQL("CREATE TABLE kunder (_id INTEGER PRIMARY KEY, navn TEXT NOT NULL, kredit INTEGER);");
+    SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbFil, null);
+
+    if (!databaseFandtes) {
+      // Hvis filen ikke findes: Opret tabellerne via SQL
+      //db.execSQL("DROP TABLE IF EXISTS kunder;");
+      db.execSQL("CREATE TABLE kunder (_id INTEGER PRIMARY KEY, navn TEXT NOT NULL, kredit INTEGER);");
+    }
+
+
 
     // Oprette en række
     ContentValues række = new ContentValues();
