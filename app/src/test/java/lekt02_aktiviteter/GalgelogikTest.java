@@ -12,6 +12,11 @@ import static org.junit.Assert.*;
  */
 public class GalgelogikTest {
 
+  static {
+    // Fix for https://stackoverflow.com/questions/60472729/robolectric-test-that-uses-okhttp-for-real-http-requests-throws-java-lang-nullpo/60472730#60472730
+    System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+  }
+
   @Test
   public void afprøvMedSkovsnegl() {
     Galgelogik spil = new Galgelogik();

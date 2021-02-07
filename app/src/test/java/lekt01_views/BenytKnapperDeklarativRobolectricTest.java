@@ -25,6 +25,10 @@ import static org.hamcrest.Matchers.not;
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {Build.VERSION_CODES.O_MR1})
 public class BenytKnapperDeklarativRobolectricTest {
+  static {
+    // Fix for https://stackoverflow.com/questions/60472729/robolectric-test-that-uses-okhttp-for-real-http-requests-throws-java-lang-nullpo/60472730#60472730
+    System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+  }
 
   @Rule
   public ActivityTestRule<BenytKnapperDeklarativ> testRule = new ActivityTestRule(BenytKnapperDeklarativ.class);
